@@ -4,6 +4,16 @@
  */
 package userinterface;
 
+import business.mysql.MySql;
+import java.awt.Image;
+import java.io.File;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nbabu
@@ -26,24 +36,348 @@ public class Registration extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        emailField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        userNameField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        mobileField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        passField = new javax.swing.JPasswordField();
+        signUpButton = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        codeField = new javax.swing.JTextField();
+        loginButton = new javax.swing.JButton();
+        eV = new javax.swing.JLabel();
+        uV = new javax.swing.JLabel();
+        mV = new javax.swing.JLabel();
+        pV = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(900, 800));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Registration");
+
+        jLabel2.setText("Email:");
+
+        emailField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                emailFieldKeyReleased(evt);
+            }
+        });
+
+        jLabel3.setText("Username:");
+
+        userNameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                userNameFieldKeyReleased(evt);
+            }
+        });
+
+        jLabel4.setText("Mobile:");
+
+        mobileField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                mobileFieldKeyReleased(evt);
+            }
+        });
+
+        jLabel5.setText("Password:");
+
+        passField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                passFieldKeyReleased(evt);
+            }
+        });
+
+        signUpButton.setText("Signup");
+        signUpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signUpButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Code:");
+
+        codeField.setEnabled(false);
+
+        loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
+
+        eV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        eV.setPreferredSize(new java.awt.Dimension(7, 17));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(377, 377, 377)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(329, 329, 329)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(63, 63, 63)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(emailField)
+                                    .addComponent(userNameField)
+                                    .addComponent(mobileField)
+                                    .addComponent(passField)
+                                    .addComponent(codeField, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)))
+                            .addComponent(signUpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(eV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                            .addComponent(uV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(mV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(jLabel1)
+                .addGap(60, 60, 60)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(userNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(uV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(mobileField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(passField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(signUpButton)
+                .addGap(18, 18, 18)
+                .addComponent(loginButton)
+                .addContainerGap(371, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        Login l = new Login();
+        l.show();
+        dispose();
+    }//GEN-LAST:event_loginButtonActionPerformed
+    public static boolean clientSideVlaidation(JFrame frame, String email, String username, String mobile, String password)
+    {
+         if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(username).matches() && !username.equals(""))
+         {
+           System.out.println("User Name is valid.");
+           if(Pattern.compile("^\\d{10}$").matcher(mobile).matches())
+           {
+             System.out.println("Mobile number is valid.");
+             if(Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$").matcher(email).matches() && !email.equals(""))
+             {
+                System.out.println("Email is valid");
+                 
+                  if(Pattern.compile("^(?=.*\\d).{4,15}$").matcher(password).matches())
+                      return true;
+                  else
+                    JOptionPane.showMessageDialog(frame, "Password is not valid.\nPassword must contain at least 4 characters with at least one digit.", "Alert", JOptionPane.WARNING_MESSAGE);    
+             } 
+             else
+              JOptionPane.showMessageDialog(frame, "Email is not valid.\nPlease enter a valid email.", "Alert", JOptionPane.WARNING_MESSAGE);
+           }
+           else
+            JOptionPane.showMessageDialog(frame, "Mobile number is not valid.\nOnly numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);      
+         }
+         else
+            JOptionPane.showMessageDialog(frame, "Username is not valid.\nOnly characters and numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);  
+      return false;     
+    }
+    private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
+        // TODO add your handling code here:
+        String email = emailField.getText();
+        String userName = userNameField.getText();
+        String mobile = mobileField.getText();
+        String password = new String(passField.getPassword());
+        boolean passed = clientSideVlaidation(this, email, userName, mobile, password);
+        if(passed)
+        {
+          try
+          {
+            MySql.createConn();
+            boolean exists = false;            
+            ResultSet rs = MySql.selectQuery("select * from users;");
+            while(rs.next())
+            {
+              if(userName.equals(rs.getString(2)))
+              {
+                exists = true;
+                JOptionPane.showMessageDialog(this, "User with the given name already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+              }
+              else if(email.equals(rs.getString(3)))
+              {
+                exists = true;
+                JOptionPane.showMessageDialog(this, "User with the given email already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+              }
+              else if(mobile.equals(rs.getString(4)))
+              {
+                exists = true;
+                JOptionPane.showMessageDialog(this, "User with the given mobile already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+              }
+            }
+            if(!exists)
+            {
+              String code = "";
+              for(int i = 0; i < 6; i++)
+                code += (int)(Math.random() * 6);
+              int res = MySql.insertUpdateQuery("insert into registration(username, email, mobile, password, code) values(" + userName + "," + email + "," + mobile + "," + password + "," + code + ");");
+              if(res > 0)
+              {
+                String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
+                if(userCode.equals(code))
+                {
+                  int res1 = MySql.insertUpdateQuery("insert into registration(username, email, mobile, password) values(" + userName + "," + email + "," + mobile + "," + password + ");");
+                  if(res1 > 0)
+                  {
+                    JOptionPane.showMessageDialog(this, "Registration successful, please login..", null, JOptionPane.OK_OPTION);
+                  }
+                }
+              }
+            }
+          }
+          catch(SQLException ex)
+          {
+            System.out.println(ex);
+          }
+          finally
+          {
+            MySql.shutDownConn();
+          }
+        }
+    }//GEN-LAST:event_signUpButtonActionPerformed
+
+    private void emailFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFieldKeyReleased
+        // TODO add your handling code here:
+        String email = emailField.getText();
+        if(Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$").matcher(email).matches() && !email.equals(""))
+        {
+          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+          if(f.exists())
+            System.out.println("Present");
+          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+          Image img = icon.getImage();                
+          Image imgScale = img.getScaledInstance(eV.getWidth(), eV.getHeight(), Image.SCALE_SMOOTH);
+          ImageIcon scaledIcon = new ImageIcon(imgScale);  
+          eV.setIcon(scaledIcon);
+        }
+        else
+        {
+          
+          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/cross.png");
+          eV.setIcon(icon);
+        }
+    }//GEN-LAST:event_emailFieldKeyReleased
+
+    private void userNameFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameFieldKeyReleased
+        // TODO add your handling code here:
+        String userName = userNameField.getText();
+        if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(userName).matches() && !userName.equals(""))
+        {
+          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+          if(f.exists())
+            System.out.println("Present");
+          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+          Image img = icon.getImage();                
+          Image imgScale = img.getScaledInstance(uV.getWidth(), uV.getHeight(), Image.SCALE_SMOOTH);
+          ImageIcon scaledIcon = new ImageIcon(imgScale);  
+          uV.setIcon(scaledIcon);
+        }
+        else
+        {
+          
+          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/cross.png");
+          uV.setIcon(icon);
+        }
+    }//GEN-LAST:event_userNameFieldKeyReleased
+
+    private void mobileFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mobileFieldKeyReleased
+        // TODO add your handling code here:
+        String mobile = mobileField.getText();
+        if(Pattern.compile("^\\d{10}$").matcher(mobile).matches() && !mobile.equals(""))
+        {
+          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+          if(f.exists())
+            System.out.println("Present");
+          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+          Image img = icon.getImage();                
+          Image imgScale = img.getScaledInstance(mV.getWidth(), mV.getHeight(), Image.SCALE_SMOOTH);
+          ImageIcon scaledIcon = new ImageIcon(imgScale);  
+          mV.setIcon(scaledIcon);
+        }
+        else
+        {
+          
+          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/cross.png");
+          mV.setIcon(icon);
+        }
+    }//GEN-LAST:event_mobileFieldKeyReleased
+
+    private void passFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passFieldKeyReleased
+        // TODO add your handling code here:
+        String password = new String(passField.getPassword());
+        if(Pattern.compile("^(?=.*\\d).{4,15}$").matcher(password).matches() && !password.equals(""))
+        {
+          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+          if(f.exists())
+            System.out.println("Present");
+          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+          Image img = icon.getImage();                
+          Image imgScale = img.getScaledInstance(pV.getWidth(), pV.getHeight(), Image.SCALE_SMOOTH);
+          ImageIcon scaledIcon = new ImageIcon(imgScale);  
+          pV.setIcon(scaledIcon);
+        }
+        else
+        {
+          
+          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/cross.png");
+          pV.setIcon(icon);
+        }
+    }//GEN-LAST:event_passFieldKeyReleased
 
     /**
      * @param args the command line arguments
@@ -81,5 +415,22 @@ public class Registration extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField codeField;
+    private javax.swing.JLabel eV;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton loginButton;
+    private javax.swing.JLabel mV;
+    private javax.swing.JTextField mobileField;
+    private javax.swing.JLabel pV;
+    private javax.swing.JPasswordField passField;
+    private javax.swing.JButton signUpButton;
+    private javax.swing.JLabel uV;
+    private javax.swing.JTextField userNameField;
     // End of variables declaration//GEN-END:variables
 }
