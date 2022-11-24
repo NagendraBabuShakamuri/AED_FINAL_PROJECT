@@ -13,7 +13,18 @@ import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 /**
  *
  * @author nbabu
@@ -46,8 +57,6 @@ public class Registration extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         passField = new javax.swing.JPasswordField();
         signUpButton = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        codeField = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
         eV = new javax.swing.JLabel();
         uV = new javax.swing.JLabel();
@@ -102,10 +111,6 @@ public class Registration extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Code:");
-
-        codeField.setEnabled(false);
-
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,17 +139,15 @@ public class Registration extends javax.swing.JFrame {
                                         .addComponent(jLabel2)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
+                                    .addComponent(jLabel5))
                                 .addGap(63, 63, 63)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(emailField)
+                                    .addComponent(emailField, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                                     .addComponent(userNameField)
                                     .addComponent(mobileField)
-                                    .addComponent(passField)
-                                    .addComponent(codeField, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)))
-                            .addComponent(signUpButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(passField)))
+                            .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(signUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(eV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
@@ -179,14 +182,10 @@ public class Registration extends javax.swing.JFrame {
                     .addComponent(passField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(codeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addComponent(signUpButton)
                 .addGap(18, 18, 18)
                 .addComponent(loginButton)
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addContainerGap(412, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,6 +197,48 @@ public class Registration extends javax.swing.JFrame {
         l.show();
         dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
+    public static Message prepareMessage(Session session, String fromMail, String recepient, String code)
+    {      
+        try 
+        {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(fromMail));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
+            message.setSubject("One Time Password");
+            message.setText("Your OTP to successfully register is " + code + ".");
+            return message;
+        } 
+        catch (Exception ex) {
+            Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    public static void sendMail(String recepient, String code)
+    {
+      Properties properties = new Properties();
+      properties.put("mail.smtp.auth", "true");
+      properties.put("mail.smtp.starttls.enable", "true");
+      properties.put("mail.smtp.host", "smtp.gmail.com");
+      properties.put("mail.smtp.port", "587");
+      
+      String fromMail = "nbabu724@gmail.com";
+      String password = "waylqkgzosgezhjh";
+      Session session = Session.getInstance(properties, new Authenticator(){
+        @Override
+        protected PasswordAuthentication getPasswordAuthentication()
+        {
+          return new PasswordAuthentication(fromMail, password);
+        }
+      });
+      Message message = prepareMessage(session, fromMail, recepient, code);
+        try 
+        {
+            Transport.send(message);
+        } 
+        catch (MessagingException ex) {
+            Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public static boolean clientSideVlaidation(JFrame frame, String email, String username, String mobile, String password)
     {
          if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(username).matches() && !username.equals(""))
@@ -265,13 +306,16 @@ public class Registration extends javax.swing.JFrame {
               String code = "";
               for(int i = 0; i < 6; i++)
                 code += (int)(Math.random() * 6);
-              int res = MySql.insertUpdateQuery("insert into registration(username, email, mobile, password, code) values(" + userName + "," + email + "," + mobile + "," + password + "," + code + ");");
+              String query = "insert into registration(username, email, mobile, password, code) values(" + "\'" + userName + "\'" +"," + "\'" + email + "\'" + "," + "\'" + mobile + "\'" + ","  + "\'" + password + "\'" + "," + "\'" + code + "\'" + ");";
+              System.out.println(query);
+              int res = MySql.insertUpdateQuery(query);
               if(res > 0)
               {
+                sendMail(email, code);
                 String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
                 if(userCode.equals(code))
                 {
-                  int res1 = MySql.insertUpdateQuery("insert into registration(username, email, mobile, password) values(" + userName + "," + email + "," + mobile + "," + password + ");");
+                  int res1 = MySql.insertUpdateQuery("insert into users(username, email, mobile, password) values(" + "\'" + userName + "\'" +"," + "\'" + email + "\'" + "," + "\'" + mobile + "\'" + ","  + "\'" + password + "\'" + ");");
                   if(res1 > 0)
                   {
                     JOptionPane.showMessageDialog(this, "Registration successful, please login..", null, JOptionPane.OK_OPTION);
@@ -415,7 +459,6 @@ public class Registration extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField codeField;
     private javax.swing.JLabel eV;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel jLabel1;
@@ -423,7 +466,6 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel mV;
     private javax.swing.JTextField mobileField;
