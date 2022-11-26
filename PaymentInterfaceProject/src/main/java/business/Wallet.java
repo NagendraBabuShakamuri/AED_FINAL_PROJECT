@@ -9,5 +9,6 @@ package business;
  * @author nbabu
  */
 public class Wallet {
-    
+    float walletBalance;
+    int rewardPoints;
 }

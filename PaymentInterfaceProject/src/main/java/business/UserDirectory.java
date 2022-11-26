@@ -19,8 +19,7 @@ public class UserDirectory {
     {
         try
         {
-            MySql.createConn();
-            boolean exists = false;            
+            MySql.createConn();           
             ResultSet rs = MySql.selectQuery("select * from users;");
             while(rs.next())
             {
@@ -30,8 +29,8 @@ public class UserDirectory {
               String password = rs.getString(5);
               User user = new User(userName, email, mobile, password);
               userDirectory.add(user);
-              return userDirectory;
             }
+            return userDirectory;
         }
         catch(SQLException ex)
         {
@@ -42,6 +41,5 @@ public class UserDirectory {
         {
           MySql.shutDownConn();
         }
-        return userDirectory;
     }
 }
