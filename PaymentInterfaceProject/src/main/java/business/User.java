@@ -4,6 +4,8 @@
  */
 package business;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author nbabu
@@ -19,5 +21,25 @@ public class User {
       this.email = email;
       this.mobile = mobile;
       this.password = password;
-    }    
+    }
+    public String getUserName()
+    {
+      return userName;
+    }
+    public String getPassword()
+    {
+      return password;
+    }
+    public void createUser()
+    {
+      
+    }
+    public void updateUser()
+    {
+      
+    }
+    public void deleteUser()
+    {
+      
+    }
 }

@@ -4,6 +4,7 @@
  */
 package userinterface;
 
+import business.Mail;
 import business.mysql.MySql;
 import java.awt.Image;
 import java.io.File;
@@ -197,48 +198,6 @@ public class Registration extends javax.swing.JFrame {
         l.show();
         dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
-    public static Message prepareMessage(Session session, String fromMail, String recepient, String code)
-    {      
-        try 
-        {
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(fromMail));
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
-            message.setSubject("One Time Password");
-            message.setText("Your OTP to successfully register is " + code + ".");
-            return message;
-        } 
-        catch (Exception ex) {
-            Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    public static void sendMail(String recepient, String code)
-    {
-      Properties properties = new Properties();
-      properties.put("mail.smtp.auth", "true");
-      properties.put("mail.smtp.starttls.enable", "true");
-      properties.put("mail.smtp.host", "smtp.gmail.com");
-      properties.put("mail.smtp.port", "587");
-      
-      String fromMail = "nbabu724@gmail.com";
-      String password = "waylqkgzosgezhjh";
-      Session session = Session.getInstance(properties, new Authenticator(){
-        @Override
-        protected PasswordAuthentication getPasswordAuthentication()
-        {
-          return new PasswordAuthentication(fromMail, password);
-        }
-      });
-      Message message = prepareMessage(session, fromMail, recepient, code);
-        try 
-        {
-            Transport.send(message);
-        } 
-        catch (MessagingException ex) {
-            Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     public static boolean clientSideVlaidation(JFrame frame, String email, String username, String mobile, String password)
     {
          if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(username).matches() && !username.equals(""))
@@ -306,21 +265,26 @@ public class Registration extends javax.swing.JFrame {
               String code = "";
               for(int i = 0; i < 6; i++)
                 code += (int)(Math.random() * 6);
-              String query = "insert into registration(username, email, mobile, password, code) values(" + "\'" + userName + "\'" +"," + "\'" + email + "\'" + "," + "\'" + mobile + "\'" + ","  + "\'" + password + "\'" + "," + "\'" + code + "\'" + ");";
-              System.out.println(query);
-              int res = MySql.insertUpdateQuery(query);
-              if(res > 0)
-              {
-                sendMail(email, code);
-                String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
-                if(userCode.equals(code))
-                {
-                  int res1 = MySql.insertUpdateQuery("insert into users(username, email, mobile, password) values(" + "\'" + userName + "\'" +"," + "\'" + email + "\'" + "," + "\'" + mobile + "\'" + ","  + "\'" + password + "\'" + ");");
-                  if(res1 > 0)
-                  {
-                    JOptionPane.showMessageDialog(this, "Registration successful, please login..", null, JOptionPane.OK_OPTION);
-                  }
-                }
+//              String query = "insert into registration(username, email, mobile, password, code) values(" + "\'" + userName + "\'" +"," + "\'" + email + "\'" + "," + "\'" + mobile + "\'" + ","  + "\'" + password + "\'" + "," + "\'" + code + "\'" + ");";
+//              System.out.println(query);
+//              int res = MySql.insertUpdateQuery(query);
+                Mail mail = new Mail(email, code);
+                mail.sendMail();               
+                while(true){
+                    String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
+                    if(userCode.equals(code))
+                    {
+                      int res = MySql.insertUpdateQuery("insert into users(username, email, mobile, password) values(" + "\'" + userName + "\'" +"," + "\'" + email + "\'" + "," + "\'" + mobile + "\'" + ","  + "\'" + password + "\'" + ");");
+                      if(res > 0)
+                      {
+                        JOptionPane.showMessageDialog(this, "Registration successful, please login..", null, JOptionPane.OK_OPTION);
+                        break;
+                      }
+                    }
+                    else
+                    {
+                      JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    }               
               }
             }
           }
