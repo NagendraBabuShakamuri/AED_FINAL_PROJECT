@@ -15,6 +15,7 @@ public class User {
     private String email;
     private long mobile;
     private String password;
+    private double wallet_balance;
     public User(String userName, String email, long mobile, String password)
     {
       this.userName = userName;
@@ -26,9 +27,21 @@ public class User {
     {
       return userName;
     }
+    public String getEmail()
+    {
+      return email;
+    }
+    public long getMobile()
+    {
+      return mobile;
+    }
     public String getPassword()
     {
       return password;
+    }
+    public double getWalletBalance()
+    {
+      return wallet_balance;
     }
     public void createUser()
     {
