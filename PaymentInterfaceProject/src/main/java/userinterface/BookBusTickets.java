@@ -4,17 +4,81 @@
  */
 package userinterface;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
+import business.mysql.MySql;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author nbabu
  */
-public class BookBusTickets extends javax.swing.JFrame {
+public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
 
     /**
      * Creates new form BookBusTickets
      */
     public BookBusTickets() {
         initComponents();
+       
+        jLabel5.addMouseListener(this);
+        jLabel6.addMouseListener(this);
+        jLabel7.addMouseListener(this);
+        jLabel8.addMouseListener(this);
+        jLabel9.addMouseListener(this);
+        jLabel10.addMouseListener(this);
+        jLabel11.addMouseListener(this);
+        jLabel12.addMouseListener(this);
+        jLabel13.addMouseListener(this);
+        jLabel14.addMouseListener(this);
+        jLabel15.addMouseListener(this);
+        jLabel16.addMouseListener(this);
+        jLabel17.addMouseListener(this);
+        jLabel18.addMouseListener(this);
+        jLabel19.addMouseListener(this);
+        jLabel20.addMouseListener(this);
+        jLabel21.addMouseListener(this);
+        jLabel22.addMouseListener(this);
+        jLabel23.addMouseListener(this);
+        jLabel24.addMouseListener(this);
+        jLabel25.addMouseListener(this);
+        jLabel26.addMouseListener(this);
+        jLabel27.addMouseListener(this);
+        jLabel28.addMouseListener(this);
+        jLabel29.addMouseListener(this);
+        jLabel30.addMouseListener(this);
+        jLabel31.addMouseListener(this);
+        jLabel32.addMouseListener(this);
+        jLabel33.addMouseListener(this);
+        jLabel34.addMouseListener(this);
+        jLabel35.addMouseListener(this);
+        jLabel36.addMouseListener(this);
+    }
+    
+    int seat_number=0;
+    
+    public void ticket_bill(){
+        String customer_name = jTextField1.getText();
+        String customer_contact = jTextField2.getText();
+        String from = (String)jComboBox2.getSelectedItem();
+        String to = (String)jComboBox3.getSelectedItem();
+        String ticket_price = jTextField3.getText();
+        int seat = seat_number;
+        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
+        String date = date_format.format(jCalendar1.getDate());
+        ticket.setText(ticket.getText() + "****************************\n");
+        ticket.setText(ticket.getText() + "**********BUS TICKET*********\n");
+        ticket.setText(ticket.getText() + "*****************************\n");
+        ticket.setText(ticket.getText() + "Customer " + "\t" + customer_name + "\n");
+        ticket.setText(ticket.getText() + "Contact Number " + "\t" + customer_contact + "\n");
+        ticket.setText(ticket.getText() + "From: " + from + "To: " + to + "\n");
+        ticket.setText(ticket.getText() + "SeatNo " + "\t" + seat + "\n");
+        ticket.setText(ticket.getText() + "Price " + "\t" + ticket_price + "\n");
+        ticket.setText(ticket.getText() + "Date " + "\t" + date + "\n");
+        ticket.setText(ticket.getText() + "**********^^^^^^^^^**********\n");
+        ticket.setText(ticket.getText() + "******Thank You Come Again!!******\n");
     }
 
     /**
@@ -27,8 +91,6 @@ public class BookBusTickets extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
@@ -69,59 +131,65 @@ public class BookBusTickets extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel40 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ticket = new javax.swing.JTextArea();
+        jLabel45 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel41 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         jTabbedPane1.setBackground(new java.awt.Color(255, 204, 204));
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
-
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 102, 204));
-        jLabel3.setText("Previous Bookings");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(427, 427, 427)
-                .addComponent(jLabel3)
-                .addContainerGap(1976, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel3)
-                .addContainerGap(613, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Show Previous Bookings", jPanel2);
-
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel1.setPreferredSize(new java.awt.Dimension(900, 800));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 204));
         jLabel1.setText("Book Bus Tickets");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 14, -1, -1));
-        jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 327, 391, 195));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
+        jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 340, 180));
 
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel2.setText("Customer Name");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 60, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 57, 145, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 145, -1));
 
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel4.setText("Customer Mobile No");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 185, -1, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 182, 145, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 145, -1));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText(" 1");
         jLabel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText(" 2");
@@ -279,7 +347,7 @@ public class BookBusTickets extends javax.swing.JFrame {
                         .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 12, Short.MAX_VALUE)
+                .addGap(0, 16, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -362,9 +430,118 @@ public class BookBusTickets extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 359, -1, -1));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 300, 140));
+
+        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/busstop.png"))); // NOI18N
+        jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 140, 130));
+
+        jLabel38.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel38.setText("To");
+        jPanel1.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, -1, -1));
+
+        jLabel39.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel39.setText("From");
+        jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bus A , 08:00 AM", "Bus B , 10:00 AM", "Bus C , 14:00 PM", "Bus D, 15:30 PM" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, -1));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "New York City", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose", "Austin", "Jacksonville", "Fort Worth", "Columbus", "Indianapolis", "Charlotte", "San Francisco", "Louisville", "Seattle", "Nashville", "Denver", "Washington", "Oklahoma City", "El Paso", "Boston", "Portland", "Las Vegas", "Detroit", "Memphis", "Baltimore", "Milwaukee", "Albuquerque", "Tucson", "Fresno", "Sacramento", "Kansas City", "Mesa", "Atlanta", "Omaha", "Colorado Springs", "Raleigh", "Long Beach", "Virginia Beach", "Miami", "Oakland", "Minneapolis", "Tulsa", "Bakersfield", "Wichita", "Arlington" }));
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, -1, -1));
+
+        jLabel40.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel40.setText("Buses");
+        jPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "New York City", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose", "Austin", "Jacksonville", "Fort Worth", "Columbus", "Indianapolis", "Charlotte", "San Francisco", "Louisville", "Seattle", "Nashville", "Denver", "Washington", "Oklahoma City", "El Paso", "Boston", "Portland", "Las Vegas", "Detroit", "Memphis", "Baltimore", "Milwaukee", "Albuquerque", "Tucson", "Fresno", "Sacramento", "Kansas City", "Mesa", "Atlanta", "Omaha", "Colorado Springs", "Raleigh", "Long Beach", "Virginia Beach", "Miami", "Oakland", "Minneapolis", "Tulsa", "Bakersfield", "Wichita", "Arlington" }));
+        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, -1));
+
+        jLabel42.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel42.setText("Select seat/seats");
+        jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+
+        jLabel43.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel43.setText("Select a date");
+        jPanel1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+
+        jLabel44.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel44.setText("A Copy of your ticket");
+        jPanel1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(102, 102, 255));
+        jButton2.setText("Clear");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, 110, 30));
+
+        jButton3.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(102, 102, 255));
+        jButton3.setText("Book Ticket");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, 110, 30));
+
+        ticket.setColumns(20);
+        ticket.setRows(5);
+        jScrollPane2.setViewportView(ticket);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 260, 200));
+
+        jLabel45.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel45.setText("Price");
+        jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 110, -1));
 
         jTabbedPane1.addTab("Book Tickets", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 204));
+        jLabel3.setText("Previous Bookings");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
+        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 190, -1));
+
+        jLabel41.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel41.setText("Select a date :");
+        jPanel2.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+
+        jTable1.setBackground(new java.awt.Color(204, 255, 255));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Sr.No", "Name", "Mobile No", "From", "To", "Seat", "Date", "Price"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 880, 400));
+
+        jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(51, 153, 255));
+        jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 63, 80, 30));
+
+        jTabbedPane1.addTab("Show Previous Bookings", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -374,11 +551,28 @@ public class BookBusTickets extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        ticket_bill();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -416,7 +610,14 @@ public class BookBusTickets extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private com.toedter.calendar.JCalendar jCalendar1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -447,7 +648,16 @@ public class BookBusTickets extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -456,8 +666,133 @@ public class BookBusTickets extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextArea ticket;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(e.getSource() == jLabel5){
+            seat_number = 1;
+        }
+        else if(e.getSource() == jLabel6){
+            seat_number = 2;
+        }
+        else if(e.getSource() == jLabel7){
+            seat_number = 3;
+        }
+        else if(e.getSource() == jLabel8){
+            seat_number = 4;
+        }
+        else if(e.getSource() == jLabel9){
+            seat_number = 5;
+        }
+        else if(e.getSource() == jLabel10){
+            seat_number = 6;
+        }
+        else if(e.getSource() == jLabel11){
+            seat_number = 7;
+        }
+        else if(e.getSource() == jLabel12){
+            seat_number = 8;
+        }
+        else if(e.getSource() == jLabel13){
+            seat_number = 9;
+        }
+        else if(e.getSource() == jLabel14){
+            seat_number = 10;
+        }
+        else if(e.getSource() == jLabel15){
+            seat_number = 11;
+        }
+        else if(e.getSource() == jLabel16){
+            seat_number = 12;
+            
+        }else if(e.getSource() == jLabel17){
+            seat_number = 13;
+            
+        }else if(e.getSource() == jLabel18){
+            seat_number = 14;
+            
+        }else if(e.getSource() == jLabel19){
+            seat_number = 15;
+            
+        }else if(e.getSource() == jLabel20){
+            seat_number = 16;
+            
+        }else if(e.getSource() == jLabel21){
+            seat_number = 17;
+            
+        }else if(e.getSource() == jLabel22){
+            seat_number = 18;
+            
+        }else if(e.getSource() == jLabel23){
+            seat_number = 19;
+            
+        }else if(e.getSource() == jLabel24){
+            seat_number = 20;
+            
+        }else if(e.getSource() == jLabel25){
+            seat_number = 21;
+            
+        }else if(e.getSource() == jLabel26){
+            seat_number = 22;
+            
+        }else if(e.getSource() == jLabel27){
+            seat_number = 23;
+            
+        }else if(e.getSource() == jLabel28){
+            seat_number = 24;
+            
+        }else if(e.getSource() == jLabel29){
+            seat_number = 25;
+            
+        }else if(e.getSource() == jLabel30){
+            seat_number = 26;
+        }else if(e.getSource() == jLabel31){
+            seat_number = 27;
+        }
+        else if(e.getSource() == jLabel32){
+            seat_number = 28;
+        }
+        else if(e.getSource() == jLabel33){
+            seat_number = 29;
+        }
+        else if(e.getSource() == jLabel34){
+            seat_number = 30;
+        }
+        else if(e.getSource() == jLabel35){
+            seat_number = 31;
+        }
+        else if(e.getSource() == jLabel36){
+            seat_number = 32;
+        }
+        JOptionPane.showMessageDialog(null, "Seat Number: " + seat_number);    
+    }
+
+    @Override
+    public void mousePressed(MouseEvent me) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent me) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseExited(MouseEvent me) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
