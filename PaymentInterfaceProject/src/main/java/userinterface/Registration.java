@@ -293,10 +293,11 @@ public class Registration extends javax.swing.JFrame {
         String email = emailField.getText();
         if(Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$").matcher(email).matches() && !email.equals(""))
         {
-          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
-          if(f.exists())
-            System.out.println("Present");
-          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+//          File f = new File("target/classes/images/accept.png");
+//          System.out.println(f.getAbsolutePath());
+//          if(f.exists())
+//            System.out.println("Present");
+          ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
           Image img = icon.getImage();                
           Image imgScale = img.getScaledInstance(eV.getWidth(), eV.getHeight(), Image.SCALE_SMOOTH);
           ImageIcon scaledIcon = new ImageIcon(imgScale);  
@@ -305,7 +306,7 @@ public class Registration extends javax.swing.JFrame {
         else
         {
           
-          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/cross.png");
+          ImageIcon icon = new ImageIcon("target/classes/images/cross.png");
           eV.setIcon(icon);
         }
     }//GEN-LAST:event_emailFieldKeyReleased
@@ -315,10 +316,10 @@ public class Registration extends javax.swing.JFrame {
         String userName = userNameField.getText();
         if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(userName).matches() && !userName.equals(""))
         {
-          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
-          if(f.exists())
-            System.out.println("Present");
-          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+//          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+//          if(f.exists())
+//            System.out.println("Present");
+          ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
           Image img = icon.getImage();                
           Image imgScale = img.getScaledInstance(uV.getWidth(), uV.getHeight(), Image.SCALE_SMOOTH);
           ImageIcon scaledIcon = new ImageIcon(imgScale);  
@@ -327,7 +328,7 @@ public class Registration extends javax.swing.JFrame {
         else
         {
           
-          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/cross.png");
+          ImageIcon icon = new ImageIcon("target/classes/images/cross.png");
           uV.setIcon(icon);
         }
     }//GEN-LAST:event_userNameFieldKeyReleased
@@ -337,10 +338,10 @@ public class Registration extends javax.swing.JFrame {
         String mobile = mobileField.getText();
         if(Pattern.compile("^\\d{10}$").matcher(mobile).matches() && !mobile.equals(""))
         {
-          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
-          if(f.exists())
-            System.out.println("Present");
-          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+//          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+//          if(f.exists())
+//            System.out.println("Present");
+          ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
           Image img = icon.getImage();                
           Image imgScale = img.getScaledInstance(mV.getWidth(), mV.getHeight(), Image.SCALE_SMOOTH);
           ImageIcon scaledIcon = new ImageIcon(imgScale);  
@@ -349,7 +350,7 @@ public class Registration extends javax.swing.JFrame {
         else
         {
           
-          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/cross.png");
+          ImageIcon icon = new ImageIcon("target/classes/images/cross.png");
           mV.setIcon(icon);
         }
     }//GEN-LAST:event_mobileFieldKeyReleased
@@ -359,10 +360,10 @@ public class Registration extends javax.swing.JFrame {
         String password = new String(passField.getPassword());
         if(Pattern.compile("^(?=.*\\d).{4,15}$").matcher(password).matches() && !password.equals(""))
         {
-          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
-          if(f.exists())
-            System.out.println("Present");
-          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+//          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
+//          if(f.exists())
+//            System.out.println("Present");
+          ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
           Image img = icon.getImage();                
           Image imgScale = img.getScaledInstance(pV.getWidth(), pV.getHeight(), Image.SCALE_SMOOTH);
           ImageIcon scaledIcon = new ImageIcon(imgScale);  
@@ -371,7 +372,7 @@ public class Registration extends javax.swing.JFrame {
         else
         {
           
-          ImageIcon icon = new ImageIcon("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/cross.png");
+          ImageIcon icon = new ImageIcon("target/classes/images/cross.png");
           pV.setIcon(icon);
         }
     }//GEN-LAST:event_passFieldKeyReleased
