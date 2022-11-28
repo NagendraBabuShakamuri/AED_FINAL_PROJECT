@@ -63,8 +63,8 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
     public void ticket_bill(){
         String customer_name = jTextField1.getText();
         String customer_contact = jTextField2.getText();
-        String from = (String)jComboBox2.getSelectedItem();
-        String to = (String)jComboBox3.getSelectedItem();
+        String from = (String)fromComboBox.getSelectedItem();
+        String to = (String)toComboBox.getSelectedItem();
         String ticket_price = jTextField3.getText();
         int seat = seat_number;
         SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
@@ -135,10 +135,10 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        busesComboBox = new javax.swing.JComboBox<>();
+        fromComboBox = new javax.swing.JComboBox<>();
         jLabel40 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        toComboBox = new javax.swing.JComboBox<>();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -444,25 +444,29 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         jLabel39.setText("From");
         jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bus A , 08:00 AM", "Bus B , 10:00 AM", "Bus C , 14:00 PM", "Bus D, 15:30 PM" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, -1));
-
-        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox2ItemStateChanged(evt);
-            }
-        });
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        busesComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                busesComboBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, -1, -1));
+        jPanel1.add(busesComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, -1));
+
+        fromComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                fromComboBoxItemStateChanged(evt);
+            }
+        });
+        fromComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel1.add(fromComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, -1, -1));
         try{
             MySql.createConn();
             ResultSet rs = MySql.selectQuery("select * from cities;");
             while(rs.next()){
-                jComboBox2.addItem(rs.getString(2));
+                fromComboBox.addItem(rs.getString(2));
             }
 
         }
@@ -479,7 +483,12 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         jLabel40.setText("Buses");
         jPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
 
-        jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, -1));
+        toComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                toComboBoxItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(toComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, -1));
 
         jLabel42.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel42.setText("Select seat/seats");
@@ -599,14 +608,14 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseClicked
 
-    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+    private void fromComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_fromComboBoxItemStateChanged
         // TODO add your handling code here:
         try{
         MySql.createConn();
-        ResultSet rs = MySql.selectQuery("select * from cities where city_name !='"+jComboBox2.getSelectedItem()+"';");
-        jComboBox3.removeAllItems();
+        ResultSet rs = MySql.selectQuery("select * from cities where city_name !='"+fromComboBox.getSelectedItem()+"';");
+        toComboBox.removeAllItems();
         while(rs.next()){      
-            jComboBox3.addItem(rs.getString(2));
+            toComboBox.addItem(rs.getString(2));
         }
     }
         catch(SQLException ex)
@@ -617,11 +626,37 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
               {
                 MySql.shutDownConn();
               }
-    }//GEN-LAST:event_jComboBox2ItemStateChanged
+    }//GEN-LAST:event_fromComboBoxItemStateChanged
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void fromComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_fromComboBoxActionPerformed
+
+    private void busesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busesComboBoxActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_busesComboBoxActionPerformed
+
+    private void toComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_toComboBoxItemStateChanged
+        // TODO add your handling code here:
+        try{
+            MySql.createConn(); 
+           
+            ResultSet rs = MySql.selectQuery("select * from buses where from_city ='"+fromComboBox.getSelectedItem()+"' and to_city='"+toComboBox.getSelectedItem()+"';");
+            busesComboBox.removeAllItems();
+             while(rs.next()){      
+            busesComboBox.addItem(rs.getString(2));
+        }
+        }
+         catch(SQLException ex)
+                 {
+                   System.out.println(ex);
+                 }
+        finally
+              {
+                MySql.shutDownConn();
+              }
+    }//GEN-LAST:event_toComboBoxItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -659,13 +694,12 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> busesComboBox;
+    private javax.swing.JComboBox<String> fromComboBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private com.toedter.calendar.JCalendar jCalendar1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -723,6 +757,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextArea ticket;
+    private javax.swing.JComboBox<String> toComboBox;
     // End of variables declaration//GEN-END:variables
 
     @Override
