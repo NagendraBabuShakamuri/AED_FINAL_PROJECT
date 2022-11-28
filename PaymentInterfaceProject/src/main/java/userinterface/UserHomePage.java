@@ -8,6 +8,10 @@ package userinterface;
  *
  * @author nbabu
  */
+import business.mysql.MySql;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class UserHomePage extends javax.swing.JFrame {
 
     /**
@@ -16,6 +20,22 @@ public class UserHomePage extends javax.swing.JFrame {
     public UserHomePage(String userName) {
         initComponents();
         userNameLabel.setText(userName);
+        try
+        {
+          MySql.createConn();
+          String query = "select balance from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+          ResultSet rs = MySql.selectQuery(query);
+          rs.next();
+          balanceLabel.setText("$ " + rs.getString(1));
+        }
+        catch(SQLException ex)
+        {
+          System.out.println(ex);
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
     }
 
     /**
@@ -40,7 +60,7 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        balanceLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -121,9 +141,8 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel25.setText("Wallet Balance:");
         jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 87, -1, 30));
 
-        jLabel27.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 50, 30));
+        balanceLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jPanel1.add(balanceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 160, 30));
 
         jTabbedPane1.addTab("Payment", jPanel1);
 
@@ -237,13 +256,13 @@ public class UserHomePage extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
         BookBusTickets bt = new BookBusTickets();
-        bt.show();
+        bt.setVisible(true);
         dispose();
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void moneyToWalletLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moneyToWalletLabelMouseClicked
         // TODO add your handling code here:
-        AddMoneyToWallet amw = new AddMoneyToWallet();
+        AddMoneyToWallet amw = new AddMoneyToWallet(userNameLabel.getText());
         amw.dispose();
         amw.setVisible(true);
     }//GEN-LAST:event_moneyToWalletLabelMouseClicked
@@ -285,6 +304,7 @@ public class UserHomePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JLabel balanceLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -302,7 +322,6 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

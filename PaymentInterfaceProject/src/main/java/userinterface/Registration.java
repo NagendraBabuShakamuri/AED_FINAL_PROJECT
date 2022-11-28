@@ -198,7 +198,7 @@ public class Registration extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(frame, "Mobile number is not valid.\nOnly numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);      
          }
          else
-            JOptionPane.showMessageDialog(frame, "Username is not valid.\nOnly characters and numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);  
+            JOptionPane.showMessageDialog(frame, "Username is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);  
       return false;     
     }
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
@@ -261,7 +261,7 @@ public class Registration extends javax.swing.JFrame {
                     {
                       JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
                     }               
-              }
+                }
             }
           }
           catch(SQLException ex)
