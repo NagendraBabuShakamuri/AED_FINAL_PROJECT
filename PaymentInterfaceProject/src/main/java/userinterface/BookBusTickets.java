@@ -11,6 +11,9 @@ import business.mysql.MySql;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 /**
  *
@@ -23,7 +26,22 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
      */
     public BookBusTickets() {
         initComponents();
-       
+       try{
+    MySql.createConn();
+    ResultSet rs = MySql.selectQuery("select * from cities;");
+    while(rs.next()){
+        fromComboBox.addItem(rs.getString(2));
+    }
+    
+}
+ catch(SQLException ex)
+          {
+            System.out.println(ex);
+          }
+      finally
+          {
+            MySql.shutDownConn();
+          }
     }
     
     int seat_number=0;
@@ -62,13 +80,12 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        calendar = new com.toedter.calendar.JCalendar();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        seat_1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -116,13 +133,14 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         ticket = new javax.swing.JTextArea();
         jLabel45 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
+        calendar = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel41 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -138,13 +156,6 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         jLabel1.setText("Book Bus Tickets");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
 
-        calendar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                calendarKeyPressed(evt);
-            }
-        });
-        jPanel1.add(calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 340, 180));
-
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel2.setText("Customer Name");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
@@ -157,12 +168,12 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText(" 1");
-        jLabel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        seat_1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        seat_1.setText(" 1");
+        seat_1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51), new java.awt.Color(51, 51, 51)));
+        seat_1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                seat_1MouseClicked(evt);
             }
         });
 
@@ -297,7 +308,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(seat_1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,7 +375,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(seat_1)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
@@ -405,7 +416,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 300, 140));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 300, 140));
 
         jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/busstop.png"))); // NOI18N
         jPanel1.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 140, 130));
@@ -418,11 +429,6 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         jLabel39.setText("From");
         jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, -1, -1));
 
-        busesComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                busesComboBoxActionPerformed(evt);
-            }
-        });
         jPanel1.add(busesComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, -1));
 
         fromComboBox.addItemListener(new java.awt.event.ItemListener() {
@@ -430,28 +436,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
                 fromComboBoxItemStateChanged(evt);
             }
         });
-        fromComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fromComboBoxActionPerformed(evt);
-            }
-        });
         jPanel1.add(fromComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, -1, -1));
-        try{
-            MySql.createConn();
-            ResultSet rs = MySql.selectQuery("select * from cities;");
-            while(rs.next()){
-                fromComboBox.addItem(rs.getString(2));
-            }
-
-        }
-        catch(SQLException ex)
-        {
-            System.out.println(ex);
-        }
-        finally
-        {
-            MySql.shutDownConn();
-        }
 
         jLabel40.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel40.setText("Buses");
@@ -466,7 +451,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
 
         jLabel42.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel42.setText("Select seat/seats");
-        jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, -1, -1));
+        jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
 
         jLabel43.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel43.setText("Select a date");
@@ -508,7 +493,15 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         jTextField3.setEnabled(false);
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 110, -1));
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 140, -1));
+
+        calendar.setEnabled(false);
+        calendar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                calendarPropertyChange(evt);
+            }
+        });
+        jPanel1.add(calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 140, -1));
 
         jTabbedPane1.addTab("Book Tickets", jPanel1);
 
@@ -519,7 +512,6 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         jLabel3.setForeground(new java.awt.Color(0, 102, 204));
         jLabel3.setText(" Booking History");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
-        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 190, -1));
 
         jLabel41.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel41.setText("Select a date :");
@@ -550,6 +542,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
             }
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 63, 80, 30));
+        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
 
         jTabbedPane1.addTab("Show Bookings", jPanel2);
 
@@ -580,69 +573,85 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         ticket_bill();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void seat_1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_seat_1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel5MouseClicked
+    }//GEN-LAST:event_seat_1MouseClicked
 
     private void fromComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_fromComboBoxItemStateChanged
         // TODO add your handling code here:
-        try{
-        MySql.createConn();
-        String query = "select city_name from cities where city_name !='"+fromComboBox.getSelectedItem()+"';";
-            System.out.println(query);
-        ResultSet rs = MySql.selectQuery(query);
-        toComboBox.removeAllItems();
-        while(rs.next()){      
-            toComboBox.addItem(rs.getString(1));
-        }
-    }
-        catch(SQLException ex)
-                 {
-                   System.out.println(ex);
-                 }
-        finally
-              {
-                MySql.shutDownConn();
-              }
+//        try{
+//        MySql.createConn();
+//        String query = "select city_name from cities where city_name !='"+fromComboBox.getSelectedItem()+"';";
+//            System.out.println(query);
+//        ResultSet rs = MySql.selectQuery(query);
+//        toComboBox.removeAllItems();
+//        while(rs.next()){      
+//            toComboBox.addItem(rs.getString(1));
+//        }
+//    }
+//        catch(SQLException ex)
+//                 {
+//                   System.out.println(ex);
+//                 }
+//        finally
+//              {
+//                MySql.shutDownConn();
+//              }
+if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+      {
+          toComboBox.removeAllItems();
+         for(int i = 0; i < fromComboBox.getItemCount(); i++)
+         {
+           if(fromComboBox.getSelectedItem().toString().equals(fromComboBox.getItemAt(i).toString()))
+               continue;           
+           toComboBox.addItem(fromComboBox.getItemAt(i).toString());
+         }
+     }         
     }//GEN-LAST:event_fromComboBoxItemStateChanged
-
-    private void fromComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fromComboBoxActionPerformed
-
-    private void busesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busesComboBoxActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_busesComboBoxActionPerformed
 
     private void toComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_toComboBoxItemStateChanged
         // TODO add your handling code here:
-        try{
+      if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+      {
+        calendar.setEnabled(true);
+      }        
+    }//GEN-LAST:event_toComboBoxItemStateChanged
+
+    private void calendarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_calendarKeyPressed
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_calendarKeyPressed
+
+    private void calendarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendarPropertyChange
+        // TODO add your handling code here:
+        SimpleDateFormat date_format = new SimpleDateFormat("dd-MM-yyyy");        
+        if(calendar.getDate() != null)
+        {
+          LocalDateTime ldt = calendar.getDate().toInstant()
+        .atZone(ZoneId.systemDefault())
+        .toLocalDateTime();
+          DayOfWeek dow = ldt.getDayOfWeek();
+          String weekName = dow.name();
+                  try{
             MySql.createConn(); 
-            String from_query = "select id from cities where city_name = '" + fromComboBox.getSelectedItem() + "';";
+            String from_query = "select id from cities where city_name = " + "\'" + fromComboBox.getSelectedItem().toString() + "\'" + ";";
             ResultSet rs = MySql.selectQuery(from_query);
             
             rs.next();
             int from_id = rs.getInt(1);
             
-            String to_query = "select id from cities where city_name = '" + toComboBox.getSelectedItem() + "';";
+            String to_query = "select id from cities where city_name = " + "\'" + toComboBox.getSelectedItem().toString() + "\'" + ";";
+            System.out.println(to_query);
             rs = MySql.selectQuery(to_query);
             rs.next();
             int to_id = rs.getInt(1);
-            
-
-            
-            
-            
-            String query  = "select * from buses where from_city = '" + from_id + "' and to_city = '" + to_id + "';";
+            String query  = "select bus_name from buses where from_city = " + from_id + " and to_city = " + to_id + ";";
             rs = MySql.selectQuery(query);
             
             busesComboBox.removeAllItems();
             while(rs.next()){      
-            busesComboBox.addItem(rs.getString(2));
+            busesComboBox.addItem(rs.getString(1));
         }
-
-
         }
         catch(SQLException ex)
                  {
@@ -651,15 +660,9 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         finally
               {
                 MySql.shutDownConn();
-              }
-    }//GEN-LAST:event_toComboBoxItemStateChanged
-
-    private void calendarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_calendarKeyPressed
-        // TODO add your handling code here:
-         SimpleDateFormat date_format = new SimpleDateFormat("EEE");
-        String date = date_format.format(calendar);
-        System.out.println(date);
-    }//GEN-LAST:event_calendarKeyPressed
+              }                 
+        }        
+    }//GEN-LAST:event_calendarPropertyChange
 
     /**
      * @param args the command line arguments
@@ -698,7 +701,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> busesComboBox;
-    private com.toedter.calendar.JCalendar calendar;
+    private com.toedter.calendar.JDateChooser calendar;
     private javax.swing.JComboBox<String> fromComboBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -744,7 +747,6 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -759,13 +761,14 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel seat_1;
     private javax.swing.JTextArea ticket;
     private javax.swing.JComboBox<String> toComboBox;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == jLabel5){
+        if(e.getSource() == seat_1){
             seat_number = 1;
         }
         else if(e.getSource() == jLabel6){
