@@ -6,10 +6,8 @@ package userinterface;
 
 import business.User;
 import business.UserDirectory;
-import business.mysql.MySql;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author nbabu
@@ -46,7 +44,6 @@ public class Login extends javax.swing.JFrame {
         signUpButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 800));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
