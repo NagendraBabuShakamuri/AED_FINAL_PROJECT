@@ -9,7 +9,8 @@ import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import business.mysql.MySql;
 import javax.swing.JOptionPane;
-
+import java.sql.SQLException;
+import java.sql.ResultSet;
 
 /**
  *
@@ -446,14 +447,38 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bus A , 08:00 AM", "Bus B , 10:00 AM", "Bus C , 14:00 PM", "Bus D, 15:30 PM" }));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "New York City", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose", "Austin", "Jacksonville", "Fort Worth", "Columbus", "Indianapolis", "Charlotte", "San Francisco", "Louisville", "Seattle", "Nashville", "Denver", "Washington", "Oklahoma City", "El Paso", "Boston", "Portland", "Las Vegas", "Detroit", "Memphis", "Baltimore", "Milwaukee", "Albuquerque", "Tucson", "Fresno", "Sacramento", "Kansas City", "Mesa", "Atlanta", "Omaha", "Colorado Springs", "Raleigh", "Long Beach", "Virginia Beach", "Miami", "Oakland", "Minneapolis", "Tulsa", "Bakersfield", "Wichita", "Arlington" }));
+        jComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox2ItemStateChanged(evt);
+            }
+        });
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, -1, -1));
+        try{
+            MySql.createConn();
+            ResultSet rs = MySql.selectQuery("select * from cities;");
+            while(rs.next()){
+                jComboBox2.addItem(rs.getString(2));
+            }
+
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex);
+        }
+        finally
+        {
+            MySql.shutDownConn();
+        }
 
         jLabel40.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel40.setText("Buses");
         jPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, -1, -1));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "New York City", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "San Jose", "Austin", "Jacksonville", "Fort Worth", "Columbus", "Indianapolis", "Charlotte", "San Francisco", "Louisville", "Seattle", "Nashville", "Denver", "Washington", "Oklahoma City", "El Paso", "Boston", "Portland", "Las Vegas", "Detroit", "Memphis", "Baltimore", "Milwaukee", "Albuquerque", "Tucson", "Fresno", "Sacramento", "Kansas City", "Mesa", "Atlanta", "Omaha", "Colorado Springs", "Raleigh", "Long Beach", "Virginia Beach", "Miami", "Oakland", "Minneapolis", "Tulsa", "Bakersfield", "Wichita", "Arlington" }));
         jPanel1.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, -1));
 
         jLabel42.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -467,7 +492,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         jLabel44.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(255, 0, 51));
         jLabel44.setText("A Copy of your ticket");
-        jPanel1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 220, -1, -1));
+        jPanel1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jButton2.setForeground(new java.awt.Color(102, 102, 255));
@@ -493,7 +518,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         ticket.setRows(5);
         jScrollPane2.setViewportView(ticket);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, 260, 200));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 250, 190));
 
         jLabel45.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel45.setText("Price");
@@ -507,7 +532,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 102, 204));
-        jLabel3.setText("Previous Bookings");
+        jLabel3.setText(" Booking History");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
         jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 190, -1));
 
@@ -541,7 +566,7 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 63, 80, 30));
 
-        jTabbedPane1.addTab("Show Previous Bookings", jPanel2);
+        jTabbedPane1.addTab("Show Bookings", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -573,6 +598,30 @@ public class BookBusTickets extends javax.swing.JFrame implements MouseListener{
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox2ItemStateChanged
+        // TODO add your handling code here:
+        try{
+        MySql.createConn();
+        ResultSet rs = MySql.selectQuery("select * from cities where city_name !='"+jComboBox2.getSelectedItem()+"';");
+        jComboBox3.removeAllItems();
+        while(rs.next()){      
+            jComboBox3.addItem(rs.getString(2));
+        }
+    }
+        catch(SQLException ex)
+                 {
+                   System.out.println(ex);
+                 }
+        finally
+              {
+                MySql.shutDownConn();
+              }
+    }//GEN-LAST:event_jComboBox2ItemStateChanged
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
