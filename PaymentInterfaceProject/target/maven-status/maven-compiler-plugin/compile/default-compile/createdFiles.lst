@@ -1,9 +1,7 @@
 userinterface/Registration$1.class
-userinterface/BookBusTickets$7.class
 userinterface/BookBusTickets$2.class
 userinterface/Registration$6.class
 userinterface/BookBusTickets.class
-userinterface/BookBusTickets$9.class
 userinterface/Login.class
 business/Mail.class
 business/Wallet.class
@@ -30,7 +28,6 @@ userinterface/Login$3.class
 userinterface/BookTrainTickets.class
 userinterface/BookTrainTickets$1.class
 business/User.class
-userinterface/BookBusTickets$8.class
 business/Mail$1.class
 userinterface/Registration$5.class
 userinterface/BookBusTickets$3.class
