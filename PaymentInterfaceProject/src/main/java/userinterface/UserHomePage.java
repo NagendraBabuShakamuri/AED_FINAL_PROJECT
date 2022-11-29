@@ -337,6 +337,6 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel moneyToWalletLabel;
-    private javax.swing.JLabel userNameLabel;
+    public static javax.swing.JLabel userNameLabel;
     // End of variables declaration//GEN-END:variables
 }

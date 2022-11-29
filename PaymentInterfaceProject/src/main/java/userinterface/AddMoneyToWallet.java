@@ -38,16 +38,20 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
           int user_id = rs.getInt(1);
           query = "select account_number from bank_accounts where user_id = " + user_id + ";";
           rs = MySql.selectQuery(query);
-          while(rs.next())
+          while(rs.next()){
             addBankAccCombo.addItem(rs.getString(1));
+            removeBankAccCombo.addItem(rs.getString(1));
+          }
           query = "select type from credit_cards";
           rs = MySql.selectQuery(query);
           while(rs.next())
             cardTypeCombo.addItem(rs.getString(1));
           query = "select card_number from user_credit_cards where user_id = " + user_id + ";";
           rs = MySql.selectQuery(query);
-          while(rs.next())
+          while(rs.next()){
             addCreditCardsCombo.addItem(rs.getString(1));
+            removeCreditCardCombo.addItem(rs.getString(1));
+          }
         }
         catch(SQLException ex)
         {
@@ -78,6 +82,7 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         moneyField = new javax.swing.JTextField();
         addMoneyButton = new javax.swing.JButton();
         userNameLabel = new javax.swing.JLabel();
+        moneyLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -108,11 +113,11 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         accHolderLabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
+        removeBankAccCombo = new javax.swing.JComboBox<>();
+        removeBankAccButton = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox8 = new javax.swing.JComboBox<>();
-        jButton5 = new javax.swing.JButton();
+        removeCreditCardCombo = new javax.swing.JComboBox<>();
+        removeCardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -147,6 +152,12 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
 
         jLabel12.setText("Money:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 130, -1));
+
+        moneyField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                moneyFieldKeyReleased(evt);
+            }
+        });
         jPanel1.add(moneyField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 170, -1));
 
         addMoneyButton.setText("Add Money");
@@ -157,6 +168,7 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         });
         jPanel1.add(addMoneyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 320, -1));
         jPanel1.add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 100, 20));
+        jPanel1.add(moneyLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, 20, 20));
 
         jTabbedPane1.addTab("Add Money", jPanel1);
 
@@ -294,18 +306,28 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         jLabel13.setText("Bank Acc:");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 109, -1, -1));
 
-        jPanel4.add(jComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 180, -1));
+        jPanel4.add(removeBankAccCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 180, -1));
 
-        jButton4.setText("Remove");
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 260, -1));
+        removeBankAccButton.setText("Remove");
+        removeBankAccButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeBankAccButtonActionPerformed(evt);
+            }
+        });
+        jPanel4.add(removeBankAccButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 260, -1));
 
         jLabel14.setText("Card:");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, -1));
 
-        jPanel4.add(jComboBox8, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 180, -1));
+        jPanel4.add(removeCreditCardCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 180, -1));
 
-        jButton5.setText("Remove");
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 260, -1));
+        removeCardButton.setText("Remove");
+        removeCardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeCardButtonActionPerformed(evt);
+            }
+        });
+        jPanel4.add(removeCardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 260, -1));
 
         jTabbedPane1.addTab("Remove", jPanel4);
 
@@ -363,50 +385,57 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
           try
           {
             MySql.createConn();
-            ResultSet rs = MySql.selectQuery("select userid, username, email from users;");
-            int userId = 0;
-            String email = "";
-            while(rs.next())
+            ResultSet rs = MySql.selectQuery("select count(*) from bank_accounts where account_number = " + "\'" + accNumber + "\';");
+            rs.next();
+            if(rs.getInt(1) == 0)
             {
-              if(rs.getString(2).equals(userNameLabel.getText()))
-              {
-                userId = rs.getInt(1);
-                email = rs.getString(3);
-                break;
-              }
-            }
-            rs = MySql.selectQuery("select * from banks;");
-            int bankId = 0;
-            while(rs.next())
-            {
-              if(rs.getString(2).equals(bankName))
-              {
-                bankId = rs.getInt(1);
-                break;
-              }
-            }
-            String code = "";
-            for(int i = 0; i < 6; i++)
-                code += (int)(Math.random() * 6);
-            Mail mail = new Mail(email, code);
-            mail.sendMail();
-            while(true)
-            {
-                String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
-                if(userCode.equals(code))
+                rs = MySql.selectQuery("select userid, username, email from users;");
+                int userId = 0;
+                String email = "";
+                while(rs.next())
                 {
-                  int res = MySql.insertUpdateQuery("insert into bank_requests(user_id, bank_id, account_holder, account_number, status) values(" + userId + "," + bankId + "," + "\'" + accHolderName + "\'" + "," + accNumber + ",\'Initiated\'" + ");");
-                  if(res > 0)
+                  if(rs.getString(2).equals(userNameLabel.getText()))
                   {
-                    JOptionPane.showMessageDialog(this, "Request to add the bank account is sent to the admin.\n Account will be added once the request is approved.", null, JOptionPane.OK_OPTION);
+                    userId = rs.getInt(1);
+                    email = rs.getString(3);
                     break;
                   }
                 }
-                else
+                rs = MySql.selectQuery("select * from banks;");
+                int bankId = 0;
+                while(rs.next())
                 {
-                  JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
-                }               
+                  if(rs.getString(2).equals(bankName))
+                  {
+                    bankId = rs.getInt(1);
+                    break;
+                  }
+                }
+                String code = "";
+                for(int i = 0; i < 6; i++)
+                    code += (int)(Math.random() * 6);
+                Mail mail = new Mail(email, code);
+                mail.sendMail();
+                while(true)
+                {
+                    String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
+                    if(userCode.equals(code))
+                    {
+                      int res = MySql.insertUpdateQuery("insert into bank_requests(user_id, bank_id, account_holder, account_number, status) values(" + userId + "," + bankId + "," + "\'" + accHolderName + "\'" + "," + accNumber + ",\'Initiated\'" + ");");
+                      if(res > 0)
+                      {
+                        JOptionPane.showMessageDialog(this, "Request to add the bank account is sent to the admin.\n Account will be added once the request is approved.", null, JOptionPane.OK_OPTION);
+                        break;
+                      }
+                    }
+                    else
+                    {
+                      JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    }               
+                }
             }
+            else
+               JOptionPane.showMessageDialog(this, "The account that you're trying to add was already added.", "Alert", JOptionPane.WARNING_MESSAGE);
           }
           catch(SQLException ex)
           {
@@ -489,52 +518,59 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         if(passed)
         {
           try
-          {
+          {            
             MySql.createConn();
-            ResultSet rs = MySql.selectQuery("select userid, username, email from users;");
-            int userId = 0;
-            String email = "";
-            while(rs.next())
+            ResultSet rs = MySql.selectQuery("select count(*) from user_credit_cards where card_number = " + "\'" + cardNumber + "\';");
+            rs.next();
+            if(rs.getInt(1) == 0)
             {
-              if(rs.getString(2).equals(userNameLabel.getText()))
-              {
-                userId = rs.getInt(1);
-                email = rs.getString(3);
-                break;
-              }
-            }
-            rs = MySql.selectQuery("select * from credit_cards;");
-            int cardId = 0;
-            while(rs.next())
-            {
-              if(rs.getString(2).equals(cardType))
-              {
-                cardId = rs.getInt(1);
-                break;
-              }
-            }
-            String code = "";
-            for(int i = 0; i < 6; i++)
-                code += (int)(Math.random() * 6);
-            Mail mail = new Mail(email, code);
-            mail.sendMail();
-            while(true)
-            {
-                String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
-                if(userCode.equals(code))
-                {      
-                  int res = MySql.insertUpdateQuery("insert into credit_card_requests(user_id, card_id, card_holder, card_number, card_expiry, card_cvc) values(" + userId + "," + cardId + "," + "\'" + cardHolderName + "\'" + "," + "\'" + cardNumber + "\'" + "," + "\'" + cardExpiry + "\'" + "," + "\'" + cvcNumber + "\'" + ");");
-                  if(res > 0)
+                rs = MySql.selectQuery("select userid, username, email from users;");
+                int userId = 0;
+                String email = "";
+                while(rs.next())
+                {
+                  if(rs.getString(2).equals(userNameLabel.getText()))
                   {
-                    JOptionPane.showMessageDialog(this, "Request to add the credit card is sent to the admin.\n Credit card will be added once the request is approved.", null, JOptionPane.OK_OPTION);
+                    userId = rs.getInt(1);
+                    email = rs.getString(3);
                     break;
                   }
                 }
-                else
+                rs = MySql.selectQuery("select * from credit_cards;");
+                int cardId = 0;
+                while(rs.next())
                 {
-                  JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
-                }               
+                  if(rs.getString(2).equals(cardType))
+                  {
+                    cardId = rs.getInt(1);
+                    break;
+                  }
+                }
+                String code = "";
+                for(int i = 0; i < 6; i++)
+                    code += (int)(Math.random() * 6);
+                Mail mail = new Mail(email, code);
+                mail.sendMail();
+                while(true)
+                {
+                    String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
+                    if(userCode.equals(code))
+                    {      
+                      int res = MySql.insertUpdateQuery("insert into credit_card_requests(user_id, card_id, card_holder, card_number, card_expiry, card_cvc) values(" + userId + "," + cardId + "," + "\'" + cardHolderName + "\'" + "," + "\'" + cardNumber + "\'" + "," + "\'" + cardExpiry + "\'" + "," + "\'" + cvcNumber + "\'" + ");");
+                      if(res > 0)
+                      {
+                        JOptionPane.showMessageDialog(this, "Request to add the credit card is sent to the admin.\n Credit card will be added once the request is approved.", null, JOptionPane.OK_OPTION);
+                        break;
+                      }
+                    }
+                    else
+                    {
+                      JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    }               
+                } 
             }
+            else
+              JOptionPane.showMessageDialog(this, "The card that you're trying to add was already added.", "Alert", JOptionPane.WARNING_MESSAGE);
           }
           catch(SQLException ex)
           {
@@ -619,12 +655,26 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
           addCreditCardsCombo.setSelectedItem(null);
       }
     }//GEN-LAST:event_addBankAccComboItemStateChanged
-
+    public boolean clientSideValidation(String money)
+    {
+      if(Pattern.compile("^[0-9.]+$").matcher(money).matches() && !money.equals(""))
+      {
+        return true;
+      }
+      else
+      {
+        JOptionPane.showMessageDialog(this, "Please enter the amount in positive numbers.", "Alert", JOptionPane.WARNING_MESSAGE);
+      }
+      return false;
+    }
     private void addMoneyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addMoneyButtonActionPerformed
         // TODO add your handling code here:
         try
         {
-           double money = Double.parseDouble(moneyField.getText());
+           boolean passed = clientSideValidation(moneyField.getText().trim());
+           if(passed)
+           {
+           double money = Double.parseDouble(moneyField.getText().trim());
            MySql.createConn(); 
            String query = "select userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
            ResultSet rs = MySql.selectQuery(query);
@@ -655,7 +705,7 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
                }
              }             
            }
-           else
+           else if(addBankAccCombo.getSelectedItem() != null)
            {
              query = "select acc_balance from bank_accounts where user_id = " + user_id + ";";
              rs = MySql.selectQuery(query);
@@ -680,16 +730,102 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
                }
              }
            }
+           else
+            JOptionPane.showMessageDialog(this, "Please choose at least one source.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
         }
         catch(SQLException ex)
         {
           System.out.println(ex);
-        } 
+        }
+        catch(NumberFormatException ne)
+        {
+          JOptionPane.showMessageDialog(this, "Please enter the amount in positive numbers.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
         finally
         {
           MySql.shutDownConn();
         }
     }//GEN-LAST:event_addMoneyButtonActionPerformed
+
+    private void moneyFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_moneyFieldKeyReleased
+        // TODO add your handling code here:
+        String money = moneyField.getText().trim();
+        if(Pattern.compile("^[0-9.]+$").matcher(money).matches() && !money.equals(""))
+        {
+          ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
+          Image img = icon.getImage();                
+          Image imgScale = img.getScaledInstance(moneyLabel.getWidth(), moneyLabel.getHeight(), Image.SCALE_SMOOTH);
+          ImageIcon scaledIcon = new ImageIcon(imgScale);  
+          moneyLabel.setIcon(scaledIcon);
+        }
+        else
+        {
+          
+          ImageIcon icon = new ImageIcon("target/classes/images/cross.png");
+          moneyLabel.setIcon(icon);
+        }
+    }//GEN-LAST:event_moneyFieldKeyReleased
+
+    private void removeBankAccButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBankAccButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+          if(removeBankAccCombo.getSelectedItem() != null)
+          {
+            String removeBankAcc = removeBankAccCombo.getSelectedItem().toString();
+            MySql.createConn();
+            String query = "delete from bank_accounts  where account_number = " + "\'" + removeBankAcc + "\'" + ";";
+            int res = MySql.insertUpdateQuery(query);
+            if(res > 0)
+            {
+             JOptionPane.showMessageDialog(this, "Removed the bank account successfully.", null, JOptionPane.WARNING_MESSAGE);
+             removeBankAccCombo.removeItem(removeBankAcc);
+             addBankAccCombo.removeItem(removeBankAcc);
+            }
+          }
+          else
+            JOptionPane.showMessageDialog(this, "Bank Account number is not valid.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }        
+        catch(Exception ex)            
+        {
+          System.out.println(ex);
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }//GEN-LAST:event_removeBankAccButtonActionPerformed
+
+    private void removeCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCardButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+          if(removeCreditCardCombo.getSelectedItem() != null)
+          {
+            String removeCreditCard = removeCreditCardCombo.getSelectedItem().toString();          
+            MySql.createConn();
+            String query = "delete from user_credit_cards  where card_number = " + "\'" + removeCreditCard + "\'" + ";";
+            int res = MySql.insertUpdateQuery(query);
+            if(res > 0)
+            {
+             JOptionPane.showMessageDialog(this, "Removed the credit card successfully.", null, JOptionPane.WARNING_MESSAGE);
+             removeCreditCardCombo.removeItem(removeCreditCard);
+             addCreditCardsCombo.removeItem(removeCreditCard);
+            }
+          }
+          else
+            JOptionPane.showMessageDialog(this, "Credit card number is not valid.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }        
+        catch(Exception ex)           
+        {
+          System.out.println(ex);
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }//GEN-LAST:event_removeCardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -746,10 +882,6 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cardTypeCombo;
     private javax.swing.JTextField cvcField;
     private javax.swing.JLabel cvcLabel;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private javax.swing.JComboBox<String> jComboBox8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -770,6 +902,11 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField moneyField;
+    private javax.swing.JLabel moneyLabel;
+    private javax.swing.JButton removeBankAccButton;
+    private javax.swing.JComboBox<String> removeBankAccCombo;
+    private javax.swing.JButton removeCardButton;
+    private javax.swing.JComboBox<String> removeCreditCardCombo;
     private javax.swing.JTextField routingNumField;
     private javax.swing.JLabel userNameLabel;
     // End of variables declaration//GEN-END:variables
