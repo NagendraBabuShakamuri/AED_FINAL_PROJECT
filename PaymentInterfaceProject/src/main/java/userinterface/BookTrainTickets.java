@@ -3,20 +3,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package userinterface;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import java.util.Date;
 
 /**
  *
- * @author nbabu
+ * @author devsh
  */
 public class BookTrainTickets extends javax.swing.JFrame {
 
     /**
      * Creates new form BookTrainTickets
      */
+    
+    String fromStation, destinationStation, numberOfTickets, classGroup, ageGroup;
+    int numberOfTicketsAvailable = 12;
+    Date dateOfBooking;
+    Date dateCurrent = new Date();
+    
     public BookTrainTickets() {
         initComponents();
+        
+        this.fromStation = (String)fromComboBox.getSelectedItem();
+        this.destinationStation = (String)toComboBox.getSelectedItem();
+        this.ageGroup = (String)ageGroupBox.getSelectedItem();
+        this.dateOfBooking = datePicker.getDate();
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,21 +41,268 @@ public class BookTrainTickets extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jTabbedPane4 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        fromComboBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        toComboBox = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        ageGroupBox = new javax.swing.JComboBox<>();
+        searchButton = new javax.swing.JButton();
+        resetButton = new javax.swing.JButton();
+        datePicker = new com.toedter.calendar.JDateChooser();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        bookTicketButton = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jButton9 = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        fromComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                fromComboBoxItemStateChanged(evt);
+            }
+        });
+        fromComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromComboBoxActionPerformed(evt);
+            }
+        });
+        jPanel2.add(fromComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 20, 120, -1));
+
+        jLabel1.setText("From");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 37, -1));
+
+        jLabel2.setText("Destination");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        toComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                toComboBoxItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(toComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 60, 120, -1));
+
+        jLabel3.setText("Date of Travel");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 83, -1));
+
+        jLabel5.setText("Age Group");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 70, -1));
+
+        ageGroupBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adult", "Minor", "Senior Citizen" }));
+        ageGroupBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ageGroupBoxActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ageGroupBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+
+        resetButton.setText("Reset");
+        resetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 65, -1));
+        jPanel2.add(datePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 100, 170, -1));
+        datePicker.setMinSelectableDate(new Date(new Date().getTime() + 86400 * 1000));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Train ID", "Start", "Destination", "Travel date", "Departure Time", "Arrival Time", "Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 20, 503, 216));
+
+        bookTicketButton.setText("Book");
+        bookTicketButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookTicketButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(bookTicketButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 240, -1));
+
+        jTabbedPane4.addTab("Book Tickets", jPanel2);
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setText("Enter Booking ID");
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 35, -1, -1));
+        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 32, 114, -1));
+
+        jButton5.setText("Show Bookings");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 73, 270, -1));
+
+        jButton6.setText("Show my bookings");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 270, -1));
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Booking ID", "Train ID", "Start", "Destination", "Departure Time", "Arrival Time", "Age Group", "Price"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane3.setViewportView(jTable3);
+
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 32, 503, 216));
+
+        jTabbedPane4.addTab("Check Booking", jPanel3);
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel26.setText("Enter Booking ID");
+        jPanel4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
+        jPanel4.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 40, 130, -1));
+
+        jButton9.setText("Cancel Booking");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 260, -1));
+
+        jTabbedPane4.addTab("Cancel Booking", jPanel4);
+
+        getContentPane().add(jTabbedPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 838, 395));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+        
+    private void fromComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fromComboBoxActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+        
+        
+        // whether the start and destination are same
+        try {
+            
+            if (fromStation==destinationStation) {
+                throw new Exception();
+            }
+        } catch (Exception e) {
+                        JOptionPane.showMessageDialog(new JFrame(), "Start and Destination station cannot be same!", "Dialog",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+     
+       
+        
+        // validating future dates
+        try {
+            dateOfBooking = datePicker.getDate();
+            
+            if (dateOfBooking.before(dateCurrent)) {
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(new JFrame(), "Past bookings not available.", "Dialog",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_searchButtonActionPerformed
+
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+        // TODO add your handling code here:
+        fromComboBox.setSelectedIndex(0);
+        toComboBox.setSelectedIndex(0);
+        ageGroupBox.setSelectedIndex(0);
+        datePicker.setDate(dateCurrent);
+    }//GEN-LAST:event_resetButtonActionPerformed
+
+    private void fromComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_fromComboBoxItemStateChanged
+        // TODO add your handling code here:
+        fromStation = (String)fromComboBox.getSelectedItem();
+    }//GEN-LAST:event_fromComboBoxItemStateChanged
+
+    private void toComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_toComboBoxItemStateChanged
+        // TODO add your handling code here:
+        destinationStation = (String)toComboBox.getSelectedItem();
+    }//GEN-LAST:event_toComboBoxItemStateChanged
+
+    private void ageGroupBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageGroupBoxActionPerformed
+        // TODO add your handling code here:
+        ageGroup = (String)ageGroupBox.getSelectedItem();
+    }//GEN-LAST:event_ageGroupBoxActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void bookTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookTicketButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bookTicketButtonActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    
 
     /**
      * @param args the command line arguments
@@ -78,5 +340,31 @@ public class BookTrainTickets extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ageGroupBox;
+    private javax.swing.JButton bookTicketButton;
+    private com.toedter.calendar.JDateChooser datePicker;
+    private javax.swing.JComboBox<String> fromComboBox;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable3;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton resetButton;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JComboBox<String> toComboBox;
     // End of variables declaration//GEN-END:variables
 }

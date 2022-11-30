@@ -185,7 +185,7 @@ public class BookBusTickets extends javax.swing.JFrame{
 
         jLabel43.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel43.setText("Select a date");
-        jPanel1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        jPanel1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
         jLabel44.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(255, 0, 51));
