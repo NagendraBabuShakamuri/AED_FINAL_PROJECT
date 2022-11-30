@@ -73,7 +73,7 @@ public class UserHomePage extends javax.swing.JFrame {
         balanceLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        bookBusTicketsLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -88,8 +88,6 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         userNameField = new javax.swing.JTextField();
@@ -187,14 +185,14 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bus.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        bookBusTicketsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bookBusTicketsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bus.png"))); // NOI18N
+        bookBusTicketsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                bookBusTicketsLabelMouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 170, 130));
+        jPanel3.add(bookBusTicketsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 170, 130));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/train.png"))); // NOI18N
@@ -246,13 +244,6 @@ public class UserHomePage extends javax.swing.JFrame {
 
         jLabel14.setText("Pay Broadband bill");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, -1, -1));
-
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/education.png"))); // NOI18N
-        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 130, 130));
-
-        jLabel16.setText("Pay Education Fee");
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 560, -1, -1));
 
         jTabbedPane1.addTab("Recharge and Utilities", jPanel4);
 
@@ -345,12 +336,11 @@ public class UserHomePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void bookBusTicketsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookBusTicketsLabelMouseClicked
         // TODO add your handling code here:
         BookBusTickets bt = new BookBusTickets();
         bt.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_bookBusTicketsLabelMouseClicked
 
     private void moneyToWalletLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moneyToWalletLabelMouseClicked
         // TODO add your handling code here:
@@ -559,16 +549,14 @@ public class UserHomePage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel balanceLabel;
+    private javax.swing.JLabel bookBusTicketsLabel;
     private javax.swing.JLabel eV;
     private javax.swing.JTextField emailField;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
