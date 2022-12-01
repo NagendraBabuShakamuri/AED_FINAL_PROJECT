@@ -3,9 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package userinterface;
+import business.Mail;
+import business.mysql.MySql;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.util.Date;
+import java.util.regex.Pattern;
+import javax.swing.table.DefaultTableModel;
+import static userinterface.UserHomePage.balanceLabel;
+import static userinterface.UserHomePage.userNameLabel;
 
 /**
  *
@@ -15,20 +24,29 @@ public class BookTrainTickets extends javax.swing.JFrame {
 
     /**
      * Creates new form BookTrainTickets
-     */
-    
-    String fromStation, destinationStation, numberOfTickets, classGroup, ageGroup;
-    int numberOfTicketsAvailable = 12;
-    Date dateOfBooking;
-    Date dateCurrent = new Date();
+     */    
     
     public BookTrainTickets() {
         initComponents();
-        
-        this.fromStation = (String)fromComboBox.getSelectedItem();
-        this.destinationStation = (String)toComboBox.getSelectedItem();
-        this.ageGroup = (String)ageGroupBox.getSelectedItem();
-        this.dateOfBooking = datePicker.getDate();
+        try
+        {
+            MySql.createConn();
+            ResultSet rs = MySql.selectQuery("select * from cities;");
+            while(rs.next())
+            {
+                fromComboBox.addItem(rs.getString(2));
+            }
+            fromComboBox.setSelectedItem(null);
+            ageGroupBox.setSelectedItem(null);            
+        }
+        catch(SQLException ex)
+        {
+          System.out.println(ex);
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
     }
     
     
@@ -54,21 +72,19 @@ public class BookTrainTickets extends javax.swing.JFrame {
         resetButton = new javax.swing.JButton();
         datePicker = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        trainSchedule = new javax.swing.JTable();
         bookTicketButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        showBookingsButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        bookingHistoryTable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton9 = new javax.swing.JButton();
+        bookingIdField = new javax.swing.JTextField();
+        cancelBookingButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,11 +92,6 @@ public class BookTrainTickets extends javax.swing.JFrame {
         fromComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 fromComboBoxItemStateChanged(evt);
-            }
-        });
-        fromComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fromComboBoxActionPerformed(evt);
             }
         });
         jPanel2.add(fromComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 20, 120, -1));
@@ -105,11 +116,7 @@ public class BookTrainTickets extends javax.swing.JFrame {
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 70, -1));
 
         ageGroupBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adult", "Minor", "Senior Citizen" }));
-        ageGroupBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ageGroupBoxActionPerformed(evt);
-            }
-        });
+        ageGroupBox.setEnabled(false);
         jPanel2.add(ageGroupBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
 
         searchButton.setText("Search");
@@ -127,10 +134,17 @@ public class BookTrainTickets extends javax.swing.JFrame {
             }
         });
         jPanel2.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 65, -1));
+
+        datePicker.setEnabled(false);
+        datePicker.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                datePickerPropertyChange(evt);
+            }
+        });
         jPanel2.add(datePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 100, 170, -1));
         datePicker.setMinSelectableDate(new Date(new Date().getTime() + 86400 * 1000));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        trainSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -146,8 +160,8 @@ public class BookTrainTickets extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane1.setViewportView(jTable1);
+        trainSchedule.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane1.setViewportView(trainSchedule);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 20, 503, 216));
 
@@ -157,38 +171,26 @@ public class BookTrainTickets extends javax.swing.JFrame {
                 bookTicketButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(bookTicketButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 240, -1));
+        jPanel2.add(bookTicketButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 490, -1));
 
         jTabbedPane4.addTab("Book Tickets", jPanel2);
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel15.setText("Enter Booking ID");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 35, -1, -1));
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 32, 114, -1));
-
-        jButton5.setText("Show Bookings");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        showBookingsButton.setText("Show my bookings");
+        showBookingsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                showBookingsButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 73, 270, -1));
+        jPanel3.add(showBookingsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 270, -1));
 
-        jButton6.setText("Show my bookings");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 270, -1));
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        bookingHistoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Booking ID", "Train ID", "Start", "Destination", "Departure Time", "Arrival Time", "Age Group", "Price"
+                "Booking ID", "Train ID", "Start", "Destination", "Booking_date", "Travel_date", "Age Group", "Price"
             }
         ) {
             Class[] types = new Class [] {
@@ -199,10 +201,10 @@ public class BookTrainTickets extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jTable3.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jScrollPane3.setViewportView(jTable3);
+        bookingHistoryTable.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jScrollPane3.setViewportView(bookingHistoryTable);
 
-        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 32, 503, 216));
+        jPanel3.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 503, 216));
 
         jTabbedPane4.addTab("Check Booking", jPanel3);
 
@@ -210,15 +212,15 @@ public class BookTrainTickets extends javax.swing.JFrame {
 
         jLabel26.setText("Enter Booking ID");
         jPanel4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
-        jPanel4.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 40, 130, -1));
+        jPanel4.add(bookingIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 40, 130, -1));
 
-        jButton9.setText("Cancel Booking");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        cancelBookingButton.setText("Cancel Booking");
+        cancelBookingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                cancelBookingButtonActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 260, -1));
+        jPanel4.add(cancelBookingButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 260, -1));
 
         jTabbedPane4.addTab("Cancel Booking", jPanel4);
 
@@ -227,80 +229,273 @@ public class BookTrainTickets extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
         
-    private void fromComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fromComboBoxActionPerformed
-
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
-        
-        
-        // whether the start and destination are same
-        try {
-            
-            if (fromStation==destinationStation) {
-                throw new Exception();
+        try
+        {
+          String fromLocation = fromComboBox.getSelectedItem().toString();
+          String toLocation = toComboBox.getSelectedItem().toString();
+          SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
+          String date = date_format.format(datePicker.getDate());
+          String ageGroup = ageGroupBox.getSelectedItem().toString();
+          MySql.createConn();
+          String query = "select id from cities where city_name = " + "\'" + fromLocation + "\'" + ";";
+          ResultSet rs = MySql.selectQuery(query);
+          rs.next();
+          int fromCityId = rs.getInt(1);
+          query = "select id from cities where city_name = " + "\'" + toLocation + "\'" + ";";
+          rs = MySql.selectQuery(query);
+          rs.next();
+          int toCityId = rs.getInt(1);
+          query = "select * from trains where from_city = " + fromCityId + " and to_city = " + toCityId + " and travel_date = " + "\'" + date + "\'" + ";";
+          rs = MySql.selectQuery(query);
+          if(rs.isBeforeFirst())
+          {
+            DefaultTableModel table_model = (DefaultTableModel)trainSchedule.getModel();
+            table_model.setRowCount(0);
+            while(rs.next())
+            {
+              String trainId = String.valueOf(rs.getInt(1));
+              String departureTime = String.valueOf(rs.getString(4));
+              String arrivalTime = String.valueOf(rs.getString(5));
+              double fare = rs.getInt(7);
+              if(ageGroup.equals("Minor"))
+                  fare *= 0.25;
+              else if(ageGroup.equals("Senior Citizen"))
+                  fare *= 0.50;  
+              String table_data[]={trainId, fromLocation, toLocation, date, departureTime, arrivalTime, String.valueOf(fare)};
+              table_model.addRow(table_data);
             }
-        } catch (Exception e) {
-                        JOptionPane.showMessageDialog(new JFrame(), "Start and Destination station cannot be same!", "Dialog",JOptionPane.ERROR_MESSAGE);
+          }
+          else
+              JOptionPane.showMessageDialog(this, "No trains available for the selected location and date.", "Alert", JOptionPane.WARNING_MESSAGE);
         }
-        
-        
-     
-       
-        
-        // validating future dates
-        try {
-            dateOfBooking = datePicker.getDate();
-            
-            if (dateOfBooking.before(dateCurrent)) {
-                throw new Exception();
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(new JFrame(), "Past bookings not available.", "Dialog",JOptionPane.ERROR_MESSAGE);
+        catch(NullPointerException np)
+        {
+          JOptionPane.showMessageDialog(this, "Please choose from location, to location, travel date and train.", "Alert", JOptionPane.WARNING_MESSAGE); 
         }
-        
-        
+        catch(SQLException ex)
+        {
+          System.out.println(ex);
+        }
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         // TODO add your handling code here:
-        fromComboBox.setSelectedIndex(0);
-        toComboBox.setSelectedIndex(0);
-        ageGroupBox.setSelectedIndex(0);
-        datePicker.setDate(dateCurrent);
+        fromComboBox.setSelectedItem(null);
+        toComboBox.removeAllItems();
+        toComboBox.setSelectedItem(null);
+        datePicker.setCalendar(null);
+        ageGroupBox.setSelectedItem(null);
+        DefaultTableModel table_model = (DefaultTableModel)trainSchedule.getModel();
+        table_model.setRowCount(0);
+        datePicker.setEnabled(false);
+        ageGroupBox.setEnabled(false);
     }//GEN-LAST:event_resetButtonActionPerformed
 
     private void fromComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_fromComboBoxItemStateChanged
         // TODO add your handling code here:
-        fromStation = (String)fromComboBox.getSelectedItem();
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+       {
+         toComboBox.removeAllItems();
+         for(int i = 0; i < fromComboBox.getItemCount(); i++)
+         {
+           if(fromComboBox.getSelectedItem().toString().equals(fromComboBox.getItemAt(i)))
+               continue;           
+           toComboBox.addItem(fromComboBox.getItemAt(i));
+         }
+        }
     }//GEN-LAST:event_fromComboBoxItemStateChanged
 
     private void toComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_toComboBoxItemStateChanged
         // TODO add your handling code here:
-        destinationStation = (String)toComboBox.getSelectedItem();
+        datePicker.setEnabled(true);
     }//GEN-LAST:event_toComboBoxItemStateChanged
-
-    private void ageGroupBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageGroupBoxActionPerformed
-        // TODO add your handling code here:
-        ageGroup = (String)ageGroupBox.getSelectedItem();
-    }//GEN-LAST:event_ageGroupBoxActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void bookTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookTicketButtonActionPerformed
         // TODO add your handling code here:
+        int row = trainSchedule.getSelectedRow();
+        if(row > -1)
+        {          
+          try
+          {        
+            int trainId = Integer.parseInt(trainSchedule.getModel().getValueAt(row, 0).toString());
+            String fromLocation = trainSchedule.getModel().getValueAt(row, 1).toString();
+            String toLocation = trainSchedule.getModel().getValueAt(row, 2).toString();
+            String ageGroup  = ageGroupBox.getSelectedItem().toString();
+            String travelDate = trainSchedule.getModel().getValueAt(row, 3).toString();
+            String departureTime = trainSchedule.getModel().getValueAt(row, 4).toString();
+            String arrivalTime = trainSchedule.getModel().getValueAt(row, 5).toString();
+            double fare = Double.parseDouble(trainSchedule.getModel().getValueAt(row, 6).toString());
+            MySql.createConn();
+            String query = "select userid, balance, email from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+            ResultSet rs = MySql.selectQuery(query);
+            rs.next();
+            int user_id = rs.getInt(1);            
+            double balance = rs.getDouble(2);
+            String email = rs.getString(3);
+            double available_balance = balance - fare;
+            if(available_balance < 0)
+            {
+             JOptionPane.showMessageDialog(this, "The available wallet balance is less than the amount \nthat you're trying to buy.", "Alert", JOptionPane.WARNING_MESSAGE);
+             return;
+            }
+            query = "insert into train_bookings(user_id, train_id, booking_date, travel_date, age_group, fare) values(" + user_id + "," + trainId + "," + "CURDATE()" + "," + "\'" + travelDate + "\'" + "," + "\'" + ageGroup + "\'" + "," + fare + ");";
+            int res = MySql.insertUpdateQuery(query);
+            if(res > 0)
+            {               
+               JOptionPane.showMessageDialog(this, "Ticket booked successfully.", null, JOptionPane.OK_OPTION);
+               query = "update users set balance = balance - " + fare + " where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+               res = MySql.insertUpdateQuery(query);
+               if(res > 0)
+               {
+                 balanceLabel.setText("$ " + available_balance);
+                 String message = "****************************\n";
+                 message += "**********Train TICKET*********\n";
+                 message += "*****************************\n";
+                 message += "From: " + fromLocation + "\nTo: " + toLocation + "\n";
+                 message += "Train Id: " + trainId + "\n";
+                 message += "Age Group: " + ageGroup + "\n";
+                 message += "Journey Date: " + travelDate + "\n";
+                 message += "Departure time: " + departureTime + "\n";
+                 message += "Arrival time: " + arrivalTime + "\n";
+                 message += "Price: " + fare + "\n";                 
+                 message += "**********^^^^^^^^^**********\n";
+                 message += "******Thank You Come Again!!******\n";
+                 Mail.sendMail(email, message);
+               }               
+             }
+          }
+          catch(SQLException ex)
+          {
+            System.out.println(ex);
+          }
+        }
+        else
+          JOptionPane.showMessageDialog(this, "Please choose a train before booking.", "Alert", JOptionPane.WARNING_MESSAGE); 
     }//GEN-LAST:event_bookTicketButtonActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    public boolean clientSideValidation(JFrame frame, String bookingId)
+    {
+        if(Pattern.compile("^[1-9]\\d*$").matcher(bookingId).matches())
+        {
+          return true;
+        }
+        else
+         JOptionPane.showMessageDialog(frame, "Booking Id is not valid.\nOnly numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        return false;
+    }
+    private void cancelBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBookingButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+        String bookingID = bookingIdField.getText().trim();
+        boolean passed = clientSideValidation(this, bookingID);
+        if(passed)
+        {
+            try
+            {
+                MySql.createConn();
+                String query = "select userid, balance, email from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+                ResultSet rs = MySql.selectQuery(query);
+                rs.next();
+                int user_id = rs.getInt(1);
+                double balance = rs.getDouble(2);
+                String email = rs.getString(3);
+                query = "select train_id from train_bookings where id = " + bookingID + " and user_id = " + user_id + ";";
+                rs = MySql.selectQuery(query);
+                if(rs.isBeforeFirst())
+                {                    
+                    rs.next();
+                    int trainId = rs.getInt(1);
+                    query = "select fare from train_bookings where train_id = " + trainId + ";";
+                    rs = MySql.selectQuery(query);
+                    rs.next();
+                    int fare = rs.getInt(1);
+                    double available_balance = balance + fare;
+                    query = "delete from train_bookings where id = " + bookingID + " and travel_date > CURDATE() and user_id = " + user_id + ";";
+                    int res = MySql.insertUpdateQuery(query);    
+                    if(res > 0)
+                    {
+                        query = "update users set balance = balance + " + fare + " where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+                        res = MySql.insertUpdateQuery(query);
+                        if(res > 0)
+                        {
+                          JOptionPane.showMessageDialog(this, "Cancelled the booking successfully.", null, JOptionPane.OK_OPTION);
+                          balanceLabel.setText("$ " + available_balance);
+                          Mail.sendMail(email, "You have cancelled your train ticket with the Id: " + bookingID + "\nRefund has been added to your wallet balance.");
+                        }                    
+                    }
+                    else
+                    {
+                        JOptionPane.showMessageDialog(this, "Booking Id is not valid.\nPlease give another Id.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+                else
+                 JOptionPane.showMessageDialog(this, "You don't have a train ticket with the given id.", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+            catch(SQLException ex)
+            {
+              System.out.println(ex);
+            }
+            finally
+            {
+              MySql.shutDownConn();
+            }
+        }        
+    }//GEN-LAST:event_cancelBookingButtonActionPerformed
+
+    private void datePickerPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_datePickerPropertyChange
+        // TODO add your handling code here:
+        ageGroupBox.setEnabled(true);
+    }//GEN-LAST:event_datePickerPropertyChange
+
+    private void showBookingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showBookingsButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            MySql.createConn();
+            String query = "select userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+            ResultSet rs = MySql.selectQuery(query);
+            rs.next();
+            int user_id = rs.getInt(1);
+            query = "select * from train_bookings where user_id = " + user_id + ";";
+            rs = MySql.selectQuery(query);
+            DefaultTableModel table_model1 = (DefaultTableModel)bookingHistoryTable.getModel();
+            table_model1.setRowCount(0);
+            while(rs.next())
+            {                
+                String bookingId = rs.getString(1);
+                String trainId = rs.getString(3);
+                String bookingDate = rs.getString(4);
+                String travelDate = rs.getString(5);
+                String ageGroup =  rs.getString(6);
+                String fare =  rs.getString(7);
+                
+                query = "select from_city, to_city from trains where id = " + trainId + ";";
+                ResultSet rs1 = MySql.selectQuery(query);
+                rs1.next();
+                String fromCityId = rs1.getString(1);
+                String toCityId = rs1.getString(2);
+                query = "select city_name from cities where id = " + fromCityId + ";";
+                rs1 = MySql.selectQuery(query);
+                rs1.next();
+                String fromCity = rs1.getString(1);
+                query = "select city_name from cities where id = " + toCityId + ";";
+                rs1 = MySql.selectQuery(query);
+                rs1.next();
+                String toCity = rs1.getString(1); 
+                
+                String table_data[]={bookingId, trainId, fromCity, toCity, bookingDate, travelDate, ageGroup, fare};
+                table_model1.addRow(table_data);
+            }
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex);
+        }
+        finally
+        {
+            MySql.shutDownConn();
+        }
+    }//GEN-LAST:event_showBookingsButtonActionPerformed
 
     
 
@@ -342,13 +537,12 @@ public class BookTrainTickets extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ageGroupBox;
     private javax.swing.JButton bookTicketButton;
+    private javax.swing.JTable bookingHistoryTable;
+    private javax.swing.JTextField bookingIdField;
+    private javax.swing.JButton cancelBookingButton;
     private com.toedter.calendar.JDateChooser datePicker;
     private javax.swing.JComboBox<String> fromComboBox;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
@@ -359,12 +553,10 @@ public class BookTrainTickets extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton resetButton;
     private javax.swing.JButton searchButton;
+    private javax.swing.JButton showBookingsButton;
     private javax.swing.JComboBox<String> toComboBox;
+    private javax.swing.JTable trainSchedule;
     // End of variables declaration//GEN-END:variables
 }

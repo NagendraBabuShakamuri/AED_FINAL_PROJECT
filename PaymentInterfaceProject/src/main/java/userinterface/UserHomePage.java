@@ -74,7 +74,7 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         bookBusTicketsLabel = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        bookTrainTicketsLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -103,6 +103,7 @@ public class UserHomePage extends javax.swing.JFrame {
         mV = new javax.swing.JLabel();
         eV = new javax.swing.JLabel();
         pV = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -194,9 +195,14 @@ public class UserHomePage extends javax.swing.JFrame {
         });
         jPanel3.add(bookBusTicketsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 170, 130));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/train.png"))); // NOI18N
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 127, 140, 70));
+        bookTrainTicketsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bookTrainTicketsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/train.png"))); // NOI18N
+        bookTrainTicketsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bookTrainTicketsLabelMouseClicked(evt);
+            }
+        });
+        jPanel3.add(bookTrainTicketsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 127, 140, 70));
 
         jLabel3.setText("Book Bus Tickets");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 110, -1));
@@ -306,6 +312,9 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel6.add(mV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 20, 20));
         jPanel6.add(eV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 20, 20));
         jPanel6.add(pV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 20, 20));
+
+        jButton1.setText("Logout");
+        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 210, -1));
 
         jTabbedPane1.addTab("Profile", jPanel6);
 
@@ -511,6 +520,12 @@ public class UserHomePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_passFieldKeyReleased
 
+    private void bookTrainTicketsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookTrainTicketsLabelMouseClicked
+        // TODO add your handling code here:
+        BookTrainTickets bt = new BookTrainTickets();
+        bt.setVisible(true);
+    }//GEN-LAST:event_bookTrainTicketsLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -550,8 +565,10 @@ public class UserHomePage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel balanceLabel;
     private javax.swing.JLabel bookBusTicketsLabel;
+    private javax.swing.JLabel bookTrainTicketsLabel;
     private javax.swing.JLabel eV;
     private javax.swing.JTextField emailField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -560,7 +577,6 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;

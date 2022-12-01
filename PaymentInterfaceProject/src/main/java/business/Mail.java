@@ -28,7 +28,7 @@ public class Mail {
     {
       this.recepient = recepient;
       this.code = code;
-    }            
+    }
     public Message prepareMessage(Session session, String fromMail, String recepient, String code)
     {      
         try 
@@ -63,6 +63,48 @@ public class Mail {
         }
       });
       Message message = prepareMessage(session, fromMail, recepient, code);
+        try 
+        {
+            Transport.send(message);
+        } 
+        catch (MessagingException ex) {
+            Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public static Message prepareMessage(Session session, String fromMail, String recepient, String msg, int a)
+    {      
+        try 
+        {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(fromMail));
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(recepient));
+            message.setSubject("Ticket booked");
+            message.setText(msg);
+            return message;
+        } 
+        catch (Exception ex) {
+            Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    public static void sendMail(String recepient, String msg)
+    {
+      Properties properties = new Properties();
+      properties.put("mail.smtp.auth", "true");
+      properties.put("mail.smtp.starttls.enable", "true");
+      properties.put("mail.smtp.host", "smtp.gmail.com");
+      properties.put("mail.smtp.port", "587");
+      
+      String fromMail = "paymentappaed@gmail.com";
+      String password = "dppzgjmxqahmrenu";
+      Session session = Session.getInstance(properties, new Authenticator(){
+        @Override
+        protected PasswordAuthentication getPasswordAuthentication()
+        {
+          return new PasswordAuthentication(fromMail, password);
+        }
+      });
+      Message message = prepareMessage(session, fromMail, recepient, msg, 1);
         try 
         {
             Transport.send(message);
