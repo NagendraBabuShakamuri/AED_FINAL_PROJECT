@@ -7,25 +7,12 @@ package userinterface;
 import business.Mail;
 import business.mysql.MySql;
 import java.awt.Image;
-import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 /**
  *
  * @author nbabu
@@ -175,7 +162,7 @@ public class Registration extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1151, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
 
         pack();
@@ -211,7 +198,7 @@ public class Registration extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(frame, "Mobile number is not valid.\nOnly numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);      
          }
          else
-            JOptionPane.showMessageDialog(frame, "Username is not valid.\nOnly characters and numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);  
+            JOptionPane.showMessageDialog(frame, "Username is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);  
       return false;     
     }
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
@@ -274,7 +261,7 @@ public class Registration extends javax.swing.JFrame {
                     {
                       JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
                     }               
-              }
+                }
             }
           }
           catch(SQLException ex)
@@ -293,10 +280,6 @@ public class Registration extends javax.swing.JFrame {
         String email = emailField.getText();
         if(Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$").matcher(email).matches() && !email.equals(""))
         {
-//          File f = new File("target/classes/images/accept.png");
-//          System.out.println(f.getAbsolutePath());
-//          if(f.exists())
-//            System.out.println("Present");
           ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
           Image img = icon.getImage();                
           Image imgScale = img.getScaledInstance(eV.getWidth(), eV.getHeight(), Image.SCALE_SMOOTH);
@@ -316,9 +299,6 @@ public class Registration extends javax.swing.JFrame {
         String userName = userNameField.getText();
         if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(userName).matches() && !userName.equals(""))
         {
-//          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
-//          if(f.exists())
-//            System.out.println("Present");
           ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
           Image img = icon.getImage();                
           Image imgScale = img.getScaledInstance(uV.getWidth(), uV.getHeight(), Image.SCALE_SMOOTH);
@@ -338,9 +318,6 @@ public class Registration extends javax.swing.JFrame {
         String mobile = mobileField.getText();
         if(Pattern.compile("^\\d{10}$").matcher(mobile).matches() && !mobile.equals(""))
         {
-//          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
-//          if(f.exists())
-//            System.out.println("Present");
           ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
           Image img = icon.getImage();                
           Image imgScale = img.getScaledInstance(mV.getWidth(), mV.getHeight(), Image.SCALE_SMOOTH);
@@ -360,9 +337,6 @@ public class Registration extends javax.swing.JFrame {
         String password = new String(passField.getPassword());
         if(Pattern.compile("^(?=.*\\d).{4,15}$").matcher(password).matches() && !password.equals(""))
         {
-//          File f = new File("/Users/nbabu/Desktop/AED/Assignments/AED_FINAL_PROJECT/PaymentInterfaceProject/src/main/java/images/accept.png");
-//          if(f.exists())
-//            System.out.println("Present");
           ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
           Image img = icon.getImage();                
           Image imgScale = img.getScaledInstance(pV.getWidth(), pV.getHeight(), Image.SCALE_SMOOTH);

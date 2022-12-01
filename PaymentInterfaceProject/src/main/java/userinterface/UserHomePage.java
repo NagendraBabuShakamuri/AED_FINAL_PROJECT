@@ -8,13 +8,44 @@ package userinterface;
  *
  * @author nbabu
  */
+import business.Mail;
+import business.mysql.MySql;
+import java.awt.Image;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import static userinterface.Registration.clientSideVlaidation;
+
 public class UserHomePage extends javax.swing.JFrame {
 
     /**
      * Creates new form userHomePage
      */
-    public UserHomePage() {
+    public UserHomePage(String userName) {
         initComponents();
+        userNameLabel.setText(userName);
+        try
+        {
+          MySql.createConn();
+          String query = "select * from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+          ResultSet rs = MySql.selectQuery(query);
+          rs.next();
+          userNameField.setText(rs.getString(2));
+          emailField.setText(rs.getString(3));
+          mobileField.setText(rs.getString(4));
+          passField.setText(rs.getString(5));
+          balanceLabel.setText("$ " + rs.getString(7));
+        }
+        catch(SQLException ex)
+        {
+          System.out.println(ex);
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
     }
 
     /**
@@ -29,9 +60,22 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
+        userNameLabel = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        moneyToWalletLabel = new javax.swing.JLabel();
+        moneyToBankLabel = new javax.swing.JLabel();
+        moneyToOthersWalletLabel = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        balanceLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        event = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        bookBusTicketsLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -46,9 +90,21 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        userNameField = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        emailField = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        mobileField = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        passField = new javax.swing.JPasswordField();
+        updateButton = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        uV = new javax.swing.JLabel();
+        mV = new javax.swing.JLabel();
+        eV = new javax.swing.JLabel();
+        pV = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -61,46 +117,97 @@ public class UserHomePage extends javax.swing.JFrame {
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 0, 142, 25));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 747, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 794, Short.MAX_VALUE)
-        );
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setText("<html> <p>Add Money from</p> <p>bank to the Wallet</p> </html>");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        jLabel18.setText("<html>\n<p>Transfer Money from</p>\n<p>Wallet to others Wallet</p>\n</html>");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, -1));
+
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel19.setText("<html> <p>Transfer Money from</p> <p>Wallet to the Bank</p> </html>");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
+
+        moneyToWalletLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        moneyToWalletLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wallet.png"))); // NOI18N
+        moneyToWalletLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moneyToWalletLabelMouseClicked(evt);
+            }
+        });
+        jPanel1.add(moneyToWalletLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 70, -1));
+
+        moneyToBankLabel.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        moneyToBankLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        moneyToBankLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wallet 2.png"))); // NOI18N
+        moneyToBankLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moneyToBankLabelMouseClicked(evt);
+            }
+        });
+        jPanel1.add(moneyToBankLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 70, 70));
+
+        moneyToOthersWalletLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        moneyToOthersWalletLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wallet 3.png"))); // NOI18N
+        moneyToOthersWalletLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moneyToOthersWalletLabelMouseClicked(evt);
+            }
+        });
+        jPanel1.add(moneyToOthersWalletLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 70, 70));
+
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("<html>\n<p>View Spend</p>\n<p>Analytics</p>\n</html>");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 387, 130, 30));
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/analytics.png"))); // NOI18N
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 80, 70));
+
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel25.setText("Wallet Balance:");
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 87, -1, 30));
+
+        balanceLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jPanel1.add(balanceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 160, 30));
 
         jTabbedPane1.addTab("Payment", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 747, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 794, Short.MAX_VALUE)
-        );
+        event.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/placard.png"))); // NOI18N
+        event.setText("jLabel1");
+        event.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eventMouseClicked(evt);
+            }
+        });
+        jPanel2.add(event, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 130, 110));
+
+        jLabel15.setText("Book Event Tickets");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
 
         jTabbedPane1.addTab("Entertainment", jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bus.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        bookBusTicketsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bookBusTicketsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bus.png"))); // NOI18N
+        bookBusTicketsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                bookBusTicketsLabelMouseClicked(evt);
             }
         });
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 170, 130));
+        jPanel3.add(bookBusTicketsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 170, 130));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/train.png"))); // NOI18N
@@ -153,27 +260,67 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel14.setText("Pay Broadband bill");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, -1, -1));
 
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/education.png"))); // NOI18N
-        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 410, 130, 130));
-
-        jLabel16.setText("Pay Education Fee");
-        jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 560, -1, -1));
-
         jTabbedPane1.addTab("Recharge and Utilities", jPanel4);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 747, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 794, Short.MAX_VALUE)
-        );
+        jLabel20.setText("Username:");
+        jPanel6.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, -1, -1));
+
+        userNameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                userNameFieldKeyReleased(evt);
+            }
+        });
+        jPanel6.add(userNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 130, -1));
+
+        jLabel21.setText("Mobile:");
+        jPanel6.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
+
+        emailField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                emailFieldKeyReleased(evt);
+            }
+        });
+        jPanel6.add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 130, -1));
+
+        jLabel22.setText("Email:");
+        jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, -1, -1));
+
+        mobileField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                mobileFieldKeyReleased(evt);
+            }
+        });
+        jPanel6.add(mobileField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 130, -1));
+
+        jLabel26.setText("Password:");
+        jPanel6.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
+
+        passField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                passFieldKeyReleased(evt);
+            }
+        });
+        jPanel6.add(passField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 130, -1));
+
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+        jPanel6.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 210, -1));
+
+        jLabel27.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel27.setText("Update Profile");
+        jPanel6.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 230, 30));
+        jPanel6.add(uV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 20, 20));
+        jPanel6.add(mV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 20, 20));
+        jPanel6.add(eV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 20, 20));
+        jPanel6.add(pV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 20, 20));
 
         jTabbedPane1.addTab("Profile", jPanel6);
 
@@ -186,7 +333,7 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(jTabbedPane1)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -204,12 +351,188 @@ public class UserHomePage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void bookBusTicketsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookBusTicketsLabelMouseClicked
         // TODO add your handling code here:
         BookBusTickets bt = new BookBusTickets();
-        bt.show();
-        dispose();
-    }//GEN-LAST:event_jLabel1MouseClicked
+        bt.setVisible(true);
+    }//GEN-LAST:event_bookBusTicketsLabelMouseClicked
+
+    private void moneyToWalletLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moneyToWalletLabelMouseClicked
+        // TODO add your handling code here:
+        AddMoneyToWallet amw = new AddMoneyToWallet(userNameLabel.getText());
+        amw.setVisible(true);
+    }//GEN-LAST:event_moneyToWalletLabelMouseClicked
+
+    private void moneyToOthersWalletLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moneyToOthersWalletLabelMouseClicked
+        // TODO add your handling code here:
+        MoneyToOthersWallet mtw = new MoneyToOthersWallet();
+        mtw.setVisible(true);
+    }//GEN-LAST:event_moneyToOthersWalletLabelMouseClicked
+
+    private void moneyToBankLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moneyToBankLabelMouseClicked
+        // TODO add your handling code here:
+        MoneyToBank mtb = new MoneyToBank();
+        mtb.setVisible(true);
+    }//GEN-LAST:event_moneyToBankLabelMouseClicked
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // TODO add your handling code here:
+        String userName = userNameField.getText().trim();
+        String email = emailField.getText().trim();        
+        String mobile = mobileField.getText().trim();
+        String password = new String(passField.getPassword());
+        boolean passed = clientSideVlaidation(this, email, userName, mobile, password);
+        if(passed)
+        {
+          try
+          {
+            MySql.createConn();
+            boolean exists = false;            
+            ResultSet rs = MySql.selectQuery("select * from users where username != " + "\'" + userNameLabel.getText() + "\'" + ";");
+            while(rs.next())
+            {
+              if(userName.equals(rs.getString(2)))
+              {
+                exists = true;
+                JOptionPane.showMessageDialog(this, "User with the given name already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+              }
+              else if(email.equals(rs.getString(3)))
+              {
+                exists = true;
+                JOptionPane.showMessageDialog(this, "User with the given email already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+              }
+              else if(mobile.equals(rs.getString(4)))
+              {
+                exists = true;
+                JOptionPane.showMessageDialog(this, "User with the given mobile already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+              }
+            }
+            if(!exists)
+            {
+              String code = "";
+              for(int i = 0; i < 6; i++)
+                code += (int)(Math.random() * 6);
+//              String query = "insert into registration(username, email, mobile, password, code) values(" + "\'" + userName + "\'" +"," + "\'" + email + "\'" + "," + "\'" + mobile + "\'" + ","  + "\'" + password + "\'" + "," + "\'" + code + "\'" + ");";
+//              System.out.println(query);
+//              int res = MySql.insertUpdateQuery(query);
+                Mail mail = new Mail(email, code);
+                mail.sendMail();               
+                while(true){
+                    String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
+                    if(userCode.equals(code))
+                    {
+                      int res = MySql.insertUpdateQuery("update users set username = " + "\'" + userName + "\'" +  ", email =  " + "\'" + email + "\'" + ", mobile =  " + "\'" + mobile + "\'" + ", password = " + "\'" + password + "\'" + " where username = " + "\'" + userNameLabel.getText() + "\'" + ";");                      
+                      if(res > 0)
+                      {
+                        JOptionPane.showMessageDialog(this, "Profile updated..", null, JOptionPane.OK_OPTION);
+                        userNameLabel.setText(userName);
+                        break;
+                      }
+                    }
+                    else
+                    {
+                      JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    }               
+                }
+            }
+          }
+          catch(SQLException ex)
+          {
+            System.out.println(ex);
+          }
+          finally
+          {
+            MySql.shutDownConn();
+          }
+        }
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void userNameFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameFieldKeyReleased
+        // TODO add your handling code here:
+        String userName = userNameField.getText();
+        if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(userName).matches() && !userName.equals(""))
+        {
+          ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
+          Image img = icon.getImage();                
+          Image imgScale = img.getScaledInstance(uV.getWidth(), uV.getHeight(), Image.SCALE_SMOOTH);
+          ImageIcon scaledIcon = new ImageIcon(imgScale);  
+          uV.setIcon(scaledIcon);
+        }
+        else
+        {
+          
+          ImageIcon icon = new ImageIcon("target/classes/images/cross.png");
+          uV.setIcon(icon);
+        }
+    }//GEN-LAST:event_userNameFieldKeyReleased
+
+    private void emailFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailFieldKeyReleased
+        // TODO add your handling code here:
+        String email = emailField.getText();
+        if(Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$").matcher(email).matches() && !email.equals(""))
+        {
+          ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
+          Image img = icon.getImage();                
+          Image imgScale = img.getScaledInstance(eV.getWidth(), eV.getHeight(), Image.SCALE_SMOOTH);
+          ImageIcon scaledIcon = new ImageIcon(imgScale);  
+          eV.setIcon(scaledIcon);
+        }
+        else
+        {
+          
+          ImageIcon icon = new ImageIcon("target/classes/images/cross.png");
+          eV.setIcon(icon);
+        }
+    }//GEN-LAST:event_emailFieldKeyReleased
+
+    private void mobileFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mobileFieldKeyReleased
+        // TODO add your handling code here:
+        String mobile = mobileField.getText();
+        if(Pattern.compile("^\\d{10}$").matcher(mobile).matches() && !mobile.equals(""))
+        {
+          ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
+          Image img = icon.getImage();                
+          Image imgScale = img.getScaledInstance(mV.getWidth(), mV.getHeight(), Image.SCALE_SMOOTH);
+          ImageIcon scaledIcon = new ImageIcon(imgScale);  
+          mV.setIcon(scaledIcon);
+        }
+        else
+        {
+          
+          ImageIcon icon = new ImageIcon("target/classes/images/cross.png");
+          mV.setIcon(icon);
+        }
+    }//GEN-LAST:event_mobileFieldKeyReleased
+
+    private void passFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passFieldKeyReleased
+        // TODO add your handling code here:
+        String password = new String(passField.getPassword());
+        if(Pattern.compile("^(?=.*\\d).{4,15}$").matcher(password).matches() && !password.equals(""))
+        {
+          ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
+          Image img = icon.getImage();                
+          Image imgScale = img.getScaledInstance(pV.getWidth(), pV.getHeight(), Image.SCALE_SMOOTH);
+          ImageIcon scaledIcon = new ImageIcon(imgScale);  
+          pV.setIcon(scaledIcon);
+        }
+        else
+        {
+          
+          ImageIcon icon = new ImageIcon("target/classes/images/cross.png");
+          pV.setIcon(icon);
+        }
+    }//GEN-LAST:event_passFieldKeyReleased
+
+    private void eventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventMouseClicked
+        // TODO add your handling code here:
+        BookEventTickets bet = new BookEventTickets();
+        bet.setVisible(true);
+        
+                
+    }//GEN-LAST:event_eventMouseClicked
 
     /**
      * @param args the command line arguments
@@ -242,21 +565,35 @@ public class UserHomePage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UserHomePage().setVisible(true);
+                new UserHomePage("").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    public static javax.swing.JLabel balanceLabel;
+    private javax.swing.JLabel bookBusTicketsLabel;
+    private javax.swing.JLabel eV;
+    private javax.swing.JTextField emailField;
+    private javax.swing.JLabel event;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -271,5 +608,16 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel mV;
+    private javax.swing.JTextField mobileField;
+    private javax.swing.JLabel moneyToBankLabel;
+    private javax.swing.JLabel moneyToOthersWalletLabel;
+    private javax.swing.JLabel moneyToWalletLabel;
+    private javax.swing.JLabel pV;
+    private javax.swing.JPasswordField passField;
+    private javax.swing.JLabel uV;
+    private javax.swing.JButton updateButton;
+    private javax.swing.JTextField userNameField;
+    public static javax.swing.JLabel userNameLabel;
     // End of variables declaration//GEN-END:variables
 }

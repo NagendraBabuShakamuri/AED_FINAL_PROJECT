@@ -58,21 +58,6 @@ public class MySql {
         return -1;
       }      
     }
-    
-     public static int deleteUpdateQuery(String query)
-    {
-      try
-      {
-        Statement st = conn.createStatement();
-        int num = st.executeUpdate(query);
-        return num;
-      }
-      catch(SQLException ex)
-      {
-        System.out.println(ex);
-        return -1;
-      }      
-    }
     public static void shutDownConn()
     {
       try
