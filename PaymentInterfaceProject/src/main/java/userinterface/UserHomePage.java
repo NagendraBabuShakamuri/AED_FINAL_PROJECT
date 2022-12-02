@@ -78,16 +78,16 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        electricityBillLabel = new javax.swing.JLabel();
+        gasBillLabel = new javax.swing.JLabel();
+        waterBillLabel = new javax.swing.JLabel();
+        broadbandBillLabel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         userNameField = new javax.swing.JTextField();
@@ -212,44 +212,64 @@ public class UserHomePage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Travel", jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(52, 73, 94));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cell-phone.png"))); // NOI18N
-        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 28, 100, 130));
-
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Mobile Recharge");
-        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
+        jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, -1, -1));
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lightning.png"))); // NOI18N
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 90, 130));
-
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Electricity bill payment");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, -1, 20));
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, 20));
 
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gas-stove.png"))); // NOI18N
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 230, -1, 120));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Gas Bill");
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, -1));
 
-        jLabel10.setText("Pay Gas Bill");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, -1, -1));
-
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/water-drop.png"))); // NOI18N
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 227, 110, 130));
-
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Water bill");
-        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 140, -1));
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 140, -1));
 
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wifi-signal.png"))); // NOI18N
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 120, 110));
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Broadband bill");
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, -1, -1));
 
-        jLabel14.setText("Pay Broadband bill");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 560, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recharge.png"))); // NOI18N
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 104, -1, 60));
+
+        electricityBillLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/electricity-bill.png"))); // NOI18N
+        electricityBillLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                electricityBillLabelMouseClicked(evt);
+            }
+        });
+        jPanel4.add(electricityBillLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, -1, -1));
+
+        gasBillLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/gas.png"))); // NOI18N
+        gasBillLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gasBillLabelMouseClicked(evt);
+            }
+        });
+        jPanel4.add(gasBillLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
+
+        waterBillLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/faucet.png"))); // NOI18N
+        waterBillLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                waterBillLabelMouseClicked(evt);
+            }
+        });
+        jPanel4.add(waterBillLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
+
+        broadbandBillLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mobile-broadband-modem.png"))); // NOI18N
+        broadbandBillLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                broadbandBillLabelMouseClicked(evt);
+            }
+        });
+        jPanel4.add(broadbandBillLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, -1, -1));
 
         jTabbedPane1.addTab("Recharge and Utilities", jPanel4);
 
@@ -526,6 +546,29 @@ public class UserHomePage extends javax.swing.JFrame {
         bt.setVisible(true);
     }//GEN-LAST:event_bookTrainTicketsLabelMouseClicked
 
+    private void electricityBillLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_electricityBillLabelMouseClicked
+        // TODO add your handling code here:
+        PayUtilityBill pub = new PayUtilityBill("Electricity");
+        pub.setVisible(true);        
+    }//GEN-LAST:event_electricityBillLabelMouseClicked
+
+    private void gasBillLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gasBillLabelMouseClicked
+        // TODO add your handling code here:
+        PayUtilityBill pub = new PayUtilityBill("Gas");
+        pub.setVisible(true);  
+    }//GEN-LAST:event_gasBillLabelMouseClicked
+
+    private void waterBillLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_waterBillLabelMouseClicked
+        // TODO add your handling code here:
+        PayUtilityBill pub = new PayUtilityBill("Water");
+        pub.setVisible(true);  
+    }//GEN-LAST:event_waterBillLabelMouseClicked
+
+    private void broadbandBillLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_broadbandBillLabelMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_broadbandBillLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -566,13 +609,15 @@ public class UserHomePage extends javax.swing.JFrame {
     public static javax.swing.JLabel balanceLabel;
     private javax.swing.JLabel bookBusTicketsLabel;
     private javax.swing.JLabel bookTrainTicketsLabel;
+    private javax.swing.JLabel broadbandBillLabel;
     private javax.swing.JLabel eV;
+    private javax.swing.JLabel electricityBillLabel;
     private javax.swing.JTextField emailField;
+    private javax.swing.JLabel gasBillLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -587,11 +632,8 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -610,5 +652,6 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JButton updateButton;
     private javax.swing.JTextField userNameField;
     public static javax.swing.JLabel userNameLabel;
+    private javax.swing.JLabel waterBillLabel;
     // End of variables declaration//GEN-END:variables
 }
