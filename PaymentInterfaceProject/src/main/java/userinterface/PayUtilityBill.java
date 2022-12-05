@@ -175,6 +175,11 @@ public class PayUtilityBill extends javax.swing.JFrame {
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
         });
         jScrollPane6.setViewportView(electricityBillTable);
 
@@ -209,6 +214,11 @@ public class PayUtilityBill extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
             }
         });
         jScrollPane7.setViewportView(waterBillTable);
@@ -260,6 +270,11 @@ public class PayUtilityBill extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
             }
         });
         jScrollPane8.setViewportView(gasBillTable);

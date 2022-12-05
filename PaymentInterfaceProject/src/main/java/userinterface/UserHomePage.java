@@ -83,7 +83,7 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        mobileRechargeLabel = new javax.swing.JLabel();
         electricityBillLabel = new javax.swing.JLabel();
         gasBillLabel = new javax.swing.JLabel();
         waterBillLabel = new javax.swing.JLabel();
@@ -236,8 +236,13 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel14.setText("Broadband bill");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recharge.png"))); // NOI18N
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 104, -1, 60));
+        mobileRechargeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recharge.png"))); // NOI18N
+        mobileRechargeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mobileRechargeLabelMouseClicked(evt);
+            }
+        });
+        jPanel4.add(mobileRechargeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 104, -1, 60));
 
         electricityBillLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/electricity-bill.png"))); // NOI18N
         electricityBillLabel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -569,6 +574,12 @@ public class UserHomePage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_broadbandBillLabelMouseClicked
 
+    private void mobileRechargeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mobileRechargeLabelMouseClicked
+        // TODO add your handling code here:
+        MobilePayment mp = new MobilePayment();
+        mp.setVisible(true);
+    }//GEN-LAST:event_mobileRechargeLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -615,7 +626,6 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel gasBillLabel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -643,6 +653,7 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel mV;
     private javax.swing.JTextField mobileField;
+    private javax.swing.JLabel mobileRechargeLabel;
     private javax.swing.JLabel moneyToBankLabel;
     private javax.swing.JLabel moneyToOthersWalletLabel;
     private javax.swing.JLabel moneyToWalletLabel;
