@@ -74,6 +74,8 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         event = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         bookBusTicketsLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -190,10 +192,21 @@ public class UserHomePage extends javax.swing.JFrame {
                 eventMouseClicked(evt);
             }
         });
-        jPanel2.add(event, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 130, 110));
+        jPanel2.add(event, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 130, 110));
 
         jLabel15.setText("Book Event Tickets");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/video-player.png"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 150, 140));
+
+        jLabel16.setText("Book Movie Tickets");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
 
         jTabbedPane1.addTab("Entertainment", jPanel2);
 
@@ -534,6 +547,12 @@ public class UserHomePage extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_eventMouseClicked
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        BookMovieTickets bmt = new BookMovieTickets();
+        bmt.setVisible(true);
+                // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -576,12 +595,14 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel eV;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel event;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
