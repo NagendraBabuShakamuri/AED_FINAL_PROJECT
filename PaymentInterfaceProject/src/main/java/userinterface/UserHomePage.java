@@ -16,6 +16,11 @@ import java.sql.SQLException;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 import static userinterface.Registration.clientSideVlaidation;
 
 public class UserHomePage extends javax.swing.JFrame {
@@ -68,7 +73,7 @@ public class UserHomePage extends javax.swing.JFrame {
         moneyToBankLabel = new javax.swing.JLabel();
         moneyToOthersWalletLabel = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        spendAnalyticsLabel = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         balanceLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -109,6 +114,7 @@ public class UserHomePage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(900, 900));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
@@ -168,9 +174,14 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel23.setText("<html>\n<p>View Spend</p>\n<p>Analytics</p>\n</html>");
         jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 387, 130, 30));
 
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/analytics.png"))); // NOI18N
-        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 80, 70));
+        spendAnalyticsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        spendAnalyticsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/analytics.png"))); // NOI18N
+        spendAnalyticsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                spendAnalyticsLabelMouseClicked(evt);
+            }
+        });
+        jPanel1.add(spendAnalyticsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 80, 70));
 
         jLabel25.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel25.setText("Wallet Balance:");
@@ -614,6 +625,12 @@ public class UserHomePage extends javax.swing.JFrame {
         bmt.setVisible(true);        
     }//GEN-LAST:event_bookMovieTicketsLabelMouseClicked
 
+    private void spendAnalyticsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spendAnalyticsLabelMouseClicked
+        // TODO add your handling code here:       
+        SpendAnalytics sa = new SpendAnalytics();        
+        sa.setVisible(true);
+    }//GEN-LAST:event_spendAnalyticsLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -671,7 +688,6 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -695,6 +711,7 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JLabel moneyToWalletLabel;
     private javax.swing.JLabel pV;
     private javax.swing.JPasswordField passField;
+    private javax.swing.JLabel spendAnalyticsLabel;
     private javax.swing.JLabel uV;
     private javax.swing.JButton updateButton;
     private javax.swing.JTextField userNameField;

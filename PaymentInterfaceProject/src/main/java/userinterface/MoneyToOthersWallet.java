@@ -150,6 +150,12 @@ public class MoneyToOthersWallet extends javax.swing.JFrame {
               if(res > 0)
               {
                 balanceLabel.setText("$ " + available_balance);
+                query = "INSERT INTO transfer_money(sender, receiver, amount) values(" + "\'" + userNameLabel.getText() + "\'" + "," + "\'" + sentToUserName + "\'" + "," + amount + ");";
+                res = MySql.insertUpdateQuery(query);
+                if(res > 0)
+                {
+                  System.out.println("Inserted the transaction.");
+                }
               }
             }
             else
