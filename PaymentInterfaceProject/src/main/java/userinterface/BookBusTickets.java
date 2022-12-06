@@ -337,6 +337,7 @@ public class BookBusTickets extends javax.swing.JFrame{
         fromComboBox.setSelectedItem(null);
         toComboBox.removeAllItems();
         calendar.setCalendar(null);
+        calendar.setEnabled(false);
         busesComboBox.removeAllItems();
         fareField.setText("");
         seatComboBox.removeAllItems();

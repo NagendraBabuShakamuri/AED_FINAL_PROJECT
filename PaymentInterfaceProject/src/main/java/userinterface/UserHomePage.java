@@ -72,6 +72,10 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         balanceLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        bookEventTicketsLabel = new javax.swing.JLabel();
+        bookMovieTicketsLabel = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         bookBusTicketsLabel = new javax.swing.JLabel();
         bookTrainTicketsLabel = new javax.swing.JLabel();
@@ -82,12 +86,10 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         mobileRechargeLabel = new javax.swing.JLabel();
         electricityBillLabel = new javax.swing.JLabel();
         gasBillLabel = new javax.swing.JLabel();
         waterBillLabel = new javax.swing.JLabel();
-        broadbandBillLabel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         userNameField = new javax.swing.JTextField();
@@ -103,7 +105,7 @@ public class UserHomePage extends javax.swing.JFrame {
         mV = new javax.swing.JLabel();
         eV = new javax.swing.JLabel();
         pV = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -181,6 +183,30 @@ public class UserHomePage extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel15.setText("Book Event Tickets");
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
+
+        bookEventTicketsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/placard.png"))); // NOI18N
+        bookEventTicketsLabel.setText("jLabel1");
+        bookEventTicketsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bookEventTicketsLabelMouseClicked(evt);
+            }
+        });
+        jPanel2.add(bookEventTicketsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 130, 110));
+
+        bookMovieTicketsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/video-player.png"))); // NOI18N
+        bookMovieTicketsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bookMovieTicketsLabelMouseClicked(evt);
+            }
+        });
+        jPanel2.add(bookMovieTicketsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 150, 140));
+
+        jLabel16.setText("Book Movie Tickets");
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
+
         jTabbedPane1.addTab("Entertainment", jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -232,10 +258,6 @@ public class UserHomePage extends javax.swing.JFrame {
         jLabel12.setText("Water bill");
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 140, -1));
 
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Broadband bill");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 530, -1, -1));
-
         mobileRechargeLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/recharge.png"))); // NOI18N
         mobileRechargeLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -267,14 +289,6 @@ public class UserHomePage extends javax.swing.JFrame {
             }
         });
         jPanel4.add(waterBillLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 290, -1, -1));
-
-        broadbandBillLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mobile-broadband-modem.png"))); // NOI18N
-        broadbandBillLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                broadbandBillLabelMouseClicked(evt);
-            }
-        });
-        jPanel4.add(broadbandBillLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, -1, -1));
 
         jTabbedPane1.addTab("Recharge and Utilities", jPanel4);
 
@@ -338,8 +352,13 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel6.add(eV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 20, 20));
         jPanel6.add(pV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 20, 20));
 
-        jButton1.setText("Logout");
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 210, -1));
+        logoutButton.setText("Logout");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+        jPanel6.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, 210, -1));
 
         jTabbedPane1.addTab("Profile", jPanel6);
 
@@ -569,16 +588,31 @@ public class UserHomePage extends javax.swing.JFrame {
         pub.setVisible(true);  
     }//GEN-LAST:event_waterBillLabelMouseClicked
 
-    private void broadbandBillLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_broadbandBillLabelMouseClicked
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_broadbandBillLabelMouseClicked
-
     private void mobileRechargeLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mobileRechargeLabelMouseClicked
         // TODO add your handling code here:
         MobilePayment mp = new MobilePayment();
         mp.setVisible(true);
     }//GEN-LAST:event_mobileRechargeLabelMouseClicked
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void bookEventTicketsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookEventTicketsLabelMouseClicked
+        // TODO add your handling code here:
+        BookEventTickets bet = new BookEventTickets();
+        bet.setVisible(true);
+
+    }//GEN-LAST:event_bookEventTicketsLabelMouseClicked
+
+    private void bookMovieTicketsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookMovieTicketsLabelMouseClicked
+        // TODO add your handling code here:
+        BookMovieTickets bmt = new BookMovieTickets();
+        bmt.setVisible(true);        
+    }//GEN-LAST:event_bookMovieTicketsLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -619,16 +653,17 @@ public class UserHomePage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JLabel balanceLabel;
     private javax.swing.JLabel bookBusTicketsLabel;
+    private javax.swing.JLabel bookEventTicketsLabel;
+    private javax.swing.JLabel bookMovieTicketsLabel;
     private javax.swing.JLabel bookTrainTicketsLabel;
-    private javax.swing.JLabel broadbandBillLabel;
     private javax.swing.JLabel eV;
     private javax.swing.JLabel electricityBillLabel;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel gasBillLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -651,6 +686,7 @@ public class UserHomePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JLabel mV;
     private javax.swing.JTextField mobileField;
     private javax.swing.JLabel mobileRechargeLabel;
