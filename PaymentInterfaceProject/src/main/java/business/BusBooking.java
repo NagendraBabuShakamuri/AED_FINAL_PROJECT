@@ -10,7 +10,7 @@ import java.time.LocalDate;
  *
  * @author nbabu
  */
-public class BusBookings {
+public class BusBooking {
     private int id;
     private User user;
     private Bus bus;
@@ -20,7 +20,7 @@ public class BusBookings {
     private String passengerName;
     private String passengerMobile;
     
-    public BusBookings(int id, User user, Bus bus, int seatNumber, LocalDate bookingDate, LocalDate travelDate, String passengerName, String passengerMobile) {
+    public BusBooking(int id, User user, Bus bus, int seatNumber, LocalDate bookingDate, LocalDate travelDate, String passengerName, String passengerMobile) {
         this.id = id;
         this.user = user;
         this.bus = bus;

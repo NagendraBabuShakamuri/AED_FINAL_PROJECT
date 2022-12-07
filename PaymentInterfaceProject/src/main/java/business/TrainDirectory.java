@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author nbabu
  */
-public class TrainsDirectory {
+public class TrainDirectory {
     private static ArrayList<Train> trainDirectory = new ArrayList<>();
     public static ArrayList<Train> getTrainList(String from, String to)
     {

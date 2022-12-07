@@ -8,6 +8,10 @@ import business.Bus;
 import business.BusDirectory;
 import business.City;
 import business.CityDirectory;
+import business.MobilePlan;
+import business.MobilePlanDirectory;
+import business.MobileServiceProvider;
+import business.MobileServiceProviderDirectory;
 import business.mysql.MySql;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -32,6 +36,13 @@ public class AdminFrame extends javax.swing.JFrame {
           createBusFromCityCombo.addItem(c.getCityName());
         }
         createBusFromCityCombo.setSelectedItem(null);
+        
+        MobileServiceProviderDirectory mp = new MobileServiceProviderDirectory();
+        for(MobileServiceProvider msp : mp.getMSPList())
+        {
+          createMSPNameCombo.addItem(msp.getProviderName());
+        }
+        createMSPNameCombo.setSelectedItem(null);
     }
 
     /**
@@ -116,6 +127,65 @@ public class AdminFrame extends javax.swing.JFrame {
         deleteBusButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
+        jPanel18 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        createMSPIdField = new javax.swing.JTextField();
+        createMSPNameField = new javax.swing.JTextField();
+        createMSPButton = new javax.swing.JButton();
+        jPanel19 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        updateMSPIdField = new javax.swing.JTextField();
+        updateMSPNameLabel = new javax.swing.JLabel();
+        updateMSPNameField = new javax.swing.JTextField();
+        updateMSPButton = new javax.swing.JButton();
+        updateMSPIdSearchButton = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        MSPPositionField = new javax.swing.JTextField();
+        jPanel20 = new javax.swing.JPanel();
+        deleteMSPButton = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        deleteMSPIdField = new javax.swing.JTextField();
+        jPanel21 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        createMPIdField = new javax.swing.JTextField();
+        createMSPNameCombo = new javax.swing.JComboBox<>();
+        createPlanNameField = new javax.swing.JTextField();
+        createMPDataField = new javax.swing.JTextField();
+        createMPCallsField = new javax.swing.JTextField();
+        createMPValidityField = new javax.swing.JTextField();
+        createMPPriceField = new javax.swing.JTextField();
+        createMPButton = new javax.swing.JButton();
+        jPanel22 = new javax.swing.JPanel();
+        updateMPIdSearchButton = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        updateMPIdField = new javax.swing.JTextField();
+        updateMSPNameComboLabel = new javax.swing.JLabel();
+        updateMSPNameCombo = new javax.swing.JComboBox<>();
+        updatePlanNameLabel = new javax.swing.JLabel();
+        updatePlanNameField = new javax.swing.JTextField();
+        updateMPDataLabel = new javax.swing.JLabel();
+        updateMPDataField = new javax.swing.JTextField();
+        updateMPCallsLabel = new javax.swing.JLabel();
+        updateMPCallsField = new javax.swing.JTextField();
+        updateMPValidityLabel = new javax.swing.JLabel();
+        updateMPValidityField = new javax.swing.JTextField();
+        updateMPPriceLabel = new javax.swing.JLabel();
+        updateMPPriceField = new javax.swing.JTextField();
+        updateMPButton = new javax.swing.JButton();
+        jLabel29 = new javax.swing.JLabel();
+        MPPositionField = new javax.swing.JTextField();
+        jPanel23 = new javax.swing.JPanel();
+        jLabel31 = new javax.swing.JLabel();
+        deleteMPIdField = new javax.swing.JTextField();
+        deleteMPButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -133,7 +203,7 @@ public class AdminFrame extends javax.swing.JFrame {
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Create Admin", jPanel15);
@@ -146,7 +216,7 @@ public class AdminFrame extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("View/Update Admin", jPanel9);
@@ -159,7 +229,7 @@ public class AdminFrame extends javax.swing.JFrame {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Delete Admin", jPanel10);
@@ -258,7 +328,7 @@ public class AdminFrame extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Banking Admin", jPanel2);
@@ -433,21 +503,214 @@ public class AdminFrame extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Train Admin", jPanel4);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
-        );
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane4.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel17.setText("MSP Id:");
+        jPanel18.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+
+        jLabel18.setText("MSP Name:");
+        jPanel18.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+        jPanel18.add(createMSPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 120, -1));
+        jPanel18.add(createMSPNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 120, -1));
+
+        createMSPButton.setText("Create");
+        createMSPButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createMSPButtonActionPerformed(evt);
+            }
+        });
+        jPanel18.add(createMSPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 230, -1));
+
+        jTabbedPane4.addTab("Create MSP", jPanel18);
+
+        jPanel19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel27.setText("MSP Id:");
+        jPanel19.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+        jPanel19.add(updateMSPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 120, -1));
+
+        updateMSPNameLabel.setText("MSP Name:");
+        jPanel19.add(updateMSPNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+        updateMSPNameLabel.setVisible(false);
+        jPanel19.add(updateMSPNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 120, -1));
+        updateMSPNameField.setVisible(false);
+
+        updateMSPButton.setText("Update");
+        updateMSPButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMSPButtonActionPerformed(evt);
+            }
+        });
+        jPanel19.add(updateMSPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 230, -1));
+        updateMSPButton.setVisible(false);
+
+        updateMSPIdSearchButton.setText("Search");
+        updateMSPIdSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMSPIdSearchButtonActionPerformed(evt);
+            }
+        });
+        jPanel19.add(updateMSPIdSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
+
+        jLabel28.setText("Position:");
+        jPanel19.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, -1, -1));
+
+        MSPPositionField.setEnabled(false);
+        jPanel19.add(MSPPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 120, -1));
+
+        jTabbedPane4.addTab("View/Update MSP", jPanel19);
+
+        jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        deleteMSPButton.setText("Delete");
+        deleteMSPButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMSPButtonActionPerformed(evt);
+            }
+        });
+        jPanel20.add(deleteMSPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 230, -1));
+
+        jLabel30.setText("MSP Id:");
+        jPanel20.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+        jPanel20.add(deleteMSPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 120, -1));
+
+        jTabbedPane4.addTab("Delete MSP", jPanel20);
+
+        jPanel21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel19.setText("MP Id:");
+        jPanel21.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
+
+        jLabel20.setText("MSP Name:");
+        jPanel21.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
+
+        jLabel21.setText("Plan Name:");
+        jPanel21.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
+
+        jLabel22.setText("Data:");
+        jPanel21.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
+
+        jLabel23.setText("Calls");
+        jPanel21.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, -1));
+
+        jLabel24.setText("Validity:");
+        jPanel21.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, -1));
+
+        jLabel25.setText("Price:");
+        jPanel21.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, -1, -1));
+        jPanel21.add(createMPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 110, -1));
+
+        jPanel21.add(createMSPNameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 110, -1));
+        jPanel21.add(createPlanNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 110, -1));
+        jPanel21.add(createMPDataField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 110, -1));
+        jPanel21.add(createMPCallsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 110, -1));
+        jPanel21.add(createMPValidityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 110, -1));
+        jPanel21.add(createMPPriceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 110, -1));
+
+        createMPButton.setText("Create");
+        createMPButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createMPButtonActionPerformed(evt);
+            }
+        });
+        jPanel21.add(createMPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 470, 230, -1));
+
+        jTabbedPane4.addTab("Create Mobile Plan", jPanel21);
+
+        jPanel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        updateMPIdSearchButton.setText("Search");
+        updateMPIdSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMPIdSearchButtonActionPerformed(evt);
+            }
+        });
+        jPanel22.add(updateMPIdSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, -1, -1));
+
+        jLabel26.setText("MP Id:");
+        jPanel22.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
+        jPanel22.add(updateMPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 110, -1));
+
+        updateMSPNameComboLabel.setText("MSP Name:");
+        jPanel22.add(updateMSPNameComboLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, -1, -1));
+        updateMSPNameComboLabel.setVisible(false);
+
+        jPanel22.add(updateMSPNameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 110, -1));
+        updateMSPNameCombo.setVisible(false);
+
+        updatePlanNameLabel.setText("Plan Name:");
+        jPanel22.add(updatePlanNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
+        updatePlanNameLabel.setVisible(false);
+        jPanel22.add(updatePlanNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 110, -1));
+        updatePlanNameField.setVisible(false);
+
+        updateMPDataLabel.setText("Data:");
+        jPanel22.add(updateMPDataLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
+        updateMPDataLabel.setVisible(false);
+        jPanel22.add(updateMPDataField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 110, -1));
+        updateMPDataField.setVisible(false);
+
+        updateMPCallsLabel.setText("Calls");
+        jPanel22.add(updateMPCallsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, -1, -1));
+        updateMPCallsLabel.setVisible(false);
+        jPanel22.add(updateMPCallsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 110, -1));
+        updateMPCallsField.setVisible(false);
+
+        updateMPValidityLabel.setText("Validity:");
+        jPanel22.add(updateMPValidityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, -1, -1));
+        updateMPValidityLabel.setVisible(false);
+        jPanel22.add(updateMPValidityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 110, -1));
+        updateMPValidityField.setVisible(false);
+
+        updateMPPriceLabel.setText("Price:");
+        jPanel22.add(updateMPPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, -1, -1));
+        updateMPPriceLabel.setVisible(false);
+        jPanel22.add(updateMPPriceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 110, -1));
+        updateMPPriceField.setVisible(false);
+
+        updateMPButton.setText("Update");
+        updateMPButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMPButtonActionPerformed(evt);
+            }
+        });
+        jPanel22.add(updateMPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 200, -1));
+        updateMPButton.setVisible(false);
+
+        jLabel29.setText("Position:");
+        jPanel22.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
+
+        MPPositionField.setEnabled(false);
+        jPanel22.add(MPPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 110, -1));
+
+        jTabbedPane4.addTab("View/Update Mobile Plan", jPanel22);
+
+        jPanel23.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel31.setText("MP Id:");
+        jPanel23.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
+        jPanel23.add(deleteMPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 110, -1));
+
+        deleteMPButton.setText("Delete");
+        deleteMPButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMPButtonActionPerformed(evt);
+            }
+        });
+        jPanel23.add(deleteMPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 230, -1));
+
+        jTabbedPane4.addTab("Delete Mobile Plan", jPanel23);
+
+        jPanel5.add(jTabbedPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 870));
 
         jTabbedPane1.addTab("Recharge Admin", jPanel5);
 
@@ -459,7 +722,7 @@ public class AdminFrame extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Utilities Admin", jPanel6);
@@ -472,7 +735,7 @@ public class AdminFrame extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Events Admin", jPanel7);
@@ -485,7 +748,7 @@ public class AdminFrame extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Movie Admin", jPanel8);
@@ -652,6 +915,83 @@ public class AdminFrame extends javax.swing.JFrame {
                 if(!found)
                     JOptionPane.showMessageDialog(this, "Bus with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
                 break;
+                
+            case "mspId":
+                updateMSPNameLabel.setVisible(false);
+                updateMSPNameField.setVisible(false);
+                updateMSPButton.setVisible(false);
+                MobileServiceProviderDirectory mspd = new MobileServiceProviderDirectory();
+                for(MobileServiceProvider msp: mspd.getMSPList())
+                {
+                  if(Integer.parseInt(updateMSPIdField.getText()) == msp.getId())
+                  { 
+                      found = true;
+                      position = msp.getId();
+                      updateMSPNameLabel.setVisible(true);
+                      updateMSPNameField.setVisible(true);
+                      updateMSPButton.setVisible(true);
+                      MSPPositionField.setText(Integer.valueOf(position).toString());
+                      updateMSPNameField.setText(msp.getProviderName());
+                      break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Mobile service provider with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+                
+            case "mpId":
+                updateMSPNameComboLabel.setVisible(false);
+                updateMSPNameCombo.setVisible(false);
+                updatePlanNameLabel.setVisible(false);
+                updatePlanNameField.setVisible(false);
+                updateMPDataLabel.setVisible(false);
+                updateMPDataField.setVisible(false);
+                updateMPCallsLabel.setVisible(false);
+                updateMPCallsField.setVisible(false);
+                updateMPValidityLabel.setVisible(false);
+                updateMPValidityField.setVisible(false);
+                updateMPPriceLabel.setVisible(false);
+                updateMPPriceField.setVisible(false);
+                updateMPButton.setVisible(false);
+                
+                MobilePlanDirectory mpd = new MobilePlanDirectory();
+                for(MobilePlan mp : mpd.getMPList())
+                {
+                  if(Integer.parseInt(updateMPIdField.getText()) == mp.getId())
+                  {
+                    found = true;
+                    position = mp.getId();
+                    updateMSPNameComboLabel.setVisible(true);
+                    updateMSPNameCombo.setVisible(true);
+                    updatePlanNameLabel.setVisible(true);
+                    updatePlanNameField.setVisible(true);
+                    updateMPDataLabel.setVisible(true);
+                    updateMPDataField.setVisible(true);
+                    updateMPCallsLabel.setVisible(true);
+                    updateMPCallsField.setVisible(true);
+                    updateMPValidityLabel.setVisible(true);
+                    updateMPValidityField.setVisible(true);
+                    updateMPPriceLabel.setVisible(true);
+                    updateMPPriceField.setVisible(true);
+                    updateMPButton.setVisible(true);
+                    
+                    MPPositionField.setText(Integer.valueOf(position).toString());
+                    MobileServiceProviderDirectory mspdd = new MobileServiceProviderDirectory();
+                    updateMSPNameCombo.removeAllItems();
+                    for(MobileServiceProvider msp : mspdd.getMSPList())
+                        updateMSPNameCombo.addItem(msp.getProviderName());
+                    updateMSPNameCombo.setSelectedItem(mp.getMobileServiceProvider().getProviderName());
+                    updatePlanNameField.setText(mp.getPlanName());
+                    updateMPDataField.setText(mp.getData());
+                    updateMPCallsField.setText(mp.getCalls());
+                    updateMPValidityField.setText(String.valueOf(mp.getValidity()));
+                    updateMPPriceField.setText(String.valueOf(mp.getPrice()));
+                    break;
+                  } 
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Mobile plan with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
         }
     }
     private void citySearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citySearchButtonActionPerformed
@@ -699,7 +1039,7 @@ public class AdminFrame extends javax.swing.JFrame {
               int res = CityDirectory.updateCity(c, position);
               if(res > 0)
               {
-                JOptionPane.showMessageDialog(this, "Updated the city successfully..", null, JOptionPane.OK_OPTION);
+                JOptionPane.showMessageDialog(this, "Updated the city successfully.", null, JOptionPane.OK_OPTION);
                 cityPositionField.setText(cityId);
               }
               else
@@ -949,6 +1289,330 @@ public class AdminFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Bus with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_deleteBusButtonActionPerformed
+    public boolean mspClientSideValidation(JFrame frame, String cityId, String cityName)
+    {
+        if(Pattern.compile("^[1-9]\\d*$").matcher(cityId).matches() && !cityId.equals(""))
+        {
+            if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(cityName).matches() && !cityName.equals(""))
+            {
+              return true;
+            }
+            else
+              JOptionPane.showMessageDialog(frame, "MSP Name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE); 
+        }     
+        else
+            JOptionPane.showMessageDialog(frame, "MSP Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);  
+      return false;
+    }
+    private void createMSPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMSPButtonActionPerformed
+        // TODO add your handling code here:
+        String MSPId = createMSPIdField.getText().trim();
+        String MSPName = createMSPNameField.getText().trim().toUpperCase();
+        boolean passed = mspClientSideValidation(this, MSPId, MSPName);
+        boolean exists = false;
+        if(passed)
+        {
+            MobileServiceProviderDirectory mspd = new MobileServiceProviderDirectory();
+            for(MobileServiceProvider msp: mspd.getMSPList())
+            {
+              if(Integer.parseInt(MSPId) == msp.getId())
+              {
+                JOptionPane.showMessageDialog(this, "MSP with the given Id already exists\nPlease give another Id to the MSP.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;              
+              }
+              else if(MSPName.equals(msp.getProviderName()))
+              {
+                JOptionPane.showMessageDialog(this, "MSP with the given name already exists\nPlease give another name to the MSP.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;
+              }
+            }
+            if(!exists)
+            {
+              int id = Integer.parseInt(MSPId);
+              String name = MSPName;
+              MobileServiceProvider msp = new MobileServiceProvider(id, name);
+              int res = MobileServiceProviderDirectory.addMSP(msp);
+              if(res > 0)
+              {
+                JOptionPane.showMessageDialog(this, "Created a new MSP successfully.", null, JOptionPane.OK_OPTION);
+                createMSPNameCombo.addItem(name);
+              }
+            }
+        }
+    }//GEN-LAST:event_createMSPButtonActionPerformed
+    public boolean mpClientSideValidation(JFrame frame, String mpId, String planName, String data, String calls, String validity, String price)
+    {
+      if(Pattern.compile("^[1-9]\\d*$").matcher(mpId).matches())
+      {
+        if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(planName).matches() && !planName.equals(""))
+        {
+          if(Pattern.compile("^[a-zA-Z\\s0-9\\/]*$").matcher(data).matches() && !data.equals(""))
+          {
+            if(Pattern.compile("^[a-zA-Z\\s0-9\\/]*$").matcher(calls).matches() && !calls.equals(""))
+            {
+              if(Pattern.compile("^[1-9]\\d*$").matcher(validity).matches())
+              {
+                if(Pattern.compile("^[0-9.]+$").matcher(price).matches())
+                {
+                    return true;
+                }
+                else
+                {
+                     JOptionPane.showMessageDialog(frame, "Price is not valid.\nOnly positive numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+              }
+              else
+                JOptionPane.showMessageDialog(this, "Validity is not valid.\nOnly numbers are allowed", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+               JOptionPane.showMessageDialog(frame, "Calls is not valid.\nOnly characters, spaces, slashes and numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }
+          else
+          {
+             JOptionPane.showMessageDialog(frame, "Data is not valid.\nOnly characters, spaces, slashes and numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+          }
+        }
+        else
+          JOptionPane.showMessageDialog(frame, "Plan name is not valid.\nOnly Characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+      }
+      else
+      {
+        JOptionPane.showMessageDialog(frame, "MP Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+      }
+      return false;
+    }
+    private void createMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMPButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            String mpId = createMPIdField.getText().trim();
+            String mSPName = createMSPNameCombo.getSelectedItem().toString();
+            String planName = createPlanNameField.getText().trim().toUpperCase();
+            String data = createMPDataField.getText().trim().toUpperCase();
+            String calls = createMPCallsField.getText().trim().toUpperCase();
+            String validity = createMPValidityField.getText().trim(); 
+            String price = createMPPriceField.getText().trim();
+            boolean passed = mpClientSideValidation(this, mpId, planName, data, calls, validity, price);
+            boolean exists = false;
+            if(passed)
+            {
+                MobilePlanDirectory mpd = new MobilePlanDirectory();
+                for(MobilePlan mp: mpd.getMPList())
+                {
+                  if(Integer.parseInt(mpId) == mp.getId())
+                  {
+                    JOptionPane.showMessageDialog(this, "Mobile Plan with the given Id already exists\nPlease give another Id to the Mobile Plan.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;              
+                  }
+                  else if(planName.equals(mp.getPlanName()))
+                  {
+                    JOptionPane.showMessageDialog(this, "Mobile Plan with the given name already exists\nPlease give another name to the Mobile Plan.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;
+                  }
+                }
+                if(!exists)
+                {
+                  int id = Integer.parseInt(mpId);
+                  int mspId = MobileServiceProviderDirectory.getMSPId(mSPName);
+                  MobileServiceProvider msp = new MobileServiceProvider(mspId, mSPName);
+                  int valid = Integer.parseInt(validity);
+                  double amount = Double.parseDouble(price);
+                  MobilePlan mp = new MobilePlan(id, msp, planName, data, calls, valid, amount);
+                  int res = MobilePlanDirectory.addMP(mp);
+                  if(res > 0)
+                  {
+                    JOptionPane.showMessageDialog(this, "Created a new mobile plan successfully..", null, JOptionPane.OK_OPTION); 
+                  }
+                }
+            }
+        }
+        catch(NullPointerException ex)
+        {
+          JOptionPane.showMessageDialog(this, "Please select a mobile service provider.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_createMPButtonActionPerformed
+
+    private void updateMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMPButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            String mpId = updateMPIdField.getText().trim();
+            String mSPName = updateMSPNameCombo.getSelectedItem().toString();
+            String planName = updatePlanNameField.getText().trim().toUpperCase();
+            String data = updateMPDataField.getText().trim().toUpperCase();
+            String calls = updateMPCallsField.getText().trim().toUpperCase();
+            String validity = updateMPValidityField.getText().trim(); 
+            String price = updateMPPriceField.getText().trim();
+            int position = Integer.valueOf(MPPositionField.getText());
+            boolean passed = mpClientSideValidation(this, mpId, planName, data, calls, validity, price);
+            boolean exists = false;
+            if(passed)
+            {
+                MobilePlanDirectory mpd = new MobilePlanDirectory();
+                for(MobilePlan mp: mpd.getMPList())
+                {
+                  if(Integer.parseInt(mpId) == mp.getId() && mp.getId() != position)
+                  {
+                    JOptionPane.showMessageDialog(this, "Mobile Plan with the given Id already exists\nPlease give another Id to the Mobile Plan.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;              
+                  }
+                  else if(planName.equals(mp.getPlanName()) && mp.getId() != position)
+                  {
+                    JOptionPane.showMessageDialog(this, "Mobile Plan with the given name already exists\nPlease give another name to the Mobile Plan.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;
+                  }
+                }
+                if(!exists)
+                {
+                  int id = Integer.parseInt(mpId);
+                  int mspId = MobileServiceProviderDirectory.getMSPId(mSPName);
+                  MobileServiceProvider msp = new MobileServiceProvider(mspId, mSPName);
+                  int valid = Integer.parseInt(validity);
+                  double amount = Double.parseDouble(price);
+                  MobilePlan mp = new MobilePlan(id, msp, planName, data, calls, valid, amount);
+                  int res = MobilePlanDirectory.updateMP(mp, position);
+                  if(res > 0)
+                  {
+                    JOptionPane.showMessageDialog(this, "Updated the mobile plan successfully..", null, JOptionPane.OK_OPTION);
+                    MPPositionField.setText(mpId);             
+                  }
+                  else
+                    JOptionPane.showMessageDialog(this, "Mobile Plan does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }
+        catch(NullPointerException ex)
+        {
+          JOptionPane.showMessageDialog(this, "Please select a mobile service provider.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_updateMPButtonActionPerformed
+
+    private void updateMSPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMSPButtonActionPerformed
+        // TODO add your handling code here:
+        String MSPId = updateMSPIdField.getText().trim();
+        String MSPName = updateMSPNameField.getText().trim().toUpperCase();
+        int position = Integer.valueOf(MSPPositionField.getText());
+        boolean passed = mspClientSideValidation(this, MSPId, MSPName);
+        boolean exists = false;
+        if(passed)
+        {
+            MobileServiceProviderDirectory mspd = new MobileServiceProviderDirectory();
+            for(MobileServiceProvider msp: mspd.getMSPList())
+            {
+              if(Integer.parseInt(MSPId) == msp.getId() && msp.getId() != position)
+              {
+                JOptionPane.showMessageDialog(this, "MSP with the given Id already exists\nPlease give another Id to the MSP.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;              
+              }
+              else if(MSPName.equals(msp.getProviderName()) && msp.getId() != position)
+              {
+                JOptionPane.showMessageDialog(this, "MSP with the given name already exists\nPlease give another name to the MSP.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;
+              }
+            }
+            if(!exists)
+            {
+              int id = Integer.parseInt(MSPId);
+              String name = MSPName;
+              MobileServiceProvider msp = new MobileServiceProvider(id, name);
+              int res = MobileServiceProviderDirectory.updateMSP(msp, position);
+              if(res > 0)
+              {
+                JOptionPane.showMessageDialog(this, "Updated the MSP successfully.", null, JOptionPane.OK_OPTION);                
+                MSPPositionField.setText(MSPId);
+                createMSPNameCombo.removeAllItems();
+                MobileServiceProviderDirectory mspdd = new MobileServiceProviderDirectory();
+                for(MobileServiceProvider ms : mspdd.getMSPList())
+                {
+                  createMSPNameCombo.addItem(ms.getProviderName());
+                }
+              }
+              else
+                JOptionPane.showMessageDialog(this, "MSP does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);  
+            }
+        }
+    }//GEN-LAST:event_updateMSPButtonActionPerformed
+
+    private void updateMSPIdSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMSPIdSearchButtonActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateMSPIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Mobile service provider Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("mspId", searchText.trim());
+    }//GEN-LAST:event_updateMSPIdSearchButtonActionPerformed
+
+    private void updateMPIdSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMPIdSearchButtonActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateMPIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Mobile Plan Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("mpId", searchText.trim());
+    }//GEN-LAST:event_updateMPIdSearchButtonActionPerformed
+
+    private void deleteMSPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMSPButtonActionPerformed
+        // TODO add your handling code here:
+        String deleteText = deleteMSPIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "MSP Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);       
+        if(flag)
+        {
+          int res = MobileServiceProviderDirectory.deleteMSP(Integer.parseInt(deleteText));
+          if(res > 0)
+          {
+            JOptionPane.showMessageDialog(this, "Deleted the MSP successfully..", null, JOptionPane.OK_OPTION);
+            createMSPNameCombo.removeAllItems();
+            MobileServiceProviderDirectory mp = new MobileServiceProviderDirectory();
+            for(MobileServiceProvider msp : mp.getMSPList())
+            {
+              createMSPNameCombo.addItem(msp.getProviderName());
+            }
+            createMSPNameCombo.setSelectedItem(null);
+          }
+          else
+            JOptionPane.showMessageDialog(this, "MSP with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteMSPButtonActionPerformed
+
+    private void deleteMPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMPButtonActionPerformed
+        // TODO add your handling code here:
+        String deleteText = deleteMPIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Mobile Plan Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);       
+        if(flag)
+        {
+          int res = MobilePlanDirectory.deleteMP(Integer.parseInt(deleteText));
+          if(res > 0)
+          {
+            JOptionPane.showMessageDialog(this, "Deleted the Mobile Plan successfully..", null, JOptionPane.OK_OPTION);
+          }
+          else
+            JOptionPane.showMessageDialog(this, "Mobile Plan with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteMPButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -986,6 +1650,8 @@ public class AdminFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField MPPositionField;
+    private javax.swing.JTextField MSPPositionField;
     private javax.swing.JTextField busPositionField;
     private javax.swing.JLabel cityNameLabel;
     private javax.swing.JTextField cityPositionField;
@@ -1003,10 +1669,25 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton createCityButton;
     private javax.swing.JTextField createCityIdField;
     private javax.swing.JTextField createCityNameField;
+    private javax.swing.JButton createMPButton;
+    private javax.swing.JTextField createMPCallsField;
+    private javax.swing.JTextField createMPDataField;
+    private javax.swing.JTextField createMPIdField;
+    private javax.swing.JTextField createMPPriceField;
+    private javax.swing.JTextField createMPValidityField;
+    private javax.swing.JButton createMSPButton;
+    private javax.swing.JTextField createMSPIdField;
+    private javax.swing.JComboBox<String> createMSPNameCombo;
+    private javax.swing.JTextField createMSPNameField;
+    private javax.swing.JTextField createPlanNameField;
     private javax.swing.JButton deleteBusButton;
     private javax.swing.JTextField deleteBusIdField;
     private javax.swing.JButton deleteCityButton;
     private javax.swing.JTextField deleteCityIdField;
+    private javax.swing.JButton deleteMPButton;
+    private javax.swing.JTextField deleteMPIdField;
+    private javax.swing.JButton deleteMSPButton;
+    private javax.swing.JTextField deleteMSPIdField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1015,8 +1696,23 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1032,7 +1728,13 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1043,6 +1745,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JButton updateBusButton;
     private javax.swing.JTextField updateBusFareField;
     private javax.swing.JLabel updateBusFareLabel;
@@ -1062,5 +1765,25 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel updateBusTravelDateLabel;
     private javax.swing.JTextField updateCityIdField;
     private javax.swing.JTextField updateCityNameField;
+    private javax.swing.JButton updateMPButton;
+    private javax.swing.JTextField updateMPCallsField;
+    private javax.swing.JLabel updateMPCallsLabel;
+    private javax.swing.JTextField updateMPDataField;
+    private javax.swing.JLabel updateMPDataLabel;
+    private javax.swing.JTextField updateMPIdField;
+    private javax.swing.JButton updateMPIdSearchButton;
+    private javax.swing.JTextField updateMPPriceField;
+    private javax.swing.JLabel updateMPPriceLabel;
+    private javax.swing.JTextField updateMPValidityField;
+    private javax.swing.JLabel updateMPValidityLabel;
+    private javax.swing.JButton updateMSPButton;
+    private javax.swing.JTextField updateMSPIdField;
+    private javax.swing.JButton updateMSPIdSearchButton;
+    private javax.swing.JComboBox<String> updateMSPNameCombo;
+    private javax.swing.JLabel updateMSPNameComboLabel;
+    private javax.swing.JTextField updateMSPNameField;
+    private javax.swing.JLabel updateMSPNameLabel;
+    private javax.swing.JTextField updatePlanNameField;
+    private javax.swing.JLabel updatePlanNameLabel;
     // End of variables declaration//GEN-END:variables
 }
