@@ -67,7 +67,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/role.png"))); // NOI18N
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 50, -1));
 
-        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "System Admin" }));
+        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "System Admin", "Travel Admin", "Banking Admin", "Movie Admin", "Event Admin", "Utilities Admin", "Recharge Admin" }));
         jPanel2.add(roleCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 160, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N

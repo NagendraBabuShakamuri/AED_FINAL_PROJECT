@@ -114,9 +114,15 @@
         <Component class="javax.swing.JComboBox" name="roleCombo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
+              <StringArray count="8">
                 <StringItem index="0" value="User"/>
                 <StringItem index="1" value="System Admin"/>
+                <StringItem index="2" value="Travel Admin"/>
+                <StringItem index="3" value="Banking Admin"/>
+                <StringItem index="4" value="Movie Admin"/>
+                <StringItem index="5" value="Event Admin"/>
+                <StringItem index="6" value="Utilities Admin"/>
+                <StringItem index="7" value="Recharge Admin"/>
               </StringArray>
             </Property>
           </Properties>
