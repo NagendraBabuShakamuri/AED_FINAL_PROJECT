@@ -91,27 +91,29 @@ public class AdminFrame extends javax.swing.JFrame {
         createBusButton = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
+        updateBusIdField = new javax.swing.JTextField();
+        updateBusNameLabel = new javax.swing.JLabel();
+        updateBusNameField = new javax.swing.JTextField();
+        updateBusFromCityLabel = new javax.swing.JLabel();
+        updateBusFromCityCombo = new javax.swing.JComboBox<>();
+        updateBusToCityLabel = new javax.swing.JLabel();
+        updateBusToCityCombo = new javax.swing.JComboBox<>();
+        updateBusStartAtLabel = new javax.swing.JLabel();
+        updateBusStartAtField = new javax.swing.JTextField();
+        updateBusReachAtLabel = new javax.swing.JLabel();
+        updateBusReachAtField = new javax.swing.JTextField();
+        updateBusFareLabel = new javax.swing.JLabel();
+        updateBusFareField = new javax.swing.JTextField();
+        updateBusTravelDateLabel = new javax.swing.JLabel();
+        updateBusTravelDateField = new javax.swing.JTextField();
+        updateBusButton = new javax.swing.JButton();
+        updateBusSearchButton = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jLabel18 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        jLabel19 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
-        jLabel22 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        busPositionField = new javax.swing.JTextField();
         jPanel14 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        deleteBusIdField = new javax.swing.JTextField();
+        deleteBusButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -318,43 +320,79 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jLabel15.setText("Bus Id:");
         jPanel13.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
-        jPanel13.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
+        jPanel13.add(updateBusIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
 
-        jLabel16.setText("Bus Name:");
-        jPanel13.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
-        jPanel13.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
+        updateBusNameLabel.setText("Bus Name:");
+        jPanel13.add(updateBusNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+        updateBusNameLabel.setVisible(false);
+        jPanel13.add(updateBusNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
+        updateBusNameField.setVisible(false);
 
-        jLabel17.setText("From city:");
-        jPanel13.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        updateBusFromCityLabel.setText("From city:");
+        jPanel13.add(updateBusFromCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        updateBusFromCityLabel.setVisible(false);
 
-        jPanel13.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
+        updateBusFromCityCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                updateBusFromCityComboItemStateChanged(evt);
+            }
+        });
+        jPanel13.add(updateBusFromCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
+        updateBusFromCityCombo.setVisible(false);
 
-        jLabel18.setText("To city:");
-        jPanel13.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        updateBusToCityLabel.setText("To city:");
+        jPanel13.add(updateBusToCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        updateBusToCityLabel.setVisible(false);
 
-        jPanel13.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
+        jPanel13.add(updateBusToCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
+        updateBusToCityCombo.setVisible(false);
 
-        jLabel19.setText("Start At:");
-        jPanel13.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, -1));
-        jPanel13.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 120, -1));
+        updateBusStartAtLabel.setText("Start At:");
+        jPanel13.add(updateBusStartAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, -1));
+        updateBusStartAtLabel.setVisible(false);
+        jPanel13.add(updateBusStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 120, -1));
+        updateBusStartAtField.setVisible(false);
 
-        jLabel20.setText("Reach At:");
-        jPanel13.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
-        jPanel13.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 120, -1));
+        updateBusReachAtLabel.setText("Reach At:");
+        jPanel13.add(updateBusReachAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+        updateBusReachAtLabel.setVisible(false);
+        jPanel13.add(updateBusReachAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 120, -1));
+        updateBusReachAtField.setVisible(false);
 
-        jLabel21.setText("Fare:");
-        jPanel13.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
-        jPanel13.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 120, -1));
+        updateBusFareLabel.setText("Fare:");
+        jPanel13.add(updateBusFareLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
+        updateBusFareLabel.setVisible(false);
+        jPanel13.add(updateBusFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 120, -1));
+        updateBusFareField.setVisible(false);
 
-        jLabel22.setText("Travel date:");
-        jPanel13.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
-        jPanel13.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 120, -1));
+        updateBusTravelDateLabel.setText("Travel date:");
+        jPanel13.add(updateBusTravelDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
+        updateBusTravelDateLabel.setVisible(false);
+        jPanel13.add(updateBusTravelDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 120, -1));
+        updateBusTravelDateField.setVisible(false);
 
-        jButton3.setText("Update");
-        jPanel13.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 210, -1));
+        updateBusButton.setText("Update");
+        updateBusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBusButtonActionPerformed(evt);
+            }
+        });
+        jPanel13.add(updateBusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 210, -1));
+        updateBusButton.setVisible(false);
 
-        jButton4.setText("Search");
-        jPanel13.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
+        updateBusSearchButton.setText("Search");
+        updateBusSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBusSearchButtonActionPerformed(evt);
+            }
+        });
+        jPanel13.add(updateBusSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
+
+        jLabel16.setText("Position:");
+        jPanel13.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
+
+        busPositionField.setEnabled(false);
+        jPanel13.add(busPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 120, -1));
 
         jTabbedPane2.addTab("View/Update Buses", jPanel13);
 
@@ -362,10 +400,15 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jLabel14.setText("Bus Id:");
         jPanel14.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 137, -1, -1));
-        jPanel14.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 130, -1));
+        jPanel14.add(deleteBusIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 130, -1));
 
-        jButton2.setText("Delete");
-        jPanel14.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 200, -1));
+        deleteBusButton.setText("Delete");
+        deleteBusButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBusButtonActionPerformed(evt);
+            }
+        });
+        jPanel14.add(deleteBusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 200, -1));
 
         jTabbedPane2.addTab("Delete Buses", jPanel14);
 
@@ -538,13 +581,82 @@ public class AdminFrame extends javax.swing.JFrame {
                   }
                 }
                 if(!found)
-                    JOptionPane.showMessageDialog(this, "City with the given Id does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "City with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+            case "busId":
+                updateBusNameLabel.setVisible(false);
+                updateBusFromCityLabel.setVisible(false);
+                updateBusToCityLabel.setVisible(false);
+                updateBusStartAtLabel.setVisible(false);
+                updateBusReachAtLabel.setVisible(false);
+                updateBusFareLabel.setVisible(false);
+                updateBusTravelDateLabel.setVisible(false);
+                
+                updateBusNameField.setVisible(false);
+                updateBusFromCityCombo.setVisible(false);
+                updateBusToCityCombo.setVisible(false);
+                updateBusStartAtField.setVisible(false);
+                updateBusReachAtField.setVisible(false);
+                updateBusFareField.setVisible(false);
+                updateBusTravelDateField.setVisible(false);
+                
+                updateBusButton.setVisible(false);
+                
+                BusDirectory bd = new BusDirectory();
+                for(Bus b : bd.getBusList())
+                {
+                  if(Integer.parseInt(updateBusIdField.getText()) == b.getId())
+                  { 
+                        found = true;
+                        position = b.getId();
+                        updateBusNameLabel.setVisible(true);
+                        updateBusFromCityLabel.setVisible(true);
+                        updateBusToCityLabel.setVisible(true);
+                        updateBusStartAtLabel.setVisible(true);
+                        updateBusReachAtLabel.setVisible(true);
+                        updateBusFareLabel.setVisible(true);
+                        updateBusTravelDateLabel.setVisible(true);
+
+                        updateBusNameField.setVisible(true);
+                        updateBusFromCityCombo.setVisible(true);
+                        updateBusToCityCombo.setVisible(true);
+                        updateBusStartAtField.setVisible(true);
+                        updateBusReachAtField.setVisible(true);
+                        updateBusFareField.setVisible(true);
+                        updateBusTravelDateField.setVisible(true);
+
+                        updateBusButton.setVisible(true);
+                        
+                        busPositionField.setText(Integer.valueOf(position).toString());
+                        updateBusNameField.setText(b.getBusName());
+                        CityDirectory cityd = new CityDirectory();
+                        updateBusFromCityCombo.removeAllItems();
+                        for(City c : cityd.getCityList())
+                          updateBusFromCityCombo.addItem(c.getCityName());
+                        updateBusFromCityCombo.setSelectedItem(b.getFromCity().getCityName());
+                        updateBusToCityCombo.removeAllItems();
+                        for(int i = 0; i < updateBusFromCityCombo.getItemCount(); i++)
+                        {
+                          if(updateBusFromCityCombo.getSelectedItem().toString().equals(updateBusFromCityCombo.getItemAt(i).toString()))
+                            continue;           
+                          updateBusToCityCombo.addItem(updateBusFromCityCombo.getItemAt(i).toString());
+                        }
+                        updateBusToCityCombo.setSelectedItem(b.getToCity().getCityName());
+                        updateBusStartAtField.setText(b.getDepartureTime());
+                        updateBusReachAtField.setText(b.getArrivalTime());
+                        updateBusFareField.setText(String.valueOf(b.getFare()));
+                        updateBusTravelDateField.setText(b.getTravelDate().toString());
+                        break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Bus with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
                 break;
         }
     }
     private void citySearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citySearchButtonActionPerformed
         // TODO add your handling code here:
-        String searchText = updateCityIdField.getText();
+        String searchText = updateCityIdField.getText().trim();
         boolean flag = false;
         if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
             flag = true;
@@ -591,7 +703,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 cityPositionField.setText(cityId);
               }
               else
-                JOptionPane.showMessageDialog(this, "City does not exist..", "Alert", JOptionPane.WARNING_MESSAGE);  
+                JOptionPane.showMessageDialog(this, "City does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);  
             }
         }
     }//GEN-LAST:event_cityUpdateButtonActionPerformed
@@ -633,7 +745,7 @@ public class AdminFrame extends javax.swing.JFrame {
     {
       if(Pattern.compile("^[1-9]\\d*$").matcher(busId).matches())
       {
-        if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(busName).matches() && !busName.equals(""))
+        if(Pattern.compile("^[a-zA-Z\\s0-9]*$").matcher(busName).matches() && !busName.equals(""))
         {
           if(Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2})").matcher(startAt).matches())
           {
@@ -668,7 +780,7 @@ public class AdminFrame extends javax.swing.JFrame {
           }
         }
         else
-          JOptionPane.showMessageDialog(frame, "Bus Name is not valid.\nOnly Characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+          JOptionPane.showMessageDialog(frame, "Bus Name is not valid.\nOnly Characters, numbers and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
       }
       else
       {
@@ -732,6 +844,112 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_createBusButtonActionPerformed
 
+    private void updateBusSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBusSearchButtonActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateBusIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Bus Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("busId", searchText.trim());
+    }//GEN-LAST:event_updateBusSearchButtonActionPerformed
+
+    private void updateBusFromCityComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updateBusFromCityComboItemStateChanged
+        // TODO add your handling code here:
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+        {
+            updateBusToCityCombo.removeAllItems();
+            for(int i = 0; i < updateBusFromCityCombo.getItemCount(); i++)
+            {
+              if(updateBusFromCityCombo.getSelectedItem().toString().equals(updateBusFromCityCombo.getItemAt(i).toString()))
+                continue;           
+              updateBusToCityCombo.addItem(updateBusFromCityCombo.getItemAt(i).toString());
+            }
+        }
+    }//GEN-LAST:event_updateBusFromCityComboItemStateChanged
+
+    private void updateBusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBusButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            String busId = updateBusIdField.getText().trim();
+            String busName = updateBusNameField.getText().trim();
+            String fromCity = updateBusFromCityCombo.getSelectedItem().toString();
+            String toCity = updateBusToCityCombo.getSelectedItem().toString();
+            String startAt = updateBusStartAtField.getText().trim();
+            String endAt = updateBusReachAtField.getText().trim();
+            String farePrice = updateBusFareField.getText().trim();
+            String date = updateBusTravelDateField.getText().trim(); 
+            int position = Integer.valueOf(busPositionField.getText());
+            boolean passed = clientSidevalidation(this, busId, busName, startAt, endAt, farePrice, date);
+            boolean exists = false;
+            if(passed)
+            {
+                BusDirectory bd = new BusDirectory();
+                for(Bus b: bd.getBusList())
+                {
+                  if(Integer.parseInt(busId) == b.getId() && b.getId() != position)
+                  {
+                    JOptionPane.showMessageDialog(this, "Bus with the given Id already exists\nPlease give another Id to the Bus.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;              
+                  }
+                  else if(busName.equals(b.getBusName()) && b.getId() != position)
+                  {
+                    JOptionPane.showMessageDialog(this, "Bus with the given name already exists\nPlease give another name to the Bus.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;
+                  }
+                }
+                if(!exists)
+                {
+                  int id = Integer.parseInt(busId);
+                  int fromCityId = CityDirectory.getCityId(fromCity);
+                  int toCityId = CityDirectory.getCityId(toCity);             
+                  City from = new City(fromCityId, fromCity);
+                  City to = new City(toCityId, toCity);
+                  double fare = Double.parseDouble(farePrice);
+                  LocalDate travelDate = LocalDate.parse(date);
+                  Bus bus = new Bus(id, busName, from, to, startAt, endAt, fare, travelDate);
+                  int res = BusDirectory.updateBus(bus, position);
+                  if(res > 0)
+                  {
+                    JOptionPane.showMessageDialog(this, "Updated the Bus successfully..", null, JOptionPane.OK_OPTION); 
+                    busPositionField.setText(busId);
+                  }
+                  else
+                    JOptionPane.showMessageDialog(this, "Bus does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }
+        catch(NullPointerException ex)
+        {
+          JOptionPane.showMessageDialog(this, "Please select the from and to locations.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_updateBusButtonActionPerformed
+
+    private void deleteBusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBusButtonActionPerformed
+        // TODO add your handling code here:
+        String deleteText = deleteBusIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Bus Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);       
+        if(flag)
+        {
+          int res = BusDirectory.deleteBus(Integer.parseInt(deleteText));
+          if(res > 0)
+          {
+            JOptionPane.showMessageDialog(this, "Deleted the Bus successfully..", null, JOptionPane.OK_OPTION);
+          }
+          else
+            JOptionPane.showMessageDialog(this, "Bus with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteBusButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -768,6 +986,7 @@ public class AdminFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField busPositionField;
     private javax.swing.JLabel cityNameLabel;
     private javax.swing.JTextField cityPositionField;
     private javax.swing.JButton citySearchButton;
@@ -784,13 +1003,10 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton createCityButton;
     private javax.swing.JTextField createCityIdField;
     private javax.swing.JTextField createCityNameField;
+    private javax.swing.JButton deleteBusButton;
+    private javax.swing.JTextField deleteBusIdField;
     private javax.swing.JButton deleteCityButton;
     private javax.swing.JTextField deleteCityIdField;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -799,13 +1015,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -833,13 +1043,23 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton updateBusButton;
+    private javax.swing.JTextField updateBusFareField;
+    private javax.swing.JLabel updateBusFareLabel;
+    private javax.swing.JComboBox<String> updateBusFromCityCombo;
+    private javax.swing.JLabel updateBusFromCityLabel;
+    private javax.swing.JTextField updateBusIdField;
+    private javax.swing.JTextField updateBusNameField;
+    private javax.swing.JLabel updateBusNameLabel;
+    private javax.swing.JTextField updateBusReachAtField;
+    private javax.swing.JLabel updateBusReachAtLabel;
+    private javax.swing.JButton updateBusSearchButton;
+    private javax.swing.JTextField updateBusStartAtField;
+    private javax.swing.JLabel updateBusStartAtLabel;
+    private javax.swing.JComboBox<String> updateBusToCityCombo;
+    private javax.swing.JLabel updateBusToCityLabel;
+    private javax.swing.JTextField updateBusTravelDateField;
+    private javax.swing.JLabel updateBusTravelDateLabel;
     private javax.swing.JTextField updateCityIdField;
     private javax.swing.JTextField updateCityNameField;
     // End of variables declaration//GEN-END:variables

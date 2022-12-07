@@ -90,4 +90,59 @@ public class BusDirectory {
           MySql.shutDownConn();
         }
     }
+    public static int updateBus(Bus b, int position)
+    {
+        try
+        {
+            MySql.createConn();  
+            int busId = b.getId();
+            String busName = b.getBusName();
+            int fromCityId = b.getFromCity().getCityId();
+            int toCityId = b.getToCity().getCityId();
+            String departureTime = b.getDepartureTime();
+            String arrivalTime = b.getArrivalTime();
+            double fare = b.getFare();
+            LocalDate ld = b.getTravelDate();
+            String travelDate = "" + ld;
+            int res = MySql.insertUpdateQuery("update buses set id = " + busId + "," + "bus_name = " + "\'" + busName + "\'" + "," + "from_city = " + fromCityId + "," + "to_city = " + toCityId + "," + "start_at = " + "\'" + departureTime + "\'" + "," + "reach_at = " + "\'" + arrivalTime + "\'" + "," + "fare = " + fare + "," + "travel_date = " + "\'" + travelDate + "\'" + " where id = " + position +";");
+            if(res > 0)
+            {
+              return res;
+            }
+            else
+                return 0;
+        }
+        catch(Exception ex)
+        {
+          System.out.println(ex);
+          return 0;
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }
+    public static int deleteBus(int busId)
+    {
+        try
+        {
+            MySql.createConn();
+            int res = MySql.insertUpdateQuery("delete from buses where id = " + busId + ";");
+            if(res > 0)
+            {
+              return res;
+            }
+            else
+                return 0;
+        }
+        catch(Exception ex)
+        {
+          System.out.println(ex);
+          return 0;
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }
 }

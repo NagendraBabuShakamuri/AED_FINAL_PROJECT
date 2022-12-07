@@ -607,47 +607,60 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField8">
+                    <Component class="javax.swing.JTextField" name="updateBusIdField">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="290" y="100" width="120" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel16">
+                    <Component class="javax.swing.JLabel" name="updateBusNameLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Bus Name:"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusNameLabel.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="210" y="150" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField9">
+                    <Component class="javax.swing.JTextField" name="updateBusNameField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusNameField.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="290" y="150" width="120" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel17">
+                    <Component class="javax.swing.JLabel" name="updateBusFromCityLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="From city:"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusFromCityLabel.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="210" y="200" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox3">
+                    <Component class="javax.swing.JComboBox" name="updateBusFromCityCombo">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="updateBusFromCityComboItemStateChanged"/>
+                      </Events>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusFromCityCombo.setVisible(false);"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                       <Constraints>
@@ -656,23 +669,27 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel18">
+                    <Component class="javax.swing.JLabel" name="updateBusToCityLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="To city:"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusToCityLabel.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="210" y="250" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="jComboBox4">
+                    <Component class="javax.swing.JComboBox" name="updateBusToCityCombo">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
                       <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusToCityCombo.setVisible(false);"/>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                       <Constraints>
@@ -681,91 +698,144 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel19">
+                    <Component class="javax.swing.JLabel" name="updateBusStartAtLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Start At:"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusStartAtLabel.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="210" y="310" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField10">
+                    <Component class="javax.swing.JTextField" name="updateBusStartAtField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusStartAtField.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="290" y="310" width="120" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel20">
+                    <Component class="javax.swing.JLabel" name="updateBusReachAtLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Reach At:"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusReachAtLabel.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="210" y="360" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField11">
+                    <Component class="javax.swing.JTextField" name="updateBusReachAtField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusReachAtField.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="290" y="360" width="120" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel21">
+                    <Component class="javax.swing.JLabel" name="updateBusFareLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Fare:"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusFareLabel.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="210" y="410" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField12">
+                    <Component class="javax.swing.JTextField" name="updateBusFareField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusFareField.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="290" y="410" width="120" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel22">
+                    <Component class="javax.swing.JLabel" name="updateBusTravelDateLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Travel date:"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusTravelDateLabel.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="200" y="460" width="-1" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField13">
+                    <Component class="javax.swing.JTextField" name="updateBusTravelDateField">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusTravelDateField.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="290" y="460" width="120" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton3">
+                    <Component class="javax.swing.JButton" name="updateBusButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Update"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateBusButtonActionPerformed"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="updateBusButton.setVisible(false);"/>
+                      </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="200" y="520" width="210" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton4">
+                    <Component class="javax.swing.JButton" name="updateBusSearchButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Search"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateBusSearchButtonActionPerformed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="440" y="100" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel16">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Position:"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="200" y="60" width="-1" height="-1"/>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="busPositionField">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                          <AbsoluteConstraints x="290" y="60" width="120" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -794,17 +864,20 @@
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField7">
+                    <Component class="javax.swing.JTextField" name="deleteBusIdField">
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="300" y="140" width="130" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton2">
+                    <Component class="javax.swing.JButton" name="deleteBusButton">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Delete"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteBusButtonActionPerformed"/>
+                      </Events>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                           <AbsoluteConstraints x="230" y="210" width="200" height="-1"/>
