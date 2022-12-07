@@ -13,39 +13,40 @@ import java.time.LocalTime;
  */
 public class Train {
     private int id;
-    private String fromCity;
-    private String toCity;
-    private LocalTime departureTime;
-    private LocalTime arrivalTime;
+    private City fromCity;
+    private City toCity;
+    private String departureTime;
+    private String arrivalTime;
     private LocalDate travelDate;
     private double fare;
-    public Train(int id, String fromCity, String toCity, LocalTime departureTime, LocalTime arrivalTime, double fare)
-    {
-      this.id = id;
-      this.fromCity = fromCity;
-      this.toCity = toCity;
-      this.departureTime = departureTime;
-      this.arrivalTime = arrivalTime;
-      this.fare = fare;
+
+    public Train(int id, City fromCity, City toCity, String departureTime, String arrivalTime, LocalDate travelDate, double fare) {
+        this.id = id;
+        this.fromCity = fromCity;
+        this.toCity = toCity;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.travelDate = travelDate;
+        this.fare = fare;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getFromCity() {
+    public City getFromCity() {
         return fromCity;
     }
 
-    public String getToCity() {
+    public City getToCity() {
         return toCity;
     }
 
-    public LocalTime getDepartureTime() {
+    public String getDepartureTime() {
         return departureTime;
     }
 
-    public LocalTime getArrivalTime() {
+    public String getArrivalTime() {
         return arrivalTime;
     }
 
@@ -55,5 +56,7 @@ public class Train {
 
     public double getFare() {
         return fare;
-    }    
+    }
+
+  
 }

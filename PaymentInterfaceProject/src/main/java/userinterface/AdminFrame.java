@@ -10,6 +10,8 @@ import business.City;
 import business.CityDirectory;
 import business.Event;
 import business.EventDirectory;
+import business.Train;
+import business.TrainsDirectory;
 import business.mysql.MySql;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -33,11 +35,13 @@ public class AdminFrame extends javax.swing.JFrame {
         {
           createBusFromCityCombo.addItem(c.getCityName());
           createEventCityCombo.addItem(c.getCityName());
+          createTrainFromCityCombo.addItem(c.getCityName());
 
           
         }
         createBusFromCityCombo.setSelectedItem(null);
         createEventCityCombo.setSelectedItem(null);
+        createTrainFromCityCombo.setSelectedItem(null);
     }
 
     /**
@@ -121,6 +125,46 @@ public class AdminFrame extends javax.swing.JFrame {
         deleteBusIdField = new javax.swing.JTextField();
         deleteBusButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel21 = new javax.swing.JPanel();
+        jLabel28 = new javax.swing.JLabel();
+        createTrainIdField = new javax.swing.JTextField();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
+        createTrainFromCityCombo = new javax.swing.JComboBox<>();
+        createTrainToCityCombo = new javax.swing.JComboBox<>();
+        jLabel31 = new javax.swing.JLabel();
+        createTrainStartAtField = new javax.swing.JTextField();
+        jLabel32 = new javax.swing.JLabel();
+        createTrainReachAtField = new javax.swing.JTextField();
+        jLabel33 = new javax.swing.JLabel();
+        createTrainFareField = new javax.swing.JTextField();
+        jLabel34 = new javax.swing.JLabel();
+        createTrainTravelDateField = new javax.swing.JTextField();
+        createTrainButton = new javax.swing.JButton();
+        jPanel22 = new javax.swing.JPanel();
+        jLabel35 = new javax.swing.JLabel();
+        updateTrainIdField = new javax.swing.JTextField();
+        updateTrainFromCityLabel = new javax.swing.JLabel();
+        updateTrainFromCityCombo = new javax.swing.JComboBox<>();
+        updateTrainToCityLabel = new javax.swing.JLabel();
+        updateTrainToCityCombo = new javax.swing.JComboBox<>();
+        updateTrainStartAtLabel = new javax.swing.JLabel();
+        updateTrainStartAtField = new javax.swing.JTextField();
+        updateTrainReachAtLabel = new javax.swing.JLabel();
+        updateTrainReachAtField = new javax.swing.JTextField();
+        updateTrainFareLabel = new javax.swing.JLabel();
+        updateTrainFareField = new javax.swing.JTextField();
+        updateTrainTravelDateLabel = new javax.swing.JLabel();
+        updateTrainTravelDateField = new javax.swing.JTextField();
+        updateTrainButton = new javax.swing.JButton();
+        updateTrainSearchButton = new javax.swing.JButton();
+        jLabel36 = new javax.swing.JLabel();
+        trainPositionField = new javax.swing.JTextField();
+        jPanel23 = new javax.swing.JPanel();
+        jLabel37 = new javax.swing.JLabel();
+        deleteTrainIdField = new javax.swing.JTextField();
+        deleteTrainButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -471,15 +515,165 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Bus Admin", jPanel3);
 
+        jTabbedPane5.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel28.setText("Train Id:");
+        jPanel21.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+        jPanel21.add(createTrainIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
+
+        jLabel29.setText("From city:");
+        jPanel21.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+
+        jLabel30.setText("To city:");
+        jPanel21.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+
+        createTrainFromCityCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                createTrainFromCityComboItemStateChanged(evt);
+            }
+        });
+        jPanel21.add(createTrainFromCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
+
+        jPanel21.add(createTrainToCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
+
+        jLabel31.setText("Start At:");
+        jPanel21.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, -1));
+        jPanel21.add(createTrainStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 120, -1));
+
+        jLabel32.setText("Reach At:");
+        jPanel21.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+        jPanel21.add(createTrainReachAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 120, -1));
+
+        jLabel33.setText("Fare:");
+        jPanel21.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
+        jPanel21.add(createTrainFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 120, -1));
+
+        jLabel34.setText("Travel date:");
+        jPanel21.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
+        jPanel21.add(createTrainTravelDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 120, -1));
+
+        createTrainButton.setText("Create");
+        createTrainButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createTrainButtonActionPerformed(evt);
+            }
+        });
+        jPanel21.add(createTrainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 210, -1));
+
+        jTabbedPane5.addTab("Create Trains", jPanel21);
+
+        jPanel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel35.setText("Train Id:");
+        jPanel22.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+        jPanel22.add(updateTrainIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
+
+        updateTrainFromCityLabel.setText("From city:");
+        jPanel22.add(updateTrainFromCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        updateBusFromCityLabel.setVisible(false);
+
+        updateTrainFromCityCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                updateTrainFromCityComboItemStateChanged(evt);
+            }
+        });
+        updateTrainFromCityCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateTrainFromCityComboActionPerformed(evt);
+            }
+        });
+        jPanel22.add(updateTrainFromCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
+        updateBusFromCityCombo.setVisible(false);
+
+        updateTrainToCityLabel.setText("To city:");
+        jPanel22.add(updateTrainToCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        updateBusToCityLabel.setVisible(false);
+
+        jPanel22.add(updateTrainToCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
+        updateBusToCityCombo.setVisible(false);
+
+        updateTrainStartAtLabel.setText("Start At:");
+        jPanel22.add(updateTrainStartAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, -1));
+        updateBusStartAtLabel.setVisible(false);
+        jPanel22.add(updateTrainStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 120, -1));
+        updateBusStartAtField.setVisible(false);
+
+        updateTrainReachAtLabel.setText("Reach At:");
+        jPanel22.add(updateTrainReachAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+        updateBusReachAtLabel.setVisible(false);
+
+        updateTrainReachAtField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateTrainReachAtFieldActionPerformed(evt);
+            }
+        });
+        jPanel22.add(updateTrainReachAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 120, -1));
+        updateBusReachAtField.setVisible(false);
+
+        updateTrainFareLabel.setText("Fare:");
+        jPanel22.add(updateTrainFareLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
+        updateBusFareLabel.setVisible(false);
+        jPanel22.add(updateTrainFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 120, -1));
+        updateBusFareField.setVisible(false);
+
+        updateTrainTravelDateLabel.setText("Travel date:");
+        jPanel22.add(updateTrainTravelDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
+        updateBusTravelDateLabel.setVisible(false);
+        jPanel22.add(updateTrainTravelDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 120, -1));
+        updateBusTravelDateField.setVisible(false);
+
+        updateTrainButton.setText("Update");
+        updateTrainButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateTrainButtonActionPerformed(evt);
+            }
+        });
+        jPanel22.add(updateTrainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 210, -1));
+        updateBusButton.setVisible(false);
+
+        updateTrainSearchButton.setText("Search");
+        updateTrainSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateTrainSearchButtonActionPerformed(evt);
+            }
+        });
+        jPanel22.add(updateTrainSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, -1, -1));
+
+        jLabel36.setText("Position:");
+        jPanel22.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+
+        trainPositionField.setEnabled(false);
+        jPanel22.add(trainPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
+
+        jTabbedPane5.addTab("View/Update Trains", jPanel22);
+
+        jPanel23.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel37.setText("Bus Id:");
+        jPanel23.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 137, -1, -1));
+        jPanel23.add(deleteTrainIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 130, -1));
+
+        deleteTrainButton.setText("Delete");
+        deleteTrainButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteTrainButtonActionPerformed(evt);
+            }
+        });
+        jPanel23.add(deleteTrainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 200, -1));
+
+        jTabbedPane5.addTab("Delete Trains", jPanel23);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addComponent(jTabbedPane5)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
+            .addComponent(jTabbedPane5)
         );
 
         jTabbedPane1.addTab("Train Admin", jPanel4);
@@ -888,8 +1082,72 @@ public class AdminFrame extends javax.swing.JFrame {
                 }
                 if(!found)
                     JOptionPane.showMessageDialog(this, "Event with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
-                break;    
+                break; 
+            
+            case "trainId":
+                updateTrainFromCityLabel.setVisible(false);
+                updateTrainToCityLabel.setVisible(false);
+                updateTrainStartAtLabel.setVisible(false);
+                updateTrainReachAtLabel.setVisible(false);
+                updateTrainFareLabel.setVisible(false);
+                updateTrainTravelDateLabel.setVisible(false);  
                 
+                updateTrainFromCityCombo.setVisible(false);
+                updateTrainToCityCombo.setVisible(false);
+                updateTrainStartAtField.setVisible(false);
+                updateTrainReachAtField.setVisible(false);
+                updateTrainFareField.setVisible(false);
+                updateTrainTravelDateField.setVisible(false);
+                
+                updateTrainButton.setVisible(false);
+                
+                TrainsDirectory td = new TrainsDirectory();
+                for(Train t : td.getTrainList())
+                {
+                  if(Integer.parseInt(updateTrainIdField.getText()) == t.getId())
+                  { 
+                        found = true;
+                        position = t.getId();
+                        updateTrainFromCityLabel.setVisible(true);
+                        updateTrainToCityLabel.setVisible(true);
+                        updateTrainStartAtLabel.setVisible(true);
+                        updateTrainReachAtLabel.setVisible(true);
+                        updateTrainFareLabel.setVisible(true);
+                        updateTrainTravelDateLabel.setVisible(true);
+                        
+                        updateTrainFromCityCombo.setVisible(true);
+                        updateTrainToCityCombo.setVisible(true);
+                        updateTrainStartAtField.setVisible(true);
+                        updateTrainReachAtField.setVisible(true);
+                        updateTrainFareField.setVisible(true);
+                        updateTrainTravelDateField.setVisible(true);
+                        
+                        updateTrainButton.setVisible(true);                        
+                        trainPositionField.setText(Integer.valueOf(position).toString());
+                        CityDirectory cityd = new CityDirectory();
+                        updateTrainFromCityCombo.removeAllItems();
+                        for(City c : cityd.getCityList())
+                        updateTrainFromCityCombo.addItem(c.getCityName());
+                        updateTrainFromCityCombo.setSelectedItem(t.getFromCity().getCityName());
+                        updateBusToCityCombo.removeAllItems();
+                        for(int i = 0; i < updateTrainFromCityCombo.getItemCount(); i++)
+                        {
+                          if(updateTrainFromCityCombo.getSelectedItem().toString().equals(updateTrainFromCityCombo.getItemAt(i).toString()))
+                            continue;           
+                          updateTrainToCityCombo.addItem(updateTrainFromCityCombo.getItemAt(i).toString());
+                        }
+                        updateTrainToCityCombo.setSelectedItem(t.getToCity().getCityName());
+                        updateTrainStartAtField.setText(t.getDepartureTime());
+                        updateTrainReachAtField.setText(t.getArrivalTime());
+                        updateTrainFareField.setText(String.valueOf(t.getFare()));
+                        updateTrainTravelDateField.setText(t.getTravelDate().toString());
+                        break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Train with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+                    
         }
     }
     private void citySearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citySearchButtonActionPerformed
@@ -1383,6 +1641,228 @@ public class AdminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_createEventCityComboItemStateChanged
 
+    private void createTrainFromCityComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_createTrainFromCityComboItemStateChanged
+        // TODO add your handling code here:
+         if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+      {
+        createTrainToCityCombo.removeAllItems();
+        for(int i = 0; i < createTrainFromCityCombo.getItemCount(); i++)
+        {
+          if(createTrainFromCityCombo.getSelectedItem().toString().equals(createTrainFromCityCombo.getItemAt(i).toString()))
+            continue;           
+          createTrainToCityCombo.addItem(createTrainFromCityCombo.getItemAt(i).toString());
+        }
+      }
+    }//GEN-LAST:event_createTrainFromCityComboItemStateChanged
+
+    public boolean clientSideValidationTrain(JFrame frame, String trainId, String startAt, String endAt, String farePrice, String travelDate)
+    {
+      if(Pattern.compile("^[1-9]\\d*$").matcher(trainId).matches())
+      {
+
+          if(Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2})").matcher(startAt).matches())
+          {
+            System.out.println("StartAt is valid.");
+            if(Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2})").matcher(endAt).matches())
+            {
+              System.out.println("Reach At is valid.");
+              if(Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})").matcher(travelDate).matches() )
+              {
+                System.out.println("Travel date is valid.");
+                if(Pattern.compile("^[0-9.]+$").matcher(farePrice).matches()&& !farePrice.equals(""))
+                {
+                    System.out.println("Fare is valid.");
+                    return true;
+                }
+                else
+                {
+                     JOptionPane.showMessageDialog(frame, "Please enter the fare in positive numbers.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+              }
+              else
+                JOptionPane.showMessageDialog(this, "Travel date is not valid.\\nShould be in the format YYYY-MM-DD.", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+               JOptionPane.showMessageDialog(frame, "Reach At is not valid.\nShould be in the format HH:MM:SS.", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }
+          else
+          {
+             JOptionPane.showMessageDialog(frame, "Start At is not valid.\nShould be in the format HH:MM:SS.", "Alert", JOptionPane.WARNING_MESSAGE);
+          }
+
+      }
+      else
+      {
+        JOptionPane.showMessageDialog(frame, "Train Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+      }
+      return false;
+    }
+    
+    private void createTrainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTrainButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            String trainId = createTrainIdField.getText().trim();
+            String fromCity = createTrainFromCityCombo.getSelectedItem().toString();
+            String toCity = createTrainToCityCombo.getSelectedItem().toString();
+            String startAt = createTrainStartAtField.getText().trim();
+            String endAt = createTrainReachAtField.getText().trim();
+            String farePrice = createTrainFareField.getText().trim();
+            String date = createTrainTravelDateField.getText().trim();        
+            boolean passed = clientSideValidationTrain(this, trainId, startAt, endAt, farePrice, date);
+            boolean exists = false;
+            if(passed)
+            {
+                TrainsDirectory td = new TrainsDirectory();
+                for(Train t: td.getTrainList())
+                {
+                  if(Integer.parseInt(trainId) == t.getId())
+                  {
+                    JOptionPane.showMessageDialog(this, "Train with the given Id already exists\nPlease give another Id to the Train.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;              
+                  }
+//                  else if(busName.equals(b.getBusName()))
+//                  {
+//                    JOptionPane.showMessageDialog(this, "Bus with the given name already exists\nPlease give another name to the Bus.", "Alert", JOptionPane.WARNING_MESSAGE);
+//                    exists = true;
+//                    break;
+//                  }
+                }
+                if(!exists)
+                {
+                  int id = Integer.parseInt(trainId);
+                  int fromCityId = CityDirectory.getCityId(fromCity);
+                  int toCityId = CityDirectory.getCityId(toCity);             
+                  City from = new City(fromCityId, fromCity);
+                  City to = new City(toCityId, toCity);
+                  double fare = Double.parseDouble(farePrice);
+                  LocalDate travelDate = LocalDate.parse(date);
+                  Train train = new Train(id, from, to, startAt, endAt, travelDate,fare );
+                  int res = TrainsDirectory.addTrain(train);
+                  if(res > 0)
+                  {
+                    JOptionPane.showMessageDialog(this, "Created a new Train successfully..", null, JOptionPane.OK_OPTION); 
+                  }
+                }
+            }
+        }
+        catch(NullPointerException ex)
+        {
+          JOptionPane.showMessageDialog(this, "Please select the from and to locations.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_createTrainButtonActionPerformed
+
+    private void updateTrainFromCityComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_updateTrainFromCityComboItemStateChanged
+        // TODO add your handling code here:
+          if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+      {
+        updateTrainToCityCombo.removeAllItems();
+        for(int i = 0; i < updateTrainFromCityCombo.getItemCount(); i++)
+        {
+          if(updateTrainFromCityCombo.getSelectedItem().toString().equals(updateTrainFromCityCombo.getItemAt(i).toString()))
+            continue;           
+          updateTrainToCityCombo.addItem(updateTrainFromCityCombo.getItemAt(i).toString());
+        }
+      }
+    }//GEN-LAST:event_updateTrainFromCityComboItemStateChanged
+
+    private void updateTrainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTrainButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            String trainId = updateTrainIdField.getText().trim();
+            String fromCity = updateTrainFromCityCombo.getSelectedItem().toString();
+            String toCity = updateTrainToCityCombo.getSelectedItem().toString();
+            String startAt = updateTrainStartAtField.getText().trim();
+            String reachAt = updateTrainReachAtField.getText().trim();
+            String farePrice = updateTrainFareField.getText().trim();
+            String date = updateTrainTravelDateField.getText().trim(); 
+            int position = Integer.valueOf(trainPositionField.getText());
+            boolean passed = clientSideValidationTrain(this, trainId, startAt, reachAt, farePrice, date);
+            boolean exists = false;
+            if(passed)
+            {
+                BusDirectory bd = new BusDirectory();
+                for(Bus b: bd.getBusList())
+                {
+                  if(Integer.parseInt(trainId) == b.getId() && b.getId() != position)
+                  {
+                    JOptionPane.showMessageDialog(this, "Bus with the given Id already exists\nPlease give another Id to the Bus.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;              
+                  }
+                 
+                }
+                if(!exists)
+                {
+                  int id = Integer.parseInt(trainId);
+                  int fromCityId = CityDirectory.getCityId(fromCity);
+                  int toCityId = CityDirectory.getCityId(toCity);             
+                  City from = new City(fromCityId, fromCity);
+                  City to = new City(toCityId, toCity);
+                  double fare = Double.parseDouble(farePrice);
+                  LocalDate travelDate = LocalDate.parse(date);
+                  Train train = new Train(id, from, to, startAt, reachAt, travelDate, fare );
+                  int res = TrainsDirectory.updateTrain(train, position);
+                  if(res > 0)
+                  {
+                    JOptionPane.showMessageDialog(this, "Updated the Train successfully..", null, JOptionPane.OK_OPTION); 
+                    trainPositionField.setText(trainId);
+                  }
+                  else
+                    JOptionPane.showMessageDialog(this, "Train does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }
+        catch(NullPointerException ex)
+        {
+          JOptionPane.showMessageDialog(this, "Please select the from and to locations.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_updateTrainButtonActionPerformed
+
+    private void updateTrainSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTrainSearchButtonActionPerformed
+        // TODO add your handling code here:
+         String searchText = updateTrainIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Train Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("trainId", searchText.trim());
+    }//GEN-LAST:event_updateTrainSearchButtonActionPerformed
+
+    private void deleteTrainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteTrainButtonActionPerformed
+        // TODO add your handling code here:
+        String deleteText = deleteTrainIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Train Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);       
+        if(flag)
+        {
+          int res = TrainsDirectory.deleteTrain(Integer.parseInt(deleteText));
+          if(res > 0)
+          {
+            JOptionPane.showMessageDialog(this, "Deleted the Train successfully..", null, JOptionPane.OK_OPTION);
+          }
+          else
+            JOptionPane.showMessageDialog(this, "train with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteTrainButtonActionPerformed
+
+    private void updateTrainReachAtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTrainReachAtFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateTrainReachAtFieldActionPerformed
+
+    private void updateTrainFromCityComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTrainFromCityComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateTrainFromCityComboActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1444,12 +1924,22 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField createEventReachAtField;
     private javax.swing.JTextField createEventStartAtField;
     private javax.swing.JTextField createEventTravelDateField;
+    private javax.swing.JButton createTrainButton;
+    private javax.swing.JTextField createTrainFareField;
+    private javax.swing.JComboBox<String> createTrainFromCityCombo;
+    private javax.swing.JTextField createTrainIdField;
+    private javax.swing.JTextField createTrainReachAtField;
+    private javax.swing.JTextField createTrainStartAtField;
+    private javax.swing.JComboBox<String> createTrainToCityCombo;
+    private javax.swing.JTextField createTrainTravelDateField;
     private javax.swing.JButton deleteBusButton;
     private javax.swing.JTextField deleteBusIdField;
     private javax.swing.JButton deleteCityButton;
     private javax.swing.JTextField deleteCityIdField;
     private javax.swing.JButton deleteEventButton;
     private javax.swing.JTextField deleteEventIdField;
+    private javax.swing.JButton deleteTrainButton;
+    private javax.swing.JTextField deleteTrainIdField;
     private javax.swing.JTextField eventPositionField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1470,7 +1960,17 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1490,6 +1990,9 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1501,6 +2004,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JTextField trainPositionField;
     private javax.swing.JButton updateBusButton;
     private javax.swing.JTextField updateBusFareField;
     private javax.swing.JLabel updateBusFareLabel;
@@ -1535,5 +2040,20 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton updateEventSearchButton;
     private javax.swing.JTextField updateEventStartAtField;
     private javax.swing.JLabel updateEventStartAtLabel;
+    private javax.swing.JButton updateTrainButton;
+    private javax.swing.JTextField updateTrainFareField;
+    private javax.swing.JLabel updateTrainFareLabel;
+    private javax.swing.JComboBox<String> updateTrainFromCityCombo;
+    private javax.swing.JLabel updateTrainFromCityLabel;
+    private javax.swing.JTextField updateTrainIdField;
+    private javax.swing.JTextField updateTrainReachAtField;
+    private javax.swing.JLabel updateTrainReachAtLabel;
+    private javax.swing.JButton updateTrainSearchButton;
+    private javax.swing.JTextField updateTrainStartAtField;
+    private javax.swing.JLabel updateTrainStartAtLabel;
+    private javax.swing.JComboBox<String> updateTrainToCityCombo;
+    private javax.swing.JLabel updateTrainToCityLabel;
+    private javax.swing.JTextField updateTrainTravelDateField;
+    private javax.swing.JLabel updateTrainTravelDateLabel;
     // End of variables declaration//GEN-END:variables
 }

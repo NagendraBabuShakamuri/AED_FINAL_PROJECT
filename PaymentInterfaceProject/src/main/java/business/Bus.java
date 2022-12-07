@@ -63,4 +63,5 @@ public class Bus {
     public double getFare() {
         return fare;
     }
+    
 }
