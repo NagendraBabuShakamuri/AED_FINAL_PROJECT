@@ -359,7 +359,7 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         }
       }
     }//GEN-LAST:event_bankNameComboItemStateChanged
-     public boolean clientSideValidation(JFrame frame, String accNumber, String accHoldername)
+    public boolean clientSideValidation(JFrame frame, String accNumber, String accHoldername)
     {
       if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(accHoldername).matches() && !accHoldername.equals(""))
          {

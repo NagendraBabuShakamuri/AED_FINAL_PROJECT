@@ -4,6 +4,7 @@
  */
 package userinterface;
 
+import business.Mail;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
@@ -48,6 +49,7 @@ public class BookEventTickets extends javax.swing.JFrame{
                 cityComboBox.addItem(rs.getString(2));
             }
             cityComboBox.setSelectedItem(null);
+            calendar.setEnabled(false);
         }
         catch(SQLException ex)
         {
@@ -81,11 +83,8 @@ public class BookEventTickets extends javax.swing.JFrame{
         jLabel40 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
         clearButton = new javax.swing.JButton();
         bookTicketButton = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ticket = new javax.swing.JTextArea();
         jLabel45 = new javax.swing.JLabel();
         priceField = new javax.swing.JTextField();
         seatComboBox = new javax.swing.JComboBox<>();
@@ -105,7 +104,7 @@ public class BookEventTickets extends javax.swing.JFrame{
         eventIdField = new javax.swing.JTextField();
         cancelBookingButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTabbedPane1.setBackground(new java.awt.Color(204, 204, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -121,65 +120,55 @@ public class BookEventTickets extends javax.swing.JFrame{
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel2.setText("Customer Name");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, -1, -1));
 
         customerNameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 customerNameFieldKeyReleased(evt);
             }
         });
-        jPanel1.add(customerNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 145, -1));
+        jPanel1.add(customerNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 180, -1));
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel4.setText("Customer Mobile No");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
 
         mobileNumberField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 mobileNumberFieldKeyReleased(evt);
             }
         });
-        jPanel1.add(mobileNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 145, -1));
+        jPanel1.add(mobileNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 180, -1));
 
         jLabel39.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel39.setText("Location");
-        jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        jLabel39.setText("City");
+        jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, -1));
 
         eventsComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 eventsComboBoxItemStateChanged(evt);
             }
         });
-        jPanel1.add(eventsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 200, -1));
+        jPanel1.add(eventsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 200, -1));
 
         cityComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cityComboBoxItemStateChanged(evt);
             }
         });
-        cityComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cityComboBoxActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cityComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 140, -1));
+        jPanel1.add(cityComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 180, -1));
 
         jLabel40.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel40.setText("Events");
-        jPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        jPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, -1));
 
         jLabel42.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel42.setText("Select seat number");
-        jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
+        jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, -1));
 
         jLabel43.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel43.setText("Select a date");
-        jPanel1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
-
-        jLabel44.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(0, 153, 0));
-        jLabel44.setText("Your Event ticket");
-        jPanel1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, -1, -1));
+        jPanel1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
 
         clearButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         clearButton.setForeground(new java.awt.Color(102, 102, 255));
@@ -189,7 +178,7 @@ public class BookEventTickets extends javax.swing.JFrame{
                 clearButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 110, 30));
+        jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 110, 30));
 
         bookTicketButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         bookTicketButton.setForeground(new java.awt.Color(102, 102, 255));
@@ -199,22 +188,16 @@ public class BookEventTickets extends javax.swing.JFrame{
                 bookTicketButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(bookTicketButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 110, 30));
-
-        ticket.setColumns(20);
-        ticket.setRows(5);
-        jScrollPane2.setViewportView(ticket);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 290, 240));
+        jPanel1.add(bookTicketButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 110, 30));
 
         jLabel45.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel45.setText("Price");
-        jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, -1));
 
         priceField.setEnabled(false);
-        jPanel1.add(priceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 140, -1));
+        jPanel1.add(priceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 200, -1));
 
-        jPanel1.add(seatComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 100, -1));
+        jPanel1.add(seatComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 200, -1));
 
         calendar.setEnabled(false);
         calendar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -222,17 +205,15 @@ public class BookEventTickets extends javax.swing.JFrame{
                 calendarPropertyChange(evt);
             }
         });
-        jPanel1.add(calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 220, -1));
+        jPanel1.add(calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 220, -1));
         calendar.setMinSelectableDate(new Date(new Date().getTime() + 86400 * 1000));
-        jPanel1.add(nL, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 20, 20));
-        jPanel1.add(mL, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 20, 20));
+        jPanel1.add(nL, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, 20, 20));
+        jPanel1.add(mL, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 20, 20));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/music.png"))); // NOI18N
-        jLabel7.setText("jLabel7");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 140, 130));
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/dancing.png"))); // NOI18N
-        jLabel10.setText("jLabel10");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 130, 130));
 
         jTabbedPane1.addTab("Book Events", jPanel1);
@@ -251,9 +232,22 @@ public class BookEventTickets extends javax.swing.JFrame{
 
             },
             new String [] {
-                "Booking ID", "Customer Name", "Mobile", "Event ID", "Seat No.", "Booking Date", "Event Date"
+                "Booking Id", "Customer Name", "Mobile", "City", "Event Name", "Seat", "Price", "Booking date", "Event date"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        });
         jScrollPane1.setViewportView(bookingHistoryTable);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 730, 200));
@@ -313,16 +307,16 @@ public class BookEventTickets extends javax.swing.JFrame{
 
     public boolean clientSideValidation(JFrame frame, String customer_name, String customer_contact)
     {
-      if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(customer_name).matches() && !customer_name.equals(""))
-         {
+        if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(customer_name).matches() && !customer_name.equals(""))
+        {
            if(Pattern.compile("^\\d{10}$").matcher(customer_contact).matches())
            {
              return true;
            }
            else
             JOptionPane.showMessageDialog(frame, "Contact number is not valid.\nOnly numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);      
-         }
-         else
+        }
+        else
             JOptionPane.showMessageDialog(frame, "Customer name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);  
       return false;
     }
@@ -334,15 +328,15 @@ public class BookEventTickets extends javax.swing.JFrame{
         calendar.setCalendar(null);
         eventsComboBox.removeAllItems();
         priceField.setText("");
+        calendar.setEnabled(false);
         seatComboBox.removeAllItems();
-        ticket.setText("");
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void bookTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookTicketButtonActionPerformed
         // TODO add your handling code here:
-        String customer_name = customerNameField.getText().trim();
-        String customer_contact = mobileNumberField.getText().trim();
-        boolean passed = clientSideValidation(this, customer_name, customer_contact);
+        String customerName = customerNameField.getText().trim();
+        String customerContact = mobileNumberField.getText().trim();
+        boolean passed = clientSideValidation(this, customerName, customerContact);
         if(passed)
         {
             try
@@ -356,12 +350,13 @@ public class BookEventTickets extends javax.swing.JFrame{
                 SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
                 String date = date_format.format(calendar.getDate());
                 MySql.createConn();
-                String query = "select userid, balance from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+                String query = "select userid, balance, email from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
                 ResultSet rs = MySql.selectQuery(query);
                 rs.next();
                 int user_id = rs.getInt(1);
                 double balance = rs.getDouble(2);
                 double available_balance = balance - price;
+                String email = rs.getString(3);
                 if(available_balance < 0)
                 {
                     JOptionPane.showMessageDialog(this, "The available wallet balance is less than the amount \nthat you're trying to transfer.", "Alert", JOptionPane.WARNING_MESSAGE);
@@ -379,7 +374,7 @@ public class BookEventTickets extends javax.swing.JFrame{
                     JOptionPane.showMessageDialog(this, "Someone has booked the seat, please book another seat for the event.", "Alert", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                query = "insert into event_bookings(user_id, event_id, seat_position, booking_date, event_date, customer_name, customer_mobile) values(" + user_id + "," + event_id + "," + seat_no + "," + "CURDATE()" + "," + "\'" + date + "\'" + "," + "\'" + customer_name + "\'" + "," + "\'" + customer_contact + "\'" + ");";
+                query = "insert into event_bookings(user_id, event_id, seat_position, booking_date, event_date, customer_name, customer_mobile) values(" + user_id + "," + event_id + "," + seat_no + "," + "CURDATE()" + "," + "\'" + date + "\'" + "," + "\'" + customerName + "\'" + "," + "\'" + customerContact + "\'" + ");";
                 int res = MySql.insertUpdateQuery(query);
                 if(res > 0)
                 {
@@ -389,36 +384,37 @@ public class BookEventTickets extends javax.swing.JFrame{
                     if(res > 0)
                     {
                         balanceLabel.setText("$ " + available_balance);
+                        String message = "****************************\n";
+                        message += "**********EVENT TICKET*********\n";
+                        message += "*****************************\n";
+                        message += "Customer: " + customerName + "\n";
+                        message += "Contact Number: " + customerContact + "\n";
+                        message += "City: " + city + "\n";
+                        message += "SeatNo: " + seat_no + "\n";
+                        message += "Price: " + ticket_price + "\n";
+                        message += "Event Date: " + date + "\n";
+                        message += "**********^^^^^^^^^**********\n";
+                        message += "******Thank You Come Again!!******\n";
+                        Mail.sendMail(email, message);
                     }
-                    ticket.setText("");
-                    ticket.setText(ticket.getText() + "****************************\n");
-                    ticket.setText(ticket.getText() + "**********EVENT TICKET*********\n");
-                    ticket.setText(ticket.getText() + "*****************************\n");
-                    ticket.setText(ticket.getText() + "Customer: " + customer_name + "\n");
-                    ticket.setText(ticket.getText() + "Contact Number: " + customer_contact + "\n");
-                    ticket.setText(ticket.getText() + "City: " + city + "\n");
-                    ticket.setText(ticket.getText() + "SeatNo: " + seat_no + "\n");
-                    ticket.setText(ticket.getText() + "Price: " + ticket_price + "\n");
-                    ticket.setText(ticket.getText() + "Event Date: " + date + "\n");
-                    ticket.setText(ticket.getText() + "**********^^^^^^^^^**********\n");
-                    ticket.setText(ticket.getText() + "******Thank You Come Again!!******\n");
+                    
                 }
             }
             catch(SQLException ex)
             {
                 System.out.println(ex);
             }
-//            catch(NullPointerException ex)
-//            {
-//                JOptionPane.showMessageDialog(this, "Please choose from location, to location, travel date and bus.", "Alert", JOptionPane.WARNING_MESSAGE);
-//            }
+            catch(NullPointerException ex)
+            {
+                JOptionPane.showMessageDialog(this, "Please choose from Location, date and the event.", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_bookTicketButtonActionPerformed
 
     private void cityComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cityComboBoxItemStateChanged
         // TODO add your handling code here:
 
-        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
+      if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
       {
         calendar.setEnabled(true);
       }  
@@ -431,7 +427,8 @@ public class BookEventTickets extends javax.swing.JFrame{
         {
             String date = date_format.format(calendar.getDate());
             System.out.println(date);
-            try{
+            try
+            {
                 MySql.createConn();
                 String city_query = "select id from cities where city_name = " + "\'" + cityComboBox.getSelectedItem().toString() + "\'" + ";";
                 System.out.println(city_query);
@@ -462,7 +459,8 @@ public class BookEventTickets extends javax.swing.JFrame{
         // TODO add your handling code here:
         if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
         {
-            try{
+            try
+            {
                 String s = eventsComboBox.getSelectedItem().toString();
                 String first = s.substring(0,s.indexOf(' '));
                 MySql.createConn();
@@ -510,43 +508,50 @@ public class BookEventTickets extends javax.swing.JFrame{
         // TODO add your handling code here:
     }//GEN-LAST:event_eventIdFieldActionPerformed
 
-    public void getDataIntoTable(){
-         try{
-                MySql.createConn();
-                String query = "select userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-                ResultSet rs = MySql.selectQuery(query);
-                rs.next();
-                int user_id = rs.getInt(1);
-                query = "select * from event_bookings where user_id = " + user_id + ";";
-                rs = MySql.selectQuery(query);
-                DefaultTableModel table_model1 = (DefaultTableModel)bookingHistoryTable.getModel();
-                table_model1.setRowCount(0);
-                while(rs.next())
-                {                       
-                    String booking_id = String.valueOf(rs.getInt(1));
-                    String customer_name = String.valueOf(rs.getString(7));
-                    String customer_mobile = String.valueOf(rs.getString(8));
-                    String event_id = String.valueOf(rs.getInt(3));
-                    String seat_position= String.valueOf(rs.getInt(4));
-                    String booking_date = String.valueOf(rs.getDate(5));
-                    String event_date = String.valueOf(rs.getDate(6));                    
-                    String table_data[]={booking_id,customer_name, customer_mobile, event_id, seat_position, booking_date, event_date};
-                    table_model1.addRow(table_data);
-                }
-            }
-        catch(SQLException ex)
-                 {
-                   System.out.println(ex);
-                 }
-        finally
-              {
-                MySql.shutDownConn();
-             }
-    }
     private void showHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showHistoryButtonActionPerformed
-        // TODO add your handling code here:
-        getDataIntoTable();
-
+        // TODO add your handling code here:        
+        try
+        {
+            MySql.createConn();
+            String query = "select userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+            ResultSet rs = MySql.selectQuery(query);
+            rs.next();
+            int user_id = rs.getInt(1);            
+            query = "select * from event_bookings where user_id = " + user_id + " order by booking_date DESC;";
+            rs = MySql.selectQuery(query);            
+            DefaultTableModel table_model = (DefaultTableModel)bookingHistoryTable.getModel();
+            table_model.setRowCount(0);
+            while(rs.next())
+            {                       
+                String booking_id = String.valueOf(rs.getInt(1));
+                String customer_name = String.valueOf(rs.getString(7));
+                String customer_mobile = String.valueOf(rs.getString(8));                
+                String event_id = String.valueOf(rs.getInt(3));
+                String query1 = "select * from events where id = " + event_id + ";";
+                ResultSet rs1 = MySql.selectQuery(query1);
+                rs1.next();
+                String eventName = rs1.getString(2);                
+                int cityId = rs1.getInt(3);
+                String price = "$ " + rs1.getString(6);
+                String query2 = "select city_name from cities where id = " + cityId + ";";
+                ResultSet rs2 = MySql.selectQuery(query2);
+                rs2.next();
+                String city = rs2.getString(1);
+                String seat_position= String.valueOf(rs.getInt(4));
+                String booking_date = String.valueOf(rs.getDate(5));
+                String event_date = String.valueOf(rs.getDate(6));                    
+                String table_data[]={booking_id,customer_name, customer_mobile, city, eventName, seat_position, price, booking_date, event_date};
+                table_model.addRow(table_data);
+            }
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(ex);
+        }
+        finally
+        {
+            MySql.shutDownConn();
+        }
     }//GEN-LAST:event_showHistoryButtonActionPerformed
     public boolean clientSideValidation(JFrame frame, String bookingId)
     {
@@ -567,11 +572,12 @@ public class BookEventTickets extends javax.swing.JFrame{
             try
             {
                 MySql.createConn();
-                String query = "select userid, balance from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+                String query = "select userid, balance, email from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
                 ResultSet rs = MySql.selectQuery(query);
                 rs.next();
                 int user_id = rs.getInt(1);
                 double balance = rs.getDouble(2);
+                String email = rs.getString(3);
                 query = "select event_id from event_bookings where id = " + eventID + " and user_id = " + user_id + ";";
                 rs = MySql.selectQuery(query);
                 if(rs.isBeforeFirst())
@@ -583,7 +589,7 @@ public class BookEventTickets extends javax.swing.JFrame{
                     rs.next();
                     int price = rs.getInt(1);
                     double available_balance = balance + price;
-                    query=("delete from event_bookings where id = " + eventID + " and event_date > CURDATE() and user_id = " + user_id + ";");
+                    query = "delete from event_bookings where id = " + eventID + " and event_date > CURDATE() and user_id = " + user_id + ";";
                     int res = MySql.insertUpdateQuery(query);
                     if(res > 0)
                     {
@@ -593,15 +599,16 @@ public class BookEventTickets extends javax.swing.JFrame{
                         {
                             JOptionPane.showMessageDialog(this, "Cancelled the booking successfully.", null, JOptionPane.OK_OPTION);
                             balanceLabel.setText("$ " + available_balance);
+                            Mail.sendMail(email, "You have cancelled your event ticket with the Id: " + eventID + "\nRefund has been added to your wallet balance.");
                         }
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(this, "Booking Id is not valid.\nPlease give another Id.", null, JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "You can\'t cancel the ticket now.", null, JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 else
-                JOptionPane.showMessageDialog(this, "Booking Id is not valid.\nPlease give another Id.", null, JOptionPane.WARNING_MESSAGE);
+                  JOptionPane.showMessageDialog(this, "Booking Id is not valid.\nPlease give another Id.", null, JOptionPane.WARNING_MESSAGE);
             }
             catch(SQLException ex)
             {
@@ -652,10 +659,6 @@ public class BookEventTickets extends javax.swing.JFrame{
             mL.setIcon(icon);
         }
     }//GEN-LAST:event_mobileNumberFieldKeyReleased
-
-    private void cityComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cityComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -711,7 +714,6 @@ public class BookEventTickets extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -720,7 +722,6 @@ public class BookEventTickets extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel mL;
     private javax.swing.JTextField mobileNumberField;
@@ -728,7 +729,6 @@ public class BookEventTickets extends javax.swing.JFrame{
     private javax.swing.JTextField priceField;
     private javax.swing.JComboBox<String> seatComboBox;
     private javax.swing.JButton showHistoryButton;
-    private javax.swing.JTextArea ticket;
     // End of variables declaration//GEN-END:variables
 
    

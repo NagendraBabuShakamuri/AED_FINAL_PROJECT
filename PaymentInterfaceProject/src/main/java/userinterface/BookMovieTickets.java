@@ -103,7 +103,7 @@ public class BookMovieTickets extends javax.swing.JFrame {
         movieIdField = new javax.swing.JTextField();
         cancelBookingButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTabbedPane1.setBackground(new java.awt.Color(204, 204, 255));
 
