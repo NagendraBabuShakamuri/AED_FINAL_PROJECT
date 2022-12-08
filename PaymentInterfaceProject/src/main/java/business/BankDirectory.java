@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * @author nbabu
  */
 public class BankDirectory {
-    private static ArrayList<Bank> bankDirectory = new ArrayList<>();
-    public static ArrayList<Bank> getBankList()
+    private ArrayList<Bank> bankDirectory = new ArrayList<>();
+    public ArrayList<Bank> getBankList()
     {
         try
         {
@@ -35,6 +35,81 @@ public class BankDirectory {
         {
           System.out.println(ex);
           return null;
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }
+    public static int addBank(Bank b)
+    {
+        try
+        {
+            MySql.createConn();  
+            int bankId = b.getId();
+            String bankName = b.getName();
+            String bankRoutingNumber = b.getRoutingNumber();
+            int res = MySql.insertUpdateQuery("insert into banks values(" + bankId + "," + "\'" + bankName + "\'" + "," + "\'" + bankRoutingNumber + "\'" +  ");");
+            if(res > 0)
+            {
+              return res;
+            }
+            else
+                return 0;
+        }
+        catch(Exception ex)
+        {
+          System.out.println(ex);
+          return 0;
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }
+    public static int updateBank(Bank b, int position)
+    {
+        try
+        {
+            MySql.createConn();  
+            int bankId = b.getId();
+            String bankName = b.getName();
+            String bankRoutingNumber = b.getRoutingNumber();
+            int res = MySql.insertUpdateQuery("update banks set id = " + bankId + "," + "name = " + "\'" + bankName + "\'" + "," + "routing_number = " + "\'" + bankRoutingNumber + "\'" + " where id = " + position + ";");
+            if(res > 0)
+            {
+              return res;
+            }
+            else
+                return 0;
+        }
+        catch(Exception ex)
+        {
+          System.out.println(ex);
+          return 0;
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }
+    public static int deleteBank(int bankId)
+    {
+        try
+        {
+            MySql.createConn();
+            int res = MySql.insertUpdateQuery("delete from banks where id = " + bankId + ";");
+            if(res > 0)
+            {
+              return res;
+            }
+            else
+                return 0;
+        }
+        catch(Exception ex)
+        {
+          System.out.println(ex);
+          return 0;
         }
         finally
         {

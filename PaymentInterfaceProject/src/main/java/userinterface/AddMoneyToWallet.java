@@ -349,14 +349,15 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED){
             String bankName = bankNameCombo.getSelectedItem().toString();
-        for(Bank bank: BankDirectory.getBankList())
-        {
-          if(bank.getName().equals(bankName))
-          {
-            routingNumField.setText(bank.getRoutingNumber());
-            break;            
-          }
-        }
+            BankDirectory bd = new BankDirectory();
+            for(Bank bank: bd.getBankList())
+            {
+              if(bank.getName().equals(bankName))
+              {
+                routingNumField.setText(bank.getRoutingNumber());
+                break;            
+              }
+            }
       }
     }//GEN-LAST:event_bankNameComboItemStateChanged
     public boolean clientSideValidation(JFrame frame, String accNumber, String accHoldername)

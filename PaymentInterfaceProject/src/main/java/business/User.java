@@ -11,48 +11,43 @@ import java.time.LocalDateTime;
  * @author nbabu
  */
 public class User {
+    private int id;
     private String userName;
     private String email;
     private long mobile;
     private String password;
     private double wallet_balance;
-    public User(String userName, String email, long mobile, String password)
-    {
-      this.userName = userName;
-      this.email = email;
-      this.mobile = mobile;
-      this.password = password;
+
+    public User(int id, String userName, String email, long mobile, String password, double wallet_balance) {
+        this.id = id;
+        this.userName = userName;
+        this.email = email;
+        this.mobile = mobile;
+        this.password = password;
+        this.wallet_balance = wallet_balance;
     }
-    public String getUserName()
-    {
-      return userName;
+
+    public int getId() {
+        return id;
     }
-    public String getEmail()
-    {
-      return email;
+
+    public String getUserName() {
+        return userName;
     }
-    public long getMobile()
-    {
-      return mobile;
+
+    public String getEmail() {
+        return email;
     }
-    public String getPassword()
-    {
-      return password;
+
+    public long getMobile() {
+        return mobile;
     }
-    public double getWalletBalance()
-    {
-      return wallet_balance;
+
+    public String getPassword() {
+        return password;
     }
-    public void createUser()
-    {
-      
-    }
-    public void updateUser()
-    {
-      
-    }
-    public void deleteUser()
-    {
-      
-    }
+
+    public double getWallet_balance() {
+        return wallet_balance;
+    }        
 }

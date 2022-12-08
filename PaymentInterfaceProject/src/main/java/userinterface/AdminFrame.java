@@ -4,20 +4,33 @@
  */
 package userinterface;
 
+import business.Bank;
+import business.BankAccount;
+import business.BankDirectory;
+import business.BankRequest;
+import business.BankRequestDirectory;
 import business.Bus;
 import business.BusDirectory;
 import business.City;
 import business.CityDirectory;
+import business.CreditCard;
+import business.CreditCardDirectory;
+import business.CreditCardRequest;
+import business.CreditCardRequestDirectory;
 import business.MobilePlan;
 import business.MobilePlanDirectory;
 import business.MobileServiceProvider;
 import business.MobileServiceProviderDirectory;
+import business.User;
+import business.UserCreditCard;
+import business.UserDirectory;
 import business.mysql.MySql;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -43,6 +56,36 @@ public class AdminFrame extends javax.swing.JFrame {
           createMSPNameCombo.addItem(msp.getProviderName());
         }
         createMSPNameCombo.setSelectedItem(null);
+        
+        BankRequestDirectory brd = new BankRequestDirectory();
+        DefaultTableModel table_model = (DefaultTableModel)bankRequestsTable.getModel();
+        for(BankRequest br : brd.getBankRequestList())
+        {
+            String requestId = String.valueOf(br.getId());
+            String userId = String.valueOf(br.getUser().getId());
+            String bankId = String.valueOf(br.getBank().getId());
+            String accountHolder = br.getAccountHolder();
+            String accountNumber = String.valueOf(br.getAccountNumber());
+            String status = br.getStatus();
+            String table_data[] = {requestId, userId, bankId, accountHolder, accountNumber, status};
+            table_model.addRow(table_data);
+        }
+        
+        CreditCardRequestDirectory crd = new CreditCardRequestDirectory();
+        table_model = (DefaultTableModel)cardRequestsTable.getModel();
+        for(CreditCardRequest cr : crd.getCreditCardRequestList())
+        {
+            String id = String.valueOf(cr.getId());
+            String userId = String.valueOf(cr.getUser().getId());
+            String cardId = String.valueOf(cr.getCreditCard().getId());
+            String cardHolder = cr.getCardHolder();
+            String cardNumber = String.valueOf(cr.getCardNumber());
+            String cardExpiry = cr.getCardExpiry();
+            String cardCvc = String.valueOf(cr.getCardCVC());
+            String status = cr.getStatus();
+            String table_data[] = {id, userId, cardId, cardHolder, cardNumber, cardExpiry, cardCvc, status};
+            table_model.addRow(table_data);
+        }
     }
 
     /**
@@ -80,6 +123,63 @@ public class AdminFrame extends javax.swing.JFrame {
         deleteCityIdField = new javax.swing.JTextField();
         deleteCityButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel24 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        bankRequestsTable = new javax.swing.JTable();
+        jLabel33 = new javax.swing.JLabel();
+        bankInProgressButton = new javax.swing.JButton();
+        bankApprovedButton = new javax.swing.JButton();
+        bankDeniedButton = new javax.swing.JButton();
+        jPanel25 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        cardRequestsTable = new javax.swing.JTable();
+        jLabel32 = new javax.swing.JLabel();
+        cardInProgressButton = new javax.swing.JButton();
+        cardApprovedButton = new javax.swing.JButton();
+        cardDeniedButton = new javax.swing.JButton();
+        jPanel26 = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
+        createBankIdField = new javax.swing.JTextField();
+        jLabel35 = new javax.swing.JLabel();
+        createBankNameField = new javax.swing.JTextField();
+        createBankButton = new javax.swing.JButton();
+        jLabel37 = new javax.swing.JLabel();
+        createBankRoutingNumberField = new javax.swing.JTextField();
+        jPanel27 = new javax.swing.JPanel();
+        jLabel36 = new javax.swing.JLabel();
+        updateBankIdField = new javax.swing.JTextField();
+        updateBankNameLabel = new javax.swing.JLabel();
+        updateBankNameField = new javax.swing.JTextField();
+        updateBankButton = new javax.swing.JButton();
+        bankSearchButton = new javax.swing.JButton();
+        updateBankRoutingNumberField = new javax.swing.JTextField();
+        updateBankRoutingNumberLabel = new javax.swing.JLabel();
+        jLabel39 = new javax.swing.JLabel();
+        bankPositionField = new javax.swing.JTextField();
+        jPanel28 = new javax.swing.JPanel();
+        jLabel38 = new javax.swing.JLabel();
+        deleteBankIdField = new javax.swing.JTextField();
+        deleteBankButton = new javax.swing.JButton();
+        jPanel29 = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        createCardIdField = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        createCardNameField = new javax.swing.JTextField();
+        createCardButton = new javax.swing.JButton();
+        jPanel30 = new javax.swing.JPanel();
+        updateCardIdLabel = new javax.swing.JLabel();
+        updateCardIdField = new javax.swing.JTextField();
+        updateCardNameLabel = new javax.swing.JLabel();
+        updateCardNameField = new javax.swing.JTextField();
+        updateCardButton = new javax.swing.JButton();
+        searchCardButton = new javax.swing.JButton();
+        jLabel44 = new javax.swing.JLabel();
+        cardPositionField = new javax.swing.JTextField();
+        jPanel31 = new javax.swing.JPanel();
+        updateCardIdLabel1 = new javax.swing.JLabel();
+        deleteCardIdField = new javax.swing.JTextField();
+        deleteCardButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel12 = new javax.swing.JPanel();
@@ -320,16 +420,271 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("System Admin", jPanel1);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
-        );
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane5.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bankRequestsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Request Id", "User Id", "Bank Id", "Account Holder", "Account Number", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(bankRequestsTable);
+
+        jPanel24.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 630, 270));
+
+        jLabel33.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel33.setText("Bank requests");
+        jPanel24.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+
+        bankInProgressButton.setText("In Progress");
+        bankInProgressButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bankInProgressButtonActionPerformed(evt);
+            }
+        });
+        jPanel24.add(bankInProgressButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, -1, -1));
+
+        bankApprovedButton.setText("Approved");
+        bankApprovedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bankApprovedButtonActionPerformed(evt);
+            }
+        });
+        jPanel24.add(bankApprovedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, -1, -1));
+
+        bankDeniedButton.setText("Denied");
+        bankDeniedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bankDeniedButtonActionPerformed(evt);
+            }
+        });
+        jPanel24.add(bankDeniedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, -1, -1));
+
+        jTabbedPane5.addTab("Bank Requests", jPanel24);
+
+        jPanel25.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cardRequestsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Request Id", "User Id", "Card Id", "Card Holder", "Card Number", "Card Expiry", "Card CVC", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(cardRequestsTable);
+
+        jPanel25.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 140, 670, 260));
+
+        jLabel32.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel32.setText("Credit card requests");
+        jPanel25.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+
+        cardInProgressButton.setText("In Progress");
+        cardInProgressButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cardInProgressButtonActionPerformed(evt);
+            }
+        });
+        jPanel25.add(cardInProgressButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, -1));
+
+        cardApprovedButton.setText("Approved");
+        cardApprovedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cardApprovedButtonActionPerformed(evt);
+            }
+        });
+        jPanel25.add(cardApprovedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
+
+        cardDeniedButton.setText("Denied");
+        cardDeniedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cardDeniedButtonActionPerformed(evt);
+            }
+        });
+        jPanel25.add(cardDeniedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 440, -1, -1));
+
+        jTabbedPane5.addTab("Credit card Requests", jPanel25);
+
+        jPanel26.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel34.setText("Bank Id:");
+        jPanel26.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
+        jPanel26.add(createBankIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 110, -1));
+
+        jLabel35.setText("Bank Name:");
+        jPanel26.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
+        jPanel26.add(createBankNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 110, -1));
+
+        createBankButton.setText("Create");
+        createBankButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createBankButtonActionPerformed(evt);
+            }
+        });
+        jPanel26.add(createBankButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 220, -1));
+
+        jLabel37.setText("Routing Number:");
+        jPanel26.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
+        jPanel26.add(createBankRoutingNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 110, -1));
+
+        jTabbedPane5.addTab("Create Bank", jPanel26);
+
+        jPanel27.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel36.setText("Bank Id:");
+        jPanel27.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
+        jPanel27.add(updateBankIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 110, -1));
+
+        updateBankNameLabel.setText("Bank Name:");
+        jPanel27.add(updateBankNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
+        updateBankNameLabel.setVisible(false);
+        jPanel27.add(updateBankNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 110, -1));
+        updateBankNameField.setVisible(false);
+
+        updateBankButton.setText("Update");
+        updateBankButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBankButtonActionPerformed(evt);
+            }
+        });
+        jPanel27.add(updateBankButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 220, -1));
+        updateBankButton.setVisible(false);
+
+        bankSearchButton.setText("Search");
+        bankSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bankSearchButtonActionPerformed(evt);
+            }
+        });
+        jPanel27.add(bankSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
+        jPanel27.add(updateBankRoutingNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 110, -1));
+        updateBankRoutingNumberField.setVisible(false);
+
+        updateBankRoutingNumberLabel.setText("Routing Number:");
+        jPanel27.add(updateBankRoutingNumberLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
+        updateBankRoutingNumberLabel.setVisible(false);
+
+        jLabel39.setText("Position:");
+        jPanel27.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
+
+        bankPositionField.setEnabled(false);
+        jPanel27.add(bankPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 110, -1));
+
+        jTabbedPane5.addTab("View/Update Bank", jPanel27);
+
+        jPanel28.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel38.setText("Bank Id:");
+        jPanel28.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, 20));
+        jPanel28.add(deleteBankIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 197, 110, -1));
+
+        deleteBankButton.setText("Delete");
+        deleteBankButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBankButtonActionPerformed(evt);
+            }
+        });
+        jPanel28.add(deleteBankButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 190, 30));
+
+        jTabbedPane5.addTab("Delete Bank", jPanel28);
+
+        jPanel29.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel40.setText("Card Id:");
+        jPanel29.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+        jPanel29.add(createCardIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 110, -1));
+
+        jLabel41.setText("Card Name:");
+        jPanel29.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, -1));
+        jPanel29.add(createCardNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 110, -1));
+
+        createCardButton.setText("Create");
+        createCardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createCardButtonActionPerformed(evt);
+            }
+        });
+        jPanel29.add(createCardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 220, -1));
+
+        jTabbedPane5.addTab("Create credit card", jPanel29);
+
+        jPanel30.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        updateCardIdLabel.setText("Card Id:");
+        jPanel30.add(updateCardIdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+        jPanel30.add(updateCardIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 110, -1));
+
+        updateCardNameLabel.setText("Card Name:");
+        jPanel30.add(updateCardNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, -1));
+        updateCardNameLabel.setVisible(false);
+        jPanel30.add(updateCardNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 110, -1));
+        updateCardNameField.setVisible(false);
+
+        updateCardButton.setText("Update");
+        updateCardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCardButtonActionPerformed(evt);
+            }
+        });
+        jPanel30.add(updateCardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 220, -1));
+        updateCardButton.setVisible(false);
+
+        searchCardButton.setText("Search");
+        searchCardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchCardButtonActionPerformed(evt);
+            }
+        });
+        jPanel30.add(searchCardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
+
+        jLabel44.setText("Position:");
+        jPanel30.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
+
+        cardPositionField.setEnabled(false);
+        jPanel30.add(cardPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 110, -1));
+
+        jTabbedPane5.addTab("View/Update Credit card", jPanel30);
+
+        jPanel31.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        updateCardIdLabel1.setText("Card Id:");
+        jPanel31.add(updateCardIdLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
+        jPanel31.add(deleteCardIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 110, -1));
+
+        deleteCardButton.setText("Delete");
+        deleteCardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteCardButtonActionPerformed(evt);
+            }
+        });
+        jPanel31.add(deleteCardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 220, -1));
+
+        jTabbedPane5.addTab("Delete Credit card", jPanel31);
+
+        jPanel2.add(jTabbedPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 870));
 
         jTabbedPane1.addTab("Banking Admin", jPanel2);
 
@@ -992,6 +1347,57 @@ public class AdminFrame extends javax.swing.JFrame {
                 if(!found)
                     JOptionPane.showMessageDialog(this, "Mobile plan with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
                 break;
+                
+            case "bankId":
+                updateBankNameLabel.setVisible(false);
+                updateBankNameField.setVisible(false);
+                updateBankRoutingNumberLabel.setVisible(false);
+                updateBankRoutingNumberField.setVisible(false);
+                updateBankButton.setVisible(false);
+                BankDirectory bdd = new BankDirectory();
+                for(Bank b: bdd.getBankList())
+                {
+                  if(Integer.parseInt(updateBankIdField.getText()) == b.getId())
+                  { 
+                      found = true;
+                      position = b.getId();
+                      updateBankNameLabel.setVisible(true);
+                      updateBankNameField.setVisible(true);
+                      updateBankRoutingNumberLabel.setVisible(true);
+                      updateBankRoutingNumberField.setVisible(true);
+                      updateBankButton.setVisible(true);
+                      bankPositionField.setText(Integer.valueOf(position).toString());
+                      updateBankNameField.setText(b.getName());
+                      updateBankRoutingNumberField.setText(b.getRoutingNumber());
+                      break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Bank with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+                
+            case "cardId":
+                updateCardNameLabel.setVisible(false);
+                updateCardNameField.setVisible(false);
+                updateCardButton.setVisible(false);
+                CreditCardDirectory ccd = new CreditCardDirectory();
+                for(CreditCard c: ccd.getCreditCardList())
+                {
+                  if(Integer.parseInt(updateCardIdField.getText()) == c.getId())
+                  { 
+                      found = true;
+                      position = c.getId();
+                      updateCardNameLabel.setVisible(true);
+                      updateCardNameField.setVisible(true);
+                      updateCardButton.setVisible(true);
+                      cardPositionField.setText(Integer.valueOf(position).toString());
+                      updateCardNameField.setText(c.getType());
+                      break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Card with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
         }
     }
     private void citySearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citySearchButtonActionPerformed
@@ -1614,6 +2020,537 @@ public class AdminFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deleteMPButtonActionPerformed
 
+    private void bankInProgressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankInProgressButtonActionPerformed
+        // TODO add your handling code here:
+        int row = bankRequestsTable.getSelectedRow();
+        if(row > -1)
+        {  
+           int requestId = Integer.parseInt(bankRequestsTable.getModel().getValueAt(row, 0).toString()); 
+           String requestStatus = bankRequestsTable.getModel().getValueAt(row, 5).toString();
+           if(requestStatus.equals("Initiated"))
+           {
+                int res = BankRequestDirectory.updateStatusToInProgress(requestId);
+                if(res > 0)
+                {
+                     JOptionPane.showMessageDialog(this, "Updated the status to In Progress.", null, JOptionPane.OK_OPTION);
+                     DefaultTableModel table_model = (DefaultTableModel)bankRequestsTable.getModel();
+                     table_model.setRowCount(0);
+                     BankRequestDirectory brd = new BankRequestDirectory();
+                     for(BankRequest br : brd.getBankRequestList())
+                     {
+                         String id = String.valueOf(br.getId());
+                         String userId = String.valueOf(br.getUser().getId());
+                         String bankId = String.valueOf(br.getBank().getId());
+                         String accountHolder = br.getAccountHolder();
+                         String accountNumber = String.valueOf(br.getAccountNumber());
+                         String status = br.getStatus();
+                         String table_data[] = {id, userId, bankId, accountHolder, accountNumber, status};
+                         table_model.addRow(table_data);
+                     }
+                }
+           }
+           else if(requestStatus.equals("In Progress"))
+              JOptionPane.showMessageDialog(this, "Request is already in progress.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Approved"))
+               JOptionPane.showMessageDialog(this, "Request is already approved.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Denied"))
+               JOptionPane.showMessageDialog(this, "Request is already Denied.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+           JOptionPane.showMessageDialog(this, "Please select a request.", "Alert", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_bankInProgressButtonActionPerformed
+
+    private void bankApprovedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankApprovedButtonActionPerformed
+        // TODO add your handling code here:
+        int row = bankRequestsTable.getSelectedRow();
+        if(row > -1)
+        {
+           int requestId = Integer.parseInt(bankRequestsTable.getModel().getValueAt(row, 0).toString());
+           int userid = Integer.parseInt(bankRequestsTable.getModel().getValueAt(row, 1).toString());
+           int bankid = Integer.parseInt(bankRequestsTable.getModel().getValueAt(row, 2).toString());
+           String accountholder = bankRequestsTable.getModel().getValueAt(row, 3).toString();
+           String accountnumber = bankRequestsTable.getModel().getValueAt(row, 4).toString();
+           String requestStatus = bankRequestsTable.getModel().getValueAt(row, 5).toString();
+           String balance = "";
+           if(requestStatus.equals("In Progress"))
+           {
+                while(true)
+                {
+                     balance = JOptionPane.showInputDialog(this,"Please update the account balance.");
+                     if(balance == null)
+                         balance = "";
+                     if(Pattern.compile("^[0-9.]+$").matcher(balance).matches())
+                         break;
+                     else
+                     {
+                         JOptionPane.showMessageDialog(this, "Please enter the amount in positive numbers.", "Alert", JOptionPane.WARNING_MESSAGE); 
+                         return;
+                     }
+                }
+                User user = new User(userid, "", "", 0, "", 0.0);
+                Bank bank = new Bank(bankid, "", "");
+                BankAccount ba = new BankAccount(0, user, bank, accountholder, Long.parseLong(accountnumber), Double.parseDouble(balance));      
+                int res = BankRequestDirectory.updateStatusToApproved(ba, requestId);
+                if(res > 0)
+                {
+                     JOptionPane.showMessageDialog(this, "Updated the status to Approved.", null, JOptionPane.OK_OPTION);
+                     DefaultTableModel table_model = (DefaultTableModel)bankRequestsTable.getModel();
+                     table_model.setRowCount(0);
+                     BankRequestDirectory brd = new BankRequestDirectory();
+                     for(BankRequest br : brd.getBankRequestList())
+                     {
+                         String id = String.valueOf(br.getId());
+                         String userId = String.valueOf(br.getUser().getId());
+                         String bankId = String.valueOf(br.getBank().getId());
+                         String accountHolder = br.getAccountHolder();
+                         String accountNumber = String.valueOf(br.getAccountNumber());
+                         String status = br.getStatus();
+                         String table_data[] = {id, userId, bankId, accountHolder, accountNumber, status};
+                         table_model.addRow(table_data);
+                     }
+                }
+           }
+           else if(requestStatus.equals("Initiated"))
+              JOptionPane.showMessageDialog(this, "Please process the request before approving.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Approved"))
+               JOptionPane.showMessageDialog(this, "Request is already approved.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Denied"))
+               JOptionPane.showMessageDialog(this, "Request is already Denied.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+           JOptionPane.showMessageDialog(this, "Please select a request.", "Alert", JOptionPane.WARNING_MESSAGE); 
+    }//GEN-LAST:event_bankApprovedButtonActionPerformed
+
+    private void bankDeniedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankDeniedButtonActionPerformed
+        // TODO add your handling code here:
+        int row = bankRequestsTable.getSelectedRow();
+        if(row > -1)
+        {  
+           int requestId = Integer.parseInt(bankRequestsTable.getModel().getValueAt(row, 0).toString()); 
+           String requestStatus = bankRequestsTable.getModel().getValueAt(row, 5).toString();
+           if(requestStatus.equals("In Progress"))
+           {
+                int res = BankRequestDirectory.updateStatusToDenied(requestId);
+                if(res > 0)
+                {
+                     JOptionPane.showMessageDialog(this, "Updated the status to Denied.", null, JOptionPane.OK_OPTION);
+                     DefaultTableModel table_model = (DefaultTableModel)bankRequestsTable.getModel();
+                     table_model.setRowCount(0);
+                     BankRequestDirectory brd = new BankRequestDirectory();
+                     for(BankRequest br : brd.getBankRequestList())
+                     {
+                         String id = String.valueOf(br.getId());
+                         String userId = String.valueOf(br.getUser().getId());
+                         String bankId = String.valueOf(br.getBank().getId());
+                         String accountHolder = br.getAccountHolder();
+                         String accountNumber = String.valueOf(br.getAccountNumber());
+                         String status = br.getStatus();
+                         String table_data[] = {id, userId, bankId, accountHolder, accountNumber, status};
+                         table_model.addRow(table_data);
+                     }
+                }
+           }
+           else if(requestStatus.equals("Initiated"))
+              JOptionPane.showMessageDialog(this, "Please process the request before denying.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Approved"))
+               JOptionPane.showMessageDialog(this, "Request is already approved.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Denied"))
+               JOptionPane.showMessageDialog(this, "Request is already Denied.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+           JOptionPane.showMessageDialog(this, "Please select a request.", "Alert", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_bankDeniedButtonActionPerformed
+
+    private void cardInProgressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardInProgressButtonActionPerformed
+        // TODO add your handling code here:
+        int row = cardRequestsTable.getSelectedRow();
+        if(row > -1)
+        {  
+           int requestId = Integer.parseInt(cardRequestsTable.getModel().getValueAt(row, 0).toString()); 
+           String requestStatus = cardRequestsTable.getModel().getValueAt(row, 7).toString();
+           if(requestStatus.equals("Initiated"))
+           {
+                int res = CreditCardRequestDirectory.updateStatusToInProgress(requestId);
+                if(res > 0)
+                {
+                     JOptionPane.showMessageDialog(this, "Updated the status to In Progress.", null, JOptionPane.OK_OPTION);
+                     DefaultTableModel table_model = (DefaultTableModel)cardRequestsTable.getModel();
+                     table_model.setRowCount(0);
+                     CreditCardRequestDirectory crd = new CreditCardRequestDirectory();
+                     for(CreditCardRequest cr : crd.getCreditCardRequestList())
+                     {
+                         String id = String.valueOf(cr.getId());
+                         String userId = String.valueOf(cr.getUser().getId());
+                         String cardId = String.valueOf(cr.getCreditCard().getId());
+                         String cardHolder = cr.getCardHolder();
+                         String cardNumber = String.valueOf(cr.getCardNumber());
+                         String cardExpiry = cr.getCardExpiry();
+                         String cardCvc = String.valueOf(cr.getCardCVC());
+                         String status = cr.getStatus();
+                         String table_data[] = {id, userId, cardId, cardHolder, cardNumber, cardExpiry, cardCvc, status};
+                         table_model.addRow(table_data);
+                     }
+                }
+           }
+           else if(requestStatus.equals("In Progress"))
+              JOptionPane.showMessageDialog(this, "Request is already in progress.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Approved"))
+               JOptionPane.showMessageDialog(this, "Request is already approved.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Denied"))
+               JOptionPane.showMessageDialog(this, "Request is already Denied.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+           JOptionPane.showMessageDialog(this, "Please select a request.", "Alert", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_cardInProgressButtonActionPerformed
+
+    private void cardApprovedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardApprovedButtonActionPerformed
+        // TODO add your handling code here:
+        int row = cardRequestsTable.getSelectedRow();
+        if(row > -1)
+        {
+           int requestId = Integer.parseInt(cardRequestsTable.getModel().getValueAt(row, 0).toString());
+           int userid = Integer.parseInt(cardRequestsTable.getModel().getValueAt(row, 1).toString());
+           int cardid = Integer.parseInt(cardRequestsTable.getModel().getValueAt(row, 2).toString());
+           String cardholder = cardRequestsTable.getModel().getValueAt(row, 3).toString();
+           String cardnumber = cardRequestsTable.getModel().getValueAt(row, 4).toString();
+           String cardexpiry = cardRequestsTable.getModel().getValueAt(row, 5).toString();
+           int cardcvc = Integer.parseInt(cardRequestsTable.getModel().getValueAt(row, 6).toString());
+           String requestStatus = cardRequestsTable.getModel().getValueAt(row, 7).toString();
+           String credit = "";
+           if(requestStatus.equals("In Progress"))
+           {
+                while(true)
+                {
+                     credit = JOptionPane.showInputDialog(this,"Please update the available credit.");
+                     if(credit == null)
+                         credit = "";
+                     if(Pattern.compile("^[0-9.]+$").matcher(credit).matches())
+                         break;
+                     else
+                     {
+                         JOptionPane.showMessageDialog(this, "Please enter the credit in positive numbers.", "Alert", JOptionPane.WARNING_MESSAGE); 
+                         return;
+                     }
+                }
+                User user = new User(userid, "", "", 0, "", 0.0);
+                CreditCard creditCard = new CreditCard(cardid, "");
+                UserCreditCard uc = new UserCreditCard(0, user, creditCard, cardholder, Long.parseLong(cardnumber), cardexpiry, cardcvc, Double.parseDouble(credit));      
+                int res = CreditCardRequestDirectory.updateStatusToApproved(uc, requestId);
+                if(res > 0)
+                {
+                     JOptionPane.showMessageDialog(this, "Updated the status to Approved.", null, JOptionPane.OK_OPTION);
+                     DefaultTableModel table_model = (DefaultTableModel)cardRequestsTable.getModel();
+                     table_model.setRowCount(0);
+                     CreditCardRequestDirectory crd = new CreditCardRequestDirectory();
+                     for(CreditCardRequest cr : crd.getCreditCardRequestList())
+                     {
+                         String id = String.valueOf(cr.getId());
+                         String userId = String.valueOf(cr.getUser().getId());
+                         String cardId = String.valueOf(cr.getCreditCard().getId());
+                         String cardHolder = cr.getCardHolder();
+                         String cardNumber = String.valueOf(cr.getCardNumber());
+                         String cardExpiry = cr.getCardExpiry();
+                         String cardCvc = String.valueOf(cr.getCardCVC());
+                         String status = cr.getStatus();
+                         String table_data[] = {id, userId, cardId, cardHolder, cardNumber, cardExpiry, cardCvc, status};
+                         table_model.addRow(table_data);
+                     }
+                }
+           }
+           else if(requestStatus.equals("Initiated"))
+              JOptionPane.showMessageDialog(this, "Please process the request before approving.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Approved"))
+               JOptionPane.showMessageDialog(this, "Request is already approved.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Denied"))
+               JOptionPane.showMessageDialog(this, "Request is already Denied.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+           JOptionPane.showMessageDialog(this, "Please select a request.", "Alert", JOptionPane.WARNING_MESSAGE); 
+    }//GEN-LAST:event_cardApprovedButtonActionPerformed
+
+    private void cardDeniedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardDeniedButtonActionPerformed
+        // TODO add your handling code here:
+        int row = cardRequestsTable.getSelectedRow();
+        if(row > -1)
+        {  
+           int requestId = Integer.parseInt(cardRequestsTable.getModel().getValueAt(row, 0).toString()); 
+           String requestStatus = cardRequestsTable.getModel().getValueAt(row, 7).toString();
+           if(requestStatus.equals("In Progress"))
+           {
+                int res = CreditCardRequestDirectory.updateStatusToDenied(requestId);
+                if(res > 0)
+                {
+                     JOptionPane.showMessageDialog(this, "Updated the status to Denied.", null, JOptionPane.OK_OPTION);
+                     DefaultTableModel table_model = (DefaultTableModel)cardRequestsTable.getModel();
+                     table_model.setRowCount(0);
+                     CreditCardRequestDirectory crd = new CreditCardRequestDirectory();
+                     for(CreditCardRequest cr : crd.getCreditCardRequestList())
+                     {
+                         String id = String.valueOf(cr.getId());
+                         String userId = String.valueOf(cr.getUser().getId());
+                         String cardId = String.valueOf(cr.getCreditCard().getId());
+                         String cardHolder = cr.getCardHolder();
+                         String cardNumber = String.valueOf(cr.getCardNumber());
+                         String cardExpiry = cr.getCardExpiry();
+                         String cardCvc = String.valueOf(cr.getCardCVC());
+                         String status = cr.getStatus();
+                         String table_data[] = {id, userId, cardId, cardHolder, cardNumber, cardExpiry, cardCvc, status};
+                         table_model.addRow(table_data);
+                     }
+                }
+           }
+           else if(requestStatus.equals("Initiated"))
+              JOptionPane.showMessageDialog(this, "Please process the request before denying.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Approved"))
+               JOptionPane.showMessageDialog(this, "Request is already approved.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Denied"))
+               JOptionPane.showMessageDialog(this, "Request is already Denied.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+           JOptionPane.showMessageDialog(this, "Please select a request.", "Alert", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_cardDeniedButtonActionPerformed
+    public boolean clientSideValidation(JFrame frame, String bankId, String bankName, String routingNumber)
+    {
+        if(Pattern.compile("^[1-9]\\d*$").matcher(bankId).matches() && !bankId.equals(""))
+        {
+            if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(bankName).matches() && !bankName.equals(""))
+            {
+              if(Pattern.compile("^\\d{9}$").matcher(routingNumber).matches() && !routingNumber.equals(""))
+              {
+                return true;
+              }
+              else
+                JOptionPane.showMessageDialog(frame, "Routing Number is not valid.\nOnly numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);   
+            }
+            else
+              JOptionPane.showMessageDialog(frame, "Bank Name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE); 
+        }     
+        else
+            JOptionPane.showMessageDialog(frame, "Bank Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);  
+      return false;
+    }
+    private void createBankButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createBankButtonActionPerformed
+        // TODO add your handling code here:
+        String bankId = createBankIdField.getText().trim();
+        String bankName = createBankNameField.getText().trim();
+        String bankRoutingNumber = createBankRoutingNumberField.getText();
+        boolean passed = clientSideValidation(this, bankId, bankName, bankRoutingNumber);
+        boolean exists = false;
+        if(passed)
+        {
+            BankDirectory bd = new BankDirectory();
+            for(Bank b: bd.getBankList())
+            {
+              if(Integer.parseInt(bankId) == b.getId())
+              {
+                JOptionPane.showMessageDialog(this, "Bank with the given Id already exists\nPlease give another Id to the Bank.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;              
+              }
+              else if(bankName.equals(b.getName()))
+              {
+                JOptionPane.showMessageDialog(this, "Bank with the given name already exists\nPlease give another name to the Bank.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;
+              }
+            }
+            if(!exists)
+            {
+              int id = Integer.parseInt(bankId);
+              Bank b = new Bank(id, bankName, bankRoutingNumber);
+              int res = BankDirectory.addBank(b);
+              if(res > 0)
+              {
+                JOptionPane.showMessageDialog(this, "Created a new bank successfully..", null, JOptionPane.OK_OPTION); 
+              }
+            }
+        }
+    }//GEN-LAST:event_createBankButtonActionPerformed
+
+    private void bankSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankSearchButtonActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateBankIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Bank Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("bankId", searchText.trim());
+    }//GEN-LAST:event_bankSearchButtonActionPerformed
+
+    private void updateBankButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBankButtonActionPerformed
+        // TODO add your handling code here:
+        String bankId = updateBankIdField.getText().trim();
+        String bankName = updateBankNameField.getText().trim();
+        String bankRoutingNumber = updateBankRoutingNumberField.getText().trim();
+        int position = Integer.valueOf(bankPositionField.getText());
+        boolean passed = clientSideValidation(this, bankId, bankName, bankRoutingNumber);
+        boolean exists = false;
+        if(passed)
+        {
+          BankDirectory bd = new BankDirectory();
+          for(Bank b: bd.getBankList())
+            {
+              if(Integer.parseInt(bankId) == b.getId() && b.getId() != position)
+              {
+                JOptionPane.showMessageDialog(this, "Bank with the given Id already exists\nPlease give another Id to the Bank.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;              
+              }
+              else if(bankName.equals(b.getName()) && b.getId() != position)
+              {
+                JOptionPane.showMessageDialog(this, "Bank with the given name already exists\nPlease give another name to the Bank.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;
+              }
+            }
+            if(!exists)
+            {
+              int id = Integer.parseInt(bankId);
+              Bank b = new Bank(id, bankName, bankRoutingNumber);
+              int res = BankDirectory.updateBank(b, position);
+              if(res > 0)
+              {
+                JOptionPane.showMessageDialog(this, "Updated the bank successfully.", null, JOptionPane.OK_OPTION);
+                bankPositionField.setText(bankId);
+              }
+              else
+                JOptionPane.showMessageDialog(this, "Bank does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);  
+            }
+        }
+    }//GEN-LAST:event_updateBankButtonActionPerformed
+
+    private void deleteBankButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBankButtonActionPerformed
+        // TODO add your handling code here:
+        String deleteText = deleteBankIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Bank Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);       
+        if(flag)
+        {
+          int res = BankDirectory.deleteBank(Integer.parseInt(deleteText));
+          if(res > 0)
+          {
+            JOptionPane.showMessageDialog(this, "Deleted the bank successfully..", null, JOptionPane.OK_OPTION);
+          }
+          else
+            JOptionPane.showMessageDialog(this, "Bank with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteBankButtonActionPerformed
+
+    private void createCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createCardButtonActionPerformed
+        // TODO add your handling code here:
+        String cardId = createCardIdField.getText().trim();
+        String cardName = createCardNameField.getText().trim();
+        boolean passed = clientSideValidation(this, cardId, cardName);
+        boolean exists = false;
+        if(passed)
+        {
+            CreditCardDirectory cd = new CreditCardDirectory();
+            for(CreditCard c: cd.getCreditCardList())
+            {
+              if(Integer.parseInt(cardId) == c.getId())
+              {
+                JOptionPane.showMessageDialog(this, "Card with the given Id already exists\nPlease give another Id to the card.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;              
+              }
+              else if(cardName.equals(c.getType()))
+              {
+                JOptionPane.showMessageDialog(this, "Card with the given name already exists\nPlease give another name to the card.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;
+              }
+            }
+            if(!exists)
+            {
+              int id = Integer.parseInt(cardId);
+              CreditCard c = new CreditCard(id, cardName);
+              int res = CreditCardDirectory.addCard(c);
+              if(res > 0)
+              {
+                JOptionPane.showMessageDialog(this, "Created a new card successfully..", null, JOptionPane.OK_OPTION); 
+              }
+            }
+        }
+    }//GEN-LAST:event_createCardButtonActionPerformed
+
+    private void updateCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCardButtonActionPerformed
+        // TODO add your handling code here:
+        String cardId = createCardIdField.getText().trim();
+        String cardName = createCardNameField.getText().trim();
+        int position = Integer.valueOf(cardPositionField.getText());
+        boolean passed = clientSideValidation(this, cardId, cardName);
+        boolean exists = false;
+        if(passed)
+        {
+            CreditCardDirectory cd = new CreditCardDirectory();
+            for(CreditCard c: cd.getCreditCardList())
+            {
+              if(Integer.parseInt(cardId) == c.getId() && c.getId() != position)
+              {
+                JOptionPane.showMessageDialog(this, "Card with the given Id already exists\nPlease give another Id to the Card.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;              
+              }
+              else if(cardName.equals(c.getType()) && c.getId() != position)
+              {
+                JOptionPane.showMessageDialog(this, "Card with the given name already exists\nPlease give another name to the Card.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;
+              }
+            }
+            if(!exists)
+            {
+              int id = Integer.parseInt(cardId);
+              CreditCard c = new CreditCard(id, cardName);
+              int res = CreditCardDirectory.updateCard(c, position);
+              if(res > 0)
+              {
+                JOptionPane.showMessageDialog(this, "Updated the card successfully.", null, JOptionPane.OK_OPTION);
+                cardPositionField.setText(cardId);
+              }
+              else
+                JOptionPane.showMessageDialog(this, "Card does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);  
+            }
+        }
+    }//GEN-LAST:event_updateCardButtonActionPerformed
+
+    private void deleteCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCardButtonActionPerformed
+        // TODO add your handling code here:
+        String deleteText = deleteCardIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Card Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);       
+        if(flag)
+        {
+          int res = CreditCardDirectory.deleteCard(Integer.parseInt(deleteText));
+          if(res > 0)
+          {
+            JOptionPane.showMessageDialog(this, "Deleted the card successfully.", null, JOptionPane.OK_OPTION);
+          }
+          else
+            JOptionPane.showMessageDialog(this, "Card with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteCardButtonActionPerformed
+
+    private void searchCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchCardButtonActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateCardIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Card Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("cardId", searchText.trim());
+    }//GEN-LAST:event_searchCardButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1652,11 +2589,26 @@ public class AdminFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField MPPositionField;
     private javax.swing.JTextField MSPPositionField;
+    private javax.swing.JButton bankApprovedButton;
+    private javax.swing.JButton bankDeniedButton;
+    private javax.swing.JButton bankInProgressButton;
+    private javax.swing.JTextField bankPositionField;
+    private javax.swing.JTable bankRequestsTable;
+    private javax.swing.JButton bankSearchButton;
     private javax.swing.JTextField busPositionField;
+    private javax.swing.JButton cardApprovedButton;
+    private javax.swing.JButton cardDeniedButton;
+    private javax.swing.JButton cardInProgressButton;
+    private javax.swing.JTextField cardPositionField;
+    private javax.swing.JTable cardRequestsTable;
     private javax.swing.JLabel cityNameLabel;
     private javax.swing.JTextField cityPositionField;
     private javax.swing.JButton citySearchButton;
     private javax.swing.JButton cityUpdateButton;
+    private javax.swing.JButton createBankButton;
+    private javax.swing.JTextField createBankIdField;
+    private javax.swing.JTextField createBankNameField;
+    private javax.swing.JTextField createBankRoutingNumberField;
     private javax.swing.JButton createBusButton;
     private javax.swing.JTextField createBusFareField;
     private javax.swing.JComboBox<String> createBusFromCityCombo;
@@ -1666,6 +2618,9 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField createBusStartAtField;
     private javax.swing.JComboBox<String> createBusToCityCombo;
     private javax.swing.JTextField createBusTravelDateField;
+    private javax.swing.JButton createCardButton;
+    private javax.swing.JTextField createCardIdField;
+    private javax.swing.JTextField createCardNameField;
     private javax.swing.JButton createCityButton;
     private javax.swing.JTextField createCityIdField;
     private javax.swing.JTextField createCityNameField;
@@ -1680,8 +2635,12 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> createMSPNameCombo;
     private javax.swing.JTextField createMSPNameField;
     private javax.swing.JTextField createPlanNameField;
+    private javax.swing.JButton deleteBankButton;
+    private javax.swing.JTextField deleteBankIdField;
     private javax.swing.JButton deleteBusButton;
     private javax.swing.JTextField deleteBusIdField;
+    private javax.swing.JButton deleteCardButton;
+    private javax.swing.JTextField deleteCardIdField;
     private javax.swing.JButton deleteCityButton;
     private javax.swing.JTextField deleteCityIdField;
     private javax.swing.JButton deleteMPButton;
@@ -1713,7 +2672,18 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1735,17 +2705,35 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JButton searchCardButton;
+    private javax.swing.JButton updateBankButton;
+    private javax.swing.JTextField updateBankIdField;
+    private javax.swing.JTextField updateBankNameField;
+    private javax.swing.JLabel updateBankNameLabel;
+    private javax.swing.JTextField updateBankRoutingNumberField;
+    private javax.swing.JLabel updateBankRoutingNumberLabel;
     private javax.swing.JButton updateBusButton;
     private javax.swing.JTextField updateBusFareField;
     private javax.swing.JLabel updateBusFareLabel;
@@ -1763,6 +2751,12 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel updateBusToCityLabel;
     private javax.swing.JTextField updateBusTravelDateField;
     private javax.swing.JLabel updateBusTravelDateLabel;
+    private javax.swing.JButton updateCardButton;
+    private javax.swing.JTextField updateCardIdField;
+    private javax.swing.JLabel updateCardIdLabel;
+    private javax.swing.JLabel updateCardIdLabel1;
+    private javax.swing.JTextField updateCardNameField;
+    private javax.swing.JLabel updateCardNameLabel;
     private javax.swing.JTextField updateCityIdField;
     private javax.swing.JTextField updateCityNameField;
     private javax.swing.JButton updateMPButton;

@@ -23,11 +23,13 @@ public class UserDirectory {
             ResultSet rs = MySql.selectQuery("select * from users;");
             while(rs.next())
             {
+              int userId = rs.getInt(1);
               String userName = rs.getString(2);
               String email = rs.getString(3);
-              long mobile = Long.parseLong(rs.getString(4));
+              long mobile = rs.getLong(4);
               String password = rs.getString(5);
-              User user = new User(userName, email, mobile, password);
+              double balance = rs.getDouble(7);
+              User user = new User(userId, userName, email, mobile, password, balance);
               userDirectory.add(user);
             }
             return userDirectory;

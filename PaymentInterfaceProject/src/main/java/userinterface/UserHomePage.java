@@ -16,11 +16,6 @@ import java.sql.SQLException;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartFrame;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
 import static userinterface.Registration.clientSideVlaidation;
 
 public class UserHomePage extends javax.swing.JFrame {
