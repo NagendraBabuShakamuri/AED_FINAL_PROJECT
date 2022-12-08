@@ -10,6 +10,8 @@ import business.City;
 import business.CityDirectory;
 import business.Event;
 import business.EventDirectory;
+import business.Movie;
+import business.MovieDirectory;
 import business.Train;
 import business.TrainsDirectory;
 import business.mysql.MySql;
@@ -36,12 +38,16 @@ public class AdminFrame extends javax.swing.JFrame {
           createBusFromCityCombo.addItem(c.getCityName());
           createEventCityCombo.addItem(c.getCityName());
           createTrainFromCityCombo.addItem(c.getCityName());
+          createMovieCityCombo.addItem(c.getCityName());
+
 
           
         }
         createBusFromCityCombo.setSelectedItem(null);
         createEventCityCombo.setSelectedItem(null);
         createTrainFromCityCombo.setSelectedItem(null);
+        createMovieCityCombo.setSelectedItem(null);
+
     }
 
     /**
@@ -179,7 +185,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         createEventStartAtField = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
-        createEventReachAtField = new javax.swing.JTextField();
+        createEventEndAtField = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         createEventFareField = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
@@ -209,6 +215,52 @@ public class AdminFrame extends javax.swing.JFrame {
         deleteEventIdField = new javax.swing.JTextField();
         deleteEventButton = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
+        jTabbedPane6 = new javax.swing.JTabbedPane();
+        jPanel24 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        createMovieIdField = new javax.swing.JTextField();
+        jLabel38 = new javax.swing.JLabel();
+        createMovieNameField = new javax.swing.JTextField();
+        jLabel39 = new javax.swing.JLabel();
+        createMovieCityCombo = new javax.swing.JComboBox<>();
+        jLabel40 = new javax.swing.JLabel();
+        createMovieStartAtField = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        createMovieEndAtField = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        createMovieFareField = new javax.swing.JTextField();
+        jLabel43 = new javax.swing.JLabel();
+        createMovieTravelDateField = new javax.swing.JTextField();
+        createMovieButton = new javax.swing.JButton();
+        jPanel25 = new javax.swing.JPanel();
+        jLabel44 = new javax.swing.JLabel();
+        moviePositionField = new javax.swing.JTextField();
+        jLabel45 = new javax.swing.JLabel();
+        updateMovieIdField = new javax.swing.JTextField();
+        updateMovieSearchButton = new javax.swing.JButton();
+        updateMovieNameLabel = new javax.swing.JLabel();
+        updateMovieNameField = new javax.swing.JTextField();
+        updateMovieCityLabel = new javax.swing.JLabel();
+        updateMovieCityCombo = new javax.swing.JComboBox<>();
+        updateMovieStartAtLabel = new javax.swing.JLabel();
+        updateMovieStartAtField = new javax.swing.JTextField();
+        updateMovieEndAtLabel = new javax.swing.JLabel();
+        updateMovieEndAtField = new javax.swing.JTextField();
+        updateMovieFareLabel = new javax.swing.JLabel();
+        updateMovieFareField = new javax.swing.JTextField();
+        updateMovieDateLabel = new javax.swing.JLabel();
+        updateMovieDateField = new javax.swing.JTextField();
+        updateMovieButton = new javax.swing.JButton();
+        jPanel26 = new javax.swing.JPanel();
+        jLabel46 = new javax.swing.JLabel();
+        deleteMovieIdField = new javax.swing.JTextField();
+        deleteMovieButton = new javax.swing.JButton();
+        jPanel27 = new javax.swing.JPanel();
+        jPanel28 = new javax.swing.JPanel();
+        jPanel29 = new javax.swing.JPanel();
+        jPanel30 = new javax.swing.JPanel();
+        jPanel31 = new javax.swing.JPanel();
+        jPanel32 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1000, 1000));
@@ -219,7 +271,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel15.setLayout(jPanel15Layout);
         jPanel15Layout.setHorizontalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 759, Short.MAX_VALUE)
+            .addGap(0, 1180, Short.MAX_VALUE)
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,7 +284,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 759, Short.MAX_VALUE)
+            .addGap(0, 1180, Short.MAX_VALUE)
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,7 +297,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 759, Short.MAX_VALUE)
+            .addGap(0, 1180, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,7 +396,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 1321, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -572,7 +624,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         updateTrainFromCityLabel.setText("From city:");
         jPanel22.add(updateTrainFromCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
-        updateBusFromCityLabel.setVisible(false);
+        updateTrainFromCityLabel.setVisible(false);
 
         updateTrainFromCityCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -585,24 +637,24 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         jPanel22.add(updateTrainFromCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
-        updateBusFromCityCombo.setVisible(false);
+        updateTrainFromCityCombo.setVisible(false);
 
         updateTrainToCityLabel.setText("To city:");
         jPanel22.add(updateTrainToCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
-        updateBusToCityLabel.setVisible(false);
+        updateTrainToCityLabel.setVisible(false);
 
         jPanel22.add(updateTrainToCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
-        updateBusToCityCombo.setVisible(false);
+        updateTrainToCityCombo.setVisible(false);
 
         updateTrainStartAtLabel.setText("Start At:");
         jPanel22.add(updateTrainStartAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, -1));
-        updateBusStartAtLabel.setVisible(false);
+        updateTrainStartAtLabel.setVisible(false);
         jPanel22.add(updateTrainStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 120, -1));
-        updateBusStartAtField.setVisible(false);
+        updateTrainStartAtField.setVisible(false);
 
         updateTrainReachAtLabel.setText("Reach At:");
         jPanel22.add(updateTrainReachAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
-        updateBusReachAtLabel.setVisible(false);
+        updateTrainReachAtLabel.setVisible(false);
 
         updateTrainReachAtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -610,19 +662,19 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         jPanel22.add(updateTrainReachAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 120, -1));
-        updateBusReachAtField.setVisible(false);
+        updateTrainReachAtField.setVisible(false);
 
         updateTrainFareLabel.setText("Fare:");
         jPanel22.add(updateTrainFareLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
-        updateBusFareLabel.setVisible(false);
+        updateTrainFareLabel.setVisible(false);
         jPanel22.add(updateTrainFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 120, -1));
-        updateBusFareField.setVisible(false);
+        updateTrainFareField.setVisible(false);
 
         updateTrainTravelDateLabel.setText("Travel date:");
         jPanel22.add(updateTrainTravelDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
-        updateBusTravelDateLabel.setVisible(false);
+        updateTrainTravelDateLabel.setVisible(false);
         jPanel22.add(updateTrainTravelDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 120, -1));
-        updateBusTravelDateField.setVisible(false);
+        updateTrainTravelDateField.setVisible(false);
 
         updateTrainButton.setText("Update");
         updateTrainButton.addActionListener(new java.awt.event.ActionListener() {
@@ -631,7 +683,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         jPanel22.add(updateTrainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 210, -1));
-        updateBusButton.setVisible(false);
+        updateTrainButton.setVisible(false);
 
         updateTrainSearchButton.setText("Search");
         updateTrainSearchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -682,7 +734,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 1321, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -695,7 +747,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGap(0, 1321, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -732,7 +784,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jLabel22.setText("End At:");
         jPanel18.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, -1, -1));
-        jPanel18.add(createEventReachAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 120, -1));
+        jPanel18.add(createEventEndAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 120, -1));
 
         jLabel23.setText("Price:");
         jPanel18.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, -1, -1));
@@ -760,40 +812,40 @@ public class AdminFrame extends javax.swing.JFrame {
 
         updateEventNameLabel.setText("Event Name:");
         jPanel19.add(updateEventNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
-        updateBusNameLabel.setVisible(false);
+        updateEventNameLabel.setVisible(false);
         jPanel19.add(updateEventNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
-        updateBusNameField.setVisible(false);
+        updateEventNameField.setVisible(false);
 
         updateEventCityLabel.setText("Event city:");
         jPanel19.add(updateEventCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
-        updateBusFromCityLabel.setVisible(false);
+        updateEventCityLabel.setVisible(false);
 
         jPanel19.add(updateEventCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
-        updateBusFromCityCombo.setVisible(false);
+        updateEventCityCombo.setVisible(false);
 
         updateEventStartAtLabel.setText("Start At:");
         jPanel19.add(updateEventStartAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
-        updateBusStartAtLabel.setVisible(false);
+        updateEventStartAtLabel.setVisible(false);
         jPanel19.add(updateEventStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
-        updateBusStartAtField.setVisible(false);
+        updateEventStartAtField.setVisible(false);
 
         updateEventEndAtLabel.setText("End At:");
         jPanel19.add(updateEventEndAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, 30));
-        updateBusReachAtLabel.setVisible(false);
+        updateEventEndAtLabel.setVisible(false);
         jPanel19.add(updateEventEndAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 120, -1));
-        updateBusReachAtField.setVisible(false);
+        updateEventEndAtField.setVisible(false);
 
         updateEventFareLabel.setText("Price:");
         jPanel19.add(updateEventFareLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, -1, -1));
-        updateBusFareLabel.setVisible(false);
+        updateEventFareLabel.setVisible(false);
         jPanel19.add(updateEventFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 120, -1));
-        updateBusFareField.setVisible(false);
+        updateEventFareField.setVisible(false);
 
         updateEventDateLabel.setText("Event date:");
         jPanel19.add(updateEventDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, -1, -1));
-        updateBusTravelDateLabel.setVisible(false);
+        updateEventDateLabel.setVisible(false);
         jPanel19.add(updateEventDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 120, -1));
-        updateBusTravelDateField.setVisible(false);
+        updateEventDateField.setVisible(false);
 
         updateEventButton.setText("Update");
         updateEventButton.addActionListener(new java.awt.event.ActionListener() {
@@ -801,8 +853,8 @@ public class AdminFrame extends javax.swing.JFrame {
                 updateEventButtonActionPerformed(evt);
             }
         });
-        jPanel19.add(updateEventButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 210, -1));
-        updateBusButton.setVisible(false);
+        jPanel19.add(updateEventButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 210, -1));
+        updateEventButton.setVisible(false);
 
         updateEventSearchButton.setText("Search");
         updateEventSearchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -849,15 +901,227 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Events Admin", jPanel7);
 
+        jTabbedPane6.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel20.setText("Movie Id:");
+        jPanel24.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+        jPanel24.add(createMovieIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
+
+        jLabel38.setText("Movie Name:");
+        jPanel24.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+        jPanel24.add(createMovieNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
+
+        jLabel39.setText("Movie city:");
+        jPanel24.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+
+        createMovieCityCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                createMovieCityComboItemStateChanged(evt);
+            }
+        });
+        jPanel24.add(createMovieCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
+
+        jLabel40.setText("Start At:");
+        jPanel24.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        jPanel24.add(createMovieStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
+
+        jLabel41.setText("End At:");
+        jPanel24.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, -1, -1));
+        jPanel24.add(createMovieEndAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 120, -1));
+
+        jLabel42.setText("Price:");
+        jPanel24.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, -1, -1));
+        jPanel24.add(createMovieFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 120, -1));
+
+        jLabel43.setText("Movie date:");
+        jPanel24.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, -1, -1));
+        jPanel24.add(createMovieTravelDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 120, -1));
+
+        createMovieButton.setText("Create");
+        createMovieButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createMovieButtonActionPerformed(evt);
+            }
+        });
+        jPanel24.add(createMovieButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, 210, -1));
+
+        jTabbedPane6.addTab("Create Movie", jPanel24);
+
+        jPanel25.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel44.setText("Position:");
+        jPanel25.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
+
+        moviePositionField.setEnabled(false);
+        jPanel25.add(moviePositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 120, -1));
+
+        jLabel45.setText("Movie Id:");
+        jPanel25.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+        jPanel25.add(updateMovieIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
+
+        updateMovieSearchButton.setText("Search");
+        updateMovieSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMovieSearchButtonActionPerformed(evt);
+            }
+        });
+        jPanel25.add(updateMovieSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
+
+        updateMovieNameLabel.setText("Movie Name:");
+        jPanel25.add(updateMovieNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+        updateMovieNameLabel.setVisible(false);
+        jPanel25.add(updateMovieNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
+        updateMovieNameField.setVisible(false);
+
+        updateMovieCityLabel.setText("Movie city:");
+        jPanel25.add(updateMovieCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        updateMovieCityLabel.setVisible(false);
+
+        jPanel25.add(updateMovieCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
+        updateMovieCityCombo.setVisible(false);
+
+        updateMovieStartAtLabel.setText("Start At:");
+        jPanel25.add(updateMovieStartAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        updateMovieStartAtLabel.setVisible(false);
+        jPanel25.add(updateMovieStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
+        updateMovieStartAtField.setVisible(false);
+
+        updateMovieEndAtLabel.setText("End At:");
+        jPanel25.add(updateMovieEndAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, 30));
+        updateMovieEndAtLabel.setVisible(false);
+        jPanel25.add(updateMovieEndAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 120, -1));
+        updateMovieEndAtField.setVisible(false);
+
+        updateMovieFareLabel.setText("Price:");
+        jPanel25.add(updateMovieFareLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, -1, -1));
+        updateMovieFareLabel.setVisible(false);
+        jPanel25.add(updateMovieFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 120, -1));
+        updateMovieFareField.setVisible(false);
+
+        updateMovieDateLabel.setText("Movie date:");
+        jPanel25.add(updateMovieDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, -1, -1));
+        updateMovieDateLabel.setVisible(false);
+        jPanel25.add(updateMovieDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 120, -1));
+        updateMovieDateField.setVisible(false);
+
+        updateMovieButton.setText("Update");
+        updateMovieButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMovieButtonActionPerformed(evt);
+            }
+        });
+        jPanel25.add(updateMovieButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 440, 210, -1));
+        updateMovieButton.setVisible(false);
+
+        jTabbedPane6.addTab("View/Update Movie", jPanel25);
+
+        jPanel26.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel46.setText("Movie Id:");
+        jPanel26.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
+        jPanel26.add(deleteMovieIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 130, -1));
+
+        deleteMovieButton.setText("Delete");
+        deleteMovieButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMovieButtonActionPerformed(evt);
+            }
+        });
+        jPanel26.add(deleteMovieButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 200, -1));
+
+        jTabbedPane6.addTab("Delete Movie", jPanel26);
+
+        javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
+        jPanel27.setLayout(jPanel27Layout);
+        jPanel27Layout.setHorizontalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1168, Short.MAX_VALUE)
+        );
+        jPanel27Layout.setVerticalGroup(
+            jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 869, Short.MAX_VALUE)
+        );
+
+        jTabbedPane6.addTab("Create Theatre", jPanel27);
+
+        javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
+        jPanel28.setLayout(jPanel28Layout);
+        jPanel28Layout.setHorizontalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1168, Short.MAX_VALUE)
+        );
+        jPanel28Layout.setVerticalGroup(
+            jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 869, Short.MAX_VALUE)
+        );
+
+        jTabbedPane6.addTab("View/Update Theatre", jPanel28);
+
+        javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
+        jPanel29.setLayout(jPanel29Layout);
+        jPanel29Layout.setHorizontalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1168, Short.MAX_VALUE)
+        );
+        jPanel29Layout.setVerticalGroup(
+            jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 869, Short.MAX_VALUE)
+        );
+
+        jTabbedPane6.addTab("Delete Theatre", jPanel29);
+
+        javax.swing.GroupLayout jPanel30Layout = new javax.swing.GroupLayout(jPanel30);
+        jPanel30.setLayout(jPanel30Layout);
+        jPanel30Layout.setHorizontalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1168, Short.MAX_VALUE)
+        );
+        jPanel30Layout.setVerticalGroup(
+            jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 869, Short.MAX_VALUE)
+        );
+
+        jTabbedPane6.addTab("Create Screen", jPanel30);
+
+        javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
+        jPanel31.setLayout(jPanel31Layout);
+        jPanel31Layout.setHorizontalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1168, Short.MAX_VALUE)
+        );
+        jPanel31Layout.setVerticalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 869, Short.MAX_VALUE)
+        );
+
+        jTabbedPane6.addTab("View/Update Screen", jPanel31);
+
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1168, Short.MAX_VALUE)
+        );
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 869, Short.MAX_VALUE)
+        );
+
+        jTabbedPane6.addTab("Delete Screen", jPanel32);
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane6))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 869, Short.MAX_VALUE)
+            .addComponent(jTabbedPane6)
         );
 
         jTabbedPane1.addTab("Movie Admin", jPanel8);
@@ -1147,7 +1411,63 @@ public class AdminFrame extends javax.swing.JFrame {
                 if(!found)
                     JOptionPane.showMessageDialog(this, "Train with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
                 break;
-                    
+            
+             case "movieId":
+                updateMovieNameLabel.setVisible(false);
+                updateMovieCityLabel.setVisible(false);
+                updateMovieStartAtLabel.setVisible(false);
+                updateMovieEndAtLabel.setVisible(false);
+                updateMovieFareLabel.setVisible(false);
+                updateMovieDateLabel.setVisible(false);                
+                updateMovieNameField.setVisible(false);
+                updateMovieCityCombo.setVisible(false);
+                updateMovieStartAtField.setVisible(false);
+                updateMovieEndAtField.setVisible(false);
+                updateMovieFareField.setVisible(false);
+                updateMovieDateField.setVisible(false);                
+                updateMovieButton.setVisible(false);
+                
+                MovieDirectory md = new MovieDirectory();
+                for(Movie m : md.getMovieList())
+                {
+                  if(Integer.parseInt(updateMovieIdField.getText()) == m.getId())
+                  { 
+                        found = true;
+                        position = m.getId();
+                        updateMovieNameLabel.setVisible(true);
+                        updateMovieCityLabel.setVisible(true);
+                        updateMovieStartAtLabel.setVisible(true);
+                        updateMovieEndAtLabel.setVisible(true);
+                        updateMovieFareLabel.setVisible(true);
+                        updateMovieDateLabel.setVisible(true);
+                        
+                        updateMovieNameField.setVisible(true);
+                        updateMovieCityCombo.setVisible(true);
+                        updateMovieStartAtField.setVisible(true);
+                        updateMovieEndAtField.setVisible(true);
+                        updateMovieFareField.setVisible(true);
+                        updateMovieDateField.setVisible(true);
+
+                        updateMovieButton.setVisible(true);
+                        
+                        moviePositionField.setText(Integer.valueOf(position).toString());
+                        updateMovieNameField.setText(m.getMovieName());
+                        CityDirectory city = new CityDirectory();
+                        updateMovieCityCombo.removeAllItems();
+                        for(City c : city.getCityList())
+                          updateMovieCityCombo.addItem(c.getCityName());
+                        updateMovieCityCombo.setSelectedItem(m.getMovieCity().getCityName());
+
+                        updateMovieStartAtField.setText(m.getStartTime());
+                        updateMovieEndAtField.setText(m.getEndTime());
+                        updateMovieFareField.setText(String.valueOf(m.getFare()));
+                        updateMovieDateField.setText(m.getMovieDate().toString());
+                        break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Movie with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                break; 
         }
     }
     private void citySearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citySearchButtonActionPerformed
@@ -1503,7 +1823,7 @@ public class AdminFrame extends javax.swing.JFrame {
             String eventName = createEventNameField.getText().trim();
             String eventCity = createEventCityCombo.getSelectedItem().toString();
             String startAt = createEventStartAtField.getText().trim();
-            String endAt = createEventReachAtField.getText().trim();
+            String endAt = createEventEndAtField.getText().trim();
             String farePrice = createEventFareField.getText().trim();
             String eventDate = createEventTravelDateField.getText().trim();        
             boolean passed = clientSidevalidation(this, eventId, eventName, startAt, endAt, farePrice, eventDate);
@@ -1863,6 +2183,201 @@ public class AdminFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_updateTrainFromCityComboActionPerformed
 
+    private void createMovieCityComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_createMovieCityComboItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createMovieCityComboItemStateChanged
+
+    public boolean clientSideValidationMovie(JFrame frame, String movieId, String movieName, String startAt, String endAt, String farePrice, String movieDate)
+    {
+      if(Pattern.compile("^[1-9]\\d*$").matcher(movieId).matches())
+      {
+        if(Pattern.compile("^[a-zA-Z\\s0-9]*$").matcher(movieName).matches() && !movieName.equals(""))
+        {
+          if(Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2})").matcher(startAt).matches())
+          {
+            System.out.println("StartAt is valid.");
+            if(Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2})").matcher(endAt).matches())
+            {
+              System.out.println("Reach At is valid.");
+              if(Pattern.compile("^[0-9.]+$").matcher(farePrice).matches() && !farePrice.equals(""))
+              {
+                System.out.println("Price is valid.");
+                if(Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})").matcher(movieDate).matches())
+                {
+                    System.out.println("Movie date is valid.");
+                    return true;
+                }
+                else
+                {
+                     JOptionPane.showMessageDialog(frame, "Movie date is not valid.\nShould be in the format YYYY-MM-DD.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+              }
+              else
+                JOptionPane.showMessageDialog(this, "Please enter the price in positive numbers.", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+               JOptionPane.showMessageDialog(frame, "Reach At is not valid.\nShould be in the format HH:MM:SS.", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+          }
+          else
+          {
+             JOptionPane.showMessageDialog(frame, "Start At is not valid.\nShould be in the format HH:MM:SS.", "Alert", JOptionPane.WARNING_MESSAGE);
+          }
+        }
+        else
+          JOptionPane.showMessageDialog(frame, "Movie Name is not valid.\nOnly Characters, numbers and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+      }
+      else
+      {
+        JOptionPane.showMessageDialog(frame, "Movie Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+      }
+      return false;
+    }
+    
+    
+    private void createMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createMovieButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            String movieId = createMovieIdField.getText().trim();
+            String movieName = createMovieNameField.getText().trim();
+            String movieCity = createMovieCityCombo.getSelectedItem().toString();
+            String startAt = createMovieStartAtField.getText().trim();
+            String endAt = createMovieEndAtField.getText().trim();
+            String farePrice = createMovieFareField.getText().trim();
+            String movieDate = createMovieTravelDateField.getText().trim();        
+            boolean passed = clientSideValidationMovie(this, movieId, movieName, startAt, endAt, farePrice, movieDate);
+            boolean exists = false;
+            if(passed)
+            {
+                MovieDirectory md = new MovieDirectory();
+                for(Movie m: md.getMovieList())
+                {
+                  if(Integer.parseInt(movieId) == m.getId())
+                  {
+                    JOptionPane.showMessageDialog(this, "Movie with the given Id already exists\nPlease give another Id to the Movie.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;              
+                  }
+                  else if(movieName.equals(m.getMovieName()))
+                  {
+                    JOptionPane.showMessageDialog(this, "Movie with the given name already exists\nPlease give another name to the Movie.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;
+                  }
+                }
+                if(!exists)
+                {
+                  int id = Integer.parseInt(movieId);
+                  int movieCityId = CityDirectory.getCityId(movieCity);
+                  City movie_city = new City(movieCityId, movieCity);
+                  double fare = Double.parseDouble(farePrice);
+                  LocalDate movie_date = LocalDate.parse(movieDate);
+                  Movie movie = new Movie(id, movieName, movie_city, startAt, endAt, fare, movie_date);
+                  int res = MovieDirectory.addMovie(movie);
+                  if(res > 0)
+                  {
+                    JOptionPane.showMessageDialog(this, "Created a new Movie successfully..", null, JOptionPane.OK_OPTION); 
+                  }
+                }
+            }
+        }
+        catch(NullPointerException ex)
+        {
+          JOptionPane.showMessageDialog(this, "Please select the fields.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_createMovieButtonActionPerformed
+
+    private void updateMovieSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMovieSearchButtonActionPerformed
+        // TODO add your handling code here:
+         String searchText = updateMovieIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Movie Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("movieId", searchText.trim());
+    }//GEN-LAST:event_updateMovieSearchButtonActionPerformed
+
+    private void updateMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMovieButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            String movieId = updateMovieIdField.getText().trim();
+            String movieName = updateMovieNameField.getText().trim();
+            String movieCity = updateMovieCityCombo.getSelectedItem().toString();
+            String startAt = updateMovieStartAtField.getText().trim();
+            String endAt = updateMovieEndAtField.getText().trim();
+            String farePrice = updateMovieFareField.getText().trim();
+            String date = updateMovieDateField.getText().trim(); 
+            int position = Integer.valueOf(moviePositionField.getText());
+            boolean passed = clientSidevalidation(this, movieId, movieName, startAt, endAt, farePrice, date);
+            boolean exists = false;
+            if(passed)
+            {
+                MovieDirectory md = new MovieDirectory();
+                for(Movie m: md.getMovieList())
+                {
+                  if(Integer.parseInt(movieId) == m.getId() && m.getId() != position)
+                  {
+                    JOptionPane.showMessageDialog(this, "Movie with the given Id already exists\nPlease give another Id to the Movie.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;              
+                  }
+//                  else if(movieName.equals(m.getMovieName()) && m.getId() != position)
+//                  {
+//                    JOptionPane.showMessageDialog(this, "Movie with the given name already exists\nPlease give another name to the Movie.", "Alert", JOptionPane.WARNING_MESSAGE);
+//                    exists = true;
+//                    break;
+//                  }
+                }
+                if(!exists)
+                {
+                  int id = Integer.parseInt(movieId);
+                  int fromCityId = CityDirectory.getCityId(movieCity);
+                  City movie_city = new City(fromCityId, movieCity);
+                  double fare = Double.parseDouble(farePrice);
+                  LocalDate movieDate = LocalDate.parse(date);
+                  Movie movie = new Movie(id, movieName, movie_city, startAt, endAt, fare, movieDate);
+                  int res = MovieDirectory.updateMovie(movie, position);
+                  if(res > 0)
+                  {
+                    JOptionPane.showMessageDialog(this, "Updated the Movie successfully..", null, JOptionPane.OK_OPTION); 
+                    moviePositionField.setText(movieId);
+                  }
+                  else
+                    JOptionPane.showMessageDialog(this, "Movie does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }
+        catch(NullPointerException ex)
+        {
+          JOptionPane.showMessageDialog(this, "Please select the locations.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_updateMovieButtonActionPerformed
+
+    private void deleteMovieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMovieButtonActionPerformed
+        // TODO add your handling code here:
+         String deleteText = deleteMovieIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Movie Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);       
+        if(flag)
+        {
+          int res = MovieDirectory.deleteMovie(Integer.parseInt(deleteText));
+          if(res > 0)
+          {
+            JOptionPane.showMessageDialog(this, "Deleted the Movie successfully..", null, JOptionPane.OK_OPTION);
+          }
+          else
+            JOptionPane.showMessageDialog(this, "Movie with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteMovieButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1918,12 +2433,20 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField createCityNameField;
     private javax.swing.JButton createEventButton;
     private javax.swing.JComboBox<String> createEventCityCombo;
+    private javax.swing.JTextField createEventEndAtField;
     private javax.swing.JTextField createEventFareField;
     private javax.swing.JTextField createEventIdField;
     private javax.swing.JTextField createEventNameField;
-    private javax.swing.JTextField createEventReachAtField;
     private javax.swing.JTextField createEventStartAtField;
     private javax.swing.JTextField createEventTravelDateField;
+    private javax.swing.JButton createMovieButton;
+    private javax.swing.JComboBox<String> createMovieCityCombo;
+    private javax.swing.JTextField createMovieEndAtField;
+    private javax.swing.JTextField createMovieFareField;
+    private javax.swing.JTextField createMovieIdField;
+    private javax.swing.JTextField createMovieNameField;
+    private javax.swing.JTextField createMovieStartAtField;
+    private javax.swing.JTextField createMovieTravelDateField;
     private javax.swing.JButton createTrainButton;
     private javax.swing.JTextField createTrainFareField;
     private javax.swing.JComboBox<String> createTrainFromCityCombo;
@@ -1938,6 +2461,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField deleteCityIdField;
     private javax.swing.JButton deleteEventButton;
     private javax.swing.JTextField deleteEventIdField;
+    private javax.swing.JButton deleteMovieButton;
+    private javax.swing.JTextField deleteMovieIdField;
     private javax.swing.JButton deleteTrainButton;
     private javax.swing.JTextField deleteTrainIdField;
     private javax.swing.JTextField eventPositionField;
@@ -1953,6 +2478,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -1971,7 +2497,16 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1993,7 +2528,16 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -2005,6 +2549,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JTextField moviePositionField;
     private javax.swing.JTextField trainPositionField;
     private javax.swing.JButton updateBusButton;
     private javax.swing.JTextField updateBusFareField;
@@ -2040,6 +2586,21 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton updateEventSearchButton;
     private javax.swing.JTextField updateEventStartAtField;
     private javax.swing.JLabel updateEventStartAtLabel;
+    private javax.swing.JButton updateMovieButton;
+    private javax.swing.JComboBox<String> updateMovieCityCombo;
+    private javax.swing.JLabel updateMovieCityLabel;
+    private javax.swing.JTextField updateMovieDateField;
+    private javax.swing.JLabel updateMovieDateLabel;
+    private javax.swing.JTextField updateMovieEndAtField;
+    private javax.swing.JLabel updateMovieEndAtLabel;
+    private javax.swing.JTextField updateMovieFareField;
+    private javax.swing.JLabel updateMovieFareLabel;
+    private javax.swing.JTextField updateMovieIdField;
+    private javax.swing.JTextField updateMovieNameField;
+    private javax.swing.JLabel updateMovieNameLabel;
+    private javax.swing.JButton updateMovieSearchButton;
+    private javax.swing.JTextField updateMovieStartAtField;
+    private javax.swing.JLabel updateMovieStartAtLabel;
     private javax.swing.JButton updateTrainButton;
     private javax.swing.JTextField updateTrainFareField;
     private javax.swing.JLabel updateTrainFareLabel;
