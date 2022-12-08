@@ -2480,8 +2480,8 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void updateCardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCardButtonActionPerformed
         // TODO add your handling code here:
-        String cardId = createCardIdField.getText().trim();
-        String cardName = createCardNameField.getText().trim();
+        String cardId = updateCardIdField.getText().trim();
+        String cardName = updateCardNameField.getText().trim();
         int position = Integer.valueOf(cardPositionField.getText());
         boolean passed = clientSideValidation(this, cardId, cardName);
         boolean exists = false;

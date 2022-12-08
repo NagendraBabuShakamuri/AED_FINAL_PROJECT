@@ -72,7 +72,7 @@ public class CreditCardDirectory {
             MySql.createConn();  
             int cardId = c.getId();
             String cardType = c.getType();
-            int res = MySql.insertUpdateQuery("update banks set id = " + cardId + "," + "type = " + "\'" + cardType + "\'" + " where id = " + position + ";");
+            int res = MySql.insertUpdateQuery("update credit_cards set id = " + cardId + "," + "type = " + "\'" + cardType + "\'" + " where id = " + position + ";");
             if(res > 0)
             {
               return res;
