@@ -141,7 +141,8 @@ public class Login extends javax.swing.JFrame {
         switch(roleCombo.getSelectedItem().toString())
         {
          case "User":
-            ArrayList<User> userDirectory = UserDirectory.getUserList();
+            UserDirectory ud = new UserDirectory();
+            ArrayList<User> userDirectory = ud.getUserList();
             for(User user: userDirectory)
             {
               if(user.getUserName().equals(userName) && user.getPassword().equals(password))

@@ -17,7 +17,7 @@ public class BankAccountDirectory {
     {
         try
         {
-            MySql.createConn();    
+            MySql.createConn();
             int userId = ba.getUser().getId();
             int bankId = ba.getBank().getId();
             String accountHolder = ba.getAccountHolder();

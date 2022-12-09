@@ -4,6 +4,10 @@
  */
 package userinterface;
 
+import business.Address;
+import business.AddressDirectory;
+import business.AddressRequest;
+import business.AddressRequestDirectory;
 import business.Bank;
 import business.BankAccount;
 import business.BankDirectory;
@@ -17,6 +21,10 @@ import business.CreditCard;
 import business.CreditCardDirectory;
 import business.CreditCardRequest;
 import business.CreditCardRequestDirectory;
+import business.ElectricityBill;
+import business.ElectricityBillDirectory;
+import business.GasBill;
+import business.GasBillDirectory;
 import business.MobilePlan;
 import business.MobilePlanDirectory;
 import business.MobileServiceProvider;
@@ -24,13 +32,16 @@ import business.MobileServiceProviderDirectory;
 import business.User;
 import business.UserCreditCard;
 import business.UserDirectory;
-import business.mysql.MySql;
+import business.WaterBill;
+import business.WaterBillDirectory;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static userinterface.UserHomePage.userNameLabel;
 
 /**
  *
@@ -86,6 +97,33 @@ public class AdminFrame extends javax.swing.JFrame {
             String table_data[] = {id, userId, cardId, cardHolder, cardNumber, cardExpiry, cardCvc, status};
             table_model.addRow(table_data);
         }
+        
+        AddressRequestDirectory ard = new AddressRequestDirectory();
+        table_model = (DefaultTableModel)addressRequestsTable.getModel();
+        for(AddressRequest ar : ard.getAddressRequestList())
+        {
+            String id = String.valueOf(ar.getId());
+            String userId = String.valueOf(ar.getUser().getId());
+            String apartment = ar.getApartment();
+            String street = ar.getStreet();
+            String city = ar.getCity();
+            String state = ar.getState();
+            String zipCode = ar.getZipCode();
+            String status = ar.getStatus();
+            String table_data[] = {id, userId, apartment, street, city, state, zipCode, status};
+            table_model.addRow(table_data);
+        }
+        
+        UserDirectory ud = new UserDirectory();
+        for(User u : ud.getUserList())
+        {
+          elecBilluserIdCombo.addItem(String.valueOf(u.getId()));
+          waterBilluserIdCombo.addItem(String.valueOf(u.getId()));
+          gasBilluserIdCombo.addItem(String.valueOf(u.getId()));
+        }
+        elecBilluserIdCombo.setSelectedItem(null);
+        waterBilluserIdCombo.setSelectedItem(null);
+        gasBilluserIdCombo.setSelectedItem(null);
     }
 
     /**
@@ -287,6 +325,55 @@ public class AdminFrame extends javax.swing.JFrame {
         deleteMPIdField = new javax.swing.JTextField();
         deleteMPButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        jTabbedPane6 = new javax.swing.JTabbedPane();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel42 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        addressRequestsTable = new javax.swing.JTable();
+        addressInProgressButton = new javax.swing.JButton();
+        addressApprovedButton = new javax.swing.JButton();
+        addressDeniedButton = new javax.swing.JButton();
+        jPanel33 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        addressesTable = new javax.swing.JTable();
+        jLabel43 = new javax.swing.JLabel();
+        addressRefreshButton = new javax.swing.JButton();
+        jPanel34 = new javax.swing.JPanel();
+        jLabel45 = new javax.swing.JLabel();
+        elecBilluserIdCombo = new javax.swing.JComboBox<>();
+        jLabel46 = new javax.swing.JLabel();
+        elecBillBillingDateField = new javax.swing.JTextField();
+        jLabel47 = new javax.swing.JLabel();
+        elecBillTotalKWattsField = new javax.swing.JTextField();
+        jLabel48 = new javax.swing.JLabel();
+        elecBillAmountField = new javax.swing.JTextField();
+        jLabel49 = new javax.swing.JLabel();
+        elecBillDueDateField = new javax.swing.JTextField();
+        elecBillSendButton = new javax.swing.JButton();
+        jPanel35 = new javax.swing.JPanel();
+        jLabel50 = new javax.swing.JLabel();
+        waterBilluserIdCombo = new javax.swing.JComboBox<>();
+        jLabel51 = new javax.swing.JLabel();
+        waterBillBillingDateField = new javax.swing.JTextField();
+        jLabel52 = new javax.swing.JLabel();
+        waterBillTotalGallonsField = new javax.swing.JTextField();
+        jLabel53 = new javax.swing.JLabel();
+        waterBillAmountField = new javax.swing.JTextField();
+        jLabel54 = new javax.swing.JLabel();
+        waterBillDueDateField = new javax.swing.JTextField();
+        waterBillSendButton = new javax.swing.JButton();
+        jPanel36 = new javax.swing.JPanel();
+        jLabel55 = new javax.swing.JLabel();
+        gasBilluserIdCombo = new javax.swing.JComboBox<>();
+        jLabel56 = new javax.swing.JLabel();
+        gasBillBillingDateField = new javax.swing.JTextField();
+        jLabel57 = new javax.swing.JLabel();
+        gasBillTotalGallonsField = new javax.swing.JTextField();
+        jLabel58 = new javax.swing.JLabel();
+        gasBillAmountField = new javax.swing.JTextField();
+        jLabel59 = new javax.swing.JLabel();
+        gasBillDueDateField = new javax.swing.JTextField();
+        gasBillSendButton = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
 
@@ -1069,16 +1156,198 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Recharge Admin", jPanel5);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
-        );
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane6.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel32.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel42.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel42.setText("Address requests");
+        jPanel32.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+
+        addressRequestsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Request Id", "User Id", "Apartment", "Street", "City", "State", "Zip Code", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(addressRequestsTable);
+
+        jPanel32.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 630, 270));
+
+        addressInProgressButton.setText("In Progress");
+        addressInProgressButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressInProgressButtonActionPerformed(evt);
+            }
+        });
+        jPanel32.add(addressInProgressButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, -1, -1));
+
+        addressApprovedButton.setText("Approved");
+        addressApprovedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressApprovedButtonActionPerformed(evt);
+            }
+        });
+        jPanel32.add(addressApprovedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, -1, -1));
+
+        addressDeniedButton.setText("Denied");
+        addressDeniedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressDeniedButtonActionPerformed(evt);
+            }
+        });
+        jPanel32.add(addressDeniedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, -1, -1));
+
+        jTabbedPane6.addTab("Address Requests", jPanel32);
+
+        jPanel33.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        addressesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "User Id", "Apartment", "Street", "City", "State", "Zip Code"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(addressesTable);
+
+        jPanel33.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 630, 270));
+
+        jLabel43.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel43.setText("Addresses");
+        jPanel33.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
+
+        addressRefreshButton.setText("Refresh");
+        addressRefreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressRefreshButtonActionPerformed(evt);
+            }
+        });
+        jPanel33.add(addressRefreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, -1, -1));
+
+        jTabbedPane6.addTab("Addresses", jPanel33);
+
+        jPanel34.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel45.setText("User Id:");
+        jPanel34.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
+
+        jPanel34.add(elecBilluserIdCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 100, -1));
+
+        jLabel46.setText("Billing date:");
+        jPanel34.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+        jPanel34.add(elecBillBillingDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 100, -1));
+
+        jLabel47.setText("Total KWatts:");
+        jPanel34.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+        jPanel34.add(elecBillTotalKWattsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 100, -1));
+
+        jLabel48.setText("Amount:");
+        jPanel34.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
+        jPanel34.add(elecBillAmountField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 100, -1));
+
+        jLabel49.setText("Due date:");
+        jPanel34.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
+        jPanel34.add(elecBillDueDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 100, -1));
+
+        elecBillSendButton.setText("Send bill");
+        elecBillSendButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elecBillSendButtonActionPerformed(evt);
+            }
+        });
+        jPanel34.add(elecBillSendButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 200, -1));
+
+        jTabbedPane6.addTab("Electricity bill", jPanel34);
+
+        jPanel35.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel50.setText("User Id:");
+        jPanel35.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
+
+        jPanel35.add(waterBilluserIdCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 100, -1));
+
+        jLabel51.setText("Billing date:");
+        jPanel35.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+        jPanel35.add(waterBillBillingDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 100, -1));
+
+        jLabel52.setText("Total Gallons:");
+        jPanel35.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+        jPanel35.add(waterBillTotalGallonsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 100, -1));
+
+        jLabel53.setText("Amount:");
+        jPanel35.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
+        jPanel35.add(waterBillAmountField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 100, -1));
+
+        jLabel54.setText("Due date:");
+        jPanel35.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
+        jPanel35.add(waterBillDueDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 100, -1));
+
+        waterBillSendButton.setText("Send bill");
+        waterBillSendButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                waterBillSendButtonActionPerformed(evt);
+            }
+        });
+        jPanel35.add(waterBillSendButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 200, -1));
+
+        jTabbedPane6.addTab("Water bill", jPanel35);
+
+        jPanel36.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel55.setText("User Id:");
+        jPanel36.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
+
+        jPanel36.add(gasBilluserIdCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 100, -1));
+
+        jLabel56.setText("Billing date:");
+        jPanel36.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+        jPanel36.add(gasBillBillingDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 100, -1));
+
+        jLabel57.setText("Total Gallons:");
+        jPanel36.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+        jPanel36.add(gasBillTotalGallonsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 100, -1));
+
+        jLabel58.setText("Amount:");
+        jPanel36.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
+        jPanel36.add(gasBillAmountField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 100, -1));
+
+        jLabel59.setText("Due date:");
+        jPanel36.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
+        jPanel36.add(gasBillDueDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 100, -1));
+
+        gasBillSendButton.setText("Send bill");
+        gasBillSendButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gasBillSendButtonActionPerformed(evt);
+            }
+        });
+        jPanel36.add(gasBillSendButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 200, -1));
+
+        jTabbedPane6.addTab("Gas bill", jPanel36);
+
+        jPanel6.add(jTabbedPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 870));
 
         jTabbedPane1.addTab("Utilities Admin", jPanel6);
 
@@ -2551,6 +2820,344 @@ public class AdminFrame extends javax.swing.JFrame {
             searchData("cardId", searchText.trim());
     }//GEN-LAST:event_searchCardButtonActionPerformed
 
+    private void addressInProgressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressInProgressButtonActionPerformed
+        // TODO add your handling code here:
+        int row = addressRequestsTable.getSelectedRow();
+        if(row > -1)
+        {  
+           int requestId = Integer.parseInt(addressRequestsTable.getModel().getValueAt(row, 0).toString()); 
+           String requestStatus = addressRequestsTable.getModel().getValueAt(row, 7).toString();
+           if(requestStatus.equals("Requested"))
+           {
+                int res = AddressRequestDirectory.updateStatusToInProgress(requestId);
+                if(res > 0)
+                {
+                     JOptionPane.showMessageDialog(this, "Updated the status to In Progress.", null, JOptionPane.OK_OPTION);
+                     DefaultTableModel table_model = (DefaultTableModel)addressRequestsTable.getModel();
+                     table_model.setRowCount(0);
+                     AddressRequestDirectory ard = new AddressRequestDirectory();
+                     for(AddressRequest ar : ard.getAddressRequestList())
+                     {
+                         String id = String.valueOf(ar.getId());
+                         String userId = String.valueOf(ar.getUser().getId());
+                         String apartment = ar.getApartment();
+                         String street = ar.getStreet();
+                         String city = ar.getCity();
+                         String state = ar.getState();
+                         String zipCode = ar.getZipCode();
+                         String status = ar.getStatus();
+                         String table_data[] = {id, userId, apartment, street, city, state, zipCode, status};
+                         table_model.addRow(table_data);
+                     }
+                }
+           }
+           else if(requestStatus.equals("In Progress"))
+              JOptionPane.showMessageDialog(this, "Request is already in progress.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Approved"))
+               JOptionPane.showMessageDialog(this, "Request is already approved.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Denied"))
+               JOptionPane.showMessageDialog(this, "Request is already Denied.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+           JOptionPane.showMessageDialog(this, "Please select a request.", "Alert", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_addressInProgressButtonActionPerformed
+
+    private void addressApprovedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressApprovedButtonActionPerformed
+        // TODO add your handling code here:
+        int row = addressRequestsTable.getSelectedRow();
+        if(row > -1)
+        {
+           int requestId = Integer.parseInt(addressRequestsTable.getModel().getValueAt(row, 0).toString());
+           int userid = Integer.parseInt(addressRequestsTable.getModel().getValueAt(row, 1).toString());
+           String apartment = addressRequestsTable.getModel().getValueAt(row, 2).toString();
+           String street = addressRequestsTable.getModel().getValueAt(row, 3).toString();
+           String city = addressRequestsTable.getModel().getValueAt(row, 4).toString();
+           String state = addressRequestsTable.getModel().getValueAt(row, 5).toString();
+           String  zipCode = addressRequestsTable.getModel().getValueAt(row, 6).toString();
+           String requestStatus = addressRequestsTable.getModel().getValueAt(row, 7).toString();
+           if(requestStatus.equals("In Progress"))
+           {                
+                User user = new User(userid, "", "", 0, "", 0.0);                
+                Address address = new Address(user, apartment, street, city, state, zipCode);      
+                int res = AddressRequestDirectory.updateStatusToApproved(address, requestId);
+                if(res > 0)
+                {
+                     JOptionPane.showMessageDialog(this, "Updated the status to Approved.", null, JOptionPane.OK_OPTION);
+                     DefaultTableModel table_model = (DefaultTableModel)addressRequestsTable.getModel();
+                     table_model.setRowCount(0);
+                     AddressRequestDirectory ard = new AddressRequestDirectory();
+                     for(AddressRequest ar : ard.getAddressRequestList())
+                     {
+                         String id = String.valueOf(ar.getId());
+                         String userId = String.valueOf(ar.getUser().getId());
+                         String addressApartment = ar.getApartment();
+                         String addressStreet = ar.getStreet();
+                         String addressCity = ar.getCity();
+                         String addressState = ar.getState();
+                         String addressZipCode = ar.getZipCode();
+                         String status = ar.getStatus();
+                         String table_data[] = {id, userId, addressApartment, addressStreet, addressCity, addressState, addressZipCode, status};
+                         table_model.addRow(table_data);
+                     }
+                }
+           }
+           else if(requestStatus.equals("Requested"))
+              JOptionPane.showMessageDialog(this, "Please process the request before approving.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Approved"))
+               JOptionPane.showMessageDialog(this, "Request is already approved.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Denied"))
+               JOptionPane.showMessageDialog(this, "Request is already Denied.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+           JOptionPane.showMessageDialog(this, "Please select a request.", "Alert", JOptionPane.WARNING_MESSAGE); 
+    }//GEN-LAST:event_addressApprovedButtonActionPerformed
+
+    private void addressDeniedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressDeniedButtonActionPerformed
+        // TODO add your handling code here:
+        int row = addressRequestsTable.getSelectedRow();
+        if(row > -1)
+        {  
+           int requestId = Integer.parseInt(addressRequestsTable.getModel().getValueAt(row, 0).toString()); 
+           String requestStatus = addressRequestsTable.getModel().getValueAt(row, 7).toString();
+           if(requestStatus.equals("In Progress"))
+           {
+                int res = AddressRequestDirectory.updateStatusToDenied(requestId);
+                if(res > 0)
+                {
+                     JOptionPane.showMessageDialog(this, "Updated the status to Denied.", null, JOptionPane.OK_OPTION);
+                     DefaultTableModel table_model = (DefaultTableModel)addressRequestsTable.getModel();
+                     table_model.setRowCount(0);
+                     AddressRequestDirectory ard = new AddressRequestDirectory();
+                     for(AddressRequest ar : ard.getAddressRequestList())
+                     {
+                         String id = String.valueOf(ar.getId());
+                         String userId = String.valueOf(ar.getUser().getId());
+                         String apartment = ar.getApartment();
+                         String street = ar.getStreet();
+                         String city = ar.getCity();
+                         String state = ar.getState();
+                         String zipCode = ar.getZipCode();
+                         String status = ar.getStatus();
+                         String table_data[] = {id, userId, apartment, street, city, state, zipCode, status};
+                         table_model.addRow(table_data);
+                     }
+                }
+           }
+           else if(requestStatus.equals("Requested"))
+              JOptionPane.showMessageDialog(this, "Please process the request before denying.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Approved"))
+               JOptionPane.showMessageDialog(this, "Request is already approved.", "Alert", JOptionPane.WARNING_MESSAGE);
+           else if(requestStatus.equals("Denied"))
+               JOptionPane.showMessageDialog(this, "Request is already Denied.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+           JOptionPane.showMessageDialog(this, "Please select a request.", "Alert", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_addressDeniedButtonActionPerformed
+
+    private void addressRefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressRefreshButtonActionPerformed
+        // TODO add your handling code here:                
+        DefaultTableModel table_model = (DefaultTableModel)addressesTable.getModel();
+        table_model.setRowCount(0);
+        AddressDirectory ad = new AddressDirectory();
+        for(Address a : ad.getAddressList())
+        {
+            String userId = String.valueOf(a.getUser().getId());
+            String apartment = a.getApartment();
+            String street = a.getStreet();
+            String city = a.getCity();
+            String state = a.getState();
+            String zipCode = a.getZipCode();
+            String table_data[] = {userId, apartment, street, city, state, zipCode};
+            table_model.addRow(table_data);
+        }
+    }//GEN-LAST:event_addressRefreshButtonActionPerformed
+    public boolean clientSideValidation(JFrame frame, String billingDate, String totalKWatts, String amount, String dueDate)
+    {
+        if(Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})").matcher(billingDate).matches() && !billingDate.equals(""))
+        {
+            if(Pattern.compile("^[1-9]\\d*$").matcher(totalKWatts).matches())
+            {
+              if(Pattern.compile("^[0-9.]+$").matcher(amount).matches() && !amount.equals(""))
+              {
+                if(Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})").matcher(dueDate).matches())
+                {
+                    return true;
+                }
+                else
+                  JOptionPane.showMessageDialog(frame, "Due date is not valid.\nShould be in the format YYYY-MM-DD.", "Alert", JOptionPane.WARNING_MESSAGE);
+              }
+              else
+                JOptionPane.showMessageDialog(this, "Please enter the amount in positive numbers.", "Alert", JOptionPane.WARNING_MESSAGE);
+            }
+            else
+              JOptionPane.showMessageDialog(frame, "Please enter the wattage in positive numbers.", "Alert", JOptionPane.WARNING_MESSAGE);
+          }
+        else
+          JOptionPane.showMessageDialog(frame, "Billing date is not valid.\nShould be in the format YYYY-MM-DD.", "Alert", JOptionPane.WARNING_MESSAGE);
+      return false;
+    }    
+    private void elecBillSendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elecBillSendButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            int userId = Integer.parseInt(elecBilluserIdCombo.getSelectedItem().toString());
+            String billingDate = elecBillBillingDateField.getText().trim();
+            String totalKWatts = elecBillTotalKWattsField.getText().trim();
+            String amount = elecBillAmountField.getText().trim();
+            String dueDate = elecBillDueDateField.getText().trim();
+            boolean exists = false;
+            boolean passed = clientSideValidation(this, billingDate, totalKWatts, amount, dueDate);
+            if(passed)
+            {
+                ElectricityBillDirectory ebd = new ElectricityBillDirectory();
+                for(ElectricityBill eb: ebd.getElectricityBillList())
+                {
+                  if(userId == eb.getUser().getId() && billingDate.equals(eb.getBillingDate().toString()))
+                  {
+                    JOptionPane.showMessageDialog(this, "Electricity bill was already generated for this user for the given billing date.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;              
+                  }                  
+                }
+                if(!exists)
+                {
+                  User user = new User(userId, "", "", 0, "", 0);
+                  LocalDate billDate = LocalDate.parse(billingDate);
+                  int totalWatts = Integer.parseInt(totalKWatts);
+                  double price = Double.parseDouble(amount);                  
+                  LocalDate duDate = LocalDate.parse(dueDate);
+                  if(billDate.isAfter(duDate))
+                  {
+                    JOptionPane.showMessageDialog(this, "Due date should be after the billing date.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    return;
+                  }
+                  ElectricityBill eb = new ElectricityBill(0, user, billDate, totalWatts, price, duDate, "Due");
+                  int res = ElectricityBillDirectory.addElectricityBill(eb);
+                  if(res > 0)
+                  {
+                    JOptionPane.showMessageDialog(this, "Generated a new electricity bill for the user.", null, JOptionPane.OK_OPTION); 
+                  }
+                }
+            }
+        }
+        catch(NullPointerException ne)
+        {
+          JOptionPane.showMessageDialog(this, "Please choose a user id to send the bill.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        catch(DateTimeParseException dtp)
+        {
+          JOptionPane.showMessageDialog(this, "Date is not valid.\nShould be in the format YYYY-MM-DD.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_elecBillSendButtonActionPerformed
+
+    private void waterBillSendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_waterBillSendButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            int userId = Integer.parseInt(waterBilluserIdCombo.getSelectedItem().toString());
+            String billingDate = waterBillBillingDateField.getText().trim();
+            String totalGallons = waterBillTotalGallonsField.getText().trim();
+            String amount = waterBillAmountField.getText().trim();
+            String dueDate = waterBillDueDateField.getText().trim();
+            boolean exists = false;
+            boolean passed = clientSideValidation(this, billingDate, totalGallons, amount, dueDate);
+            if(passed)
+            {
+                WaterBillDirectory wbd = new WaterBillDirectory();
+                for(WaterBill wb: wbd.getWaterBillList())
+                {
+                  if(userId == wb.getUser().getId() && billingDate.equals(wb.getBillingDate().toString()))
+                  {                    
+                    JOptionPane.showMessageDialog(this, "Water bill was already generated for this user for the given billing date.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;              
+                  }
+                }
+                if(!exists)
+                {
+                  User user = new User(userId, "", "", 0, "", 0);
+                  LocalDate billDate = LocalDate.parse(billingDate);
+                  int totalgallons = Integer.parseInt(totalGallons);
+                  double price = Double.parseDouble(amount);                  
+                  LocalDate duDate = LocalDate.parse(dueDate);
+                  if(billDate.isAfter(duDate))
+                  {
+                    JOptionPane.showMessageDialog(this, "Due date should be after the billing date.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    return;
+                  }
+                  WaterBill wb = new WaterBill(0, user, billDate, totalgallons, price, duDate, "Due");
+                  int res = WaterBillDirectory.addWaterBill(wb);
+                  if(res > 0)
+                  {
+                    JOptionPane.showMessageDialog(this, "Generated a new water bill for the user.", null, JOptionPane.OK_OPTION);
+                  }
+                }
+            }
+        }
+        catch(NullPointerException ne)
+        {
+          JOptionPane.showMessageDialog(this, "Please choose a user id to send the bill.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        catch(DateTimeParseException dtp)
+        {
+          JOptionPane.showMessageDialog(this, "Date is not valid.\nShould be in the format YYYY-MM-DD.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_waterBillSendButtonActionPerformed
+
+    private void gasBillSendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gasBillSendButtonActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            int userId = Integer.parseInt(gasBilluserIdCombo.getSelectedItem().toString());
+            String billingDate = gasBillBillingDateField.getText().trim();
+            String totalGallons = gasBillTotalGallonsField.getText().trim();
+            String amount = gasBillAmountField.getText().trim();
+            String dueDate = gasBillDueDateField.getText().trim();
+            boolean exists = false;
+            boolean passed = clientSideValidation(this, billingDate, totalGallons, amount, dueDate);
+            if(passed)
+            {
+                GasBillDirectory gbd = new GasBillDirectory();
+                for(GasBill gb: gbd.getGasBillList())
+                {
+                  if(userId == gb.getUser().getId() && billingDate.equals(gb.getBillingDate().toString()))
+                  {
+                    JOptionPane.showMessageDialog(this, "Gas bill was already generated for this user for the given billing date.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    exists = true;
+                    break;              
+                  }
+                }
+                if(!exists)
+                {
+                  User user = new User(userId, "", "", 0, "", 0);
+                  LocalDate billDate = LocalDate.parse(billingDate);
+                  int totalgallons = Integer.parseInt(totalGallons);
+                  double price = Double.parseDouble(amount);                  
+                  LocalDate duDate = LocalDate.parse(dueDate);
+                  if(billDate.isAfter(duDate))
+                  {
+                    JOptionPane.showMessageDialog(this, "Due date should be after the billing date.", "Alert", JOptionPane.WARNING_MESSAGE);
+                    return;
+                  }
+                  GasBill gb = new GasBill(0, user, billDate, totalgallons, price, duDate, "Due");
+                  int res = GasBillDirectory.addGasBill(gb);
+                  if(res > 0)
+                  {
+                    JOptionPane.showMessageDialog(this, "Generated a new gas bill for the user.", null, JOptionPane.OK_OPTION);
+                  }
+                }
+            }
+        }
+        catch(NullPointerException ne)
+        {
+          JOptionPane.showMessageDialog(this, "Please choose a user id to send the bill.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        catch(DateTimeParseException dtp)
+        {
+          JOptionPane.showMessageDialog(this, "Date is not valid.\nShould be in the format YYYY-MM-DD.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_gasBillSendButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2589,6 +3196,12 @@ public class AdminFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField MPPositionField;
     private javax.swing.JTextField MSPPositionField;
+    private javax.swing.JButton addressApprovedButton;
+    private javax.swing.JButton addressDeniedButton;
+    private javax.swing.JButton addressInProgressButton;
+    private javax.swing.JButton addressRefreshButton;
+    private javax.swing.JTable addressRequestsTable;
+    private javax.swing.JTable addressesTable;
     private javax.swing.JButton bankApprovedButton;
     private javax.swing.JButton bankDeniedButton;
     private javax.swing.JButton bankInProgressButton;
@@ -2647,6 +3260,18 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField deleteMPIdField;
     private javax.swing.JButton deleteMSPButton;
     private javax.swing.JTextField deleteMSPIdField;
+    private javax.swing.JTextField elecBillAmountField;
+    private javax.swing.JTextField elecBillBillingDateField;
+    private javax.swing.JTextField elecBillDueDateField;
+    private javax.swing.JButton elecBillSendButton;
+    private javax.swing.JTextField elecBillTotalKWattsField;
+    private javax.swing.JComboBox<String> elecBilluserIdCombo;
+    private javax.swing.JTextField gasBillAmountField;
+    private javax.swing.JTextField gasBillBillingDateField;
+    private javax.swing.JTextField gasBillDueDateField;
+    private javax.swing.JButton gasBillSendButton;
+    private javax.swing.JTextField gasBillTotalGallonsField;
+    private javax.swing.JComboBox<String> gasBilluserIdCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2683,8 +3308,25 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -2714,6 +3356,11 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
+    private javax.swing.JPanel jPanel34;
+    private javax.swing.JPanel jPanel35;
+    private javax.swing.JPanel jPanel36;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -2722,11 +3369,14 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JTabbedPane jTabbedPane6;
     private javax.swing.JButton searchCardButton;
     private javax.swing.JButton updateBankButton;
     private javax.swing.JTextField updateBankIdField;
@@ -2779,5 +3429,11 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel updateMSPNameLabel;
     private javax.swing.JTextField updatePlanNameField;
     private javax.swing.JLabel updatePlanNameLabel;
+    private javax.swing.JTextField waterBillAmountField;
+    private javax.swing.JTextField waterBillBillingDateField;
+    private javax.swing.JTextField waterBillDueDateField;
+    private javax.swing.JButton waterBillSendButton;
+    private javax.swing.JTextField waterBillTotalGallonsField;
+    private javax.swing.JComboBox<String> waterBilluserIdCombo;
     // End of variables declaration//GEN-END:variables
 }

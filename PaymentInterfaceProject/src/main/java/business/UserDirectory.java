@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * @author nbabu
  */
 public class UserDirectory {
-    private static ArrayList<User> userDirectory = new ArrayList<>();
-    public static ArrayList<User> getUserList()
+    private ArrayList<User> userDirectory = new ArrayList<>();
+    public ArrayList<User> getUserList()
     {
         try
         {
