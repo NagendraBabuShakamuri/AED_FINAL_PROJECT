@@ -44,4 +44,27 @@ public class UserDirectory {
           MySql.shutDownConn();
         }
     }
+    public static int updateBalance(int userId, double amount)
+    {
+        try
+        {
+            MySql.createConn();
+            int res = MySql.insertUpdateQuery("update users set balance = " + amount + " where userid = " + userId + ";");
+            if(res > 0)
+            {
+              return res;
+            }
+            else
+                return 0;
+        }
+        catch(Exception ex)
+        {
+          System.out.println(ex);
+          return 0;
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }
 }
