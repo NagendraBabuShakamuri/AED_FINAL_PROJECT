@@ -8,7 +8,6 @@ import business.Mail;
 import business.mysql.MySql;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;

@@ -619,7 +619,7 @@ public class BookBusTickets extends javax.swing.JFrame{
                         {
                           JOptionPane.showMessageDialog(this, "Cancelled the booking successfully.", null, JOptionPane.OK_OPTION);
                           balanceLabel.setText("$ " + available_balance);
-                          Mail.sendMail(email, "You have cancelled your train ticket with the Id: " + bookingID + "\nRefund has been added to your wallet balance.");
+                          Mail.sendMail(email, "You have cancelled your bus ticket with the Id: " + bookingID + "\nRefund has been added to your wallet balance.");
                         }                    
                     }
                     else

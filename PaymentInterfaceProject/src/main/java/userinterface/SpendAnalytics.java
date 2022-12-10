@@ -92,13 +92,13 @@ public class SpendAnalytics extends javax.swing.JFrame {
           }
           pieDataSet.setValue("Mobile Recharge", sum);
           sum = 0;
-          query = "select movie_id, booking_date from movie_bookings where user_id = " + userId + ";";
+          query = "select screen_id, booking_date from movie_bookings where user_id = " + userId + ";";
           rs = MySql.selectQuery(query);
           while(rs.next())
           {
-            int movieId = rs.getInt(1);
+            int screenId = rs.getInt(1);
             String date = rs.getString(2);
-            String query1 = "select price from movies where id = " + movieId + ";";
+            String query1 = "select price from screens where id = " + screenId + ";";
             ResultSet rs1 = MySql.selectQuery(query1);
             rs1.next();
             double price = rs1.getInt(1);

@@ -15,6 +15,9 @@ import business.Theatre;
 import business.TheatreDirectory;
 import business.User;
 import business.UserDirectory;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -34,13 +37,15 @@ public class BookMovieTickets extends javax.swing.JFrame {
      */
     ArrayList<Theatre> theatreDirectory = new ArrayList<>();
     ArrayList<Screen> screenDirectory = new ArrayList<>();
-    ArrayList<MovieBooking> movieBookingDirectory = new ArrayList<>();
+    ArrayList<City> cityDirectory = new ArrayList<>();
     public BookMovieTickets() {
         initComponents();
-        CityDirectory cd = new CityDirectory();        
+        CityDirectory cd = new CityDirectory();
+        System.out.println(cityComboBox.getItemListeners()[0]);
         for(City c : cd.getCityList())
         {
           cityComboBox.addItem(c.getCityName());
+          cityDirectory.add(c);
         }
         cityComboBox.setSelectedItem(null);
         
@@ -53,12 +58,185 @@ public class BookMovieTickets extends javax.swing.JFrame {
         for(Screen s: sd.getScreenList())
         {
           screenDirectory.add(s);
-        }
-        MovieBookingDirectory mbd = new MovieBookingDirectory();
-        for(MovieBooking mb: mbd.getMovieBookingList())
-        {
-          movieBookingDirectory.add(mb);
-        }
+        }        
+        
+        ItemListener timeItemStateListener = new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent event) {
+                if(event != null && event.getSource().toString() != null && event.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+                {
+                    int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
+                    String movieName = movieComboBox.getSelectedItem().toString();
+                    String movieDate = dateComboBox.getSelectedItem().toString();
+                    String movieTime = timeComboBox.getSelectedItem().toString();
+                    seatComboBox.setEnabled(true);
+                    priceField.setText("");
+                    seatComboBox.removeAllItems();
+                    ScreenDirectory sd = new ScreenDirectory();
+                    for(Screen s : sd.getScreenList())
+                    {
+                      if(s.getId() == screenId && s.getMovie().getMovieName().equals(movieName) && s.getMovieDate().toString().equals(movieDate) && s.getMovieTime().toString().equals(movieTime))
+                      {
+                        priceField.setText(String.valueOf(s.getPrice()));
+                      }           
+                    }
+                    ArrayList<Integer> seats = new ArrayList<>();
+                    for(int i = 1; i < 61 ; i++)
+                    {                  
+                      seats.add(i);
+                    }
+//                    for(MovieBooking mb : movieBookingDirectory)
+//                    {
+//                      if(mb.getScreen().getId() == screenId)
+//                      {
+//                        seats.remove(Integer.valueOf(mb.getSeatNumber()));
+//                      }              
+//                    }
+                    seatComboBox.removeAllItems();
+                    for(int i : seats)
+                    {
+                      int res = MovieBookingDirectory.seatFilled(screenId, i);
+                      if(res == 0)
+                      {
+                        seatComboBox.addItem(String.valueOf(i));
+                      }                      
+                    } 
+                }
+            }          
+        };        
+        ItemListener dateItemStateListener = new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent event) {
+                if(event != null && event.getSource().toString() != null && event.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+                {
+                    timeComboBox.setEnabled(true);
+                    int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
+                    String movieName = movieComboBox.getSelectedItem().toString();
+                    String movieDate = dateComboBox.getSelectedItem().toString();
+                    timeComboBox.removeAllItems();
+                    priceField.setText("");
+                    seatComboBox.removeAllItems();
+                    timeComboBox.removeItemListener(timeItemStateListener);
+                    for(Screen s : screenDirectory)
+                    {
+                      if(s.getId() == screenId && s.getMovie().getMovieName().equals(movieName) && s.getMovieDate().toString().equals(movieDate))
+                      {
+                        timeComboBox.addItem(s.getMovieTime().toString());
+                      }            
+                    }
+                    timeComboBox.setSelectedItem(null);
+                    timeComboBox.addItemListener(timeItemStateListener);
+                }
+            }          
+        };        
+         ItemListener movieItemStateListener = new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent event) {
+                if(event != null && event.getSource().toString() != null && event.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+                {
+                    dateComboBox.setEnabled(true);
+                    int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
+                    String movieName = movieComboBox.getSelectedItem().toString();
+                    dateComboBox.removeAllItems();
+                    timeComboBox.removeAllItems();
+                    priceField.setText("");
+                    seatComboBox.removeAllItems();
+                    dateComboBox.removeItemListener(dateItemStateListener);
+                    for(Screen s : screenDirectory)
+                    {
+                      if(s.getId() == screenId && s.getMovie().getMovieName().equals(movieName))
+                      {
+                        if(s.getMovieDate().isAfter(LocalDate.now()))
+                        {
+                          dateComboBox.addItem(s.getMovieDate().toString());
+                        }
+                      }            
+                    }
+                    dateComboBox.setSelectedItem(null);
+                    dateComboBox.addItemListener(dateItemStateListener);
+                }
+            }          
+        };        
+        ItemListener screenItemStateListener = new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent event) {
+                if(event != null && event.getSource().toString() != null && event.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+                {
+                    movieComboBox.setEnabled(true);
+                    int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
+                    movieComboBox.removeAllItems();
+                    dateComboBox.removeAllItems();
+                    timeComboBox.removeAllItems();
+                    priceField.setText("");
+                    seatComboBox.removeAllItems();
+                    movieComboBox.removeItemListener(movieItemStateListener);
+                    for(Screen s : screenDirectory)
+                    {
+                      if(s.getId() == screenId)
+                      {
+                        movieComboBox.addItem(s.getMovie().getMovieName());
+                      }            
+                    }
+                    movieComboBox.setSelectedItem(null);
+                    movieComboBox.addItemListener(movieItemStateListener);
+                }
+            }          
+        };        
+        ItemListener theatreItemStateListener = new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent event) {
+                if(event != null && event.getSource().toString() != null && event.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+                {
+                    screensComboBox.setEnabled(true);
+                    String theatreName = theatresComboBox.getSelectedItem().toString();
+                    screensComboBox.removeAllItems();
+                    movieComboBox.removeAllItems();
+                    dateComboBox.removeAllItems();
+                    timeComboBox.removeAllItems();
+                    priceField.setText("");
+                    seatComboBox.removeAllItems();
+                    screensComboBox.removeItemListener(screenItemStateListener);
+                    for(Screen s : screenDirectory)
+                    {
+                      if(s.getTheatre().getTheatreName().equals(theatreName))
+                      {
+                        screensComboBox.addItem(String.valueOf(s.getId()));
+                      }            
+                    }
+                    screensComboBox.setSelectedItem(null);
+                    screensComboBox.addItemListener(screenItemStateListener);
+                }
+            }          
+        };        
+         
+        ItemListener cityItemStateListener = new ItemListener(){
+            @Override
+            public void itemStateChanged(ItemEvent event) {
+                if(event != null && event.getSource().toString() != null && event.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+                {
+                  theatresComboBox.setEnabled(true);
+                  String cityName = cityComboBox.getSelectedItem().toString();
+                  theatresComboBox.removeAllItems();
+                  screensComboBox.removeAllItems();
+                  movieComboBox.removeAllItems();
+                  dateComboBox.removeAllItems();
+                  timeComboBox.removeAllItems();
+                  priceField.setText("");
+                  seatComboBox.removeAllItems();
+                  theatresComboBox.removeItemListener(theatreItemStateListener);
+                  for(Theatre t : theatreDirectory)
+                  {
+                    if(t.getCity().getCityName().equals(cityName))
+                    {
+                      theatresComboBox.addItem(t.getTheatreName());
+                    }            
+                  }
+                  theatresComboBox.setSelectedItem(null);
+                  theatresComboBox.addItemListener(theatreItemStateListener);
+                }
+            }          
+        };
+        cityComboBox.addItemListener(cityItemStateListener);
     }
 
     /**
@@ -124,23 +302,8 @@ public class BookMovieTickets extends javax.swing.JFrame {
         jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
 
         theatresComboBox.setEnabled(false);
-        theatresComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                theatresComboBoxItemStateChanged(evt);
-            }
-        });
         jPanel1.add(theatresComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 140, -1));
 
-        cityComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cityComboBoxItemStateChanged(evt);
-            }
-        });
-        cityComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cityComboBoxActionPerformed(evt);
-            }
-        });
         jPanel1.add(cityComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 140, -1));
 
         jLabel40.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -200,11 +363,6 @@ public class BookMovieTickets extends javax.swing.JFrame {
         jPanel1.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
 
         movieComboBox.setEnabled(false);
-        movieComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                movieComboBoxItemStateChanged(evt);
-            }
-        });
         jPanel1.add(movieComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 140, -1));
 
         jLabel46.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -212,27 +370,12 @@ public class BookMovieTickets extends javax.swing.JFrame {
         jPanel1.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
 
         screensComboBox.setEnabled(false);
-        screensComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                screensComboBoxItemStateChanged(evt);
-            }
-        });
         jPanel1.add(screensComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 140, -1));
 
         dateComboBox.setEnabled(false);
-        dateComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                dateComboBoxItemStateChanged(evt);
-            }
-        });
         jPanel1.add(dateComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 140, -1));
 
         timeComboBox.setEnabled(false);
-        timeComboBox.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                timeComboBoxItemStateChanged(evt);
-            }
-        });
         jPanel1.add(timeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 140, -1));
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
@@ -255,12 +398,20 @@ public class BookMovieTickets extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Booking ID", "Customer Name", "Mobile", "Movie ID", "Seat No.", "Booking Date", "Movie Date"
+                "Booking ID", "Screen", "Theatre", "City", "Movie", "Date", "Show time", "Seat Number", "Booking date", "Price"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(bookingHistoryTable);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 730, 200));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 750, 200));
 
         showHistoryButton.setText("Show");
         showHistoryButton.addActionListener(new java.awt.event.ActionListener() {
@@ -404,159 +555,103 @@ public class BookMovieTickets extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bookTicketButtonActionPerformed
 
-    private void cityComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cityComboBoxItemStateChanged
-        // TODO add your handling code here:
-        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
-        {
-          theatresComboBox.setEnabled(true);
-          String cityName = cityComboBox.getSelectedItem().toString();
-          theatresComboBox.removeAllItems();
-          for(Theatre t : theatreDirectory)
-          {
-            if(t.getCity().getCityName().equals(cityName))
-            {
-              theatresComboBox.addItem(t.getTheatreName());
-            }            
-          }
-        }
-    }//GEN-LAST:event_cityComboBoxItemStateChanged
-
-    private void theatresComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_theatresComboBoxItemStateChanged
-        // TODO add your handling code here:
-        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
-        {
-          screensComboBox.setEnabled(true);
-          String theatreName = theatresComboBox.getSelectedItem().toString();
-          screensComboBox.removeAllItems();
-          for(Screen s : screenDirectory)
-          {
-            if(s.getTheatre().getTheatreName().equals(theatreName))
-            {
-              screensComboBox.addItem(String.valueOf(s.getId()));
-            }            
-          }
-        }
-    }//GEN-LAST:event_theatresComboBoxItemStateChanged
-
     private void movieIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movieIdFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_movieIdFieldActionPerformed
 
     private void showHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showHistoryButtonActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
+        MovieBookingDirectory mbd = new MovieBookingDirectory();
+        DefaultTableModel table_model = (DefaultTableModel)bookingHistoryTable.getModel();
+        table_model.setRowCount(0);
+        for(MovieBooking mb : mbd.getMovieBookingList())
+        {
+          if(mb.getUser().getUserName().equals(userNameLabel.getText()))
+          {
+            String bookingId = String.valueOf(mb.getId());
+            String screenId = String.valueOf(mb.getScreen().getId());
+            String theatreName = mb.getScreen().getTheatre().getTheatreName();
+            String cityName = mb.getScreen().getTheatre().getCity().getCityName();
+            String movieName = mb.getScreen().getMovie().getMovieName();
+            String showDate = mb.getScreen().getMovieDate().toString();
+            String showTime = mb.getScreen().getMovieTime().toString();
+            String seatNumber = String.valueOf(mb.getSeatNumber());            
+            String bookingDate = mb.getBookinDate().toString();
+            String price = String.valueOf(mb.getScreen().getPrice());
+            String table_data[]={bookingId, screenId, theatreName, cityName, movieName, showDate, showTime, seatNumber, bookingDate, price};
+            table_model.addRow(table_data);
+          }          
+        }
     }//GEN-LAST:event_showHistoryButtonActionPerformed
     public boolean clientSideValidation(JFrame frame, String bookingId) {
-        if (Pattern.compile("^[1-9]\\d*$").matcher(bookingId).matches()) {
+        if (Pattern.compile("^[1-9]\\d*$").matcher(bookingId).matches()) 
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             JOptionPane.showMessageDialog(frame, "Booking Id is not valid.\nOnly numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
         }
         return false;
     }
     private void cancelBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBookingButtonActionPerformed
         // TODO add your handling code here:
-        String movieID = movieIdField.getText().trim();
-        boolean passed = clientSideValidation(this, movieID);
+        String movieBookingID = movieIdField.getText().trim();
+        boolean passed = clientSideValidation(this, movieBookingID);
         if (passed)
         {
-            
+            UserDirectory ud = new UserDirectory();
+            int userId = 0;
+            String email = "";
+            double balance = 0;
+            for(User user: ud.getUserList())
+            {
+              if(user.getUserName().equals(userNameLabel.getText()))
+              {
+                userId = user.getId();
+                email = user.getEmail();
+                balance = user.getWallet_balance();
+                break;
+              }
+            }
+            double price = 0;
+            LocalDate movieDate = null;
+            boolean exists = false;
+            MovieBookingDirectory mbd = new MovieBookingDirectory();
+            for(MovieBooking mb: mbd.getMovieBookingList())
+            {
+              if(mb.getUser().getId() == userId && mb.getId() == Integer.parseInt(movieBookingID))
+              {
+                exists = true;
+                price = mb.getScreen().getPrice();
+                movieDate = mb.getScreen().getMovieDate();
+                break;
+              }
+            }
+            if(!exists)
+            {
+               JOptionPane.showMessageDialog(this, "You don't have a movie ticket booking with the given id.", "Alert", JOptionPane.WARNING_MESSAGE);
+               return;
+            }
+            double available_balance = balance + price;
+            if(movieDate.isAfter(LocalDate.now()))
+            {
+              int res = MovieBookingDirectory.deleteMovieBooking(Integer.parseInt(movieBookingID));
+              if(res > 0)
+              {
+                int res1 = UserDirectory.updateBalance(userId, available_balance);
+                if(res1 > 0)
+                {
+                    JOptionPane.showMessageDialog(this, "Cancelled the movie ticket successfully.", null, JOptionPane.OK_OPTION);                    
+                    balanceLabel.setText("$ " + available_balance);
+                    Mail.sendMail(email, "You have cancelled your movie ticket with the Id: " + movieBookingID + "\nRefund has been added to your wallet balance.");
+                }
+              }
+            }
+            else
+              JOptionPane.showMessageDialog(this, "You can't cancel the ticket now.", "Alert", JOptionPane.WARNING_MESSAGE);  
         }
     }//GEN-LAST:event_cancelBookingButtonActionPerformed
-
-    private void cityComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cityComboBoxActionPerformed
-
-    private void movieComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_movieComboBoxItemStateChanged
-        if (evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
-        {
-            dateComboBox.setEnabled(true);
-            int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
-            String movieName = movieComboBox.getSelectedItem().toString();
-            dateComboBox.removeAllItems();
-            for(Screen s : screenDirectory)
-            {
-              if(s.getId() == screenId && s.getMovie().getMovieName().equals(movieName))
-              {
-                dateComboBox.addItem(s.getMovieDate().toString());
-              }            
-            }
-        }
-    }//GEN-LAST:event_movieComboBoxItemStateChanged
-
-    private void screensComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_screensComboBoxItemStateChanged
-        // TODO add your handling code here:
-        if (evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
-        {
-            movieComboBox.setEnabled(true);
-            int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
-            movieComboBox.removeAllItems();
-            for(Screen s : screenDirectory)
-            {
-              if(s.getId() == screenId)
-              {
-                movieComboBox.addItem(s.getMovie().getMovieName());
-              }            
-            }
-        }
-    }//GEN-LAST:event_screensComboBoxItemStateChanged
-
-    private void dateComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dateComboBoxItemStateChanged
-        // TODO add your handling code here:
-        if (evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
-        {
-            timeComboBox.setEnabled(true);
-            int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
-            String movieName = movieComboBox.getSelectedItem().toString();
-            String movieDate = dateComboBox.getSelectedItem().toString();
-            timeComboBox.removeAllItems();
-            for(Screen s : screenDirectory)
-            {
-              if(s.getId() == screenId && s.getMovie().getMovieName().equals(movieName) && s.getMovieDate().toString().equals(movieDate))
-              {
-                timeComboBox.addItem(s.getMovieTime().toString());
-              }            
-            }
-        }
-    }//GEN-LAST:event_dateComboBoxItemStateChanged
-
-    private void timeComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_timeComboBoxItemStateChanged
-        // TODO add your handling code here:
-        if (evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
-        {
-            int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
-            String movieName = movieComboBox.getSelectedItem().toString();
-            String movieDate = dateComboBox.getSelectedItem().toString();
-            String movieTime = timeComboBox.getSelectedItem().toString();
-            seatComboBox.setEnabled(true);
-            seatComboBox.removeAllItems();
-            ScreenDirectory sd = new ScreenDirectory();
-            for(Screen s : sd.getScreenList())
-            {
-              if(s.getId() == screenId && s.getMovie().getMovieName().equals(movieName) && s.getMovieDate().toString().equals(movieDate) && s.getMovieTime().toString().equals(movieTime))
-              {
-                priceField.setText(String.valueOf(s.getPrice()));
-              }           
-            }
-            ArrayList<Integer> seats = new ArrayList<>();
-            for(int i = 1; i < 61 ; i++)
-            {                  
-              seats.add(i);
-            }
-            for(MovieBooking mb : movieBookingDirectory)
-            {
-              if(mb.getScreen().getId() == screenId)
-              {
-                seats.remove(Integer.valueOf(mb.getSeatNumber()));
-              }              
-            }
-            seatComboBox.removeAllItems();
-            for(int i : seats)
-            {
-              seatComboBox.addItem(String.valueOf(i));
-            } 
-        }
-    }//GEN-LAST:event_timeComboBoxItemStateChanged
 
     /**
      * @param args the command line arguments
