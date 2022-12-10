@@ -14,22 +14,33 @@ import java.util.ArrayList;
  *
  * @author shubhamjain
  */
-public class MovieDirectory {
-    private ArrayList<Movie> movieDirectory = new ArrayList<>();
-    public ArrayList<Movie> getMovieList()
+public class TheatreDirectory {
+    private ArrayList<Theatre> theatreDirectory = new ArrayList<>();
+    public ArrayList<Theatre> getTheatreList()
     {
         try
         {
             MySql.createConn();           
-            ResultSet rs = MySql.selectQuery("select * from movies;");
+            ResultSet rs = MySql.selectQuery("select * from theatres;");
             while(rs.next())
             {
               int id = Integer.parseInt(rs.getString(1));
-              String movieName = rs.getString(2);
-              Movie movie = new Movie(id, movieName);
-              movieDirectory.add(movie);
+              String theatreName = rs.getString(2);
+              int cityId = rs.getInt(3);
+              CityDirectory cd = new CityDirectory();
+              String cityName = "";
+              for(City c: cd.getCityList())
+              {
+                if(c.getCityId() == cityId)
+                {
+                  cityName = c.getCityName();
+                }
+              }
+              City city = new City(cityId, cityName);
+              Theatre theatre = new Theatre(id, theatreName, city);
+              theatreDirectory.add(theatre);
             }
-            return movieDirectory;
+            return theatreDirectory;
         }
         catch(SQLException ex)
         {
@@ -40,16 +51,18 @@ public class MovieDirectory {
         {
           MySql.shutDownConn();
         }
-    } 
+    }  
     
-      public static int addMovie(Movie m)
+    public static int addTheatre(Theatre t)
     {
         try
         {
             MySql.createConn();  
-            int movieId = m.getId();
-            String movieName = m.getMovieName();
-            int res = MySql.insertUpdateQuery("insert into movies values(" + movieId + "," + "\'" + movieName + "\'" + ");");
+            int theatreId = t.getId();
+            String theatreName = t.getTheatreName();
+            int theatreCityId = t.getCity().getCityId();
+
+            int res = MySql.insertUpdateQuery("insert into theatres values(" + theatreId + "," + "\'" + theatreName + "\'" + ","+ theatreCityId +");");
             if(res > 0)
             {
               return res;
@@ -67,15 +80,17 @@ public class MovieDirectory {
           MySql.shutDownConn();
         }
     }
-      
-      public static int updateMovie(Movie m, int position)
+    
+    public static int updateTheatre(Theatre t, int position)
     {
         try
         {
             MySql.createConn();  
-            int movieId = m.getId();
-            String movieName = m.getMovieName();
-            int res = MySql.insertUpdateQuery("update movies set id = " + movieId + ", movie_name = " + "\'" + movieName + "\'" + " where id = " + position + ";");
+            int theatreId = t.getId();
+            String theatreName = t.getTheatreName();
+            int theatreCityId = t.getCity().getCityId();
+            
+            int res = MySql.insertUpdateQuery("update theatres set id = " + theatreId +  ", theatre_name = " + "\'" + theatreName + "\'" + "," + "city_id = " + theatreCityId + " where id = " + position +";");
             if(res > 0)
             {
               return res;
@@ -93,13 +108,13 @@ public class MovieDirectory {
           MySql.shutDownConn();
         }
     }
-      
-      public static int deleteMovie(int movieId)
+    
+     public static int deleteTheatre(int theatreId)
     {
         try
         {
             MySql.createConn();
-            int res = MySql.insertUpdateQuery("delete from movies where id = " + movieId + ";");
+            int res = MySql.insertUpdateQuery("delete from theatres where id = " + theatreId + ";");
             if(res > 0)
             {
               return res;
@@ -117,13 +132,13 @@ public class MovieDirectory {
           MySql.shutDownConn();
         }
     }
-      
-       public static int getMovieId(String movieName)
+     
+        public static int getTheatreId(String theatreName)
     {
       try
       {
         MySql.createConn();
-        String query = "select id from movies where movie_name = " + "\'" + movieName + "\'" + ";";
+        String query = "select id from theatres where theatre_name = " + "\'" + theatreName + "\'" + ";";
         ResultSet rs = MySql.selectQuery(query);
         while(rs.next())
         {
@@ -142,4 +157,5 @@ public class MovieDirectory {
       }
       return 0;
     }
+    
 }

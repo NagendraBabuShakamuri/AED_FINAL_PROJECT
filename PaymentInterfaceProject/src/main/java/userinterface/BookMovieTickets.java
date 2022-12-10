@@ -4,25 +4,20 @@
  */
 package userinterface;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.text.SimpleDateFormat;
-import business.mysql.MySql;
-import java.awt.Image;
+import business.City;
+import business.CityDirectory;
+import business.Mail;
+import business.MovieBooking;
+import business.MovieBookingDirectory;
+import business.Screen;
+import business.ScreenDirectory;
+import business.Theatre;
+import business.TheatreDirectory;
+import business.User;
+import business.UserDirectory;
 import javax.swing.JOptionPane;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.text.ParseException;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import static userinterface.UserHomePage.balanceLabel;
@@ -37,19 +32,32 @@ public class BookMovieTickets extends javax.swing.JFrame {
     /**
      * Creates new form BookEventTickets
      */
+    ArrayList<Theatre> theatreDirectory = new ArrayList<>();
+    ArrayList<Screen> screenDirectory = new ArrayList<>();
+    ArrayList<MovieBooking> movieBookingDirectory = new ArrayList<>();
     public BookMovieTickets() {
         initComponents();
-        try {
-            MySql.createConn();
-            ResultSet rs = MySql.selectQuery("select * from cities;");
-            while (rs.next()) {
-                cityComboBox.addItem(rs.getString(2));
-            }
-            cityComboBox.setSelectedItem(null);
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        } finally {
-            MySql.shutDownConn();
+        CityDirectory cd = new CityDirectory();        
+        for(City c : cd.getCityList())
+        {
+          cityComboBox.addItem(c.getCityName());
+        }
+        cityComboBox.setSelectedItem(null);
+        
+        TheatreDirectory td = new TheatreDirectory();
+        for(Theatre t: td.getTheatreList())
+        {
+          theatreDirectory.add(t);
+        }
+        ScreenDirectory sd = new ScreenDirectory();
+        for(Screen s: sd.getScreenList())
+        {
+          screenDirectory.add(s);
+        }
+        MovieBookingDirectory mbd = new MovieBookingDirectory();
+        for(MovieBooking mb: mbd.getMovieBookingList())
+        {
+          movieBookingDirectory.add(mb);
         }
     }
 
@@ -65,25 +73,17 @@ public class BookMovieTickets extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        customerNameField = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        mobileNumberField = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         theatresComboBox = new javax.swing.JComboBox<>();
         cityComboBox = new javax.swing.JComboBox<>();
         jLabel40 = new javax.swing.JLabel();
         jLabel42 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
         clearButton = new javax.swing.JButton();
         bookTicketButton = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ticket = new javax.swing.JTextArea();
         jLabel45 = new javax.swing.JLabel();
         priceField = new javax.swing.JTextField();
         seatComboBox = new javax.swing.JComboBox<>();
-        calendar = new com.toedter.calendar.JDateChooser();
         nL = new javax.swing.JLabel();
         mL = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -92,6 +92,9 @@ public class BookMovieTickets extends javax.swing.JFrame {
         movieComboBox = new javax.swing.JComboBox<>();
         jLabel46 = new javax.swing.JLabel();
         screensComboBox = new javax.swing.JComboBox<>();
+        dateComboBox = new javax.swing.JComboBox<>();
+        timeComboBox = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -116,38 +119,17 @@ public class BookMovieTickets extends javax.swing.JFrame {
         jLabel1.setText("Book Movie Tickets");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel2.setText("Customer Name");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
-
-        customerNameField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                customerNameFieldKeyReleased(evt);
-            }
-        });
-        jPanel1.add(customerNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 145, -1));
-
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel4.setText("Customer Mobile No");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
-
-        mobileNumberField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                mobileNumberFieldKeyReleased(evt);
-            }
-        });
-        jPanel1.add(mobileNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 145, -1));
-
         jLabel39.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        jLabel39.setText("Location");
-        jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        jLabel39.setText("City:");
+        jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
 
+        theatresComboBox.setEnabled(false);
         theatresComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 theatresComboBoxItemStateChanged(evt);
             }
         });
-        jPanel1.add(theatresComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 200, -1));
+        jPanel1.add(theatresComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 140, -1));
 
         cityComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -159,24 +141,19 @@ public class BookMovieTickets extends javax.swing.JFrame {
                 cityComboBoxActionPerformed(evt);
             }
         });
-        jPanel1.add(cityComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 140, -1));
+        jPanel1.add(cityComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 140, -1));
 
         jLabel40.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel40.setText("Theatres");
-        jPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        jPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, -1, -1));
 
         jLabel42.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel42.setText("Select seat number");
-        jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, -1));
+        jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, -1, -1));
 
         jLabel43.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel43.setText("Select a date");
-        jPanel1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
-
-        jLabel44.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(0, 153, 0));
-        jLabel44.setText("Your Movie ticket");
-        jPanel1.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, -1, -1));
+        jPanel1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, -1, -1));
 
         clearButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         clearButton.setForeground(new java.awt.Color(102, 102, 255));
@@ -186,7 +163,7 @@ public class BookMovieTickets extends javax.swing.JFrame {
                 clearButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 110, 30));
+        jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 440, 110, 30));
 
         bookTicketButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         bookTicketButton.setForeground(new java.awt.Color(102, 102, 255));
@@ -196,31 +173,17 @@ public class BookMovieTickets extends javax.swing.JFrame {
                 bookTicketButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(bookTicketButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 110, 30));
-
-        ticket.setColumns(20);
-        ticket.setRows(5);
-        jScrollPane2.setViewportView(ticket);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 240, 290, 240));
+        jPanel1.add(bookTicketButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 440, 110, 30));
 
         jLabel45.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel45.setText("Price");
-        jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+        jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, -1, -1));
 
         priceField.setEnabled(false);
-        jPanel1.add(priceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 140, -1));
+        jPanel1.add(priceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 140, -1));
 
-        jPanel1.add(seatComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 100, -1));
-
-        calendar.setEnabled(false);
-        calendar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                calendarPropertyChange(evt);
-            }
-        });
-        jPanel1.add(calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 220, -1));
-        calendar.setMinSelectableDate(new Date(new Date().getTime() + 86400 * 1000));
+        seatComboBox.setEnabled(false);
+        jPanel1.add(seatComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 140, -1));
         jPanel1.add(nL, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 20, 20));
         jPanel1.add(mL, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 20, 20));
 
@@ -234,25 +197,47 @@ public class BookMovieTickets extends javax.swing.JFrame {
 
         jLabel41.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel41.setText("Movie Name");
-        jPanel1.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        jPanel1.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, -1, -1));
 
+        movieComboBox.setEnabled(false);
         movieComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 movieComboBoxItemStateChanged(evt);
             }
         });
-        jPanel1.add(movieComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 200, -1));
+        jPanel1.add(movieComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 140, -1));
 
         jLabel46.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jLabel46.setText("Screens");
-        jPanel1.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        jPanel1.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
 
+        screensComboBox.setEnabled(false);
         screensComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 screensComboBoxItemStateChanged(evt);
             }
         });
-        jPanel1.add(screensComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 200, -1));
+        jPanel1.add(screensComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 140, -1));
+
+        dateComboBox.setEnabled(false);
+        dateComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                dateComboBoxItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(dateComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, 140, -1));
+
+        timeComboBox.setEnabled(false);
+        timeComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                timeComboBoxItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(timeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 140, -1));
+
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel2.setText("Select a time");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 80, -1));
 
         jTabbedPane1.addTab("Book Movie Tickets", jPanel1);
 
@@ -329,264 +314,136 @@ public class BookMovieTickets extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public boolean clientSideValidation(JFrame frame, String customer_name, String customer_contact) {
-        if (Pattern.compile("^[a-zA-Z\\s]*$").matcher(customer_name).matches() && !customer_name.equals("")) {
-            if (Pattern.compile("^\\d{10}$").matcher(customer_contact).matches()) {
-                return true;
-            } else {
-                JOptionPane.showMessageDialog(frame, "Contact number is not valid.\nOnly numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(frame, "Customer name is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
-        }
-        return false;
-    }
+      
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         // TODO add your handling code here:
-        customerNameField.setText("");
-        mobileNumberField.setText("");
         cityComboBox.setSelectedItem(null);
-        movieComboBox.removeAllItems();
-        calendar.setCalendar(null);
         theatresComboBox.removeAllItems();
+        theatresComboBox.setEnabled(false);
+        screensComboBox.removeAllItems();
+        screensComboBox.setEnabled(false);
+        movieComboBox.removeAllItems();
+        movieComboBox.setEnabled(false);
+        dateComboBox.removeAllItems();
+        dateComboBox.setEnabled(false);
+        timeComboBox.removeAllItems();
+        timeComboBox.setEnabled(false);
         priceField.setText("");
         seatComboBox.removeAllItems();
-        ticket.setText("");
-        screensComboBox.removeAllItems();
-        
+        seatComboBox.setEnabled(false);
     }//GEN-LAST:event_clearButtonActionPerformed
 
     private void bookTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookTicketButtonActionPerformed
         // TODO add your handling code here:
-        String customer_name = customerNameField.getText().trim();
-        String customer_contact = mobileNumberField.getText().trim();
-        boolean passed = clientSideValidation(this, customer_name, customer_contact);
-        if (passed) {
-            try {
-                String city = cityComboBox.getSelectedItem().toString();
-                String movie_name = movieComboBox.getSelectedItem().toString();
-                String ticket_price = priceField.getText();
-                String seat_no = seatComboBox.getSelectedItem().toString();
-                int price = Integer.parseInt(priceField.getText());
-                SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
-                String date = date_format.format(calendar.getDate());
-                MySql.createConn();
-                String query = "select userid, balance from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-                ResultSet rs = MySql.selectQuery(query);
-                rs.next();
-                int user_id = rs.getInt(1);
-                double balance = rs.getDouble(2);
-                double available_balance = balance - price;
-                if (available_balance < 0) {
-                    JOptionPane.showMessageDialog(this, "The available wallet balance is less than the amount \nthat you're trying to transfer.", "Alert", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-                
-                  query = "select id from cities where city_name = " + "\'" + city + "\'";
-                System.out.println("1");
-                System.out.println(query);
-                rs = MySql.selectQuery(query);
-                rs.next();
-                int city_id = rs.getInt(1);
-                
-                query = "select id from movies where movie_name = " + "\'" + movie_name + "\' and city_id = " + "\'" + city_id + "\';";
-                System.out.println(query);
-                System.out.println("1");
-                rs = MySql.selectQuery(query);
-                rs.next();
-                int movie_id = rs.getInt(1);
-                
-              
-                
-                query = "select count(*) from movie_bookings where movie_id = " + movie_id + " and seat_number = " + seat_no + ";";
-                System.out.println(query);
-                 System.out.println("2");
-
-                rs = MySql.selectQuery(query);
-                rs.next();
-                if (rs.getInt(1) > 0) {
-                    JOptionPane.showMessageDialog(this, "Someone has booked the seat, please book another seat for the movie.", "Alert", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-                query = "insert into movie_bookings(user_id, movie_id, seat_number, booking_date, movie_date, customer_name, customer_mobile) values(" + user_id + "," + movie_id + "," + seat_no + "," + "CURDATE()" + "," + "\'" + date + "\'" + "," + "\'" + customer_name + "\'" + "," + "\'" + customer_contact + "\'" + ");";
-                System.out.println("3");
-
-                int res = MySql.insertUpdateQuery(query);
-                if (res > 0) {
-                    JOptionPane.showMessageDialog(this, "Ticket booked successfully.", null, JOptionPane.OK_OPTION);
-                    query = "update users set balance = balance - " + price + " where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-                    res = MySql.insertUpdateQuery(query);
-                    if (res > 0) {
-                        balanceLabel.setText("$ " + available_balance);
-                    }
-                    ticket.setText("");
-                    ticket.setText(ticket.getText() + "****************************\n");
-                    ticket.setText(ticket.getText() + "**********MOVIE TICKET*********\n");
-                    ticket.setText(ticket.getText() + "*****************************\n");
-                    ticket.setText(ticket.getText() + "Customer: " + customer_name + "\n");
-                    ticket.setText(ticket.getText() + "Contact Number: " + customer_contact + "\n");
-                    ticket.setText(ticket.getText() + "City: " + city + "\n");
-                    ticket.setText(ticket.getText() + "SeatNo: " + seat_no + "\n");
-                    ticket.setText(ticket.getText() + "Price: " + ticket_price + "\n");
-                    ticket.setText(ticket.getText() + "Movie Date: " + date + "\n");
-                    ticket.setText(ticket.getText() + "**********^^^^^^^^^**********\n");
-                    ticket.setText(ticket.getText() + "******Thank You Come Again!!******\n");
-                    
-                   
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex);
+        try
+        {         
+            String city = cityComboBox.getSelectedItem().toString();
+            String theatre = theatresComboBox.getSelectedItem().toString();
+            String screenId = screensComboBox.getSelectedItem().toString();
+            String movie = movieComboBox.getSelectedItem().toString();
+            String date = dateComboBox.getSelectedItem().toString();
+            String time = timeComboBox.getSelectedItem().toString();
+            int seatNumber = Integer.parseInt(seatComboBox.getSelectedItem().toString());
+            double price = Double.parseDouble(priceField.getText());
+            UserDirectory ud = new UserDirectory();
+            int userId = 0;
+            double balance = 0;
+            String email = "";
+            for(User user : ud.getUserList())
+            {
+              if(user.getUserName().equals(userNameLabel.getText()))
+              {
+                userId = user.getId();
+                balance = user.getWallet_balance();
+                email = user.getEmail();
+              }
             }
-//            catch(NullPointerException ex)
-//            {
-//                JOptionPane.showMessageDialog(this, "Please choose from location, to location, travel date and bus.", "Alert", JOptionPane.WARNING_MESSAGE);
-//            }
+            double available_balance = balance - price;
+            if(available_balance < 0)
+            {
+              JOptionPane.showMessageDialog(this, "The available wallet balance is less than the amount \nthat you're trying to transfer.", "Alert", JOptionPane.WARNING_MESSAGE);
+              return;
+            }
+            int res = MovieBookingDirectory.seatFilled(Integer.parseInt(screenId), seatNumber);
+            if(res > 0)
+            {
+               JOptionPane.showMessageDialog(this, "Someone had already booked the seat, please book another seat.", "Alert", JOptionPane.WARNING_MESSAGE);
+               return;
+            }
+            User user = new User(userId, "", "", 0, "", balance);           
+            Screen screen = new Screen(Integer.parseInt(screenId), null, null, null, null, 0);
+            MovieBooking mb = new MovieBooking(0, user, screen, seatNumber, null);
+            int res1 = MovieBookingDirectory.addMovieBooking(mb);
+            if(res1 > 0)
+            {
+               JOptionPane.showMessageDialog(this, "Booked the ticket successfully.", null, JOptionPane.OK_OPTION);
+               int res2 = UserDirectory.updateBalance(userId, available_balance);
+               if(res2 > 0)
+               {
+                 balanceLabel.setText("$ " + available_balance);
+                 String message = "****************************\n";
+                 message += "**********Movie TICKET*********\n";
+                 message += "*****************************\n";
+                 message += "City: " + city + "\n";
+                 message += "Theatre: " + theatre + "\n";
+                 message += "Screen: " + screenId + "\n";
+                 message += "Movie: " + movie + "\n";
+                 message += "Date: " + date + "\n";
+                 message += "Time: " + time + "\n";
+                 message += "Price: " + price + "\n";
+                 message += "seat: " + seatNumber + "\n"; 
+                 message += "**********^^^^^^^^^**********\n";
+                 message += "******Thank You Come Again!!******\n";
+                 Mail.sendMail(email, message);
+               }
+            }
+        }
+        catch(NullPointerException np)
+        {
+           JOptionPane.showMessageDialog(this, "Please fill all the necessary fields.", "Alert", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_bookTicketButtonActionPerformed
 
     private void cityComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cityComboBoxItemStateChanged
         // TODO add your handling code here:
-
-        if (evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
-            calendar.setEnabled(true);
-
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+        {
+          theatresComboBox.setEnabled(true);
+          String cityName = cityComboBox.getSelectedItem().toString();
+          theatresComboBox.removeAllItems();
+          for(Theatre t : theatreDirectory)
+          {
+            if(t.getCity().getCityName().equals(cityName))
+            {
+              theatresComboBox.addItem(t.getTheatreName());
+            }            
+          }
         }
     }//GEN-LAST:event_cityComboBoxItemStateChanged
 
-    private void calendarPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_calendarPropertyChange
-        // TODO add your handling code here:
-        SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
-        if (calendar.getDate() != null) {
-            String date = date_format.format(calendar.getDate());
-            try {
-                String loc = cityComboBox.getSelectedItem().toString();
-                MySql.createConn();
-                String city_query = "select id from cities where city_name = " + "\'" + cityComboBox.getSelectedItem().toString() + "\'" + ";";
-
-                ResultSet rs = MySql.selectQuery(city_query);
-                rs.next();
-                int city_id = rs.getInt(1);
-
-                rs = MySql.selectQuery("select movie_name from movies where city_id =" + city_id + " and movie_date = " + "\'" + date + "\'" + ";");
-                movieComboBox.removeAllItems();
-                while (rs.next()) {
-                    movieComboBox.addItem(rs.getString(1));
-                }
-
-            } catch (SQLException ex) {
-                System.out.println(ex);
-            } finally {
-                MySql.shutDownConn();
-            }
-        }
-
-    }//GEN-LAST:event_calendarPropertyChange
-
     private void theatresComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_theatresComboBoxItemStateChanged
         // TODO add your handling code here:
-//         try
-//        {
-//            MySql.createConn();
-//            String theatre_query = "select id from theatres where theatre_name = " + "\'" + theatresComboBox.getSelectedItem().toString() + "\'" + ";";
-//            ResultSet rs = MySql.selectQuery(theatre_query);
-//            rs.next();
-//            int theatre_id = rs.getInt(1);
-//            
-//            
-//          String screen_query = "select screen_name from screens where theatre_id = "+theatre_id+"  ;";
-//            
-//            rs = MySql.selectQuery(screen_query);
-//            screensComboBox.removeAllItems();
-//            while(rs.next())
-//            {
-//                screensComboBox.addItem(rs.getString(1));
-//            }
-//        }
-//        catch(SQLException ex)
-//        {
-//          System.out.println(ex);
-//        }
-//        finally
-//        {
-//          MySql.shutDownConn();
-//        }
-
-        if (evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
-            try {
-                String loc = cityComboBox.getSelectedItem().toString();
-                MySql.createConn();
-                String city_query = "select id from cities where city_name = " + "\'" + cityComboBox.getSelectedItem().toString() + "\'" + ";";
-                ResultSet rs = MySql.selectQuery(city_query);
-                rs.next();
-                int city_id = rs.getInt(1);
-
-                MySql.createConn();
-                String movie_query = "select id from movies where movie_name = " + "\'" + movieComboBox.getSelectedItem().toString() + "\'" + "and city_id = " + city_id + ";";
-                rs = MySql.selectQuery(movie_query);
-                rs.next();
-                int movie_id = rs.getInt(1);
-
-                MySql.createConn();
-                String theatre_query = "select id from theatres where movie_id = " + movie_id + " and city_id = " + city_id + " ;";
-                rs = MySql.selectQuery(theatre_query);
-                rs.next();
-                int theatre_id = rs.getInt(1);
-
-                MySql.createConn();
-                String screen_query = "select screen_name from screens where theatre_id = " + theatre_id + " and movie_id = " + movie_id + " and city_id = " + city_id + " ;";
-                rs = MySql.selectQuery(screen_query);
-                screensComboBox.removeAllItems();
-                while (rs.next()) {
-                    screensComboBox.addItem(rs.getString(1));
-                }
-
-            } catch (SQLException ex) {
-                System.out.println(ex);
-            } finally {
-                MySql.shutDownConn();
-            }
+        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+        {
+          screensComboBox.setEnabled(true);
+          String theatreName = theatresComboBox.getSelectedItem().toString();
+          screensComboBox.removeAllItems();
+          for(Screen s : screenDirectory)
+          {
+            if(s.getTheatre().getTheatreName().equals(theatreName))
+            {
+              screensComboBox.addItem(String.valueOf(s.getId()));
+            }            
+          }
         }
-
-
     }//GEN-LAST:event_theatresComboBoxItemStateChanged
 
     private void movieIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movieIdFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_movieIdFieldActionPerformed
 
-    public void getDataIntoTable() {
-        try {
-            MySql.createConn();
-            String query = "select userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-            ResultSet rs = MySql.selectQuery(query);
-            rs.next();
-            int user_id = rs.getInt(1);
-            query = "select * from movie_bookings where user_id = " + user_id + ";";
-            rs = MySql.selectQuery(query);
-            DefaultTableModel table_model1 = (DefaultTableModel) bookingHistoryTable.getModel();
-            table_model1.setRowCount(0);
-            while (rs.next()) {
-                String booking_id = String.valueOf(rs.getInt(1));
-                String customer_name = String.valueOf(rs.getString(7));
-                String customer_mobile = String.valueOf(rs.getString(8));
-                String movie_id = String.valueOf(rs.getInt(3));
-                String seat_number = String.valueOf(rs.getInt(4));
-                String booking_date = String.valueOf(rs.getDate(5));
-                String movie_date = String.valueOf(rs.getDate(6));
-                String table_data[] = {booking_id, customer_name, customer_mobile, movie_id, seat_number, booking_date, movie_date};
-                table_model1.addRow(table_data);
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        } finally {
-            MySql.shutDownConn();
-        }
-    }
     private void showHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showHistoryButtonActionPerformed
         // TODO add your handling code here:
-        getDataIntoTable();
-
     }//GEN-LAST:event_showHistoryButtonActionPerformed
     public boolean clientSideValidation(JFrame frame, String bookingId) {
         if (Pattern.compile("^[1-9]\\d*$").matcher(bookingId).matches()) {
@@ -600,146 +457,106 @@ public class BookMovieTickets extends javax.swing.JFrame {
         // TODO add your handling code here:
         String movieID = movieIdField.getText().trim();
         boolean passed = clientSideValidation(this, movieID);
-        if (passed) {
-            try {
-                MySql.createConn();
-                String query = "select userid, balance from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-                ResultSet rs = MySql.selectQuery(query);
-                rs.next();
-                int user_id = rs.getInt(1);
-                double balance = rs.getDouble(2);
-                query = "select movie_id from movie_bookings where id = " + movieID + " and user_id = " + user_id + ";";
-                rs = MySql.selectQuery(query);
-                if (rs.isBeforeFirst()) {
-                    rs.next();
-                    int movie_id = rs.getInt(1);
-                    query = "select price from movies where id = " + movie_id + ";";
-                    rs = MySql.selectQuery(query);
-                    rs.next();
-                    int price = rs.getInt(1);
-                    double available_balance = balance + price;
-                    query = ("delete from movie_bookings where id = " + movieID + " and movie_date > CURDATE() and user_id = " + user_id + ";");
-                    int res = MySql.insertUpdateQuery(query);
-                    if (res > 0) {
-                        query = "update users set balance = balance + " + price + " where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-                        res = MySql.insertUpdateQuery(query);
-                        if (res > 0) {
-                            JOptionPane.showMessageDialog(this, "Cancelled the booking successfully.", null, JOptionPane.OK_OPTION);
-                            balanceLabel.setText("$ " + available_balance);
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Booking Id is not valid.\nPlease give another Id.", null, JOptionPane.WARNING_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(this, "Booking Id is not valid.\nPlease give another Id.", null, JOptionPane.WARNING_MESSAGE);
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex);
-            } finally {
-                MySql.shutDownConn();
-            }
+        if (passed)
+        {
+            
         }
-
     }//GEN-LAST:event_cancelBookingButtonActionPerformed
-
-    private void customerNameFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_customerNameFieldKeyReleased
-        // TODO add your handling code here:
-        String customer_name = customerNameField.getText().trim();
-        if (Pattern.compile("^[a-zA-Z\\s]*$").matcher(customer_name).matches() && !customer_name.equals("")) {
-            ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
-            Image img = icon.getImage();
-            Image imgScale = img.getScaledInstance(nL.getWidth(), nL.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon scaledIcon = new ImageIcon(imgScale);
-            nL.setIcon(scaledIcon);
-        } else {
-
-            ImageIcon icon = new ImageIcon("target/classes/images/cross.png");
-            nL.setIcon(icon);
-        }
-    }//GEN-LAST:event_customerNameFieldKeyReleased
-
-    private void mobileNumberFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mobileNumberFieldKeyReleased
-        // TODO add your handling code here:
-        String customer_contact = mobileNumberField.getText().trim();
-        if (Pattern.compile("^\\d{10}$").matcher(customer_contact).matches() && !customer_contact.equals("")) {
-            ImageIcon icon = new ImageIcon("target/classes/images/accept.png");
-            Image img = icon.getImage();
-            Image imgScale = img.getScaledInstance(mL.getWidth(), mL.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon scaledIcon = new ImageIcon(imgScale);
-            mL.setIcon(scaledIcon);
-        } else {
-
-            ImageIcon icon = new ImageIcon("target/classes/images/cross.png");
-            mL.setIcon(icon);
-        }
-    }//GEN-LAST:event_mobileNumberFieldKeyReleased
 
     private void cityComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cityComboBoxActionPerformed
 
     private void movieComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_movieComboBoxItemStateChanged
-        if (evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
-            try {
-                String loc = cityComboBox.getSelectedItem().toString();
-                MySql.createConn();
-                String city_query = "select id from cities where city_name = " + "\'" + cityComboBox.getSelectedItem().toString() + "\'" + ";";
-                ResultSet rs = MySql.selectQuery(city_query);
-                rs.next();
-                int city_id = rs.getInt(1);
-
-                MySql.createConn();
-                String movie_query = "select id from movies where movie_name = " + "\'" + movieComboBox.getSelectedItem().toString() + "\'" + "and city_id = " + city_id + ";";
-                rs = MySql.selectQuery(movie_query);
-                rs.next();
-                int movie_id = rs.getInt(1);
-
-                String theatre_query = "select theatre_name from theatres where movie_id = " + movie_id + " and city_id = " + city_id + " ;";
-                rs = MySql.selectQuery(theatre_query);
-                theatresComboBox.removeAllItems();
-                while (rs.next()) {
-                    theatresComboBox.addItem(rs.getString(1));
-                }
-
-            
-                MySql.createConn();
-                String query = "select price from movies where id = " + movie_id + " and city_id = " + city_id + " ;";
-                rs = MySql.selectQuery(query);
-                if (rs.next()) {
-                    priceField.setText(rs.getString(1));
-                }
-                
-                
-                MySql.createConn();
-                String query2  = "select seat_number from movie_bookings where movie_id = " + movie_id + ";";
-                rs = MySql.selectQuery(query2);
-                ArrayList<Integer> seats = new ArrayList<>();
-                for(int i = 1; i <31 ; i++)
-                {
-                    seats.add(i);
-                }
-                while(rs.next())
-                {
-                    seats.remove(Integer.valueOf(rs.getInt(1)));
-                }
-                seatComboBox.removeAllItems();
-                for(int i : seats)
-                {
-                    seatComboBox.addItem(String.valueOf(i));
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex);
-            } finally {
-                MySql.shutDownConn();
+        if (evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+        {
+            dateComboBox.setEnabled(true);
+            int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
+            String movieName = movieComboBox.getSelectedItem().toString();
+            dateComboBox.removeAllItems();
+            for(Screen s : screenDirectory)
+            {
+              if(s.getId() == screenId && s.getMovie().getMovieName().equals(movieName))
+              {
+                dateComboBox.addItem(s.getMovieDate().toString());
+              }            
             }
         }
-
-// TODO add your handling code here:
     }//GEN-LAST:event_movieComboBoxItemStateChanged
 
     private void screensComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_screensComboBoxItemStateChanged
         // TODO add your handling code here:
+        if (evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+        {
+            movieComboBox.setEnabled(true);
+            int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
+            movieComboBox.removeAllItems();
+            for(Screen s : screenDirectory)
+            {
+              if(s.getId() == screenId)
+              {
+                movieComboBox.addItem(s.getMovie().getMovieName());
+              }            
+            }
+        }
     }//GEN-LAST:event_screensComboBoxItemStateChanged
+
+    private void dateComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_dateComboBoxItemStateChanged
+        // TODO add your handling code here:
+        if (evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+        {
+            timeComboBox.setEnabled(true);
+            int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
+            String movieName = movieComboBox.getSelectedItem().toString();
+            String movieDate = dateComboBox.getSelectedItem().toString();
+            timeComboBox.removeAllItems();
+            for(Screen s : screenDirectory)
+            {
+              if(s.getId() == screenId && s.getMovie().getMovieName().equals(movieName) && s.getMovieDate().toString().equals(movieDate))
+              {
+                timeComboBox.addItem(s.getMovieTime().toString());
+              }            
+            }
+        }
+    }//GEN-LAST:event_dateComboBoxItemStateChanged
+
+    private void timeComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_timeComboBoxItemStateChanged
+        // TODO add your handling code here:
+        if (evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) 
+        {
+            int screenId = Integer.parseInt(screensComboBox.getSelectedItem().toString());
+            String movieName = movieComboBox.getSelectedItem().toString();
+            String movieDate = dateComboBox.getSelectedItem().toString();
+            String movieTime = timeComboBox.getSelectedItem().toString();
+            seatComboBox.setEnabled(true);
+            seatComboBox.removeAllItems();
+            ScreenDirectory sd = new ScreenDirectory();
+            for(Screen s : sd.getScreenList())
+            {
+              if(s.getId() == screenId && s.getMovie().getMovieName().equals(movieName) && s.getMovieDate().toString().equals(movieDate) && s.getMovieTime().toString().equals(movieTime))
+              {
+                priceField.setText(String.valueOf(s.getPrice()));
+              }           
+            }
+            ArrayList<Integer> seats = new ArrayList<>();
+            for(int i = 1; i < 61 ; i++)
+            {                  
+              seats.add(i);
+            }
+            for(MovieBooking mb : movieBookingDirectory)
+            {
+              if(mb.getScreen().getId() == screenId)
+              {
+                seats.remove(Integer.valueOf(mb.getSeatNumber()));
+              }              
+            }
+            seatComboBox.removeAllItems();
+            for(int i : seats)
+            {
+              seatComboBox.addItem(String.valueOf(i));
+            } 
+        }
+    }//GEN-LAST:event_timeComboBoxItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -782,22 +599,19 @@ public class BookMovieTickets extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bookTicketButton;
     private javax.swing.JTable bookingHistoryTable;
-    private com.toedter.calendar.JDateChooser calendar;
     private javax.swing.JButton cancelBookingButton;
     private javax.swing.JComboBox<String> cityComboBox;
     private javax.swing.JButton clearButton;
-    private javax.swing.JTextField customerNameField;
+    private javax.swing.JComboBox<String> dateComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel39;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel5;
@@ -807,10 +621,8 @@ public class BookMovieTickets extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel mL;
-    private javax.swing.JTextField mobileNumberField;
     private javax.swing.JComboBox<String> movieComboBox;
     private javax.swing.JTextField movieIdField;
     private javax.swing.JLabel nL;
@@ -819,7 +631,7 @@ public class BookMovieTickets extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> seatComboBox;
     private javax.swing.JButton showHistoryButton;
     private javax.swing.JComboBox<String> theatresComboBox;
-    private javax.swing.JTextArea ticket;
+    private javax.swing.JComboBox<String> timeComboBox;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -10,22 +10,26 @@ import java.time.LocalDate;
  *
  * @author shubhamjain
  */
-public class Movie {
-    private int id;
-    private String movieName;
+public class Theatre {
+     private int id;
+    private String theatreName;
+    private City city;
 
-    public Movie(int id, String movieName) {
+    public Theatre(int id, String theatreName, City city) {
         this.id = id;
-        this.movieName = movieName;
+        this.theatreName = theatreName;
+        this.city = city;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getMovieName() {
-        return movieName;
-    }   
-    
-    
+    public String getTheatreName() {
+        return theatreName;
+    }
+
+    public City getCity() {
+        return city;
+    }        
 }
