@@ -55,7 +55,7 @@ public class Registration extends javax.swing.JFrame {
         pV = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 800));
+        setPreferredSize(new java.awt.Dimension(900, 900));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
