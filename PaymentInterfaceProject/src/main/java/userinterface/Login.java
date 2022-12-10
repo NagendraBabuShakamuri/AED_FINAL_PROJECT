@@ -4,6 +4,8 @@
  */
 package userinterface;
 
+import business.Admin;
+import business.AdminDirectory;
 import business.User;
 import business.UserDirectory;
 import java.util.ArrayList;
@@ -67,7 +69,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/role.png"))); // NOI18N
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 50, -1));
 
-        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "System Admin" }));
+        roleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "User", "System Admin", "Banking Admin", "Bus Admin", "Train Admin", "Recharge Admin", "Utilities Admin", "Events Admin", "Movie Admin" }));
         jPanel2.add(roleCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 160, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
@@ -137,18 +139,20 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String userName = userNameField.getText();
         String password = new String(passField.getPassword());
+        AdminDirectory ad = new AdminDirectory();
         boolean found = false;
         switch(roleCombo.getSelectedItem().toString())
         {
          case "User":
-            ArrayList<User> userDirectory = UserDirectory.getUserList();
+            UserDirectory ud = new UserDirectory();
+            ArrayList<User> userDirectory = ud.getUserList();
             for(User user: userDirectory)
             {
               if(user.getUserName().equals(userName) && user.getPassword().equals(password))
               {
                 found = true;
                 UserHomePage uhp = new UserHomePage(userName);
-                uhp.show();
+                uhp.setVisible(true);
                 dispose();
                 break;
               }
@@ -156,9 +160,126 @@ public class Login extends javax.swing.JFrame {
             if(!found)
                     JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
             break;
-         case "System Admin":
+         case "System Admin":            
+            for(Admin admin: ad.getAdminList())
+            {
+              if(admin.getRole().equals("System Admin") && admin.getUserName().equals(userName) && admin.getPassword().equals(password))
+              {
+                found = true;
+                AdminFrame af = new AdminFrame(roleCombo.getSelectedItem().toString());
+                af.setVisible(true);
+                dispose();
+                break;
+              }
+            }
+            if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
             break;
-             
+         case "Banking Admin":                        
+            for(Admin admin: ad.getAdminList())
+            {
+              if(admin.getRole().equals("Banking Admin") && admin.getUserName().equals(userName) && admin.getPassword().equals(password))
+              {
+                found = true;
+                AdminFrame af = new AdminFrame(roleCombo.getSelectedItem().toString());
+                af.setVisible(true);
+                dispose();
+                break;
+              }
+            }
+            if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+             break;
+         case "Bus Admin":
+             for(Admin admin: ad.getAdminList())
+             {
+              if(admin.getRole().equals("Bus Admin") && admin.getUserName().equals(userName) && admin.getPassword().equals(password))
+              {
+                found = true;
+                AdminFrame af = new AdminFrame(roleCombo.getSelectedItem().toString());
+                af.setVisible(true);
+                dispose();
+                break;
+              }
+             }
+             if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+             break;
+         case "Train Admin":             
+             for(Admin admin: ad.getAdminList())
+             {
+              if(admin.getRole().equals("Train Admin") && admin.getUserName().equals(userName) && admin.getPassword().equals(password))
+              {
+                found = true;
+                AdminFrame af = new AdminFrame(roleCombo.getSelectedItem().toString());
+                af.setVisible(true);
+                dispose();
+                break;
+              }
+             }
+             if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+             break;
+         case "Recharge Admin":
+             for(Admin admin: ad.getAdminList())
+             {
+              if(admin.getRole().equals("Recharge Admin") && admin.getUserName().equals(userName) && admin.getPassword().equals(password))
+              {
+                found = true;
+                AdminFrame af = new AdminFrame(roleCombo.getSelectedItem().toString());
+                af.setVisible(true);
+                dispose();
+                break;
+              }
+             }
+             if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+             break;
+         case "Utilities Admin":
+             for(Admin admin: ad.getAdminList())
+             {
+              if(admin.getRole().equals("Utilities Admin") && admin.getUserName().equals(userName) && admin.getPassword().equals(password))
+              {
+                found = true;
+                AdminFrame af = new AdminFrame(roleCombo.getSelectedItem().toString());
+                af.setVisible(true);
+                dispose();
+                break;
+              }
+             }
+             if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+             break;
+         case "Movie Admin":
+             for(Admin admin: ad.getAdminList())
+             {
+              if(admin.getRole().equals("Movie Admin") && admin.getUserName().equals(userName) && admin.getPassword().equals(password))
+              {
+                found = true;
+                AdminFrame af = new AdminFrame(roleCombo.getSelectedItem().toString());
+                af.setVisible(true);
+                dispose();
+                break;
+              }
+             }
+             if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+             break;
+         case "Events Admin":
+             for(Admin admin: ad.getAdminList())
+             {
+              if(admin.getRole().equals("Events Admin") && admin.getUserName().equals(userName) && admin.getPassword().equals(password))
+              {
+                found = true;
+                AdminFrame af = new AdminFrame(roleCombo.getSelectedItem().toString());
+                af.setVisible(true);
+                dispose();
+                break;
+              }
+             }
+             if(!found)
+                    JOptionPane.showMessageDialog(this, "Username/Password is incorrect.\nPlease enter valid credentials.", "Alert", JOptionPane.WARNING_MESSAGE);
+             break;             
         }       
     }//GEN-LAST:event_loginButtonActionPerformed
 

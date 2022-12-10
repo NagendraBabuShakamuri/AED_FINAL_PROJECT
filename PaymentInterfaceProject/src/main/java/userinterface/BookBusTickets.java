@@ -4,6 +4,7 @@
  */
 package userinterface;
 
+import business.Mail;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
@@ -336,6 +337,7 @@ public class BookBusTickets extends javax.swing.JFrame{
         fromComboBox.setSelectedItem(null);
         toComboBox.removeAllItems();
         calendar.setCalendar(null);
+        calendar.setEnabled(false);
         busesComboBox.removeAllItems();
         fareField.setText("");
         seatComboBox.removeAllItems();
@@ -381,7 +383,7 @@ public class BookBusTickets extends javax.swing.JFrame{
              rs.next();
              if(rs.getInt(1) > 0)
              {
-               JOptionPane.showMessageDialog(this, "Someone has booked the seat, please book another seat.", "Alert", JOptionPane.WARNING_MESSAGE);
+               JOptionPane.showMessageDialog(this, "Someone had already booked the seat, please book another seat.", "Alert", JOptionPane.WARNING_MESSAGE);
                return;
              }
              query = "insert into bus_bookings(user_id, bus_id, seat_number, booking_date, travel_date, passenger_name, passenger_mobile) values(" + user_id + "," + bus_id + "," + seat_no + "," + "CURDATE()" + "," + "\'" + date + "\'" + "," + "\'" + customer_name + "\'" + "," + "\'" + customer_contact + "\'" + ");";
@@ -394,19 +396,19 @@ public class BookBusTickets extends javax.swing.JFrame{
                if(res > 0)
                {
                  balanceLabel.setText("$ " + available_balance);
-               }
-               ticket.setText("");
-               ticket.setText(ticket.getText() + "****************************\n");
-               ticket.setText(ticket.getText() + "**********BUS TICKET*********\n");
-               ticket.setText(ticket.getText() + "*****************************\n");
-               ticket.setText(ticket.getText() + "Customer: " + customer_name + "\n");
-               ticket.setText(ticket.getText() + "Contact Number: " + customer_contact + "\n");
-               ticket.setText(ticket.getText() + "From: " + from + "To: " + to + "\n");
-               ticket.setText(ticket.getText() + "SeatNo: " + seat_no + "\n");
-               ticket.setText(ticket.getText() + "Price: " + ticket_price + "\n");
-               ticket.setText(ticket.getText() + "Journey Date: " + date + "\n");
-               ticket.setText(ticket.getText() + "**********^^^^^^^^^**********\n");
-               ticket.setText(ticket.getText() + "******Thank You Come Again!!******\n");
+                 ticket.setText("");
+                 ticket.setText(ticket.getText() + "****************************\n");
+                 ticket.setText(ticket.getText() + "**********BUS TICKET*********\n");
+                 ticket.setText(ticket.getText() + "*****************************\n");
+                 ticket.setText(ticket.getText() + "Customer: " + customer_name + "\n");
+                 ticket.setText(ticket.getText() + "Contact Number: " + customer_contact + "\n");
+                 ticket.setText(ticket.getText() + "From: " + from + "To: " + to + "\n");
+                 ticket.setText(ticket.getText() + "SeatNo: " + seat_no + "\n");
+                 ticket.setText(ticket.getText() + "Price: " + ticket_price + "\n");
+                 ticket.setText(ticket.getText() + "Journey Date: " + date + "\n");
+                 ticket.setText(ticket.getText() + "**********^^^^^^^^^**********\n");
+                 ticket.setText(ticket.getText() + "******Thank You Come Again!!******\n");
+               }               
              }             
            }
            catch(SQLException ex)
@@ -422,7 +424,6 @@ public class BookBusTickets extends javax.swing.JFrame{
 
     private void fromComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_fromComboBoxItemStateChanged
         // TODO add your handling code here:
-
        if(evt != null && evt.getSource().toString() != null && evt.getStateChange() == java.awt.event.ItemEvent.SELECTED)
        {
          toComboBox.removeAllItems();
@@ -450,33 +451,35 @@ public class BookBusTickets extends javax.swing.JFrame{
         {   
             String date = date_format.format(calendar.getDate());
             System.out.println(date);
-           try{
-            MySql.createConn(); 
-            String from_query = "select id from cities where city_name = " + "\'" + fromComboBox.getSelectedItem().toString() + "\'" + ";";
-            ResultSet rs = MySql.selectQuery(from_query);
-            
-            rs.next();
-            int from_id = rs.getInt(1);
-            
-            String to_query = "select id from cities where city_name = " + "\'" + toComboBox.getSelectedItem().toString() + "\'" + ";";
-            rs = MySql.selectQuery(to_query);
-            rs.next();
-            int to_id = rs.getInt(1);
-            String query  = "select CONCAT(bus_name,' ',start_at) from buses where from_city = " + from_id + " and to_city = " + to_id +" and travel_date = " + "\'"+date+ "\'" +";";
-            rs = MySql.selectQuery(query);
-            busesComboBox.removeAllItems();
-            while(rs.next()){      
-              busesComboBox.addItem(rs.getString(1));
+            try
+            {               
+                MySql.createConn(); 
+                String from_query = "select id from cities where city_name = " + "\'" + fromComboBox.getSelectedItem().toString() + "\'" + ";";
+                ResultSet rs = MySql.selectQuery(from_query);
+
+                rs.next();
+                int from_id = rs.getInt(1);
+
+                String to_query = "select id from cities where city_name = " + "\'" + toComboBox.getSelectedItem().toString() + "\'" + ";";
+                rs = MySql.selectQuery(to_query);
+                rs.next();
+                int to_id = rs.getInt(1);
+                String query  = "select CONCAT(bus_name,' ',start_at) from buses where from_city = " + from_id + " and to_city = " + to_id +" and travel_date = " + "\'"+date+ "\'" +";";
+                rs = MySql.selectQuery(query);
+                busesComboBox.removeAllItems();
+                while(rs.next())
+                {      
+                  busesComboBox.addItem(rs.getString(1));
+                }
             }
-        }
-        catch(SQLException ex)
-                 {
-                   System.out.println(ex);
-                 }
-        finally
-              {
+            catch(SQLException ex)
+            {
+                System.out.println(ex);
+            }
+            finally
+            {
                 MySql.shutDownConn();
-              }                 
+            }                 
         }        
     }//GEN-LAST:event_calendarPropertyChange
 
@@ -490,7 +493,8 @@ public class BookBusTickets extends javax.swing.JFrame{
                 MySql.createConn();
                 String query = "select fare from buses where bus_name ='"+first+"';";
                 ResultSet rs = MySql.selectQuery(query);
-                if(rs.next()){      
+                if(rs.next())
+                {      
                     fareField.setText(rs.getString(1));
                 }
                 String query1 = "select id from buses where bus_name ='"+first+"'; ";
@@ -531,7 +535,8 @@ public class BookBusTickets extends javax.swing.JFrame{
     }//GEN-LAST:event_busIdFieldActionPerformed
 
     public void getDataIntoTable(){
-         try{
+            try
+            {
                 MySql.createConn();
                 String query = "select userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
                 ResultSet rs = MySql.selectQuery(query);
@@ -554,14 +559,14 @@ public class BookBusTickets extends javax.swing.JFrame{
                     table_model1.addRow(table_data);
                 }
             }
-        catch(SQLException ex)
-                 {
+            catch(SQLException ex)
+            {
                    System.out.println(ex);
-                 }
-        finally
-              {
+            }
+            finally
+            {
                 MySql.shutDownConn();
-             }
+            }
     }
     private void showHistoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showHistoryButtonActionPerformed
         // TODO add your handling code here:
@@ -587,11 +592,12 @@ public class BookBusTickets extends javax.swing.JFrame{
             try
             {
                 MySql.createConn();
-                String query = "select userid, balance from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+                String query = "select userid, balance, email from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
                 ResultSet rs = MySql.selectQuery(query);
                 rs.next();
                 int user_id = rs.getInt(1);
                 double balance = rs.getDouble(2);
+                String email = rs.getString(3);
                 query = "select bus_id from bus_bookings where id = " + bookingID + " and user_id = " + user_id + ";";
                 rs = MySql.selectQuery(query);
                 if(rs.isBeforeFirst())
@@ -603,7 +609,7 @@ public class BookBusTickets extends javax.swing.JFrame{
                     rs.next();
                     int fare = rs.getInt(1);
                     double available_balance = balance + fare;
-                    query=("delete from bus_bookings where id = " + bookingID + " and travel_date > CURDATE() and user_id = " + user_id + ";");
+                    query = "delete from bus_bookings where id = " + bookingID + " and travel_date > CURDATE() and user_id = " + user_id + ";";
                     int res = MySql.insertUpdateQuery(query);    
                     if(res > 0)
                     {
@@ -612,16 +618,17 @@ public class BookBusTickets extends javax.swing.JFrame{
                         if(res > 0)
                         {
                           JOptionPane.showMessageDialog(this, "Cancelled the booking successfully.", null, JOptionPane.OK_OPTION);
-                          balanceLabel.setText("$ " + available_balance);                          
+                          balanceLabel.setText("$ " + available_balance);
+                          Mail.sendMail(email, "You have cancelled your bus ticket with the Id: " + bookingID + "\nRefund has been added to your wallet balance.");
                         }                    
                     }
                     else
                     {
-                        JOptionPane.showMessageDialog(this, "Booking Id is not valid.\nPlease give another Id.", null, JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Booking Id is not valid.\nPlease give another Id.", "Alert", JOptionPane.WARNING_MESSAGE);
                     }
                 }
                 else
-                 JOptionPane.showMessageDialog(this, "Booking Id is not valid.\nPlease give another Id.", null, JOptionPane.WARNING_MESSAGE);
+                 JOptionPane.showMessageDialog(this, "You don't have a bus ticket with the given id.", "Alert", JOptionPane.WARNING_MESSAGE);
             }
             catch(SQLException ex)
             {
