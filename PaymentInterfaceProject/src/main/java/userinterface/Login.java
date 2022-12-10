@@ -238,7 +238,7 @@ public class Login extends javax.swing.JFrame {
          case "Utilities Admin":
              for(Admin admin: ad.getAdminList())
              {
-              if(admin.getRole().equals("Recharge Admin") && admin.getUserName().equals(userName) && admin.getPassword().equals(password))
+              if(admin.getRole().equals("Utilities Admin") && admin.getUserName().equals(userName) && admin.getPassword().equals(password))
               {
                 found = true;
                 AdminFrame af = new AdminFrame(roleCombo.getSelectedItem().toString());

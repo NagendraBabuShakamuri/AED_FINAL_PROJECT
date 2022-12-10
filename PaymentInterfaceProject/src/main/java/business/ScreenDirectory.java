@@ -67,5 +67,93 @@ public class ScreenDirectory {
         {
           MySql.shutDownConn();
         }
-    }        
+    }
+    
+    public static int addScreen(Screen s)
+    {
+        try
+        {
+            MySql.createConn();  
+            int screenId = s.getId();
+            int theatreId =s.getTheatre().getId();
+            int movieId = s.getMovie().getId();
+            LocalDate ld = s.getMovieDate();
+            String movieDate = "" + ld;
+            LocalTime lt = s.getMovieTime();
+            String movieTime = ""+lt;
+            double price = s.getPrice();
+            
+            int res = MySql.insertUpdateQuery("insert into screens values(" + screenId + ","  + theatreId  + "," + movieId + "," + "\'" + movieDate + "\'" + "," + "\'" + movieTime + "\'" + "," + price  + ");");
+            if(res > 0)
+            {
+              return res;
+            }
+            else
+                return 0;
+        }
+        catch(Exception ex)
+        {
+          System.out.println(ex);
+          return 0;
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }
+   public static int updateScreen(Screen s, int position)
+    {
+        try
+        {
+            MySql.createConn();  
+            int screenId = s.getId();
+            int theatreId =s.getTheatre().getId();
+            int movieId = s.getMovie().getId();
+            LocalDate ld = s.getMovieDate();
+            String movieDate = "" + ld;
+            LocalTime lt = s.getMovieTime();
+            String movieTime = ""+lt;
+            double price = s.getPrice();
+            int res = MySql.insertUpdateQuery("update screens set id = " + screenId + "," + "theatre_id = "  + theatreId  + "," + "movie_id = " + movieId +  "," + "movie_date = " + "\'" + movieDate + "\'" + "," + "movie_time = " + "\'" + movieTime + "\'" + "," + "price = " + price  + " where id = " + position +";");
+            if(res > 0)
+            {
+              return res;
+            }
+            else
+                return 0;
+        }
+        catch(Exception ex)
+        {
+          System.out.println(ex);
+          return 0;
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }
+   
+   public static int deleteScreen(int screenId)
+    {
+        try
+        {
+            MySql.createConn();
+            int res = MySql.insertUpdateQuery("delete from screens where id = " + screenId + ";");
+            if(res > 0)
+            {
+              return res;
+            }
+            else
+                return 0;
+        }
+        catch(Exception ex)
+        {
+          System.out.println(ex);
+          return 0;
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }
 }
