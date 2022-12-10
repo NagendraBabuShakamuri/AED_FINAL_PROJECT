@@ -8,6 +8,8 @@ import business.Address;
 import business.AddressDirectory;
 import business.AddressRequest;
 import business.AddressRequestDirectory;
+import business.Admin;
+import business.AdminDirectory;
 import business.Bank;
 import business.BankAccount;
 import business.BankDirectory;
@@ -52,8 +54,82 @@ public class AdminFrame extends javax.swing.JFrame {
     /**
      * Creates new form AdminFrame
      */
-    public AdminFrame() {
+    public AdminFrame(String role) {
         initComponents();
+        switch (role) {
+            case "Banking Admin":
+                jTabbedPane1.setEnabledAt(0, false);
+                jTabbedPane1.setEnabledAt(2, false);
+                jTabbedPane1.setEnabledAt(3, false);
+                jTabbedPane1.setEnabledAt(4, false);
+                jTabbedPane1.setEnabledAt(5, false);
+                jTabbedPane1.setEnabledAt(6, false);
+                jTabbedPane1.setEnabledAt(7, false);
+                jTabbedPane1.setSelectedIndex(1);
+                break;
+            case "Bus Admin":
+                jTabbedPane1.setEnabledAt(0, false);
+                jTabbedPane1.setEnabledAt(1, false);
+                jTabbedPane1.setEnabledAt(3, false);
+                jTabbedPane1.setEnabledAt(4, false);
+                jTabbedPane1.setEnabledAt(5, false);
+                jTabbedPane1.setEnabledAt(6, false);
+                jTabbedPane1.setEnabledAt(7, false);
+                jTabbedPane1.setSelectedIndex(2);
+                break;
+            case "Train Admin":
+                jTabbedPane1.setEnabledAt(0, false);
+                jTabbedPane1.setEnabledAt(1, false);
+                jTabbedPane1.setEnabledAt(2, false);
+                jTabbedPane1.setEnabledAt(4, false);
+                jTabbedPane1.setEnabledAt(5, false);
+                jTabbedPane1.setEnabledAt(6, false);
+                jTabbedPane1.setEnabledAt(7, false);
+                jTabbedPane1.setSelectedIndex(3);
+                break;
+            case "Recharge Admin":
+                jTabbedPane1.setEnabledAt(0, false);
+                jTabbedPane1.setEnabledAt(1, false);
+                jTabbedPane1.setEnabledAt(2, false);
+                jTabbedPane1.setEnabledAt(3, false);
+                jTabbedPane1.setEnabledAt(5, false);
+                jTabbedPane1.setEnabledAt(6, false);
+                jTabbedPane1.setEnabledAt(7, false);
+                jTabbedPane1.setSelectedIndex(4);
+                break;
+             case "Utilities Admin":
+                jTabbedPane1.setEnabledAt(0, false);
+                jTabbedPane1.setEnabledAt(1, false);
+                jTabbedPane1.setEnabledAt(2, false);
+                jTabbedPane1.setEnabledAt(3, false);
+                jTabbedPane1.setEnabledAt(4, false);
+                jTabbedPane1.setEnabledAt(6, false);
+                jTabbedPane1.setEnabledAt(7, false);
+                jTabbedPane1.setSelectedIndex(5);
+                break;
+             case "Events Admin":
+                jTabbedPane1.setEnabledAt(0, false);
+                jTabbedPane1.setEnabledAt(1, false);
+                jTabbedPane1.setEnabledAt(2, false);
+                jTabbedPane1.setEnabledAt(3, false);
+                jTabbedPane1.setEnabledAt(4, false);
+                jTabbedPane1.setEnabledAt(5, false);
+                jTabbedPane1.setEnabledAt(7, false);
+                jTabbedPane1.setSelectedIndex(6);
+                break;
+             case "Movie Admin":
+                jTabbedPane1.setEnabledAt(0, false);
+                jTabbedPane1.setEnabledAt(1, false);
+                jTabbedPane1.setEnabledAt(2, false);
+                jTabbedPane1.setEnabledAt(3, false);
+                jTabbedPane1.setEnabledAt(4, false);
+                jTabbedPane1.setEnabledAt(5, false);
+                jTabbedPane1.setEnabledAt(6, false);
+                jTabbedPane1.setSelectedIndex(7);
+                break;
+            default:
+                break;         
+        }
         CityDirectory cd = new CityDirectory();
         for(City c : cd.getCityList())
         {
@@ -139,8 +215,33 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel15 = new javax.swing.JPanel();
+        jLabel60 = new javax.swing.JLabel();
+        createRoleCombo = new javax.swing.JComboBox<>();
+        jLabel61 = new javax.swing.JLabel();
+        createUserNameField = new javax.swing.JTextField();
+        jLabel62 = new javax.swing.JLabel();
+        createAdminButton = new javax.swing.JButton();
+        jLabel66 = new javax.swing.JLabel();
+        createAdminIdField = new javax.swing.JTextField();
+        createPasswordField = new javax.swing.JPasswordField();
+        sysAdminLogoutButton = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
+        updateRoleLabel = new javax.swing.JLabel();
+        updateRoleCombo = new javax.swing.JComboBox<>();
+        updateUserNameLabel = new javax.swing.JLabel();
+        updateUserNameField = new javax.swing.JTextField();
+        updatePasswordLabel = new javax.swing.JLabel();
+        updateAdminButton = new javax.swing.JButton();
+        adminSearchButton = new javax.swing.JButton();
+        jLabel67 = new javax.swing.JLabel();
+        updateAdminIdField = new javax.swing.JTextField();
+        jLabel68 = new javax.swing.JLabel();
+        adminPositionField = new javax.swing.JTextField();
+        updatePasswordField = new javax.swing.JPasswordField();
         jPanel10 = new javax.swing.JPanel();
+        jLabel69 = new javax.swing.JLabel();
+        deleteAdminIdField = new javax.swing.JTextField();
+        deleteAdminButton = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -169,6 +270,7 @@ public class AdminFrame extends javax.swing.JFrame {
         bankInProgressButton = new javax.swing.JButton();
         bankApprovedButton = new javax.swing.JButton();
         bankDeniedButton = new javax.swing.JButton();
+        bankAdminLogoutButton = new javax.swing.JButton();
         jPanel25 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         cardRequestsTable = new javax.swing.JTable();
@@ -238,6 +340,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         createBusTravelDateField = new javax.swing.JTextField();
         createBusButton = new javax.swing.JButton();
+        busAdminLogoutButton = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         updateBusIdField = new javax.swing.JTextField();
@@ -272,6 +375,7 @@ public class AdminFrame extends javax.swing.JFrame {
         createMSPIdField = new javax.swing.JTextField();
         createMSPNameField = new javax.swing.JTextField();
         createMSPButton = new javax.swing.JButton();
+        rechargeAdminLogoutButton = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         updateMSPIdField = new javax.swing.JTextField();
@@ -333,6 +437,7 @@ public class AdminFrame extends javax.swing.JFrame {
         addressInProgressButton = new javax.swing.JButton();
         addressApprovedButton = new javax.swing.JButton();
         addressDeniedButton = new javax.swing.JButton();
+        utilitiesAdminLogoutButton = new javax.swing.JButton();
         jPanel33 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         addressesTable = new javax.swing.JTable();
@@ -382,42 +487,108 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane3.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 759, Short.MAX_VALUE)
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
-        );
+        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel60.setText("Role:");
+        jPanel15.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
+
+        createRoleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Banking Admin", "Bus Admin", "Train Admin", "Recharge Admin", "Utilities Admin", "Events Admin", "Movie Admin" }));
+        jPanel15.add(createRoleCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 130, -1));
+
+        jLabel61.setText("Username:");
+        jPanel15.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
+        jPanel15.add(createUserNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 130, -1));
+
+        jLabel62.setText("Password:");
+        jPanel15.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
+
+        createAdminButton.setText("Create");
+        createAdminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createAdminButtonActionPerformed(evt);
+            }
+        });
+        jPanel15.add(createAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 210, -1));
+
+        jLabel66.setText("Admin Id:");
+        jPanel15.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
+        jPanel15.add(createAdminIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 130, -1));
+        jPanel15.add(createPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 130, -1));
+
+        sysAdminLogoutButton.setText("Logout");
+        sysAdminLogoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sysAdminLogoutButtonActionPerformed(evt);
+            }
+        });
+        jPanel15.add(sysAdminLogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, 110, -1));
 
         jTabbedPane3.addTab("Create Admin", jPanel15);
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 759, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
-        );
+        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        updateRoleLabel.setText("Role:");
+        jPanel9.add(updateRoleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, -1));
+        updateRoleLabel.setVisible(false);
+
+        updateRoleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Banking Admin", "Bus Admin", "Train Admin", "Recharge Admin", "Utilities Admin", "Events Admin", "Movie Admin" }));
+        jPanel9.add(updateRoleCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 130, -1));
+        updateRoleCombo.setVisible(false);
+
+        updateUserNameLabel.setText("Username:");
+        jPanel9.add(updateUserNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
+        updateUserNameLabel.setVisible(false);
+        jPanel9.add(updateUserNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 130, -1));
+        updateUserNameField.setVisible(false);
+
+        updatePasswordLabel.setText("Password:");
+        jPanel9.add(updatePasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, -1));
+        updatePasswordLabel.setVisible(false);
+
+        updateAdminButton.setText("Update");
+        updateAdminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateAdminButtonActionPerformed(evt);
+            }
+        });
+        jPanel9.add(updateAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 210, -1));
+        updateAdminButton.setVisible(false);
+
+        adminSearchButton.setText("Search");
+        adminSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminSearchButtonActionPerformed(evt);
+            }
+        });
+        jPanel9.add(adminSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
+
+        jLabel67.setText("Admin id:");
+        jPanel9.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
+        jPanel9.add(updateAdminIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 130, -1));
+
+        jLabel68.setText("Position:");
+        jPanel9.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
+
+        adminPositionField.setEnabled(false);
+        jPanel9.add(adminPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 130, -1));
+        jPanel9.add(updatePasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 130, -1));
+        updatePasswordField.setVisible(false);
 
         jTabbedPane3.addTab("View/Update Admin", jPanel9);
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 759, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
-        );
+        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel69.setText("Admin id:");
+        jPanel10.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
+        jPanel10.add(deleteAdminIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 120, -1));
+
+        deleteAdminButton.setText("Delete");
+        deleteAdminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteAdminButtonActionPerformed(evt);
+            }
+        });
+        jPanel10.add(deleteAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 200, -1));
 
         jTabbedPane3.addTab("Delete Admin", jPanel10);
 
@@ -560,6 +731,14 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         jPanel24.add(bankDeniedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, -1, -1));
+
+        bankAdminLogoutButton.setText("Logout");
+        bankAdminLogoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bankAdminLogoutButtonActionPerformed(evt);
+            }
+        });
+        jPanel24.add(bankAdminLogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 10, -1, -1));
 
         jTabbedPane5.addTab("Bank Requests", jPanel24);
 
@@ -826,6 +1005,14 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel12.add(createBusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 210, -1));
 
+        busAdminLogoutButton.setText("Logout");
+        busAdminLogoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                busAdminLogoutButtonActionPerformed(evt);
+            }
+        });
+        jPanel12.add(busAdminLogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, -1));
+
         jTabbedPane2.addTab("Create Buses", jPanel12);
 
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -971,6 +1158,14 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         jPanel18.add(createMSPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 230, -1));
+
+        rechargeAdminLogoutButton.setText("Logout");
+        rechargeAdminLogoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rechargeAdminLogoutButtonActionPerformed(evt);
+            }
+        });
+        jPanel18.add(rechargeAdminLogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, -1, -1));
 
         jTabbedPane4.addTab("Create MSP", jPanel18);
 
@@ -1209,6 +1404,14 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         jPanel32.add(addressDeniedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 420, -1, -1));
+
+        utilitiesAdminLogoutButton.setText("Logout");
+        utilitiesAdminLogoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                utilitiesAdminLogoutButtonActionPerformed(evt);
+            }
+        });
+        jPanel32.add(utilitiesAdminLogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, -1, -1));
 
         jTabbedPane6.addTab("Address Requests", jPanel32);
 
@@ -1666,6 +1869,39 @@ public class AdminFrame extends javax.swing.JFrame {
                 }
                 if(!found)
                     JOptionPane.showMessageDialog(this, "Card with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+                break;
+                
+            case "adminId":
+                updateRoleLabel.setVisible(false);
+                updateRoleCombo.setVisible(false);
+                updateUserNameLabel.setVisible(false);
+                updateUserNameField.setVisible(false);
+                updatePasswordLabel.setVisible(false);
+                updatePasswordField.setVisible(false);
+                updateAdminButton.setVisible(false);
+                AdminDirectory ad = new AdminDirectory();
+                for(Admin a: ad.getAdminList())
+                {
+                  if(Integer.parseInt(updateAdminIdField.getText()) == a.getId())
+                  { 
+                      found = true;
+                      position = a.getId();
+                      updateRoleLabel.setVisible(true);
+                      updateRoleCombo.setVisible(true);
+                      updateUserNameLabel.setVisible(true);
+                      updateUserNameField.setVisible(true);
+                      updatePasswordLabel.setVisible(true);
+                      updatePasswordField.setVisible(true);
+                      updateAdminButton.setVisible(true);
+                      adminPositionField.setText(Integer.valueOf(position).toString());
+                      updateRoleCombo.setSelectedItem(a.getRole());                      
+                      updateUserNameField.setText(a.getUserName());
+                      updatePasswordField.setText(a.getPassword());
+                      break;
+                  }
+                }
+                if(!found)
+                    JOptionPane.showMessageDialog(this, "Admin with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
                 break;
         }
     }
@@ -3157,6 +3393,175 @@ public class AdminFrame extends javax.swing.JFrame {
           JOptionPane.showMessageDialog(this, "Date is not valid.\nShould be in the format YYYY-MM-DD.", "Alert", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_gasBillSendButtonActionPerformed
+    public static boolean clientSideValidation1(JFrame frame, String adminId, String username, String password)
+    {
+        if(Pattern.compile("^[1-9]\\d*$").matcher(adminId).matches() && !adminId.equals(""))
+        {
+            if(Pattern.compile("^[a-zA-Z\\s]*$").matcher(username).matches() && !username.equals(""))
+            {
+               System.out.println("User Name is valid.");              
+               if(Pattern.compile("^(?=.*\\d).{4,15}$").matcher(password).matches())
+                   return true;
+               else
+                 JOptionPane.showMessageDialog(frame, "Password is not valid.\nPassword must contain at least 4 characters with at least one digit.", "Alert", JOptionPane.WARNING_MESSAGE);                         
+            }
+            else
+               JOptionPane.showMessageDialog(frame, "Username is not valid.\nOnly characters and spaces are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }     
+        else
+            JOptionPane.showMessageDialog(frame, "City Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);           
+      return false;     
+    }
+    private void createAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAdminButtonActionPerformed
+        // TODO add your handling code here:
+        String adminId = createAdminIdField.getText().trim();
+        String role = createRoleCombo.getSelectedItem().toString();
+        String userName = createUserNameField.getText().trim();
+        String password = new String(createPasswordField.getPassword());
+        boolean passed = clientSideValidation1(this, adminId, userName, password);
+        boolean exists = false;
+        if(passed)
+        {
+            AdminDirectory ad = new AdminDirectory();
+            for(Admin a: ad.getAdminList())
+            {
+              if(Integer.parseInt(adminId) == a.getId())
+              {
+                JOptionPane.showMessageDialog(this, "Admin with the given Id already exists\nPlease give another Id to the Admin.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;              
+              }
+              else if(userName.equals(a.getUserName()))
+              {
+                JOptionPane.showMessageDialog(this, "Admin with the given user name already exists\nPlease give another user name to the Admin.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;
+              }
+            }
+            if(!exists)
+            {
+              int id = Integer.parseInt(adminId);
+              String name = userName;
+              Admin admin = new Admin(id, role, name, password);
+              int res = AdminDirectory.addAdmin(admin);
+              if(res > 0)
+              {
+                JOptionPane.showMessageDialog(this, "Created a new "+ role + " successfully.", null, JOptionPane.OK_OPTION); 
+              }
+            }
+        }
+    }//GEN-LAST:event_createAdminButtonActionPerformed
+
+    private void adminSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminSearchButtonActionPerformed
+        // TODO add your handling code here:
+        String searchText = updateAdminIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(searchText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Admin Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);        
+        if(flag)
+            searchData("adminId", searchText.trim());
+    }//GEN-LAST:event_adminSearchButtonActionPerformed
+
+    private void updateAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateAdminButtonActionPerformed
+        // TODO add your handling code here:                        
+        String adminId = updateAdminIdField.getText().trim();
+        String role = updateRoleCombo.getSelectedItem().toString();
+        String userName = updateUserNameField.getText().trim();
+        String password = new String(updatePasswordField.getPassword());
+        int position = Integer.valueOf(adminPositionField.getText());
+        boolean passed = clientSideValidation1(this, adminId, userName, password);
+        boolean exists = false;
+        if(passed)
+        {
+            AdminDirectory ad = new AdminDirectory();
+            for(Admin a: ad.getAdminList())
+            {
+              if(Integer.parseInt(adminId) == a.getId() && a.getId() != position)
+              {
+                JOptionPane.showMessageDialog(this, "Admin with the given Id already exists\nPlease give another Id to the Admin.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;              
+              }
+              else if(userName.equals(a.getUserName()) && a.getId() != position)
+              {
+                JOptionPane.showMessageDialog(this, "Admin with the given user name already exists\nPlease give another user name to the Admin.", "Alert", JOptionPane.WARNING_MESSAGE);
+                exists = true;
+                break;
+              }
+            }
+            if(!exists)
+            {
+              int id = Integer.parseInt(adminId);
+              String name = userName;
+              Admin admin = new Admin(id, role, name, password);
+              int res = AdminDirectory.updateAdmin(admin, position);
+              if(res > 0)
+              {
+                JOptionPane.showMessageDialog(this, "Updated the admin successfully.", null, JOptionPane.OK_OPTION);
+                adminPositionField.setText(adminId);
+              }
+              else
+                JOptionPane.showMessageDialog(this, "Admin does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);   
+            }
+        }
+    }//GEN-LAST:event_updateAdminButtonActionPerformed
+
+    private void deleteAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAdminButtonActionPerformed
+        // TODO add your handling code here:
+        String deleteText = deleteAdminIdField.getText().trim();
+        boolean flag = false;
+        if(Pattern.compile("^[1-9]\\d*$").matcher(deleteText).matches())
+            flag = true;
+        else
+            JOptionPane.showMessageDialog(this, "Admin Id is not valid.\nOnly Numbers are allowed.", "Alert", JOptionPane.WARNING_MESSAGE);       
+        if(flag)
+        {
+          int res = AdminDirectory.deleteAdmin(Integer.parseInt(deleteText));
+          if(res > 0)
+          {
+            JOptionPane.showMessageDialog(this, "Deleted the Admin successfully.", null, JOptionPane.OK_OPTION);
+          }
+          else
+            JOptionPane.showMessageDialog(this, "Admin with the given Id does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_deleteAdminButtonActionPerformed
+
+    private void sysAdminLogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sysAdminLogoutButtonActionPerformed
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_sysAdminLogoutButtonActionPerformed
+
+    private void bankAdminLogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankAdminLogoutButtonActionPerformed
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_bankAdminLogoutButtonActionPerformed
+
+    private void busAdminLogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busAdminLogoutButtonActionPerformed
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_busAdminLogoutButtonActionPerformed
+
+    private void rechargeAdminLogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechargeAdminLogoutButtonActionPerformed
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_rechargeAdminLogoutButtonActionPerformed
+
+    private void utilitiesAdminLogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_utilitiesAdminLogoutButtonActionPerformed
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_utilitiesAdminLogoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -3188,7 +3593,7 @@ public class AdminFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminFrame().setVisible(true);
+                new AdminFrame("").setVisible(true);
             }
         });
     }
@@ -3202,12 +3607,16 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton addressRefreshButton;
     private javax.swing.JTable addressRequestsTable;
     private javax.swing.JTable addressesTable;
+    private javax.swing.JTextField adminPositionField;
+    private javax.swing.JButton adminSearchButton;
+    private javax.swing.JButton bankAdminLogoutButton;
     private javax.swing.JButton bankApprovedButton;
     private javax.swing.JButton bankDeniedButton;
     private javax.swing.JButton bankInProgressButton;
     private javax.swing.JTextField bankPositionField;
     private javax.swing.JTable bankRequestsTable;
     private javax.swing.JButton bankSearchButton;
+    private javax.swing.JButton busAdminLogoutButton;
     private javax.swing.JTextField busPositionField;
     private javax.swing.JButton cardApprovedButton;
     private javax.swing.JButton cardDeniedButton;
@@ -3218,6 +3627,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField cityPositionField;
     private javax.swing.JButton citySearchButton;
     private javax.swing.JButton cityUpdateButton;
+    private javax.swing.JButton createAdminButton;
+    private javax.swing.JTextField createAdminIdField;
     private javax.swing.JButton createBankButton;
     private javax.swing.JTextField createBankIdField;
     private javax.swing.JTextField createBankNameField;
@@ -3247,7 +3658,12 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTextField createMSPIdField;
     private javax.swing.JComboBox<String> createMSPNameCombo;
     private javax.swing.JTextField createMSPNameField;
+    private javax.swing.JPasswordField createPasswordField;
     private javax.swing.JTextField createPlanNameField;
+    private javax.swing.JComboBox<String> createRoleCombo;
+    private javax.swing.JTextField createUserNameField;
+    private javax.swing.JButton deleteAdminButton;
+    private javax.swing.JTextField deleteAdminIdField;
     private javax.swing.JButton deleteBankButton;
     private javax.swing.JTextField deleteBankIdField;
     private javax.swing.JButton deleteBusButton;
@@ -3328,6 +3744,13 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
+    private javax.swing.JLabel jLabel66;
+    private javax.swing.JLabel jLabel67;
+    private javax.swing.JLabel jLabel68;
+    private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -3377,7 +3800,11 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JButton rechargeAdminLogoutButton;
     private javax.swing.JButton searchCardButton;
+    private javax.swing.JButton sysAdminLogoutButton;
+    private javax.swing.JButton updateAdminButton;
+    private javax.swing.JTextField updateAdminIdField;
     private javax.swing.JButton updateBankButton;
     private javax.swing.JTextField updateBankIdField;
     private javax.swing.JTextField updateBankNameField;
@@ -3427,8 +3854,15 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JLabel updateMSPNameComboLabel;
     private javax.swing.JTextField updateMSPNameField;
     private javax.swing.JLabel updateMSPNameLabel;
+    private javax.swing.JPasswordField updatePasswordField;
+    private javax.swing.JLabel updatePasswordLabel;
     private javax.swing.JTextField updatePlanNameField;
     private javax.swing.JLabel updatePlanNameLabel;
+    private javax.swing.JComboBox<String> updateRoleCombo;
+    private javax.swing.JLabel updateRoleLabel;
+    private javax.swing.JTextField updateUserNameField;
+    private javax.swing.JLabel updateUserNameLabel;
+    private javax.swing.JButton utilitiesAdminLogoutButton;
     private javax.swing.JTextField waterBillAmountField;
     private javax.swing.JTextField waterBillBillingDateField;
     private javax.swing.JTextField waterBillDueDateField;
