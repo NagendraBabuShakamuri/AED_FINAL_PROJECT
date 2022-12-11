@@ -112,29 +112,36 @@ public class UserHomePage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(900, 900));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
         jPanel5.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(102, 102, 102));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 0, 142, 25));
 
-        jLabel17.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        jLabel17.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel17.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(204, 204, 204));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("<html> <p>Add Money from</p> <p>bank to the Wallet</p> </html>");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, -1, -1));
 
-        jLabel18.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        jLabel18.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel18.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(204, 204, 204));
         jLabel18.setText("<html>\n<p>Transfer Money from</p>\n<p>Wallet to others Wallet</p>\n</html>");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, -1));
 
-        jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        jLabel19.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel19.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(204, 204, 204));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel19.setText("<html> <p>Transfer Money from</p> <p>Wallet to the Bank</p> </html>");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
@@ -167,7 +174,9 @@ public class UserHomePage extends javax.swing.JFrame {
         });
         jPanel1.add(moneyToOthersWalletLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 70, 70));
 
-        jLabel23.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
+        jLabel23.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel23.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(204, 204, 204));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("<html>\n<p>View Spend</p>\n<p>Analytics</p>\n</html>");
         jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 387, 130, 30));
@@ -181,7 +190,9 @@ public class UserHomePage extends javax.swing.JFrame {
         });
         jPanel1.add(spendAnalyticsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 80, 70));
 
-        jLabel25.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel25.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel25.setFont(new java.awt.Font("Montserrat", 1, 14)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(204, 204, 204));
         jLabel25.setText("Wallet Balance:");
         jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 87, -1, 30));
 
@@ -190,9 +201,10 @@ public class UserHomePage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Payment", jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel15.setForeground(new java.awt.Color(204, 204, 204));
         jLabel15.setText("Book Event Tickets");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
@@ -213,12 +225,13 @@ public class UserHomePage extends javax.swing.JFrame {
         });
         jPanel2.add(bookMovieTicketsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 150, 140));
 
+        jLabel16.setForeground(new java.awt.Color(204, 204, 204));
         jLabel16.setText("Book Movie Tickets");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
 
         jTabbedPane1.addTab("Entertainment", jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bookBusTicketsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -228,7 +241,7 @@ public class UserHomePage extends javax.swing.JFrame {
                 bookBusTicketsLabelMouseClicked(evt);
             }
         });
-        jPanel3.add(bookBusTicketsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 170, 130));
+        jPanel3.add(bookBusTicketsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 170, 130));
 
         bookTrainTicketsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bookTrainTicketsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/train.png"))); // NOI18N
@@ -239,15 +252,17 @@ public class UserHomePage extends javax.swing.JFrame {
         });
         jPanel3.add(bookTrainTicketsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 127, 140, 70));
 
+        jLabel3.setForeground(new java.awt.Color(102, 204, 255));
         jLabel3.setText("Book Bus Tickets");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 110, -1));
 
+        jLabel4.setForeground(new java.awt.Color(102, 204, 255));
         jLabel4.setText("Book Train Tickets");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 120, 20));
 
         jTabbedPane1.addTab("Travel", jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(52, 73, 94));
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -301,12 +316,16 @@ public class UserHomePage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Recharge and Utilities", jPanel4);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBackground(new java.awt.Color(51, 51, 51));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel20.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel20.setForeground(new java.awt.Color(204, 204, 204));
         jLabel20.setText("Username:");
         jPanel6.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, -1, -1));
 
+        userNameField.setBackground(new java.awt.Color(0, 0, 0));
+        userNameField.setForeground(new java.awt.Color(204, 204, 204));
         userNameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 userNameFieldKeyReleased(evt);
@@ -314,9 +333,13 @@ public class UserHomePage extends javax.swing.JFrame {
         });
         jPanel6.add(userNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 130, -1));
 
+        jLabel21.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel21.setForeground(new java.awt.Color(204, 204, 204));
         jLabel21.setText("Mobile:");
         jPanel6.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, -1, -1));
 
+        emailField.setBackground(new java.awt.Color(0, 0, 0));
+        emailField.setForeground(new java.awt.Color(204, 204, 204));
         emailField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 emailFieldKeyReleased(evt);
@@ -324,9 +347,13 @@ public class UserHomePage extends javax.swing.JFrame {
         });
         jPanel6.add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 130, -1));
 
+        jLabel22.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel22.setForeground(new java.awt.Color(204, 204, 204));
         jLabel22.setText("Email:");
         jPanel6.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, -1, -1));
 
+        mobileField.setBackground(new java.awt.Color(0, 0, 0));
+        mobileField.setForeground(new java.awt.Color(204, 204, 204));
         mobileField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 mobileFieldKeyReleased(evt);
@@ -334,9 +361,13 @@ public class UserHomePage extends javax.swing.JFrame {
         });
         jPanel6.add(mobileField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 130, -1));
 
+        jLabel26.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel26.setForeground(new java.awt.Color(204, 204, 204));
         jLabel26.setText("Password:");
         jPanel6.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
 
+        passField.setBackground(new java.awt.Color(0, 0, 0));
+        passField.setForeground(new java.awt.Color(204, 204, 204));
         passField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 passFieldKeyReleased(evt);
@@ -344,6 +375,8 @@ public class UserHomePage extends javax.swing.JFrame {
         });
         jPanel6.add(passField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 130, -1));
 
+        updateButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateButton.setForeground(new java.awt.Color(255, 255, 255));
         updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,15 +385,31 @@ public class UserHomePage extends javax.swing.JFrame {
         });
         jPanel6.add(updateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 210, -1));
 
+        jLabel27.setBackground(new java.awt.Color(102, 204, 255));
         jLabel27.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("Update Profile");
         jPanel6.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 230, 30));
+
+        uV.setBackground(new java.awt.Color(0, 0, 0));
+        uV.setForeground(new java.awt.Color(204, 204, 204));
         jPanel6.add(uV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 20, 20));
+
+        mV.setBackground(new java.awt.Color(0, 0, 0));
+        mV.setForeground(new java.awt.Color(204, 204, 204));
         jPanel6.add(mV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 20, 20));
+
+        eV.setBackground(new java.awt.Color(0, 0, 0));
+        eV.setForeground(new java.awt.Color(204, 204, 204));
         jPanel6.add(eV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 20, 20));
+
+        pV.setBackground(new java.awt.Color(0, 0, 0));
+        pV.setForeground(new java.awt.Color(204, 204, 204));
         jPanel6.add(pV, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 20, 20));
 
+        logoutButton.setBackground(new java.awt.Color(102, 204, 255));
+        logoutButton.setForeground(new java.awt.Color(255, 255, 255));
         logoutButton.setText("Logout");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

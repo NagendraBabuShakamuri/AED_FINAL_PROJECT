@@ -70,14 +70,20 @@ public class MoneyToBank extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(1000, 1000));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Bank Accounts:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 124, -1, -1));
 
+        bankAccCombo.setBackground(new java.awt.Color(0, 0, 0));
+        bankAccCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(bankAccCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 150, -1));
 
+        amountField.setBackground(new java.awt.Color(0, 0, 0));
+        amountField.setForeground(new java.awt.Color(204, 204, 204));
         amountField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 amountFieldKeyReleased(evt);
@@ -85,9 +91,13 @@ public class MoneyToBank extends javax.swing.JFrame {
         });
         jPanel1.add(amountField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 150, -1));
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Amount:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 90, -1));
 
+        sendToBankButton.setBackground(new java.awt.Color(102, 204, 255));
+        sendToBankButton.setForeground(new java.awt.Color(255, 255, 255));
         sendToBankButton.setText("Transfer to bank");
         sendToBankButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +108,7 @@ public class MoneyToBank extends javax.swing.JFrame {
         jPanel1.add(amountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 20, 20));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(102, 204, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Transfer Money to Bank");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 210, 30));

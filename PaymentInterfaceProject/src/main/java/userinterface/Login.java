@@ -50,13 +50,13 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/payment.png"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 310, 431));
 
-        jPanel2.setBackground(new java.awt.Color(116, 185, 255));
+        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
