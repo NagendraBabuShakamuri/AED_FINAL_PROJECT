@@ -20,8 +20,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -363,12 +361,13 @@ public class BookBusTickets extends javax.swing.JFrame{
              SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
              String date = date_format.format(calendar.getDate());
              MySql.createConn();             
-             String query = "select userid, balance from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+             String query = "select userid, balance, email from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
              ResultSet rs = MySql.selectQuery(query);
              rs.next();
              int user_id = rs.getInt(1);
              double balance = rs.getDouble(2);
-             double available_balance = balance - fare;
+             String email = rs.getString(3);
+             double available_balance = balance - fare;             
              if(available_balance < 0)
              {
               JOptionPane.showMessageDialog(this, "The available wallet balance is less than the amount \nthat you're trying to transfer.", "Alert", JOptionPane.WARNING_MESSAGE);
@@ -398,16 +397,28 @@ public class BookBusTickets extends javax.swing.JFrame{
                  balanceLabel.setText("$ " + available_balance);
                  ticket.setText("");
                  ticket.setText(ticket.getText() + "****************************\n");
+                 String message = "****************************\n";
                  ticket.setText(ticket.getText() + "**********BUS TICKET*********\n");
+                 message += "**********BUS TICKET*********\n";
                  ticket.setText(ticket.getText() + "*****************************\n");
-                 ticket.setText(ticket.getText() + "Customer: " + customer_name + "\n");
+                 message += "*****************************\n";
+                 ticket.setText(ticket.getText() + "Passenger: " + customer_name + "\n");
+                 message += "Passenger: " + customer_name + "\n";
                  ticket.setText(ticket.getText() + "Contact Number: " + customer_contact + "\n");
+                 message += "Contact Number: " + customer_contact + "\n";
                  ticket.setText(ticket.getText() + "From: " + from + "To: " + to + "\n");
+                 message += "From: " + from + "\nTo: " + to + "\n";
                  ticket.setText(ticket.getText() + "SeatNo: " + seat_no + "\n");
+                 message += "SeatNo: " + seat_no + "\n";
                  ticket.setText(ticket.getText() + "Price: " + ticket_price + "\n");
+                 message += "Price: " + ticket_price + "\n";
                  ticket.setText(ticket.getText() + "Journey Date: " + date + "\n");
+                 message += "Journey Date: " + date + "\n";
                  ticket.setText(ticket.getText() + "**********^^^^^^^^^**********\n");
+                 message += "**********^^^^^^^^^**********\n";
                  ticket.setText(ticket.getText() + "******Thank You Come Again!!******\n");
+                 message += "******Thank You Come Again!!******\n";
+                 Mail.sendMail(email, message);
                }               
              }             
            }

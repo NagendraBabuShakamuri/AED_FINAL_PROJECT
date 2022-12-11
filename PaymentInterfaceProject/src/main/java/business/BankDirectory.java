@@ -116,4 +116,19 @@ public class BankDirectory {
           MySql.shutDownConn();
         }
     }
+    public static ResultSet getBanks()
+    {
+      try
+      {
+        MySql.createConn();
+        String query = "select * from banks;";
+        ResultSet rs = MySql.selectQuery(query);
+        return rs;
+      }
+      catch(Exception ex)
+      {
+        System.out.println(ex);
+        return null;
+      }
+    }
 }

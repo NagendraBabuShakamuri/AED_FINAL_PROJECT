@@ -113,4 +113,19 @@ public class CreditCardDirectory {
           MySql.shutDownConn();
         }
     }
+    public static ResultSet getCreditCards()
+    {
+      try
+      {
+        MySql.createConn();
+        String query = "select * from credit_cards;";
+        ResultSet rs = MySql.selectQuery(query);
+        return rs;
+      }
+      catch(Exception ex)
+      {
+        System.out.println(ex);
+        return null;
+      }
+    }
 }

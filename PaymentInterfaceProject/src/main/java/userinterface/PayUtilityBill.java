@@ -354,11 +354,12 @@ public class PayUtilityBill extends javax.swing.JFrame {
             try
             {
               MySql.createConn();
-              String query = "select balance, email from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+              String query = "select balance, email, userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
               ResultSet rs = MySql.selectQuery(query);
               rs.next();           
               double balance = rs.getDouble(1);
               String email = rs.getString(2);
+              int userId = rs.getInt(3);
               double available_balance = balance - amount;
               if(available_balance < 0)
               {
@@ -381,6 +382,23 @@ public class PayUtilityBill extends javax.swing.JFrame {
                   message += "\nTotal Gallons: " + totalGallons;
                   message += "\nAmount: " + amount;
                   message += "\nDue Date: " + dueDate;
+                  int res1 = MySql.insertUpdateQuery("INSERT INTO utility_transaction(username, utility, paid_date, amount) values(" + "\'" + userNameLabel.getText() + "\'" + "," + "\'" + "Gas Bill" + "\'" + "," + "CURDATE()" + "," + amount + ");");
+                  if(res1 > 0)
+                      System.out.println("Inserted the transaction.");
+                  query = "select * from gas_bill where userid = " + userId + ";";
+                  rs = MySql.selectQuery(query);
+                  DefaultTableModel table_model = (DefaultTableModel)gasBillTable.getModel();
+                  table_model.setRowCount(0);
+                  while(rs.next())
+                  {            
+                    String id = rs.getString(1);
+                    String date = rs.getString(3);
+                    String totalGall = rs.getString(4) + " Gallons";
+                    String paidAmount = "$ " + rs.getString(5);
+                    String duDate = rs.getString(6);
+                    String state = rs.getString(7);
+                    table_model.addRow(new String[]{id, date, totalGall, paidAmount, duDate, state});
+                  }
                   Mail.sendMail(email, message);
                 }
               }
@@ -602,11 +620,12 @@ public class PayUtilityBill extends javax.swing.JFrame {
             try
             {
               MySql.createConn();
-              String query = "select balance, email from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+              String query = "select balance, email, userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
               ResultSet rs = MySql.selectQuery(query);
               rs.next();           
               double balance = rs.getDouble(1);
               String email = rs.getString(2);
+              int userId = rs.getInt(3);
               double available_balance = balance - amount;
               if(available_balance < 0)
               {
@@ -629,6 +648,23 @@ public class PayUtilityBill extends javax.swing.JFrame {
                   message += "\nTotal KWatts: " + totalKWatts;
                   message += "\nAmount: " + amount;
                   message += "\nDue Date: " + dueDate;
+                  int res1 = MySql.insertUpdateQuery("INSERT INTO utility_transaction(username, utility, paid_date, amount) values(" + "\'" + userNameLabel.getText() + "\'" + "," + "\'" + "Electricity Bill" + "\'" + "," + "CURDATE()" + "," + amount + ");");
+                  if(res1 > 0)
+                      System.out.println("Inserted the transaction.");
+                  query = "select * from electricity_bill where userid = " + userId + ";";
+                  rs = MySql.selectQuery(query);
+                  DefaultTableModel table_model = (DefaultTableModel)electricityBillTable.getModel();
+                  table_model.setRowCount(0);
+                  while(rs.next())
+                  {            
+                    String id = rs.getString(1);
+                    String date = rs.getString(3);
+                    String totalWatts = rs.getString(4) + " KWatts";
+                    String paidAmount = "$ " + rs.getString(5);
+                    String duDate = rs.getString(6);
+                    String state = rs.getString(7);
+                    table_model.addRow(new String[]{id, date, totalWatts, paidAmount, duDate, state});
+                  }
                   Mail.sendMail(email, message);
                 }
               }
@@ -665,11 +701,12 @@ public class PayUtilityBill extends javax.swing.JFrame {
             try
             {
               MySql.createConn();
-              String query = "select balance, email from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
+              String query = "select balance, email, userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
               ResultSet rs = MySql.selectQuery(query);
               rs.next();           
               double balance = rs.getDouble(1);
               String email = rs.getString(2);
+              int userId = rs.getInt(3);
               double available_balance = balance - amount;
               if(available_balance < 0)
               {
@@ -692,6 +729,23 @@ public class PayUtilityBill extends javax.swing.JFrame {
                   message += "\nTotal Gallons: " + totalGallons;
                   message += "\nAmount: " + amount;
                   message += "\nDue Date: " + dueDate;
+                  int res1 = MySql.insertUpdateQuery("INSERT INTO utility_transaction(username, utility, paid_date, amount) values(" + "\'" + userNameLabel.getText() + "\'" + "," + "\'" + "Water Bill" + "\'" + "," + "CURDATE()" + "," + amount + ");");
+                  if(res1 > 0)
+                      System.out.println("Inserted the transaction.");
+                  query = "select * from water_bill where userid = " + userId + ";";
+                  rs = MySql.selectQuery(query);
+                  DefaultTableModel table_model = (DefaultTableModel)waterBillTable.getModel();
+                  table_model.setRowCount(0);
+                  while(rs.next())
+                  {            
+                    String id = rs.getString(1);
+                    String date = rs.getString(3);
+                    String totalGall = rs.getString(4) + " Gallons";
+                    String paidAmount = "$ " + rs.getString(5);
+                    String duDate = rs.getString(6);
+                    String state = rs.getString(7);
+                    table_model.addRow(new String[]{id, date, totalGall, paidAmount, duDate, state});
+                  }
                   Mail.sendMail(email, message);
                 }
               }

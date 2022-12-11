@@ -9,8 +9,15 @@ package userinterface;
  * @author nbabu
  */
 import business.Bank;
+import business.BankAccountDirectory;
 import business.BankDirectory;
+import business.BankRequestDirectory;
+import business.CreditCard;
+import business.CreditCardDirectory;
+import business.CreditCardRequestDirectory;
 import business.Mail;
+import business.UserCreditCardDirectory;
+import business.UserDirectory;
 import business.mysql.MySql;
 import java.awt.Image;
 import java.sql.ResultSet;
@@ -32,22 +39,18 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         try
         {
           MySql.createConn();
-          String query = "select userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-          ResultSet rs = MySql.selectQuery(query);
+          ResultSet rs = UserDirectory.getUserId(userNameLabel.getText());
           rs.next();
           int user_id = rs.getInt(1);
-          query = "select account_number from bank_accounts where user_id = " + user_id + ";";
-          rs = MySql.selectQuery(query);
+          rs = BankAccountDirectory.getAccountNumbers(user_id);
           while(rs.next()){
             addBankAccCombo.addItem(rs.getString(1));
             removeBankAccCombo.addItem(rs.getString(1));
           }
-          query = "select type from credit_cards";
-          rs = MySql.selectQuery(query);
-          while(rs.next())
-            cardTypeCombo.addItem(rs.getString(1));
-          query = "select card_number from user_credit_cards where user_id = " + user_id + ";";
-          rs = MySql.selectQuery(query);
+          CreditCardDirectory ccd = new CreditCardDirectory();
+          for(CreditCard c: ccd.getCreditCardList())
+            cardTypeCombo.addItem(c.getType());        
+          rs = UserCreditCardDirectory.getCreditCardNumbers(user_id);
           while(rs.next()){
             addCreditCardsCombo.addItem(rs.getString(1));
             removeCreditCardCombo.addItem(rs.getString(1));
@@ -386,11 +389,11 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
           try
           {
             MySql.createConn();
-            ResultSet rs = MySql.selectQuery("select count(*) from bank_accounts where account_number = " + "\'" + accNumber + "\';");
+            ResultSet rs = BankAccountDirectory.accountNumberExists(accNumber);
             rs.next();
             if(rs.getInt(1) == 0)
             {
-                rs = MySql.selectQuery("select userid, username, email from users;");
+                rs = UserDirectory.getUserIdNameEmail();
                 int userId = 0;
                 String email = "";
                 while(rs.next())
@@ -402,7 +405,7 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
                     break;
                   }
                 }
-                rs = MySql.selectQuery("select * from banks;");
+                rs = BankDirectory.getBanks();
                 int bankId = 0;
                 while(rs.next())
                 {
@@ -422,7 +425,7 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
                     String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
                     if(userCode.equals(code))
                     {
-                      int res = MySql.insertUpdateQuery("insert into bank_requests(user_id, bank_id, account_holder, account_number, status) values(" + userId + "," + bankId + "," + "\'" + accHolderName + "\'" + "," + accNumber + ",\'Initiated\'" + ");");
+                      int res = BankRequestDirectory.addBankRequest(userId, bankId, accHolderName, accNumber);
                       if(res > 0)
                       {
                         JOptionPane.showMessageDialog(this, "Request to add the bank account is sent to the admin.\n Account will be added once the request is approved.", null, JOptionPane.OK_OPTION);
@@ -521,11 +524,11 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
           try
           {            
             MySql.createConn();
-            ResultSet rs = MySql.selectQuery("select count(*) from user_credit_cards where card_number = " + "\'" + cardNumber + "\';");
+            ResultSet rs = UserCreditCardDirectory.creditCardExists(cardNumber);
             rs.next();
             if(rs.getInt(1) == 0)
             {
-                rs = MySql.selectQuery("select userid, username, email from users;");
+                rs = UserDirectory.getUserIdNameEmail();
                 int userId = 0;
                 String email = "";
                 while(rs.next())
@@ -537,7 +540,7 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
                     break;
                   }
                 }
-                rs = MySql.selectQuery("select * from credit_cards;");
+                rs = CreditCardDirectory.getCreditCards();
                 int cardId = 0;
                 while(rs.next())
                 {
@@ -557,7 +560,7 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
                     String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
                     if(userCode.equals(code))
                     {      
-                      int res = MySql.insertUpdateQuery("insert into credit_card_requests(user_id, card_id, card_holder, card_number, card_expiry, card_cvc) values(" + userId + "," + cardId + "," + "\'" + cardHolderName + "\'" + "," + "\'" + cardNumber + "\'" + "," + "\'" + cardExpiry + "\'" + "," + "\'" + cvcNumber + "\'" + ");");
+                      int res = CreditCardRequestDirectory.addCardRequest(userId, cardId, cardHolderName, cardNumber, cardExpiry, cvcNumber);
                       if(res > 0)
                       {
                         JOptionPane.showMessageDialog(this, "Request to add the credit card is sent to the admin.\n Credit card will be added once the request is approved.", null, JOptionPane.OK_OPTION);
@@ -676,15 +679,13 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
            if(passed)
            {
            double money = Double.parseDouble(moneyField.getText().trim());
-           MySql.createConn(); 
-           String query = "select userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-           ResultSet rs = MySql.selectQuery(query);
+           MySql.createConn();
+           ResultSet rs = UserDirectory.getUserId(userNameLabel.getText());
            rs.next();
            int user_id = rs.getInt(1);
            if(addCreditCardsCombo.getSelectedItem() != null)
            {
-             query = "select available_credit from user_credit_cards where user_id = " + user_id + ";";
-             rs = MySql.selectQuery(query);
+             rs = UserCreditCardDirectory.availableCredit(user_id, addCreditCardsCombo.getSelectedItem().toString());
              rs.next();
              double available_credit = rs.getDouble(1) - money;
              if(available_credit < 0)
@@ -692,12 +693,10 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(this, "The available credit is less than the money that you're trying to add.", "Alert", JOptionPane.WARNING_MESSAGE);
                return;
              }
-             query = "update user_credit_cards set available_credit = " + available_credit + " where user_id = " + user_id + ";";
-             int res = MySql.insertUpdateQuery(query);
+             int res = UserCreditCardDirectory.updateAvailableCredit(available_credit, user_id, addCreditCardsCombo.getSelectedItem().toString());
              if(res > 0)
              {
-               query = "update users set balance = balance + " + money + " where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-               res = MySql.insertUpdateQuery(query);
+               res = UserDirectory.addMoney(money, userNameLabel.getText());
                if(res > 0)
                {
                 double updatedBalance = Double.parseDouble(balanceLabel.getText().replace("$", "").trim()) + money;
@@ -708,8 +707,7 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
            }
            else if(addBankAccCombo.getSelectedItem() != null)
            {
-             query = "select acc_balance from bank_accounts where user_id = " + user_id + ";";
-             rs = MySql.selectQuery(query);
+             rs = BankAccountDirectory.availableBalance(user_id, addBankAccCombo.getSelectedItem().toString());
              rs.next();
              double available_bal = rs.getDouble(1) - money;
              if(available_bal < 0)
@@ -717,12 +715,10 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
                JOptionPane.showMessageDialog(this, "The available balance is less than the money that you're trying to add.", "Alert", JOptionPane.WARNING_MESSAGE);
                return;
              }
-             query = "update bank_accounts set acc_balance = " + available_bal + " where user_id = " + user_id + ";";
-             int res = MySql.insertUpdateQuery(query);
+             int res = BankAccountDirectory.updateAvailableBalance(available_bal, user_id, addBankAccCombo.getSelectedItem().toString());
              if(res > 0)
              {
-               query = "update users set balance = balance + " + money + " where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-               res = MySql.insertUpdateQuery(query);
+               res = UserDirectory.addMoney(money, userNameLabel.getText());
                if(res > 0)
                {
                 double updatedBalance = Double.parseDouble(balanceLabel.getText().replace("$", "").trim()) + money;
@@ -776,11 +772,10 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
           {
             String removeBankAcc = removeBankAccCombo.getSelectedItem().toString();
             MySql.createConn();
-            String query = "delete from bank_accounts  where account_number = " + "\'" + removeBankAcc + "\'" + ";";
-            int res = MySql.insertUpdateQuery(query);
+            int res = BankAccountDirectory.deleteBankAccount(removeBankAcc);
             if(res > 0)
             {
-             JOptionPane.showMessageDialog(this, "Removed the bank account successfully.", null, JOptionPane.WARNING_MESSAGE);
+             JOptionPane.showMessageDialog(this, "Removed the bank account successfully.", null, JOptionPane.OK_OPTION);
              removeBankAccCombo.removeItem(removeBankAcc);
              addBankAccCombo.removeItem(removeBankAcc);
             }
@@ -806,11 +801,10 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
           {
             String removeCreditCard = removeCreditCardCombo.getSelectedItem().toString();          
             MySql.createConn();
-            String query = "delete from user_credit_cards  where card_number = " + "\'" + removeCreditCard + "\'" + ";";
-            int res = MySql.insertUpdateQuery(query);
+            int res = UserCreditCardDirectory.deleteCreditCard(removeCreditCard);
             if(res > 0)
             {
-             JOptionPane.showMessageDialog(this, "Removed the credit card successfully.", null, JOptionPane.WARNING_MESSAGE);
+             JOptionPane.showMessageDialog(this, "Removed the credit card successfully.", null, JOptionPane.OK_OPTION);
              removeCreditCardCombo.removeItem(removeCreditCard);
              addCreditCardsCombo.removeItem(removeCreditCard);
             }

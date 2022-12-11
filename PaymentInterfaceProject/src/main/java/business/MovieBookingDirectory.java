@@ -148,4 +148,38 @@ public class MovieBookingDirectory {
           MySql.shutDownConn();
         }
     }
+    public static ResultSet getMovieBookings(int userId)
+    {
+      try
+      {
+        MySql.createConn();
+        String query = "select * from movie_bookings where user_id = " + userId + ";";
+        ResultSet rs = MySql.selectQuery(query);
+        return rs;
+      }
+      catch(Exception ex)
+      {
+        System.out.println(ex);
+        return null;
+      }
+    }
+    public static ResultSet getPrice(int screenId)
+    {      
+      try
+      {
+        MySql.createConn();
+        String query = "select price from screens where id = " + screenId + ";";
+        ResultSet rs = MySql.selectQuery(query);
+        return rs;
+      }
+      catch(Exception ex)
+      {
+        System.out.println(ex);
+        return null;
+      }
+      finally
+      {
+        MySql.shutDownConn();
+      }
+    } 
 }

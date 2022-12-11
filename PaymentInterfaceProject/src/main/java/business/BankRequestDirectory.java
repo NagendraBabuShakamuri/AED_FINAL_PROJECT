@@ -134,4 +134,19 @@ public class BankRequestDirectory {
           MySql.shutDownConn();
         }
     }
+    public static int addBankRequest(int userId, int bankId, String accHolderName, String accNumber)
+    {
+      try
+      {
+        MySql.createConn();
+        String query = "insert into bank_requests(user_id, bank_id, account_holder, account_number, status) values(" + userId + "," + bankId + "," + "\'" + accHolderName + "\'" + "," + accNumber + ",\'Initiated\'" + ");";
+        int res = MySql.insertUpdateQuery(query);
+        return res;
+      }
+      catch(Exception ex)
+      {
+        System.out.println(ex);
+        return 0;
+      }
+    }
 }

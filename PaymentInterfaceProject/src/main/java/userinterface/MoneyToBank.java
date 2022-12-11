@@ -4,6 +4,8 @@
  */
 package userinterface;
 
+import business.BankAccountDirectory;
+import business.UserDirectory;
 import business.mysql.MySql;
 import java.awt.Image;
 import java.sql.ResultSet;
@@ -29,12 +31,10 @@ public class MoneyToBank extends javax.swing.JFrame {
         try
         {
           MySql.createConn();
-          String query = "select userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-          ResultSet rs = MySql.selectQuery(query);
+          ResultSet rs = UserDirectory.getUserId(userNameLabel.getText());
           rs.next();
           int user_id = rs.getInt(1);
-          query = "select account_number from bank_accounts where user_id = " + user_id + ";";
-          rs = MySql.selectQuery(query);
+          rs = BankAccountDirectory.getAccountNumbers(user_id);
           while(rs.next()){
             bankAccCombo.addItem(rs.getString(1));
           }
@@ -68,7 +68,6 @@ public class MoneyToBank extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 500));
         setSize(new java.awt.Dimension(1000, 1000));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -107,11 +106,11 @@ public class MoneyToBank extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
         );
 
         pack();
@@ -156,8 +155,7 @@ public class MoneyToBank extends javax.swing.JFrame {
             String bankAccount = bankAccCombo.getSelectedItem().toString();
             double money = Double.parseDouble(amount);
             MySql.createConn();
-            String query = "select balance from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-            ResultSet rs = MySql.selectQuery(query);
+            ResultSet rs = UserDirectory.getBalance(userNameLabel.getText());
             rs.next();
             double balance = rs.getDouble(1);
             double available_balance = balance - money;
@@ -165,15 +163,12 @@ public class MoneyToBank extends javax.swing.JFrame {
             {
               JOptionPane.showMessageDialog(this, "The available wallet balance is less than the amount \nthat you're trying to transfer.", "Alert", JOptionPane.WARNING_MESSAGE);
               return;
-            }
-            query = "update bank_accounts set acc_balance = acc_balance + " + money + " where account_number = " + "\'" + bankAccount + "\'" + ";";
-            System.out.println(query);
-            int res = MySql.insertUpdateQuery(query);
+            }            
+            int res = BankAccountDirectory.addMoneyToBank(money, bankAccount);
             if(res > 0)
             {
-              JOptionPane.showMessageDialog(this, "Amount transferred to bank successfully.", null, JOptionPane.OK_OPTION);
-              query = "update users set balance = balance - " + money + " where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-              res = MySql.insertUpdateQuery(query);
+              JOptionPane.showMessageDialog(this, "Amount transferred to bank successfully.", null, JOptionPane.OK_OPTION);              
+              res = UserDirectory.deductMoney(money, userNameLabel.getText());
               if(res > 0)
               {
                 balanceLabel.setText("$ " + available_balance);

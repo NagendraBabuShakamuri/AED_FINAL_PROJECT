@@ -4,6 +4,13 @@
  */
 package userinterface;
 
+import business.BankAccountDirectory;
+import business.BusBookingDirectory;
+import business.EventBookingDirectory;
+import business.MobileActivePlans;
+import business.MovieBookingDirectory;
+import business.TrainBookingDirectory;
+import business.UserDirectory;
 import business.mysql.MySql;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,100 +32,98 @@ public class SpendAnalytics extends javax.swing.JFrame {
      */
     public SpendAnalytics() {
         initComponents();
-        DefaultPieDataset pieDataSet = new DefaultPieDataset();                
-        pieDataSet.setValue("Utilities", new Integer(10));                
+        DefaultPieDataset pieDataSet = new DefaultPieDataset();                       
         try
         {
           MySql.createConn();
-          String query = "select userid from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-          ResultSet rs = MySql.selectQuery(query);
+          ResultSet rs = UserDirectory.getUserId(userNameLabel.getText());
           rs.next();
           int userId = rs.getInt(1);
-          query = "select * from bus_bookings where user_id = " + userId + ";";
-          rs = MySql.selectQuery(query);
+          rs = BusBookingDirectory.getBusBookings(userId);
+          rs.next();
           DefaultTableModel table_model = (DefaultTableModel)spendTable.getModel();
           double sum = 0;
           while(rs.next())
           {
             int busId = rs.getInt(3);
             String date = rs.getString(5);
-            String query1 = "select fare from buses where id = " + busId + ";";
-            ResultSet rs1 = MySql.selectQuery(query1);
+            ResultSet rs1 = BusBookingDirectory.getFare(busId);
             rs1.next();
-            int fare = rs1.getInt(1);
+            double fare = rs1.getDouble(1);
             sum += fare;
             table_model.addRow(new String[]{date, "Bus Booking", "$ " + fare});            
           }
           pieDataSet.setValue("Bus Booking", sum);
-          sum = 0;
-          query = "select * from train_bookings where user_id = " + userId + ";";
-          rs = MySql.selectQuery(query);
+          sum = 0;          
+          rs = TrainBookingDirectory.getTrainBookings(userId);
           while(rs.next())
           {
             String date = rs.getString(4);
-            double fare = rs.getInt(7);
+            double fare = rs.getDouble(7);
             sum += fare;
             table_model.addRow(new String[]{date, "Train Booking", "$ " + fare});
           }
           pieDataSet.setValue("Train Booking", sum);
           sum = 0;
-          query = "select * from event_bookings where user_id = " + userId + ";";
-          rs = MySql.selectQuery(query);
+          rs = EventBookingDirectory.getEventBookings(userId);
           while(rs.next())
           {
             int eventId = rs.getInt(3);
-            String date = rs.getString(5);
-            String query1 = "select price from events where id = " + eventId + ";";
-            ResultSet rs1 = MySql.selectQuery(query1);
+            String date = rs.getString(5);            
+            ResultSet rs1 = EventBookingDirectory.getPrice(eventId);
             rs1.next();
-            double price = rs1.getInt(1);
+            double price = rs1.getDouble(1);
             sum += price;
             table_model.addRow(new String[]{date, "Event Booking", "$ " + price});            
           }
           pieDataSet.setValue("Event Booking", sum);
           sum = 0;
-          query = "select * from mobile_active_plans where user_id = " + userId + ";";
-          rs = MySql.selectQuery(query);
+          rs = MobileActivePlans.getMobileActivePlans(userId);
           while(rs.next())
           {
             int planId = rs.getInt(4);
             String date = rs.getString(6);
-            String query1 = "select price from mobile_plans where id = " + planId + ";";
-            ResultSet rs1 = MySql.selectQuery(query1);
+            ResultSet rs1 = MobileActivePlans.getPrice(planId);
             rs1.next();
-            double price = rs1.getInt(1);
+            double price = rs1.getDouble(1);
             sum += price;
             table_model.addRow(new String[]{date, "Mobile Recharge", "$ " + price}); 
           }
           pieDataSet.setValue("Mobile Recharge", sum);
           sum = 0;
-          query = "select screen_id, booking_date from movie_bookings where user_id = " + userId + ";";
-          rs = MySql.selectQuery(query);
+          rs = MovieBookingDirectory.getMovieBookings(userId);
           while(rs.next())
           {
-            int screenId = rs.getInt(1);
-            String date = rs.getString(2);
-            String query1 = "select price from screens where id = " + screenId + ";";
-            ResultSet rs1 = MySql.selectQuery(query1);
+            int screenId = rs.getInt(3);
+            String date = rs.getString(5);
+            ResultSet rs1 = MovieBookingDirectory.getPrice(screenId);
             rs1.next();
-            double price = rs1.getInt(1);
+            double price = rs1.getDouble(1);
             sum += price;
             table_model.addRow(new String[]{date, "Movie Booking", "$ " + price});
           }
           pieDataSet.setValue("Movie Booking", sum);
           sum = 0;
-          query = "select amount, date from transfer_money where sender = " + "\'" + userNameLabel.getText() + "\'" + ";";
-          rs = MySql.selectQuery(query);
+          rs = BankAccountDirectory.getMoneyTransfers(userNameLabel.getText());
           while(rs.next())
           {
-            double amount = rs.getInt(1);
+            double amount = rs.getDouble(1);
             String date = rs.getString(2);
             sum += amount;
-            System.out.println(sum);
             table_model.addRow(new String[]{date, "Friends & Family", "$ " + amount});
-          }
-          spendTable.setAutoCreateRowSorter(true);
+          }          
           pieDataSet.setValue("Friends & Family", sum);
+          sum = 0;
+          rs = UserDirectory.getUtilityTransactions(userNameLabel.getText());
+          while(rs.next())
+          {
+            double amount = rs.getDouble(5);
+            String date = rs.getString(4);
+            sum += amount;
+            table_model.addRow(new String[]{date, "Utility", "$ " + amount});
+          }
+          pieDataSet.setValue("Utilities", sum);
+          spendTable.setAutoCreateRowSorter(true);
           JFreeChart chart = ChartFactory.createPieChart("Pie chart", pieDataSet);
           ChartPanel panel = new ChartPanel(chart, 500, 400, 500, 400, 500, 400, true, true, true, true, false, true);
           panel.setSize(600, 500);

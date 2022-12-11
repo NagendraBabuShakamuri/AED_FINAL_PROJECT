@@ -89,7 +89,7 @@ public class TrainDirectory {
         }
     }
     
-     public static int updateTrain(Train t, int position)
+    public static int updateTrain(Train t, int position)
     {
         try
         {

@@ -9,10 +9,13 @@ package userinterface;
  * @author nbabu
  */
 import business.Mail;
+import business.User;
+import business.UserDirectory;
 import business.mysql.MySql;
 import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -28,23 +31,23 @@ public class UserHomePage extends javax.swing.JFrame {
         userNameLabel.setText(userName);
         try
         {
-          MySql.createConn();
-          String query = "select * from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-          ResultSet rs = MySql.selectQuery(query);
-          rs.next();
-          userNameField.setText(rs.getString(2));
-          emailField.setText(rs.getString(3));
-          mobileField.setText(rs.getString(4));
-          passField.setText(rs.getString(5));
-          balanceLabel.setText("$ " + rs.getString(7));
+          UserDirectory ud = new UserDirectory();
+          for(User user: ud.getUserList())
+          {
+            if(user.getUserName().equals(userNameLabel.getText()))
+            {
+                userNameField.setText(user.getUserName());
+                emailField.setText(user.getEmail());
+                mobileField.setText(String.valueOf(user.getMobile()));
+                passField.setText(user.getPassword());
+                balanceLabel.setText("$ " + user.getWallet_balance());
+                break;
+            }
+          }        
         }
-        catch(SQLException ex)
+        catch(Exception ex)
         {
           System.out.println(ex);
-        }
-        finally
-        {
-          MySql.shutDownConn();
         }
     }
 
@@ -425,71 +428,79 @@ public class UserHomePage extends javax.swing.JFrame {
         String email = emailField.getText().trim();        
         String mobile = mobileField.getText().trim();
         String password = new String(passField.getPassword());
+        int position = 0;
         boolean passed = clientSideVlaidation(this, email, userName, mobile, password);
         if(passed)
         {
           try
           {
-            MySql.createConn();
-            boolean exists = false;            
-            ResultSet rs = MySql.selectQuery("select * from users where username != " + "\'" + userNameLabel.getText() + "\'" + ";");
-            while(rs.next())
-            {
-              if(userName.equals(rs.getString(2)))
-              {
-                exists = true;
-                JOptionPane.showMessageDialog(this, "User with the given name already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
-                break;
-              }
-              else if(email.equals(rs.getString(3)))
-              {
-                exists = true;
-                JOptionPane.showMessageDialog(this, "User with the given email already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
-                break;
-              }
-              else if(mobile.equals(rs.getString(4)))
-              {
-                exists = true;
-                JOptionPane.showMessageDialog(this, "User with the given mobile already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
-                break;
-              }
-            }
+             boolean exists = false;            
+             UserDirectory ud = new UserDirectory();
+             ArrayList<User> userDirectory = ud.getUserList();
+             for(User user: userDirectory)
+             {
+               if(user.getUserName().equals(userNameLabel.getText()))
+               {
+                    position = user.getId();
+                    userDirectory.remove(user);
+                    break;
+               }
+             }
+             for(User user: userDirectory)
+             {
+                if(user.getUserName().equals(userNameLabel.getText()))
+                    position = user.getId();
+                if(userName.equals(user.getUserName()))
+                {
+                  exists = true;                  
+                  JOptionPane.showMessageDialog(this, "User with the given name already exists.", "Alert", JOptionPane.WARNING_MESSAGE);
+                  break;
+                }
+                else if(email.equals(user.getEmail()))
+                {
+                  exists = true;
+                  JOptionPane.showMessageDialog(this, "User with the given email already exists.", "Alert", JOptionPane.WARNING_MESSAGE);
+                  break;
+                }
+                else if(Long.parseLong(mobile) == user.getMobile())
+                {
+                  exists = true;
+                  JOptionPane.showMessageDialog(this, "User with the given mobile already exists.", "Alert", JOptionPane.WARNING_MESSAGE);
+                  break;
+                }
+             }
             if(!exists)
             {
               String code = "";
               for(int i = 0; i < 6; i++)
                 code += (int)(Math.random() * 6);
-//              String query = "insert into registration(username, email, mobile, password, code) values(" + "\'" + userName + "\'" +"," + "\'" + email + "\'" + "," + "\'" + mobile + "\'" + ","  + "\'" + password + "\'" + "," + "\'" + code + "\'" + ");";
-//              System.out.println(query);
-//              int res = MySql.insertUpdateQuery(query);
-                Mail mail = new Mail(email, code);
-                mail.sendMail();               
-                while(true){
-                    String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
-                    if(userCode.equals(code))
+              
+              Mail mail = new Mail(email, code);
+              mail.sendMail();        
+              while(true)
+              {
+                String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
+                if(userCode.equals(code))
+                {
+                    User user = new User(0, userName, email, Long.parseLong(mobile), password, 0);
+                    int res = UserDirectory.updateUser(user, position);
+                    if(res > 0)
                     {
-                      int res = MySql.insertUpdateQuery("update users set username = " + "\'" + userName + "\'" +  ", email =  " + "\'" + email + "\'" + ", mobile =  " + "\'" + mobile + "\'" + ", password = " + "\'" + password + "\'" + " where username = " + "\'" + userNameLabel.getText() + "\'" + ";");                      
-                      if(res > 0)
-                      {
-                        JOptionPane.showMessageDialog(this, "Profile updated..", null, JOptionPane.OK_OPTION);
+                        JOptionPane.showMessageDialog(this, "Profile updated.", null, JOptionPane.OK_OPTION);
                         userNameLabel.setText(userName);
                         break;
-                      }
                     }
-                    else
-                    {
-                      JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
-                    }               
                 }
+                else
+                {
+                    JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
+                }               
+              }
             }
           }
-          catch(SQLException ex)
+          catch(Exception ex)
           {
             System.out.println(ex);
-          }
-          finally
-          {
-            MySql.shutDownConn();
           }
         }
     }//GEN-LAST:event_updateButtonActionPerformed

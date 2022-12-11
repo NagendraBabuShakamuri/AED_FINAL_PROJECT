@@ -135,4 +135,19 @@ public class CreditCardRequestDirectory {
           MySql.shutDownConn();
         }
     }
+    public static int addCardRequest(int userId, int cardId, String cardHolderName, String cardNumber, String cardExpiry, String cvcNumber)
+    {
+      try
+      {
+        MySql.createConn();
+        String query = "insert into credit_card_requests(user_id, card_id, card_holder, card_number, card_expiry, card_cvc) values(" + userId + "," + cardId + "," + "\'" + cardHolderName + "\'" + "," + "\'" + cardNumber + "\'" + "," + "\'" + cardExpiry + "\'" + "," + "\'" + cvcNumber + "\'" + ");";
+        int res = MySql.insertUpdateQuery(query);
+        return res;
+      }
+      catch(Exception ex)
+      {
+        System.out.println(ex);
+        return 0;
+      }
+    }
 }

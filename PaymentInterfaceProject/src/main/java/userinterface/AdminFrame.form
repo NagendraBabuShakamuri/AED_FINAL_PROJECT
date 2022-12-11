@@ -3,9 +3,6 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[900, 900]"/>
-    </Property>
     <Property name="resizable" type="boolean" value="false"/>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1000, 1000]"/>
@@ -671,15 +668,8 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="bankRequestsTable">
                           <Properties>
-                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="6" rowCount="0">
-                                <Column editable="true" title="Request Id" type="java.lang.String"/>
-                                <Column editable="true" title="User Id" type="java.lang.String"/>
-                                <Column editable="true" title="Bank Id" type="java.lang.String"/>
-                                <Column editable="true" title="Account Holder" type="java.lang.String"/>
-                                <Column editable="true" title="Account Number" type="java.lang.String"/>
-                                <Column editable="true" title="Status" type="java.lang.String"/>
-                              </Table>
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;Request Id&quot;, &quot;User Id&quot;, &quot;Bank Id&quot;, &quot;Account Holder&quot;, &quot;Account Number&quot;, &quot;Status&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;    @Override&#xa;    public boolean isCellEditable(int row, int column) {&#xa;        //all cells false&#xa;        return false;&#xa;    }&#xa;}" type="code"/>
                             </Property>
                           </Properties>
                         </Component>
@@ -779,17 +769,8 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="cardRequestsTable">
                           <Properties>
-                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="8" rowCount="0">
-                                <Column editable="true" title="Request Id" type="java.lang.String"/>
-                                <Column editable="true" title="User Id" type="java.lang.String"/>
-                                <Column editable="true" title="Card Id" type="java.lang.String"/>
-                                <Column editable="true" title="Card Holder" type="java.lang.String"/>
-                                <Column editable="true" title="Card Number" type="java.lang.String"/>
-                                <Column editable="true" title="Card Expiry" type="java.lang.String"/>
-                                <Column editable="true" title="Card CVC" type="java.lang.String"/>
-                                <Column editable="true" title="Status" type="java.lang.String"/>
-                              </Table>
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;Request Id&quot;, &quot;User Id&quot;, &quot;Card Id&quot;, &quot;Card Holder&quot;, &quot;Card Number&quot;, &quot;Card Expiry&quot;, &quot;Card CVC&quot;, &quot;Status&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;    @Override&#xa;    public boolean isCellEditable(int row, int column) {&#xa;        //all cells false&#xa;        return false;&#xa;    }&#xa;}" type="code"/>
                             </Property>
                           </Properties>
                         </Component>
@@ -3080,17 +3061,8 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="addressRequestsTable">
                           <Properties>
-                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="8" rowCount="0">
-                                <Column editable="true" title="Request Id" type="java.lang.String"/>
-                                <Column editable="true" title="User Id" type="java.lang.String"/>
-                                <Column editable="true" title="Apartment" type="java.lang.String"/>
-                                <Column editable="true" title="Street" type="java.lang.String"/>
-                                <Column editable="true" title="City" type="java.lang.String"/>
-                                <Column editable="true" title="State" type="java.lang.String"/>
-                                <Column editable="true" title="Zip Code" type="java.lang.String"/>
-                                <Column editable="true" title="Status" type="java.lang.String"/>
-                              </Table>
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;Request Id&quot;, &quot;User Id&quot;, &quot;Apartment&quot;, &quot;Street&quot;, &quot;City&quot;, &quot;State&quot;, &quot;Zip Code&quot;, &quot;Status&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;    @Override&#xa;    public boolean isCellEditable(int row, int column) {&#xa;        //all cells false&#xa;        return false;&#xa;    }&#xa;}" type="code"/>
                             </Property>
                           </Properties>
                         </Component>
@@ -3177,15 +3149,8 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="addressesTable">
                           <Properties>
-                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="6" rowCount="0">
-                                <Column editable="true" title="User Id" type="java.lang.String"/>
-                                <Column editable="true" title="Apartment" type="java.lang.String"/>
-                                <Column editable="true" title="Street" type="java.lang.String"/>
-                                <Column editable="true" title="City" type="java.lang.String"/>
-                                <Column editable="true" title="State" type="java.lang.String"/>
-                                <Column editable="true" title="Zip Code" type="java.lang.String"/>
-                              </Table>
+                            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;&#xa;    },&#xa;    new String [] {&#xa;        &quot;User Id&quot;, &quot;Apartment&quot;, &quot;Street&quot;, &quot;City&quot;, &quot;State&quot;, &quot;Zip Code&quot;&#xa;    }&#xa;) {&#xa;    Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;    @Override&#xa;    public boolean isCellEditable(int row, int column) {&#xa;        //all cells false&#xa;        return false;&#xa;    }&#xa;}" type="code"/>
                             </Property>
                           </Properties>
                         </Component>
