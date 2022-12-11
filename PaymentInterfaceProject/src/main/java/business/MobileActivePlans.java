@@ -1,26 +1,25 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Other/File.java to edit this template
  */
 package business;
 
 import business.mysql.MySql;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
  *
  * @author nbabu
  */
-public class BusBookingDirectory {
-    private ArrayList<Bus> busBookingDirectory = new ArrayList<>();    
-    public static ResultSet getBusBookings(int userId)
+public class MobileActivePlans {
+    private ArrayList<Bus> mobileActivePlansDirectory = new ArrayList<>();
+    public static ResultSet getMobileActivePlans(int userId)
     {
       try
       {
         MySql.createConn();
-        String query = "select * from bus_bookings where user_id = " + userId + ";";
+        String query = "select * from mobile_active_plans where user_id = " + userId + ";";
         ResultSet rs = MySql.selectQuery(query);
         return rs;
       }
@@ -30,12 +29,12 @@ public class BusBookingDirectory {
         return null;
       }
     }
-    public static ResultSet getFare(int busId)
+    public static ResultSet getPrice(int planId)
     {      
       try
       {
         MySql.createConn();
-        String query = "select fare from buses where id = " + busId + ";";
+        String query = "select price from mobile_plans where id = " + planId + ";";
         ResultSet rs = MySql.selectQuery(query);
         return rs;
       }
@@ -44,5 +43,5 @@ public class BusBookingDirectory {
         System.out.println(ex);
         return null;
       }
-    }
+    }    
 }

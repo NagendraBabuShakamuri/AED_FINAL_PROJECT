@@ -5,6 +5,8 @@
 package userinterface;
 
 import business.Mail;
+import business.User;
+import business.UserDirectory;
 import business.mysql.MySql;
 import java.awt.Image;
 import java.sql.ResultSet;
@@ -171,7 +173,7 @@ public class Registration extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         Login l = new Login();
-        l.show();
+        l.setVisible(true);
         dispose();
     }//GEN-LAST:event_loginButtonActionPerformed
     public static boolean clientSideVlaidation(JFrame frame, String email, String username, String mobile, String password)
@@ -203,36 +205,36 @@ public class Registration extends javax.swing.JFrame {
     }
     private void signUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpButtonActionPerformed
         // TODO add your handling code here:
-        String email = emailField.getText();
-        String userName = userNameField.getText();
-        String mobile = mobileField.getText();
+        String email = emailField.getText().trim();
+        String userName = userNameField.getText().trim();
+        String mobile = mobileField.getText().trim();
         String password = new String(passField.getPassword());
         boolean passed = clientSideVlaidation(this, email, userName, mobile, password);
         if(passed)
         {
           try
           {
-            MySql.createConn();
-            boolean exists = false;            
-            ResultSet rs = MySql.selectQuery("select * from users;");
-            while(rs.next())
+            boolean exists = false;
+            UserDirectory ud = new UserDirectory();
+            
+            for(User user: ud.getUserList())
             {
-              if(userName.equals(rs.getString(2)))
+              if(userName.equals(user.getUserName()))
               {
                 exists = true;
-                JOptionPane.showMessageDialog(this, "User with the given name already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "User with the given name already exists.", "Alert", JOptionPane.WARNING_MESSAGE);
                 break;
               }
-              else if(email.equals(rs.getString(3)))
+              else if(email.equals(user.getEmail()))
               {
                 exists = true;
-                JOptionPane.showMessageDialog(this, "User with the given email already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "User with the given email already exists.", "Alert", JOptionPane.WARNING_MESSAGE);
                 break;
               }
-              else if(mobile.equals(rs.getString(4)))
+              else if(Long.parseLong(mobile) == user.getMobile())
               {
                 exists = true;
-                JOptionPane.showMessageDialog(this, "User with the given mobile already exists..", "Alert", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "User with the given mobile already exists.", "Alert", JOptionPane.WARNING_MESSAGE);
                 break;
               }
             }
@@ -241,19 +243,18 @@ public class Registration extends javax.swing.JFrame {
               String code = "";
               for(int i = 0; i < 6; i++)
                 code += (int)(Math.random() * 6);
-//              String query = "insert into registration(username, email, mobile, password, code) values(" + "\'" + userName + "\'" +"," + "\'" + email + "\'" + "," + "\'" + mobile + "\'" + ","  + "\'" + password + "\'" + "," + "\'" + code + "\'" + ");";
-//              System.out.println(query);
-//              int res = MySql.insertUpdateQuery(query);
+              
                 Mail mail = new Mail(email, code);
                 mail.sendMail();               
                 while(true){
                     String userCode = JOptionPane.showInputDialog(this,"Please enter the code that is sent to your Email Id."); 
                     if(userCode.equals(code))
                     {
-                      int res = MySql.insertUpdateQuery("insert into users(username, email, mobile, password) values(" + "\'" + userName + "\'" +"," + "\'" + email + "\'" + "," + "\'" + mobile + "\'" + ","  + "\'" + password + "\'" + ");");
+                      User user = new User(0, userName, email, Long.parseLong(mobile), password, 0);
+                      int res = UserDirectory.addUser(user);
                       if(res > 0)
                       {
-                        JOptionPane.showMessageDialog(this, "Registration successful, please login..", null, JOptionPane.OK_OPTION);
+                        JOptionPane.showMessageDialog(this, "Registration successful, please login.", null, JOptionPane.OK_OPTION);
                         break;
                       }
                     }
@@ -264,13 +265,9 @@ public class Registration extends javax.swing.JFrame {
                 }
             }
           }
-          catch(SQLException ex)
+          catch(Exception ex)
           {
             System.out.println(ex);
-          }
-          finally
-          {
-            MySql.shutDownConn();
           }
         }
     }//GEN-LAST:event_signUpButtonActionPerformed

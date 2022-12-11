@@ -45,4 +45,87 @@ public class UserCreditCardDirectory {
           MySql.shutDownConn();
         }
     }
+    public static int deleteCreditCard(String removeCreditCard)
+    {
+        try
+        {
+            MySql.createConn();
+            int res = MySql.insertUpdateQuery("delete from user_credit_cards  where card_number = " + "\'" + removeCreditCard + "\'" + ";");
+            if(res > 0)
+            {
+              return res;
+            }
+            else
+                return 0;
+        }
+        catch(Exception ex)
+        {
+          System.out.println(ex);
+          return 0;
+        }
+        finally
+        {
+          MySql.shutDownConn();
+        }
+    }
+    public static ResultSet getCreditCardNumbers(int userId)            
+    {
+      try
+      {
+        MySql.createConn();
+        String query = "select card_number from user_credit_cards where user_id = " + userId + ";";
+        ResultSet rs = MySql.selectQuery(query);
+        return rs;
+      }
+      catch(Exception ex)
+      {
+        System.out.println(ex);
+        return null;
+      }
+    }
+    public static ResultSet creditCardExists(String cardNumber)
+    {
+      try
+      {
+        MySql.createConn();
+        String query = "select count(*) from user_credit_cards where card_number = " + "\'" + cardNumber + "\';";
+        ResultSet rs = MySql.selectQuery(query);
+        return rs;
+      }
+      catch(Exception ex)
+      {
+        System.out.println(ex);
+        return null;
+      }
+    }
+    public static ResultSet availableCredit(int userId, String cardNumber)
+    {
+      try
+      {
+        MySql.createConn();
+        String query = "select available_credit from user_credit_cards where user_id = " + userId + " and card_number = " + "\'" + cardNumber + "\'" + ";";
+        ResultSet rs = MySql.selectQuery(query);
+        return rs;
+      }
+      catch(Exception ex)
+      {
+        System.out.println(ex);
+        return null;
+      }
+    }
+    public static int updateAvailableCredit(double available_credit, int userId, String cardNumber)
+    {
+      try
+      {
+        MySql.createConn();
+        String query = "update user_credit_cards set available_credit = " + available_credit + " where user_id = " + userId + " and card_number = " + "\'" + cardNumber + "\'" + ";";
+        int res = MySql.insertUpdateQuery(query);
+        return res;
+      }
+      catch(Exception ex)
+      {
+        System.out.println(ex);
+        return 0;
+      }
+    }
 }

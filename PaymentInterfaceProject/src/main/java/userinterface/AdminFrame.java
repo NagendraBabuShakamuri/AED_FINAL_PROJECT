@@ -676,7 +676,6 @@ public class AdminFrame extends javax.swing.JFrame {
         deleteScreenButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 900));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -895,6 +894,11 @@ public class AdminFrame extends javax.swing.JFrame {
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
         });
         jScrollPane1.setViewportView(bankRequestsTable);
 
@@ -954,6 +958,11 @@ public class AdminFrame extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
             }
         });
         jScrollPane2.setViewportView(cardRequestsTable);
@@ -1719,6 +1728,11 @@ public class AdminFrame extends javax.swing.JFrame {
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
         });
         jScrollPane3.setViewportView(addressRequestsTable);
 
@@ -1774,6 +1788,11 @@ public class AdminFrame extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
             }
         });
         jScrollPane4.setViewportView(addressesTable);

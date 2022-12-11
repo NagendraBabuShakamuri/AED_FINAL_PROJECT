@@ -4,6 +4,7 @@
  */
 package userinterface;
 
+import business.UserDirectory;
 import business.mysql.MySql;
 import java.awt.Image;
 import java.sql.ResultSet;
@@ -120,8 +121,7 @@ public class MoneyToOthersWallet extends javax.swing.JFrame {
           {
             double money = Double.parseDouble(amount);
             MySql.createConn();
-            String query = "select mobile, balance from users where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-            ResultSet rs = MySql.selectQuery(query);
+            ResultSet rs = UserDirectory.getMobileBalance(userNameLabel.getText());
             rs.next();
             String userMobile = rs.getString(1);
             double balance = rs.getDouble(2);
@@ -136,22 +136,18 @@ public class MoneyToOthersWallet extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(this, "The available wallet balance is less than the amount \nthat you're trying to send.", "Alert", JOptionPane.WARNING_MESSAGE);
               return;
             }
-            query = "update users set balance = balance + " + money + " where mobile = " + "\'" + mobile + "\'" + ";";
-            int res = MySql.insertUpdateQuery(query);
-            query = "select username from users where mobile = " + "\'" + mobile + "\'" + ";";
-            rs = MySql.selectQuery(query);
-            rs.next();            
+            int res = UserDirectory.deductMoneyMobile(money, mobile);
+            rs = UserDirectory.getUserName(mobile);
+            rs.next();           
             if(res > 0)
             {
               String sentToUserName = rs.getString(1);
               JOptionPane.showMessageDialog(this, "Amount sent to " + sentToUserName + " successfully.", null, JOptionPane.OK_OPTION);
-              query = "update users set balance = balance - " + money + " where username = " + "\'" + userNameLabel.getText() + "\'" + ";";
-              res = MySql.insertUpdateQuery(query);
+              res = UserDirectory.deductMoney(money, userNameLabel.getText());
               if(res > 0)
               {
                 balanceLabel.setText("$ " + available_balance);
-                query = "INSERT INTO transfer_money(sender, receiver, amount) values(" + "\'" + userNameLabel.getText() + "\'" + "," + "\'" + sentToUserName + "\'" + "," + amount + ");";
-                res = MySql.insertUpdateQuery(query);
+                res = UserDirectory.insertTransaction(userNameLabel.getText(), sentToUserName, money);
                 if(res > 0)
                 {
                   System.out.println("Inserted the transaction.");
