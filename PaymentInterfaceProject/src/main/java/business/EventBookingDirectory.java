@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author nbabu
  */
 public class EventBookingDirectory {
-    private ArrayList<Bus> eventBookingDirectory = new ArrayList<>();
+    private ArrayList<EventBooking> eventBookingDirectory = new ArrayList<>();
     public static ResultSet getEventBookings(int userId)
     {
       try

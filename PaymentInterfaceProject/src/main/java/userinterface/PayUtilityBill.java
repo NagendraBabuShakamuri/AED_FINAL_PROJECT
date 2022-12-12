@@ -555,6 +555,10 @@ public class PayUtilityBill extends javax.swing.JFrame {
           {
             System.out.println(ex);
           }
+          catch(NullPointerException np)
+          {
+            JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
+          }
           finally
           {
               MySql.shutDownConn();

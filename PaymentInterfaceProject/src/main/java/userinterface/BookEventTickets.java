@@ -389,7 +389,7 @@ public class BookEventTickets extends javax.swing.JFrame{
                 String event_name = event[0];
                 String ticket_price = priceField.getText();
                 String seat_no = seatComboBox.getSelectedItem().toString();
-                int price = Integer.parseInt(priceField.getText());
+                double price = Double.parseDouble(priceField.getText());
                 SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
                 String date = date_format.format(calendar.getDate());
                 MySql.createConn();

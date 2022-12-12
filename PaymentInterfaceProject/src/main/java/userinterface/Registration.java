@@ -57,6 +57,7 @@ public class Registration extends javax.swing.JFrame {
         pV = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 900));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
@@ -264,10 +265,14 @@ public class Registration extends javax.swing.JFrame {
                 }
             }
           }
+          catch(NullPointerException ne)
+          {
+            JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
+          }
           catch(Exception ex)
           {
             System.out.println(ex);
-          }
+          }          
         }
     }//GEN-LAST:event_signUpButtonActionPerformed
 

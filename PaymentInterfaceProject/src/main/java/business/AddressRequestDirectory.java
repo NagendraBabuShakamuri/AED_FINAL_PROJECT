@@ -47,7 +47,6 @@ public class AddressRequestDirectory {
         }
         catch(SQLException ex)
         {
-          System.out.println(ex);
           return null;
         }
         finally
@@ -70,7 +69,6 @@ public class AddressRequestDirectory {
         }
         catch(Exception ex)
         {
-          System.out.println(ex);
           return 0;
         }
         finally
@@ -136,7 +134,6 @@ public class AddressRequestDirectory {
         }
         catch(Exception ex)
         {
-          System.out.println(ex);
           return 0;
         }
         finally

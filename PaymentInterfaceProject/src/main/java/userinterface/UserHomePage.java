@@ -112,6 +112,7 @@ public class UserHomePage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(900, 900));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
@@ -124,6 +125,8 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        userNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 0, 142, 25));
 
         jLabel17.setBackground(new java.awt.Color(204, 204, 204));
@@ -197,6 +200,7 @@ public class UserHomePage extends javax.swing.JFrame {
         jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 87, -1, 30));
 
         balanceLabel.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        balanceLabel.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(balanceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 160, 30));
 
         jTabbedPane1.addTab("Payment", jPanel1);
@@ -546,6 +550,10 @@ public class UserHomePage extends javax.swing.JFrame {
                 }               
               }
             }
+          }
+          catch(NullPointerException ne)
+          {
+            JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
           }
           catch(Exception ex)
           {

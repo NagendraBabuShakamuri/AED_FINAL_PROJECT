@@ -158,7 +158,7 @@ public class BookTrainTickets extends javax.swing.JFrame {
         });
         jPanel2.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 65, -1));
 
-        datePicker.setBackground(new java.awt.Color(0, 0, 0));
+        datePicker.setBackground(new java.awt.Color(255, 255, 255));
         datePicker.setForeground(new java.awt.Color(204, 204, 204));
         datePicker.setEnabled(false);
         datePicker.addPropertyChangeListener(new java.beans.PropertyChangeListener() {

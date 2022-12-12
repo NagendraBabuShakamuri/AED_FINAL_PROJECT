@@ -533,6 +533,10 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
           {
             System.out.println(ex);
           }
+          catch(NullPointerException ne)
+          {
+            JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
+          }
           finally
           {
             MySql.shutDownConn();
@@ -667,6 +671,10 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
           catch(SQLException ex)
           {
             System.out.println(ex);
+          }
+          catch(NullPointerException ne)
+          {
+            JOptionPane.showMessageDialog(this, "The code entered is incorrect, please enter the correct code.", "Alert", JOptionPane.WARNING_MESSAGE);
           }
           finally
           {

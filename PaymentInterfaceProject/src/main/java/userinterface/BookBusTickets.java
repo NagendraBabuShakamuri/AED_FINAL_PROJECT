@@ -261,7 +261,7 @@ public class BookBusTickets extends javax.swing.JFrame{
         seatComboBox.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(seatComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 100, -1));
 
-        calendar.setBackground(new java.awt.Color(0, 0, 0));
+        calendar.setBackground(new java.awt.Color(255, 255, 255));
         calendar.setForeground(new java.awt.Color(204, 204, 204));
         calendar.setEnabled(false);
         calendar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -404,7 +404,7 @@ public class BookBusTickets extends javax.swing.JFrame{
              String bus_name = bus[0];
              String ticket_price = fareField.getText();
              String seat_no = seatComboBox.getSelectedItem().toString();
-             int fare = Integer.parseInt(fareField.getText());
+             double fare = Double.parseDouble(fareField.getText());
              SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
              String date = date_format.format(calendar.getDate());
              MySql.createConn();             

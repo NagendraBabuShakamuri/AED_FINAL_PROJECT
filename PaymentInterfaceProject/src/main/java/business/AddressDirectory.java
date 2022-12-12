@@ -45,7 +45,6 @@ public class AddressDirectory {
         }
         catch(SQLException ex)
         {
-          System.out.println(ex);
           return null;
         }
         finally
@@ -90,7 +89,7 @@ public class AddressDirectory {
             String apartment = a.getApartment();
             String street = a.getStreet();
             String city = a.getCity();
-            String state = a.getCity();            
+            String state = a.getState();         
             String zipCode = a.getZipCode();
             int res = MySql.insertUpdateQuery("update addresses set apartment = " + "\'" + apartment + "\'" + "," + "street = " + "\'" + street + "\'" + "," + "city = " + "\'" + city + "\'" + "," + "state = " + "\'" + state + "\'" + "," + "zipcode = " + "\'" + zipCode + "\'" + " where user_id = " + userId +";");
             if(res > 0)
@@ -102,7 +101,6 @@ public class AddressDirectory {
         }
         catch(Exception ex)
         {
-          System.out.println(ex);
           return 0;
         }
         finally

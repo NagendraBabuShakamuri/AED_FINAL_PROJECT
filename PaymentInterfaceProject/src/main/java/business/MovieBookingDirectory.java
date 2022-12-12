@@ -177,9 +177,5 @@ public class MovieBookingDirectory {
         System.out.println(ex);
         return null;
       }
-      finally
-      {
-        MySql.shutDownConn();
-      }
     } 
 }

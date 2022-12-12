@@ -676,6 +676,7 @@ public class AdminFrame extends javax.swing.JFrame {
         deleteScreenButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 900));
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1018,6 +1019,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         bankRequestsTable.setBackground(new java.awt.Color(0, 0, 0));
         bankRequestsTable.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        bankRequestsTable.setForeground(new java.awt.Color(255, 255, 255));
         bankRequestsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -3382,8 +3384,8 @@ public class AdminFrame extends javax.swing.JFrame {
                           updateBusToCityCombo.addItem(updateBusFromCityCombo.getItemAt(i).toString());
                         }
                         updateBusToCityCombo.setSelectedItem(b.getToCity().getCityName());
-                        updateBusStartAtField.setText(b.getDepartureTime());
-                        updateBusReachAtField.setText(b.getArrivalTime());
+                        updateBusStartAtField.setText(b.getDepartureTime().toString());
+                        updateBusReachAtField.setText(b.getArrivalTime().toString());
                         updateBusFareField.setText(String.valueOf(b.getFare()));
                         updateBusTravelDateField.setText(b.getTravelDate().toString());
                         break;
@@ -3898,7 +3900,7 @@ public class AdminFrame extends javax.swing.JFrame {
     {
       if(Pattern.compile("^[1-9]\\d*$").matcher(busId).matches())
       {
-        if(Pattern.compile("^[a-zA-Z\\s0-9]*$").matcher(busName).matches() && !busName.equals(""))
+        if(Pattern.compile("^[a-zA-Z0-9]*$").matcher(busName).matches() && !busName.equals(""))
         {
           if(Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2})").matcher(startAt).matches())
           {
@@ -3980,9 +3982,11 @@ public class AdminFrame extends javax.swing.JFrame {
                   int toCityId = CityDirectory.getCityId(toCity);             
                   City from = new City(fromCityId, fromCity);
                   City to = new City(toCityId, toCity);
+                  LocalTime start = LocalTime.parse(startAt);
+                  LocalTime end = LocalTime.parse(endAt);
                   double fare = Double.parseDouble(farePrice);
                   LocalDate travelDate = LocalDate.parse(date);
-                  Bus bus = new Bus(id, busName, from, to, startAt, endAt, fare, travelDate);
+                  Bus bus = new Bus(id, busName, from, to, start, end, fare, travelDate);
                   int res = BusDirectory.addBus(bus);
                   if(res > 0)
                   {
@@ -3994,6 +3998,10 @@ public class AdminFrame extends javax.swing.JFrame {
         catch(NullPointerException ex)
         {
           JOptionPane.showMessageDialog(this, "Please select the from and to locations.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        catch(DateTimeParseException dtp)
+        {
+          JOptionPane.showMessageDialog(this, "Travel Date/Time is not valid.\nShould be in the format YYYY-MM-DD/HH:MM:SS.", "Alert", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_createBusButtonActionPerformed
 
@@ -4063,9 +4071,11 @@ public class AdminFrame extends javax.swing.JFrame {
                   int toCityId = CityDirectory.getCityId(toCity);             
                   City from = new City(fromCityId, fromCity);
                   City to = new City(toCityId, toCity);
+                  LocalTime start = LocalTime.parse(startAt);
+                  LocalTime end = LocalTime.parse(endAt);
                   double fare = Double.parseDouble(farePrice);
                   LocalDate travelDate = LocalDate.parse(date);
-                  Bus bus = new Bus(id, busName, from, to, startAt, endAt, fare, travelDate);
+                  Bus bus = new Bus(id, busName, from, to, start, end, fare, travelDate);
                   int res = BusDirectory.updateBus(bus, position);
                   if(res > 0)
                   {
@@ -4080,6 +4090,10 @@ public class AdminFrame extends javax.swing.JFrame {
         catch(NullPointerException ex)
         {
           JOptionPane.showMessageDialog(this, "Please select the from and to locations.", "Alert", JOptionPane.WARNING_MESSAGE);
+        }
+        catch(DateTimeParseException dtp)
+        {
+          JOptionPane.showMessageDialog(this, "Travel Date/Time is not valid.\nShould be in the format YYYY-MM-DD/HH:MM:SS.", "Alert", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_updateBusButtonActionPerformed
 
@@ -5691,7 +5705,7 @@ public class AdminFrame extends javax.swing.JFrame {
     {
       if(Pattern.compile("^[1-9]\\d*$").matcher(eventId).matches())
       {
-        if(Pattern.compile("^[a-zA-Z\\s0-9]*$").matcher(eventName).matches() && !eventName.equals(""))
+        if(Pattern.compile("^[a-zA-Z0-9]*$").matcher(eventName).matches() && !eventName.equals(""))
         {
           if(Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2})").matcher(startAt).matches())
           {
@@ -6005,6 +6019,10 @@ public class AdminFrame extends javax.swing.JFrame {
                     {
                         JOptionPane.showMessageDialog(this, "Updated the Movie successfully..", null, JOptionPane.OK_OPTION);
                         moviePositionField.setText(movieId);
+                        MovieDirectory mdd = new MovieDirectory();
+                        createScreenMovieCombo.removeAllItems();
+                        for(Movie m: mdd.getMovieList())
+                            createScreenMovieCombo.addItem(m.getMovieName());
                     }
                     else
                     JOptionPane.showMessageDialog(this, "Movie does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);
@@ -6163,6 +6181,10 @@ public class AdminFrame extends javax.swing.JFrame {
                     {
                         JOptionPane.showMessageDialog(this, "Updated the Theatre successfully..", null, JOptionPane.OK_OPTION);
                         theatrePositionField.setText(theatreId);
+                        TheatreDirectory tdd = new TheatreDirectory();
+                        createScreenTheatreCombo.removeAllItems();
+                        for(Theatre t: tdd.getTheatreList())
+                            createScreenTheatreCombo.addItem(t.getTheatreName());
                     }
                     else
                     JOptionPane.showMessageDialog(this, "Theatre does not exist.", "Alert", JOptionPane.WARNING_MESSAGE);

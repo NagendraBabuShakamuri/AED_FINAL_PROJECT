@@ -16,12 +16,12 @@ public class Bus {
     private String busName;
     private City fromCity;
     private City toCity;
-    private String departureTime;
-    private String arrivalTime;    
+    private LocalTime departureTime;
+    private LocalTime arrivalTime;    
     private double fare;
     private LocalDate travelDate;    
 
-    public Bus(int id, String busName, City fromCity, City toCity, String departureTime, String arrivalTime, double fare, LocalDate travelDate) {
+    public Bus(int id, String busName, City fromCity, City toCity, LocalTime departureTime, LocalTime arrivalTime, double fare, LocalDate travelDate) {
         this.id = id;
         this.busName = busName;
         this.fromCity = fromCity;
@@ -48,11 +48,11 @@ public class Bus {
         return toCity;
     }
 
-    public String getDepartureTime() {
+    public LocalTime getDepartureTime() {
         return departureTime;
     }
 
-    public String getArrivalTime() {
+    public LocalTime getArrivalTime() {
         return arrivalTime;
     }
 

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author nbabu
  */
 public class MobileActivePlans {
-    private ArrayList<Bus> mobileActivePlansDirectory = new ArrayList<>();
+    private ArrayList<MobileActivePlan> mobileActivePlansDirectory = new ArrayList<>();
     public static ResultSet getMobileActivePlans(int userId)
     {
       try

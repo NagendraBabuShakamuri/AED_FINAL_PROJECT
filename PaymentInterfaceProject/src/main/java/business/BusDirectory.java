@@ -39,8 +39,8 @@ public class BusDirectory {
               rs2.next();
               String toCityName = rs2.getString(1);
               City toCity = new City(toCityId, toCityName);
-              String dt = rs.getString(5);
-              String at = rs.getString(6);
+              LocalTime dt = LocalTime.parse(rs.getString(5));
+              LocalTime at = LocalTime.parse(rs.getString(6));
               double fare = rs.getDouble(7);
               LocalDate travelDate = LocalDate.parse(rs.getString(8));
               Bus bus = new Bus(busId, busName, fromCity, toCity, dt, at, fare, travelDate);
@@ -67,8 +67,8 @@ public class BusDirectory {
             String busName = b.getBusName();
             int fromCityId = b.getFromCity().getCityId();
             int toCityId = b.getToCity().getCityId();
-            String departureTime = b.getDepartureTime();
-            String arrivalTime = b.getArrivalTime();
+            String departureTime = b.getDepartureTime().toString();
+            String arrivalTime = b.getArrivalTime().toString();
             double fare = b.getFare();
             LocalDate ld = b.getTravelDate();
             String travelDate = "" + ld;
@@ -99,8 +99,8 @@ public class BusDirectory {
             String busName = b.getBusName();
             int fromCityId = b.getFromCity().getCityId();
             int toCityId = b.getToCity().getCityId();
-            String departureTime = b.getDepartureTime();
-            String arrivalTime = b.getArrivalTime();
+            String departureTime = b.getDepartureTime().toString();
+            String arrivalTime = b.getArrivalTime().toString();
             double fare = b.getFare();
             LocalDate ld = b.getTravelDate();
             String travelDate = "" + ld;
