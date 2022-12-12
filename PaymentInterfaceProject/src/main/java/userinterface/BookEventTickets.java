@@ -106,22 +106,28 @@ public class BookEventTickets extends javax.swing.JFrame{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(102, 102, 102));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 800));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 102, 204));
+        jLabel1.setForeground(new java.awt.Color(102, 204, 255));
         jLabel1.setText("Book Event Tickets");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Customer Name");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, -1, -1));
 
+        customerNameField.setBackground(new java.awt.Color(0, 0, 0));
+        customerNameField.setForeground(new java.awt.Color(204, 204, 204));
         customerNameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 customerNameFieldKeyReleased(evt);
@@ -129,10 +135,14 @@ public class BookEventTickets extends javax.swing.JFrame{
         });
         jPanel1.add(customerNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 180, -1));
 
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Customer Mobile No");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
 
+        mobileNumberField.setBackground(new java.awt.Color(0, 0, 0));
+        mobileNumberField.setForeground(new java.awt.Color(204, 204, 204));
         mobileNumberField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 mobileNumberFieldKeyReleased(evt);
@@ -140,10 +150,14 @@ public class BookEventTickets extends javax.swing.JFrame{
         });
         jPanel1.add(mobileNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 140, 180, -1));
 
+        jLabel39.setBackground(new java.awt.Color(0, 0, 0));
         jLabel39.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(204, 204, 204));
         jLabel39.setText("City");
         jPanel1.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, -1));
 
+        eventsComboBox.setBackground(new java.awt.Color(0, 0, 0));
+        eventsComboBox.setForeground(new java.awt.Color(204, 204, 204));
         eventsComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 eventsComboBoxItemStateChanged(evt);
@@ -151,6 +165,8 @@ public class BookEventTickets extends javax.swing.JFrame{
         });
         jPanel1.add(eventsComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 200, -1));
 
+        cityComboBox.setBackground(new java.awt.Color(0, 0, 0));
+        cityComboBox.setForeground(new java.awt.Color(204, 204, 204));
         cityComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cityComboBoxItemStateChanged(evt);
@@ -158,20 +174,27 @@ public class BookEventTickets extends javax.swing.JFrame{
         });
         jPanel1.add(cityComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 180, -1));
 
+        jLabel40.setBackground(new java.awt.Color(0, 0, 0));
         jLabel40.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel40.setForeground(new java.awt.Color(204, 204, 204));
         jLabel40.setText("Events");
         jPanel1.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, -1));
 
+        jLabel42.setBackground(new java.awt.Color(0, 0, 0));
         jLabel42.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(204, 204, 204));
         jLabel42.setText("Select seat number");
         jPanel1.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 390, -1, -1));
 
+        jLabel43.setBackground(new java.awt.Color(0, 0, 0));
         jLabel43.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(204, 204, 204));
         jLabel43.setText("Select a date");
         jPanel1.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
 
+        clearButton.setBackground(new java.awt.Color(102, 204, 255));
         clearButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        clearButton.setForeground(new java.awt.Color(102, 102, 255));
+        clearButton.setForeground(new java.awt.Color(255, 255, 255));
         clearButton.setText("Clear");
         clearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,8 +203,9 @@ public class BookEventTickets extends javax.swing.JFrame{
         });
         jPanel1.add(clearButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 110, 30));
 
+        bookTicketButton.setBackground(new java.awt.Color(102, 204, 255));
         bookTicketButton.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
-        bookTicketButton.setForeground(new java.awt.Color(102, 102, 255));
+        bookTicketButton.setForeground(new java.awt.Color(255, 255, 255));
         bookTicketButton.setText("Book Ticket");
         bookTicketButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,15 +214,23 @@ public class BookEventTickets extends javax.swing.JFrame{
         });
         jPanel1.add(bookTicketButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 110, 30));
 
+        jLabel45.setBackground(new java.awt.Color(0, 0, 0));
         jLabel45.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(204, 204, 204));
         jLabel45.setText("Price");
         jPanel1.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, -1));
 
+        priceField.setBackground(new java.awt.Color(0, 0, 0));
+        priceField.setForeground(new java.awt.Color(204, 204, 204));
         priceField.setEnabled(false);
         jPanel1.add(priceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 200, -1));
 
+        seatComboBox.setBackground(new java.awt.Color(0, 0, 0));
+        seatComboBox.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(seatComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 200, -1));
 
+        calendar.setBackground(new java.awt.Color(0, 0, 0));
+        calendar.setForeground(new java.awt.Color(204, 204, 204));
         calendar.setEnabled(false);
         calendar.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -218,15 +250,17 @@ public class BookEventTickets extends javax.swing.JFrame{
 
         jTabbedPane1.addTab("Book Events", jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setForeground(new java.awt.Color(204, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 102, 204));
+        jLabel3.setForeground(new java.awt.Color(102, 204, 255));
         jLabel3.setText(" Booking History");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
-        bookingHistoryTable.setBackground(new java.awt.Color(255, 204, 204));
+        bookingHistoryTable.setBackground(new java.awt.Color(51, 51, 51));
+        bookingHistoryTable.setForeground(new java.awt.Color(204, 204, 204));
         bookingHistoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -252,6 +286,8 @@ public class BookEventTickets extends javax.swing.JFrame{
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 730, 200));
 
+        showHistoryButton.setBackground(new java.awt.Color(102, 204, 255));
+        showHistoryButton.setForeground(new java.awt.Color(255, 255, 255));
         showHistoryButton.setText("Show");
         showHistoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,18 +298,23 @@ public class BookEventTickets extends javax.swing.JFrame{
 
         jTabbedPane1.addTab("Show Bookings", jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 102, 204));
+        jLabel5.setForeground(new java.awt.Color(102, 204, 255));
         jLabel5.setText("CANCEL Bookings");
         jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 14, -1, -1));
 
+        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("Enter the Event booking ID");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, -1));
 
+        eventIdField.setBackground(new java.awt.Color(0, 0, 0));
+        eventIdField.setForeground(new java.awt.Color(204, 204, 204));
         eventIdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eventIdFieldActionPerformed(evt);
@@ -281,6 +322,8 @@ public class BookEventTickets extends javax.swing.JFrame{
         });
         jPanel3.add(eventIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 120, -1));
 
+        cancelBookingButton.setBackground(new java.awt.Color(102, 204, 255));
+        cancelBookingButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelBookingButton.setText("Cancel");
         cancelBookingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

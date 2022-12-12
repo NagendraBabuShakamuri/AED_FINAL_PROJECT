@@ -146,8 +146,15 @@ public class PayUtilityBill extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jTabbedPane1.setBackground(new java.awt.Color(102, 102, 102));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setForeground(new java.awt.Color(204, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        payElectricityBill.setBackground(new java.awt.Color(102, 204, 255));
+        payElectricityBill.setForeground(new java.awt.Color(255, 255, 255));
         payElectricityBill.setText("Pay Due Bill");
         payElectricityBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,9 +163,13 @@ public class PayUtilityBill extends javax.swing.JFrame {
         });
         jPanel2.add(payElectricityBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
 
+        jLabel45.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel45.setForeground(new java.awt.Color(204, 204, 204));
         jLabel45.setText("Payment History");
         jPanel2.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
 
+        electricityBillTable.setBackground(new java.awt.Color(51, 51, 51));
+        electricityBillTable.setForeground(new java.awt.Color(204, 204, 204));
         electricityBillTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -184,6 +195,8 @@ public class PayUtilityBill extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 750, 173));
 
+        getElectricityBillsButton.setBackground(new java.awt.Color(102, 204, 255));
+        getElectricityBillsButton.setForeground(new java.awt.Color(255, 255, 255));
         getElectricityBillsButton.setText("Refresh");
         getElectricityBillsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,11 +207,17 @@ public class PayUtilityBill extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Electricity Bill", jPanel2);
 
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel3.setForeground(new java.awt.Color(204, 204, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel53.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel53.setForeground(new java.awt.Color(204, 204, 204));
         jLabel53.setText("Payment History");
         jPanel3.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
 
+        waterBillTable.setBackground(new java.awt.Color(51, 51, 51));
+        waterBillTable.setForeground(new java.awt.Color(204, 204, 204));
         waterBillTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -224,6 +243,8 @@ public class PayUtilityBill extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 750, 173));
 
+        getWaterBillsButton.setBackground(new java.awt.Color(102, 204, 255));
+        getWaterBillsButton.setForeground(new java.awt.Color(255, 255, 255));
         getWaterBillsButton.setText("Refresh");
         getWaterBillsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,6 +253,8 @@ public class PayUtilityBill extends javax.swing.JFrame {
         });
         jPanel3.add(getWaterBillsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, -1, -1));
 
+        payWaterBill.setBackground(new java.awt.Color(102, 204, 255));
+        payWaterBill.setForeground(new java.awt.Color(255, 255, 255));
         payWaterBill.setText("Pay Due Bill");
         payWaterBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,8 +265,12 @@ public class PayUtilityBill extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Water Bill", jPanel3);
 
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel4.setForeground(new java.awt.Color(204, 204, 204));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        payGasBill.setBackground(new java.awt.Color(102, 204, 255));
+        payGasBill.setForeground(new java.awt.Color(255, 255, 255));
         payGasBill.setText("Pay Due Bill");
         payGasBill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,9 +279,13 @@ public class PayUtilityBill extends javax.swing.JFrame {
         });
         jPanel4.add(payGasBill, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
 
+        jLabel61.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel61.setForeground(new java.awt.Color(204, 204, 204));
         jLabel61.setText("Payment History");
         jPanel4.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, -1, -1));
 
+        gasBillTable.setBackground(new java.awt.Color(51, 51, 51));
+        gasBillTable.setForeground(new java.awt.Color(204, 204, 204));
         gasBillTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -280,6 +311,8 @@ public class PayUtilityBill extends javax.swing.JFrame {
 
         jPanel4.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 750, 173));
 
+        getGasBillsButton.setBackground(new java.awt.Color(102, 204, 255));
+        getGasBillsButton.setForeground(new java.awt.Color(255, 255, 255));
         getGasBillsButton.setText("Refresh");
         getGasBillsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,29 +323,53 @@ public class PayUtilityBill extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Gas Bill", jPanel4);
 
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Apartment, Suite, etc:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, -1, -1));
+
+        apartmentField.setBackground(new java.awt.Color(0, 0, 0));
+        apartmentField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(apartmentField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 200, -1));
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Street Address:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 100, -1));
+
+        streetField.setBackground(new java.awt.Color(0, 0, 0));
+        streetField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(streetField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 200, -1));
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("City:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 40, -1));
 
+        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("State:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
 
+        stateField.setBackground(new java.awt.Color(0, 0, 0));
+        stateField.setForeground(new java.awt.Color(204, 204, 204));
         stateField.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " Alabama", " Alaska", " Arizona", " Arkansas", " California", " Colorado", " Connecticut", " Delaware", " Florida", " Georgia", " Hawaii", " Idaho", " Illinois", " Indiana", " Iowa", " Kansas", " Kentucky", " Louisiana", " Maine", " Maryland", " Massachusetts", " Michigan", " Minnesota", " Mississippi", " Missouri", " Montana", " Nebraska", " Nevada", " New Hampshire", " New Jersey", " New Mexico", " New York", " North Carolina", " North Dakota", " Ohio", " Oklahoma", " Oregon", " Pennsylvania", " Rhode Island", " South Carolina", " South Dakota", " Tennessee", " Texas", " Utah", " Vermont", " Virginia", " Washington", " West Virginia", " Wisconsin", " Wyoming" }));
         jPanel1.add(stateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 200, -1));
 
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Zip code:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, -1, -1));
+
+        zipCodeField.setBackground(new java.awt.Color(0, 0, 0));
+        zipCodeField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(zipCodeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 200, -1));
 
+        addAddressButton.setBackground(new java.awt.Color(102, 204, 255));
+        addAddressButton.setForeground(new java.awt.Color(255, 255, 255));
         addAddressButton.setText("Add/Update");
         addAddressButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,6 +377,9 @@ public class PayUtilityBill extends javax.swing.JFrame {
             }
         });
         jPanel1.add(addAddressButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 200, -1));
+
+        cityField.setBackground(new java.awt.Color(0, 0, 0));
+        cityField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(cityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 200, -1));
 
         jTabbedPane1.addTab("Address", jPanel1);

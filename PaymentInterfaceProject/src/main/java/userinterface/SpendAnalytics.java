@@ -154,11 +154,17 @@ public class SpendAnalytics extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 900));
+        setBackground(new java.awt.Color(51, 51, 51));
+        setForeground(new java.awt.Color(204, 204, 204));
         setSize(new java.awt.Dimension(1000, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        chartArea.setBackground(new java.awt.Color(51, 51, 51));
+        chartArea.setForeground(new java.awt.Color(204, 204, 204));
         getContentPane().add(chartArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 490));
 
+        spendTable.setBackground(new java.awt.Color(51, 51, 51));
+        spendTable.setForeground(new java.awt.Color(204, 204, 204));
         spendTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -179,7 +185,9 @@ public class SpendAnalytics extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 540, 710, 270));
 
+        jLabel1.setBackground(new java.awt.Color(102, 204, 255));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 204, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Spending Transactions");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 190, -1));

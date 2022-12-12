@@ -87,8 +87,15 @@ public class BookTrainTickets extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane4.setBackground(new java.awt.Color(102, 102, 102));
+        jTabbedPane4.setForeground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.setForeground(new java.awt.Color(204, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        fromComboBox.setBackground(new java.awt.Color(0, 0, 0));
+        fromComboBox.setForeground(new java.awt.Color(204, 204, 204));
         fromComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 fromComboBoxItemStateChanged(evt);
@@ -96,12 +103,18 @@ public class BookTrainTickets extends javax.swing.JFrame {
         });
         jPanel2.add(fromComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 20, 120, -1));
 
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("From");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 37, -1));
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Destination");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
+        toComboBox.setBackground(new java.awt.Color(0, 0, 0));
+        toComboBox.setForeground(new java.awt.Color(204, 204, 204));
         toComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 toComboBoxItemStateChanged(evt);
@@ -109,16 +122,24 @@ public class BookTrainTickets extends javax.swing.JFrame {
         });
         jPanel2.add(toComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 60, 120, -1));
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Date of Travel");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 83, -1));
 
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Age Group");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 70, -1));
 
+        ageGroupBox.setBackground(new java.awt.Color(0, 0, 0));
+        ageGroupBox.setForeground(new java.awt.Color(204, 204, 204));
         ageGroupBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Adult", "Minor", "Senior Citizen" }));
         ageGroupBox.setEnabled(false);
         jPanel2.add(ageGroupBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
 
+        searchButton.setBackground(new java.awt.Color(102, 204, 255));
+        searchButton.setForeground(new java.awt.Color(255, 255, 255));
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +148,8 @@ public class BookTrainTickets extends javax.swing.JFrame {
         });
         jPanel2.add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
+        resetButton.setBackground(new java.awt.Color(102, 204, 255));
+        resetButton.setForeground(new java.awt.Color(255, 255, 255));
         resetButton.setText("Reset");
         resetButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +158,8 @@ public class BookTrainTickets extends javax.swing.JFrame {
         });
         jPanel2.add(resetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 65, -1));
 
+        datePicker.setBackground(new java.awt.Color(0, 0, 0));
+        datePicker.setForeground(new java.awt.Color(204, 204, 204));
         datePicker.setEnabled(false);
         datePicker.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -144,6 +169,8 @@ public class BookTrainTickets extends javax.swing.JFrame {
         jPanel2.add(datePicker, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 100, 170, -1));
         datePicker.setMinSelectableDate(new Date(new Date().getTime() + 86400 * 1000));
 
+        trainSchedule.setBackground(new java.awt.Color(0, 0, 0));
+        trainSchedule.setForeground(new java.awt.Color(204, 204, 204));
         trainSchedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -170,6 +197,8 @@ public class BookTrainTickets extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 20, 503, 216));
 
+        bookTicketButton.setBackground(new java.awt.Color(102, 204, 255));
+        bookTicketButton.setForeground(new java.awt.Color(255, 255, 255));
         bookTicketButton.setText("Book");
         bookTicketButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,8 +209,12 @@ public class BookTrainTickets extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Book Tickets", jPanel2);
 
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel3.setForeground(new java.awt.Color(204, 204, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        showBookingsButton.setBackground(new java.awt.Color(102, 204, 255));
+        showBookingsButton.setForeground(new java.awt.Color(255, 255, 255));
         showBookingsButton.setText("Show my bookings");
         showBookingsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,6 +223,8 @@ public class BookTrainTickets extends javax.swing.JFrame {
         });
         jPanel3.add(showBookingsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 270, -1));
 
+        bookingHistoryTable.setBackground(new java.awt.Color(51, 51, 51));
+        bookingHistoryTable.setForeground(new java.awt.Color(204, 204, 204));
         bookingHistoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -213,12 +248,21 @@ public class BookTrainTickets extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Check Booking", jPanel3);
 
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel4.setForeground(new java.awt.Color(51, 51, 51));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel26.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel26.setForeground(new java.awt.Color(204, 204, 204));
         jLabel26.setText("Enter Booking ID");
         jPanel4.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
+
+        bookingIdField.setBackground(new java.awt.Color(0, 0, 0));
+        bookingIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel4.add(bookingIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 40, 130, -1));
 
+        cancelBookingButton.setBackground(new java.awt.Color(102, 204, 255));
+        cancelBookingButton.setForeground(new java.awt.Color(255, 255, 255));
         cancelBookingButton.setText("Cancel Booking");
         cancelBookingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

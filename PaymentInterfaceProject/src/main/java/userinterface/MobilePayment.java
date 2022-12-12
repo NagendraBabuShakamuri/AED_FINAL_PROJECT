@@ -82,12 +82,23 @@ public class MobilePayment extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jTabbedPane1.setBackground(new java.awt.Color(102, 102, 102));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Phone Number");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, -1, -1));
+
+        rechargeMobNumberField.setBackground(new java.awt.Color(0, 0, 0));
+        rechargeMobNumberField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(rechargeMobNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 140, -1));
 
+        rechargeNumberButton.setBackground(new java.awt.Color(102, 204, 255));
+        rechargeNumberButton.setForeground(new java.awt.Color(255, 255, 255));
         rechargeNumberButton.setText("Recharge");
         rechargeNumberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,15 +107,23 @@ public class MobilePayment extends javax.swing.JFrame {
         });
         jPanel1.add(rechargeNumberButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 140, -1));
 
+        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("Recharge");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
 
+        jLabel12.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setText("Service provider");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
 
+        rechargeProviderCombo.setBackground(new java.awt.Color(0, 0, 0));
+        rechargeProviderCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.add(rechargeProviderCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 140, -1));
 
+        checkPlansButton.setBackground(new java.awt.Color(102, 204, 255));
+        checkPlansButton.setForeground(new java.awt.Color(255, 255, 255));
         checkPlansButton.setText("Check Plans");
         checkPlansButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +132,8 @@ public class MobilePayment extends javax.swing.JFrame {
         });
         jPanel1.add(checkPlansButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 113, -1));
 
+        mobilePlansTable.setBackground(new java.awt.Color(0, 0, 0));
+        mobilePlansTable.setForeground(new java.awt.Color(204, 204, 204));
         mobilePlansTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -138,30 +159,48 @@ public class MobilePayment extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 490, 228));
 
+        jLabel8.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("Provider id:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 90, -1));
 
+        providerIdField.setBackground(new java.awt.Color(0, 0, 0));
+        providerIdField.setForeground(new java.awt.Color(204, 204, 204));
         providerIdField.setEnabled(false);
         jPanel1.add(providerIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 140, -1));
 
         jTabbedPane1.addTab("Mobile Recharge", jPanel1);
 
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Check Active Plan");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, -1));
 
+        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("Phone Number");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
 
+        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Service provider");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
+
+        checkMobNumber.setBackground(new java.awt.Color(0, 0, 0));
+        checkMobNumber.setForeground(new java.awt.Color(204, 204, 204));
         jPanel3.add(checkMobNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, 130, -1));
 
+        providerField.setBackground(new java.awt.Color(0, 0, 0));
+        providerField.setForeground(new java.awt.Color(204, 204, 204));
         providerField.setEnabled(false);
         jPanel3.add(providerField, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, 130, -1));
 
+        checkMobPlansTable.setBackground(new java.awt.Color(0, 0, 0));
+        checkMobPlansTable.setForeground(new java.awt.Color(204, 204, 204));
         checkMobPlansTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -187,6 +226,8 @@ public class MobilePayment extends javax.swing.JFrame {
 
         jPanel3.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 650, 228));
 
+        checkActivePlanButton.setBackground(new java.awt.Color(102, 204, 255));
+        checkActivePlanButton.setForeground(new java.awt.Color(255, 255, 255));
         checkActivePlanButton.setText("Check Active Plan");
         checkActivePlanButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

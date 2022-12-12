@@ -126,16 +126,21 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
 
-        jTabbedPane1.setBackground(new java.awt.Color(116, 185, 255));
+        jTabbedPane1.setBackground(new java.awt.Color(102, 204, 255));
         jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel10.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("Saved Cards:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, -1, 20));
 
+        addCreditCardsCombo.setBackground(new java.awt.Color(0, 0, 0));
+        addCreditCardsCombo.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        addCreditCardsCombo.setForeground(new java.awt.Color(204, 204, 204));
         addCreditCardsCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 addCreditCardsComboItemStateChanged(evt);
@@ -143,9 +148,14 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         });
         jPanel1.add(addCreditCardsCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 88, 170, -1));
 
+        jLabel11.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setText("Added Bank Accounts:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, 20));
 
+        addBankAccCombo.setBackground(new java.awt.Color(0, 0, 0));
+        addBankAccCombo.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        addBankAccCombo.setForeground(new java.awt.Color(204, 204, 204));
         addBankAccCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 addBankAccComboItemStateChanged(evt);
@@ -153,9 +163,14 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         });
         jPanel1.add(addBankAccCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 170, -1));
 
+        jLabel12.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setText("Money:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 130, -1));
 
+        moneyField.setBackground(new java.awt.Color(0, 0, 0));
+        moneyField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        moneyField.setForeground(new java.awt.Color(204, 204, 204));
         moneyField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 moneyFieldKeyReleased(evt);
@@ -163,33 +178,47 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         });
         jPanel1.add(moneyField, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 170, -1));
 
+        addMoneyButton.setBackground(new java.awt.Color(102, 204, 255));
+        addMoneyButton.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        addMoneyButton.setForeground(new java.awt.Color(255, 255, 255));
         addMoneyButton.setText("Add Money");
         addMoneyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addMoneyButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(addMoneyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 320, -1));
+        jPanel1.add(addMoneyButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 320, 30));
         jPanel1.add(userNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 100, 20));
         jPanel1.add(moneyLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 200, 20, 20));
 
         jTabbedPane1.addTab("Add Money", jPanel1);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel6.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("Card number:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Card type:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 80, -1));
 
+        jLabel8.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("Card holder name:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 110, -1));
 
+        jLabel9.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("Card Expiry:");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 110, -1));
 
+        cardNumberField.setBackground(new java.awt.Color(0, 0, 0));
+        cardNumberField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        cardNumberField.setForeground(new java.awt.Color(204, 204, 204));
         cardNumberField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cardNumberFieldKeyReleased(evt);
@@ -197,8 +226,14 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         });
         jPanel2.add(cardNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 150, -1));
 
+        cardTypeCombo.setBackground(new java.awt.Color(0, 0, 0));
+        cardTypeCombo.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        cardTypeCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel2.add(cardTypeCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 150, -1));
 
+        cardHolderNameField.setBackground(new java.awt.Color(0, 0, 0));
+        cardHolderNameField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        cardHolderNameField.setForeground(new java.awt.Color(204, 204, 204));
         cardHolderNameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cardHolderNameFieldKeyReleased(evt);
@@ -206,23 +241,37 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         });
         jPanel2.add(cardHolderNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 150, -1));
 
+        cEMonthCombo.setBackground(new java.awt.Color(0, 0, 0));
+        cEMonthCombo.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        cEMonthCombo.setForeground(new java.awt.Color(204, 204, 204));
         cEMonthCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
         jPanel2.add(cEMonthCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, -1, -1));
 
+        cEYearCombo.setBackground(new java.awt.Color(0, 0, 0));
+        cEYearCombo.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        cEYearCombo.setForeground(new java.awt.Color(204, 204, 204));
         cEYearCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030" }));
         jPanel2.add(cEYearCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, -1, -1));
 
+        addCardButton.setBackground(new java.awt.Color(102, 204, 255));
+        addCardButton.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        addCardButton.setForeground(new java.awt.Color(255, 255, 255));
         addCardButton.setText("Add Card");
         addCardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addCardButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(addCardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 290, -1));
+        jPanel2.add(addCardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 290, 30));
 
+        jLabel5.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("CVC:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 110, -1));
 
+        cvcField.setBackground(new java.awt.Color(0, 0, 0));
+        cvcField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        cvcField.setForeground(new java.awt.Color(204, 204, 204));
         cvcField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cvcFieldKeyReleased(evt);
@@ -235,21 +284,32 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Add Credit card", jPanel2);
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("Bank:");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("Account number:");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("Routing number:");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Account holder name:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
 
+        bankNameCombo.setBackground(new java.awt.Color(0, 0, 0));
+        bankNameCombo.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        bankNameCombo.setForeground(new java.awt.Color(204, 204, 204));
         bankNameCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 bankNameComboItemStateChanged(evt);
@@ -274,6 +334,9 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
             MySql.shutDownConn();
         }
 
+        accNumField.setBackground(new java.awt.Color(0, 0, 0));
+        accNumField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        accNumField.setForeground(new java.awt.Color(204, 204, 204));
         accNumField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 accNumFieldKeyReleased(evt);
@@ -281,9 +344,15 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         });
         jPanel3.add(accNumField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 110, -1));
 
+        routingNumField.setBackground(new java.awt.Color(0, 0, 0));
+        routingNumField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        routingNumField.setForeground(new java.awt.Color(204, 204, 204));
         routingNumField.setEnabled(false);
         jPanel3.add(routingNumField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 110, -1));
 
+        accHolderNameField.setBackground(new java.awt.Color(0, 0, 0));
+        accHolderNameField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        accHolderNameField.setForeground(new java.awt.Color(204, 204, 204));
         accHolderNameField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 accHolderNameFieldKeyReleased(evt);
@@ -291,46 +360,65 @@ public class AddMoneyToWallet extends javax.swing.JFrame {
         });
         jPanel3.add(accHolderNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 110, -1));
 
+        addAccountButton.setBackground(new java.awt.Color(102, 204, 255));
+        addAccountButton.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        addAccountButton.setForeground(new java.awt.Color(255, 255, 255));
         addAccountButton.setText("Add Account");
         addAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addAccountButtonActionPerformed(evt);
             }
         });
-        jPanel3.add(addAccountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 260, -1));
+        jPanel3.add(addAccountButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 260, 30));
         jPanel3.add(accNumberLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 20, 20));
         jPanel3.add(accHolderLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 20, 20));
 
         jTabbedPane1.addTab("Add Bank Account", jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(51, 51, 51));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel13.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setText("Bank Acc:");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 109, -1, -1));
 
+        removeBankAccCombo.setBackground(new java.awt.Color(0, 0, 0));
+        removeBankAccCombo.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        removeBankAccCombo.setForeground(new java.awt.Color(255, 255, 255));
         jPanel4.add(removeBankAccCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 180, -1));
 
+        removeBankAccButton.setBackground(new java.awt.Color(102, 204, 255));
+        removeBankAccButton.setForeground(new java.awt.Color(255, 255, 255));
         removeBankAccButton.setText("Remove");
+        removeBankAccButton.setBorder(null);
         removeBankAccButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeBankAccButtonActionPerformed(evt);
             }
         });
-        jPanel4.add(removeBankAccButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 260, -1));
+        jPanel4.add(removeBankAccButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 260, 30));
 
+        jLabel14.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(204, 204, 204));
         jLabel14.setText("Card:");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, -1));
+        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, -1, -1));
 
-        jPanel4.add(removeCreditCardCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 180, -1));
+        removeCreditCardCombo.setBackground(new java.awt.Color(0, 0, 0));
+        removeCreditCardCombo.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        removeCreditCardCombo.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(removeCreditCardCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 180, -1));
 
+        removeCardButton.setBackground(new java.awt.Color(102, 204, 255));
+        removeCardButton.setForeground(new java.awt.Color(255, 255, 255));
         removeCardButton.setText("Remove");
+        removeCardButton.setBorder(null);
         removeCardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 removeCardButtonActionPerformed(evt);
             }
         });
-        jPanel4.add(removeCardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 260, -1));
+        jPanel4.add(removeCardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 260, 30));
 
         jTabbedPane1.addTab("Remove", jPanel4);
 

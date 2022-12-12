@@ -680,34 +680,70 @@ public class AdminFrame extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1000, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane1.setBackground(new java.awt.Color(102, 102, 102));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jTabbedPane3.setBackground(new java.awt.Color(51, 51, 51));
+        jTabbedPane3.setForeground(new java.awt.Color(204, 204, 204));
         jTabbedPane3.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
+        jPanel15.setBackground(new java.awt.Color(51, 51, 51));
         jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel60.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel60.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel60.setForeground(new java.awt.Color(204, 204, 204));
         jLabel60.setText("Role:");
         jPanel15.add(jLabel60, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, -1, -1));
 
+        createRoleCombo.setBackground(new java.awt.Color(0, 0, 0));
+        createRoleCombo.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        createRoleCombo.setForeground(new java.awt.Color(255, 255, 255));
         createRoleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Banking Admin", "Bus Admin", "Train Admin", "Recharge Admin", "Utilities Admin", "Events Admin", "Movie Admin" }));
         jPanel15.add(createRoleCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 130, -1));
 
+        jLabel61.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel61.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(204, 204, 204));
         jLabel61.setText("Username:");
         jPanel15.add(jLabel61, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, -1, -1));
+
+        createUserNameField.setBackground(new java.awt.Color(0, 0, 0));
+        createUserNameField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        createUserNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel15.add(createUserNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 130, -1));
 
+        jLabel62.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel62.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(204, 204, 204));
         jLabel62.setText("Password:");
         jPanel15.add(jLabel62, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
 
+        createAdminButton.setBackground(new java.awt.Color(102, 204, 255));
+        createAdminButton.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        createAdminButton.setForeground(new java.awt.Color(255, 255, 255));
         createAdminButton.setText("Create");
         createAdminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createAdminButtonActionPerformed(evt);
             }
         });
-        jPanel15.add(createAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 210, -1));
+        jPanel15.add(createAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 210, 30));
 
+        jLabel66.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel66.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel66.setForeground(new java.awt.Color(204, 204, 204));
         jLabel66.setText("Admin Id:");
         jPanel15.add(jLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
+
+        createAdminIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createAdminIdField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        createAdminIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel15.add(createAdminIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 130, -1));
+
+        createPasswordField.setBackground(new java.awt.Color(0, 0, 0));
+        createPasswordField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        createPasswordField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel15.add(createPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 130, -1));
 
         sysAdminLogoutButton.setText("Logout");
@@ -720,35 +756,55 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Create Admin", jPanel15);
 
+        jPanel9.setBackground(new java.awt.Color(51, 51, 51));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        updateRoleLabel.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        updateRoleLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateRoleLabel.setText("Role:");
         jPanel9.add(updateRoleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, -1, -1));
         updateRoleLabel.setVisible(false);
 
+        updateRoleCombo.setBackground(new java.awt.Color(0, 0, 0));
+        updateRoleCombo.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        updateRoleCombo.setForeground(new java.awt.Color(204, 204, 204));
         updateRoleCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Banking Admin", "Bus Admin", "Train Admin", "Recharge Admin", "Utilities Admin", "Events Admin", "Movie Admin" }));
         jPanel9.add(updateRoleCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 130, -1));
         updateRoleCombo.setVisible(false);
 
+        updateUserNameLabel.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        updateUserNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateUserNameLabel.setText("Username:");
         jPanel9.add(updateUserNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
         updateUserNameLabel.setVisible(false);
+
+        updateUserNameField.setBackground(new java.awt.Color(0, 0, 0));
+        updateUserNameField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        updateUserNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel9.add(updateUserNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 130, -1));
         updateUserNameField.setVisible(false);
 
+        updatePasswordLabel.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        updatePasswordLabel.setForeground(new java.awt.Color(204, 204, 204));
         updatePasswordLabel.setText("Password:");
         jPanel9.add(updatePasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, -1, -1));
         updatePasswordLabel.setVisible(false);
 
+        updateAdminButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateAdminButton.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        updateAdminButton.setForeground(new java.awt.Color(255, 255, 255));
         updateAdminButton.setText("Update");
         updateAdminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateAdminButtonActionPerformed(evt);
             }
         });
-        jPanel9.add(updateAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 210, -1));
+        jPanel9.add(updateAdminButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 210, 30));
         updateAdminButton.setVisible(false);
 
+        adminSearchButton.setBackground(new java.awt.Color(102, 204, 255));
+        adminSearchButton.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        adminSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         adminSearchButton.setText("Search");
         adminSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -757,26 +813,53 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel9.add(adminSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
 
+        jLabel67.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel67.setForeground(new java.awt.Color(204, 204, 204));
         jLabel67.setText("Admin id:");
         jPanel9.add(jLabel67, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
+
+        updateAdminIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateAdminIdField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        updateAdminIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel9.add(updateAdminIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 130, -1));
 
+        jLabel68.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel68.setForeground(new java.awt.Color(204, 204, 204));
         jLabel68.setText("Position:");
         jPanel9.add(jLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, -1, -1));
 
+        adminPositionField.setBackground(new java.awt.Color(0, 0, 0));
+        adminPositionField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        adminPositionField.setForeground(new java.awt.Color(204, 204, 204));
         adminPositionField.setEnabled(false);
         jPanel9.add(adminPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 130, -1));
+
+        updatePasswordField.setBackground(new java.awt.Color(0, 0, 0));
+        updatePasswordField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        updatePasswordField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel9.add(updatePasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 130, -1));
         updatePasswordField.setVisible(false);
 
         jTabbedPane3.addTab("View/Update Admin", jPanel9);
 
+        jPanel10.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel10.setForeground(new java.awt.Color(204, 204, 204));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel69.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel69.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel69.setForeground(new java.awt.Color(204, 204, 204));
         jLabel69.setText("Admin id:");
         jPanel10.add(jLabel69, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
+
+        deleteAdminIdField.setBackground(new java.awt.Color(0, 0, 0));
+        deleteAdminIdField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        deleteAdminIdField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel10.add(deleteAdminIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 120, -1));
 
+        deleteAdminButton.setBackground(new java.awt.Color(102, 204, 255));
+        deleteAdminButton.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        deleteAdminButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteAdminButton.setText("Delete");
         deleteAdminButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -787,32 +870,59 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Delete Admin", jPanel10);
 
+        jPanel11.setBackground(new java.awt.Color(51, 51, 51));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel1.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("City Id:");
         jPanel11.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 61, -1));
 
+        jLabel2.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel2.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("City Name:");
         jPanel11.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+
+        createCityIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createCityIdField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        createCityIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel11.add(createCityIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 130, -1));
+
+        createCityNameField.setBackground(new java.awt.Color(0, 0, 0));
+        createCityNameField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        createCityNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel11.add(createCityNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 130, -1));
 
+        createCityButton.setBackground(new java.awt.Color(102, 204, 255));
+        createCityButton.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        createCityButton.setForeground(new java.awt.Color(255, 255, 255));
         createCityButton.setText("Create");
         createCityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createCityButtonActionPerformed(evt);
             }
         });
-        jPanel11.add(createCityButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 230, -1));
+        jPanel11.add(createCityButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 230, 30));
 
         jTabbedPane3.addTab("Create City", jPanel11);
 
+        jPanel16.setBackground(new java.awt.Color(51, 51, 51));
         jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
         jLabel3.setText("City Id:");
         jPanel16.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
+
+        updateCityIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateCityIdField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        updateCityIdField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel16.add(updateCityIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 110, -1));
 
+        citySearchButton.setBackground(new java.awt.Color(102, 204, 255));
+        citySearchButton.setForeground(new java.awt.Color(255, 255, 255));
         citySearchButton.setText("Search");
         citySearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -821,42 +931,65 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel16.add(citySearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
 
+        cityNameLabel.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        cityNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         cityNameLabel.setText("City Name:");
         jPanel16.add(cityNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
         cityNameLabel.setVisible(false);
+
+        updateCityNameField.setBackground(new java.awt.Color(0, 0, 0));
+        updateCityNameField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        updateCityNameField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel16.add(updateCityNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 110, -1));
         updateCityNameField.setVisible(false);
 
+        cityUpdateButton.setBackground(new java.awt.Color(102, 204, 255));
+        cityUpdateButton.setForeground(new java.awt.Color(255, 255, 255));
         cityUpdateButton.setText("Update");
         cityUpdateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cityUpdateButtonActionPerformed(evt);
             }
         });
-        jPanel16.add(cityUpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 190, -1));
+        jPanel16.add(cityUpdateButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 190, 30));
         cityUpdateButton.setVisible(false);
 
+        jLabel4.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
         jLabel4.setText("Position:");
         jPanel16.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
 
+        cityPositionField.setBackground(new java.awt.Color(0, 0, 0));
+        cityPositionField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        cityPositionField.setForeground(new java.awt.Color(255, 255, 255));
         cityPositionField.setEnabled(false);
         jPanel16.add(cityPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 110, -1));
 
         jTabbedPane3.addTab("View/Update City", jPanel16);
 
+        jPanel17.setBackground(new java.awt.Color(51, 51, 51));
         jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setFont(new java.awt.Font("Josefin Sans", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("City Id:");
         jPanel17.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
+
+        deleteCityIdField.setBackground(new java.awt.Color(0, 0, 0));
+        deleteCityIdField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        deleteCityIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel17.add(deleteCityIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, 130, -1));
 
+        deleteCityButton.setBackground(new java.awt.Color(102, 204, 255));
+        deleteCityButton.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        deleteCityButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteCityButton.setText("Delete");
         deleteCityButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteCityButtonActionPerformed(evt);
             }
         });
-        jPanel17.add(deleteCityButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 220, -1));
+        jPanel17.add(deleteCityButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 220, 30));
 
         jTabbedPane3.addTab("Delete City", jPanel17);
 
@@ -875,10 +1008,16 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane5.setBackground(new java.awt.Color(51, 51, 51));
+        jTabbedPane5.setForeground(new java.awt.Color(204, 204, 204));
         jTabbedPane5.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
+        jPanel24.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel24.setForeground(new java.awt.Color(255, 255, 255));
         jPanel24.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        bankRequestsTable.setBackground(new java.awt.Color(0, 0, 0));
+        bankRequestsTable.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
         bankRequestsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -905,9 +1044,12 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel24.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 630, 270));
 
         jLabel33.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
         jLabel33.setText("Bank requests");
         jPanel24.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
 
+        bankInProgressButton.setBackground(new java.awt.Color(102, 204, 255));
+        bankInProgressButton.setForeground(new java.awt.Color(255, 255, 255));
         bankInProgressButton.setText("In Progress");
         bankInProgressButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -916,6 +1058,8 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel24.add(bankInProgressButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, -1, -1));
 
+        bankApprovedButton.setBackground(new java.awt.Color(102, 204, 255));
+        bankApprovedButton.setForeground(new java.awt.Color(255, 255, 255));
         bankApprovedButton.setText("Approved");
         bankApprovedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -924,6 +1068,8 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel24.add(bankApprovedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, -1, -1));
 
+        bankDeniedButton.setBackground(new java.awt.Color(102, 204, 255));
+        bankDeniedButton.setForeground(new java.awt.Color(255, 255, 255));
         bankDeniedButton.setText("Denied");
         bankDeniedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -942,8 +1088,12 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("Bank Requests", jPanel24);
 
+        jPanel25.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel25.setForeground(new java.awt.Color(204, 204, 204));
         jPanel25.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        cardRequestsTable.setBackground(new java.awt.Color(0, 0, 0));
+        cardRequestsTable.setForeground(new java.awt.Color(255, 255, 255));
         cardRequestsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -969,10 +1119,14 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jPanel25.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 140, 670, 260));
 
+        jLabel32.setBackground(new java.awt.Color(255, 255, 255));
         jLabel32.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
         jLabel32.setText("Credit card requests");
         jPanel25.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
 
+        cardInProgressButton.setBackground(new java.awt.Color(102, 204, 255));
+        cardInProgressButton.setForeground(new java.awt.Color(255, 255, 255));
         cardInProgressButton.setText("In Progress");
         cardInProgressButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -981,6 +1135,8 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel25.add(cardInProgressButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, -1, -1));
 
+        cardApprovedButton.setBackground(new java.awt.Color(102, 204, 255));
+        cardApprovedButton.setForeground(new java.awt.Color(255, 255, 255));
         cardApprovedButton.setText("Approved");
         cardApprovedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -989,6 +1145,8 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel25.add(cardApprovedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, -1, -1));
 
+        cardDeniedButton.setBackground(new java.awt.Color(102, 204, 255));
+        cardDeniedButton.setForeground(new java.awt.Color(255, 255, 255));
         cardDeniedButton.setText("Denied");
         cardDeniedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -999,16 +1157,30 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("Credit card Requests", jPanel25);
 
+        jPanel26.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel26.setForeground(new java.awt.Color(204, 204, 204));
         jPanel26.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel34.setFont(new java.awt.Font("Josefin Sans", 0, 12)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(204, 204, 204));
         jLabel34.setText("Bank Id:");
         jPanel26.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
+
+        createBankIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createBankIdField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel26.add(createBankIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 110, -1));
 
+        jLabel35.setFont(new java.awt.Font("Josefin Sans", 0, 12)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(204, 204, 204));
         jLabel35.setText("Bank Name:");
         jPanel26.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
+
+        createBankNameField.setBackground(new java.awt.Color(0, 0, 0));
+        createBankNameField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel26.add(createBankNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 110, -1));
 
+        createBankButton.setBackground(new java.awt.Color(102, 204, 255));
+        createBankButton.setForeground(new java.awt.Color(255, 255, 255));
         createBankButton.setText("Create");
         createBankButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1017,24 +1189,45 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel26.add(createBankButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 220, -1));
 
+        jLabel37.setFont(new java.awt.Font("Josefin Sans", 0, 12)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(204, 204, 204));
         jLabel37.setText("Routing Number:");
         jPanel26.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
+
+        createBankRoutingNumberField.setBackground(new java.awt.Color(0, 0, 0));
+        createBankRoutingNumberField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel26.add(createBankRoutingNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 110, -1));
 
         jTabbedPane5.addTab("Create Bank", jPanel26);
 
+        jPanel27.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel27.setForeground(new java.awt.Color(204, 204, 204));
         jPanel27.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel36.setForeground(new java.awt.Color(204, 204, 204));
         jLabel36.setText("Bank Id:");
         jPanel27.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
+
+        updateBankIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateBankIdField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        updateBankIdField.setForeground(new java.awt.Color(204, 204, 204));
+        updateBankIdField.setToolTipText("");
         jPanel27.add(updateBankIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 110, -1));
 
+        updateBankNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateBankNameLabel.setText("Bank Name:");
         jPanel27.add(updateBankNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
         updateBankNameLabel.setVisible(false);
+
+        updateBankNameField.setBackground(new java.awt.Color(0, 0, 0));
+        updateBankNameField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        updateBankNameField.setForeground(new java.awt.Color(204, 204, 204));
+        updateBankNameField.setToolTipText("");
         jPanel27.add(updateBankNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 110, -1));
         updateBankNameField.setVisible(false);
 
+        updateBankButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateBankButton.setForeground(new java.awt.Color(255, 255, 255));
         updateBankButton.setText("Update");
         updateBankButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1044,6 +1237,8 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel27.add(updateBankButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 220, -1));
         updateBankButton.setVisible(false);
 
+        bankSearchButton.setBackground(new java.awt.Color(102, 204, 255));
+        bankSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         bankSearchButton.setText("Search");
         bankSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1051,21 +1246,33 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         jPanel27.add(bankSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
+
+        updateBankRoutingNumberField.setBackground(new java.awt.Color(0, 0, 0));
+        updateBankRoutingNumberField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        updateBankRoutingNumberField.setForeground(new java.awt.Color(204, 204, 204));
+        updateBankRoutingNumberField.setToolTipText("");
         jPanel27.add(updateBankRoutingNumberField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 110, -1));
         updateBankRoutingNumberField.setVisible(false);
 
+        updateBankRoutingNumberLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateBankRoutingNumberLabel.setText("Routing Number:");
         jPanel27.add(updateBankRoutingNumberLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
         updateBankRoutingNumberLabel.setVisible(false);
 
+        jLabel39.setForeground(new java.awt.Color(204, 204, 204));
         jLabel39.setText("Position:");
         jPanel27.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
 
+        bankPositionField.setBackground(new java.awt.Color(0, 0, 0));
+        bankPositionField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        bankPositionField.setForeground(new java.awt.Color(204, 204, 204));
+        bankPositionField.setToolTipText("");
         bankPositionField.setEnabled(false);
         jPanel27.add(bankPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 110, -1));
 
         jTabbedPane5.addTab("View/Update Bank", jPanel27);
 
+        jPanel28.setBackground(new java.awt.Color(51, 51, 51));
         jPanel28.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel38.setText("Bank Id:");
@@ -1082,16 +1289,29 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("Delete Bank", jPanel28);
 
+        jPanel29.setBackground(new java.awt.Color(51, 51, 51));
         jPanel29.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel40.setForeground(new java.awt.Color(204, 204, 204));
         jLabel40.setText("Card Id:");
         jPanel29.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+
+        createCardIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createCardIdField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        createCardIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel29.add(createCardIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 110, -1));
 
+        jLabel41.setForeground(new java.awt.Color(204, 204, 204));
         jLabel41.setText("Card Name:");
         jPanel29.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, -1));
+
+        createCardNameField.setBackground(new java.awt.Color(0, 0, 0));
+        createCardNameField.setFont(new java.awt.Font("Montserrat", 0, 12)); // NOI18N
+        createCardNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel29.add(createCardNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 110, -1));
 
+        createCardButton.setBackground(new java.awt.Color(102, 204, 255));
+        createCardButton.setForeground(new java.awt.Color(255, 255, 255));
         createCardButton.setText("Create");
         createCardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1102,18 +1322,31 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("Create credit card", jPanel29);
 
+        jPanel30.setBackground(new java.awt.Color(51, 51, 51));
         jPanel30.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        updateCardIdLabel.setBackground(new java.awt.Color(204, 204, 204));
+        updateCardIdLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateCardIdLabel.setText("Card Id:");
         jPanel30.add(updateCardIdLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+
+        updateCardIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateCardIdField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel30.add(updateCardIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 110, -1));
 
+        updateCardNameLabel.setBackground(new java.awt.Color(204, 204, 204));
+        updateCardNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateCardNameLabel.setText("Card Name:");
         jPanel30.add(updateCardNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, -1, -1));
         updateCardNameLabel.setVisible(false);
+
+        updateCardNameField.setBackground(new java.awt.Color(0, 0, 0));
+        updateCardNameField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel30.add(updateCardNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 110, -1));
         updateCardNameField.setVisible(false);
 
+        updateCardButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateCardButton.setForeground(new java.awt.Color(255, 255, 255));
         updateCardButton.setText("Update");
         updateCardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1123,6 +1356,8 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel30.add(updateCardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 220, -1));
         updateCardButton.setVisible(false);
 
+        searchCardButton.setBackground(new java.awt.Color(102, 204, 255));
+        searchCardButton.setForeground(new java.awt.Color(255, 255, 255));
         searchCardButton.setText("Search");
         searchCardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1131,20 +1366,31 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel30.add(searchCardButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
 
+        jLabel44.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel44.setForeground(new java.awt.Color(204, 204, 204));
         jLabel44.setText("Position:");
         jPanel30.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
 
+        cardPositionField.setBackground(new java.awt.Color(0, 0, 0));
+        cardPositionField.setForeground(new java.awt.Color(255, 255, 255));
         cardPositionField.setEnabled(false);
         jPanel30.add(cardPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 110, -1));
 
         jTabbedPane5.addTab("View/Update Credit card", jPanel30);
 
+        jPanel31.setBackground(new java.awt.Color(51, 51, 51));
         jPanel31.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        updateCardIdLabel1.setForeground(new java.awt.Color(204, 204, 204));
         updateCardIdLabel1.setText("Card Id:");
         jPanel31.add(updateCardIdLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
+
+        deleteCardIdField.setBackground(new java.awt.Color(0, 0, 0));
+        deleteCardIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel31.add(deleteCardIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 110, -1));
 
+        deleteCardButton.setBackground(new java.awt.Color(102, 204, 255));
+        deleteCardButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteCardButton.setText("Delete");
         deleteCardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1159,24 +1405,39 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Banking Admin", jPanel2);
 
+        jTabbedPane2.setBackground(new java.awt.Color(51, 51, 51));
+        jTabbedPane2.setForeground(new java.awt.Color(204, 204, 204));
         jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
+        jPanel12.setBackground(new java.awt.Color(51, 51, 51));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("Bus Id:");
         jPanel12.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+
+        createBusIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createBusIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel12.add(createBusIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
 
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
         jLabel7.setText("Bus Name:");
         jPanel12.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+
+        createBusNameField.setBackground(new java.awt.Color(0, 0, 0));
+        createBusNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel12.add(createBusNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
 
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
         jLabel8.setText("From city:");
         jPanel12.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
 
+        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
         jLabel9.setText("To city:");
         jPanel12.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
 
+        createBusFromCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        createBusFromCityCombo.setForeground(new java.awt.Color(204, 204, 204));
         createBusFromCityCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 createBusFromCityComboItemStateChanged(evt);
@@ -1184,24 +1445,44 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel12.add(createBusFromCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
 
+        createBusToCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        createBusToCityCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel12.add(createBusToCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
 
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
         jLabel10.setText("Start At:");
         jPanel12.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, -1));
+
+        createBusStartAtField.setBackground(new java.awt.Color(0, 0, 0));
+        createBusStartAtField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel12.add(createBusStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 120, -1));
 
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
         jLabel11.setText("Reach At:");
         jPanel12.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+
+        createBusReachAtField.setBackground(new java.awt.Color(0, 0, 0));
+        createBusReachAtField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel12.add(createBusReachAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 120, -1));
 
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setText("Fare:");
         jPanel12.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
+
+        createBusFareField.setBackground(new java.awt.Color(0, 0, 0));
+        createBusFareField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel12.add(createBusFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 120, -1));
 
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setText("Travel date:");
         jPanel12.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
+
+        createBusTravelDateField.setBackground(new java.awt.Color(0, 0, 0));
+        createBusTravelDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel12.add(createBusTravelDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 120, -1));
 
+        createBusButton.setBackground(new java.awt.Color(102, 204, 255));
+        createBusButton.setForeground(new java.awt.Color(255, 255, 255));
         createBusButton.setText("Create");
         createBusButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1220,22 +1501,34 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Create Buses", jPanel12);
 
+        jPanel13.setBackground(new java.awt.Color(51, 51, 51));
         jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel15.setForeground(new java.awt.Color(204, 204, 204));
         jLabel15.setText("Bus Id:");
         jPanel13.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+
+        updateBusIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateBusIdField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel13.add(updateBusIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
 
+        updateBusNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateBusNameLabel.setText("Bus Name:");
         jPanel13.add(updateBusNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
         updateBusNameLabel.setVisible(false);
+
+        updateBusNameField.setBackground(new java.awt.Color(0, 0, 0));
+        updateBusNameField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel13.add(updateBusNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
         updateBusNameField.setVisible(false);
 
+        updateBusFromCityLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateBusFromCityLabel.setText("From city:");
         jPanel13.add(updateBusFromCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
         updateBusFromCityLabel.setVisible(false);
 
+        updateBusFromCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        updateBusFromCityCombo.setForeground(new java.awt.Color(255, 255, 255));
         updateBusFromCityCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 updateBusFromCityComboItemStateChanged(evt);
@@ -1244,37 +1537,58 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel13.add(updateBusFromCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
         updateBusFromCityCombo.setVisible(false);
 
+        updateBusToCityLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateBusToCityLabel.setText("To city:");
         jPanel13.add(updateBusToCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
         updateBusToCityLabel.setVisible(false);
 
+        updateBusToCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        updateBusToCityCombo.setForeground(new java.awt.Color(255, 255, 255));
         jPanel13.add(updateBusToCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
         updateBusToCityCombo.setVisible(false);
 
+        updateBusStartAtLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateBusStartAtLabel.setText("Start At:");
         jPanel13.add(updateBusStartAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, -1));
         updateBusStartAtLabel.setVisible(false);
+
+        updateBusStartAtField.setBackground(new java.awt.Color(0, 0, 0));
+        updateBusStartAtField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel13.add(updateBusStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 120, -1));
         updateBusStartAtField.setVisible(false);
 
+        updateBusReachAtLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateBusReachAtLabel.setText("Reach At:");
         jPanel13.add(updateBusReachAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
         updateBusReachAtLabel.setVisible(false);
+
+        updateBusReachAtField.setBackground(new java.awt.Color(0, 0, 0));
+        updateBusReachAtField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel13.add(updateBusReachAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 120, -1));
         updateBusReachAtField.setVisible(false);
 
+        updateBusFareLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateBusFareLabel.setText("Fare:");
         jPanel13.add(updateBusFareLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
         updateBusFareLabel.setVisible(false);
+
+        updateBusFareField.setBackground(new java.awt.Color(0, 0, 0));
+        updateBusFareField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel13.add(updateBusFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 120, -1));
         updateBusFareField.setVisible(false);
 
+        updateBusTravelDateLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateBusTravelDateLabel.setText("Travel date:");
         jPanel13.add(updateBusTravelDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
         updateBusTravelDateLabel.setVisible(false);
+
+        updateBusTravelDateField.setBackground(new java.awt.Color(0, 0, 0));
+        updateBusTravelDateField.setForeground(new java.awt.Color(255, 255, 255));
         jPanel13.add(updateBusTravelDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 120, -1));
         updateBusTravelDateField.setVisible(false);
 
+        updateBusButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateBusButton.setForeground(new java.awt.Color(255, 255, 255));
         updateBusButton.setText("Update");
         updateBusButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1284,6 +1598,8 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel13.add(updateBusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 210, -1));
         updateBusButton.setVisible(false);
 
+        updateBusSearchButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateBusSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         updateBusSearchButton.setText("Search");
         updateBusSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1292,20 +1608,35 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel13.add(updateBusSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
 
+        jLabel16.setForeground(new java.awt.Color(204, 204, 204));
         jLabel16.setText("Position:");
         jPanel13.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
 
+        busPositionField.setBackground(new java.awt.Color(0, 0, 0));
+        busPositionField.setForeground(new java.awt.Color(255, 255, 255));
         busPositionField.setEnabled(false);
         jPanel13.add(busPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 120, -1));
 
         jTabbedPane2.addTab("View/Update Buses", jPanel13);
 
+        jPanel14.setBackground(new java.awt.Color(51, 51, 51));
         jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel14.setForeground(new java.awt.Color(204, 204, 204));
         jLabel14.setText("Bus Id:");
         jPanel14.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 137, -1, -1));
+
+        deleteBusIdField.setBackground(new java.awt.Color(0, 0, 0));
+        deleteBusIdField.setForeground(new java.awt.Color(204, 204, 204));
+        deleteBusIdField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBusIdFieldActionPerformed(evt);
+            }
+        });
         jPanel14.add(deleteBusIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 130, -1));
 
+        deleteBusButton.setBackground(new java.awt.Color(102, 204, 255));
+        deleteBusButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteBusButton.setText("Delete");
         deleteBusButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1329,20 +1660,31 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Bus Admin", jPanel3);
 
+        jTabbedPane7.setBackground(new java.awt.Color(51, 51, 51));
+        jTabbedPane7.setForeground(new java.awt.Color(204, 204, 204));
         jTabbedPane7.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
+        jPanel37.setBackground(new java.awt.Color(51, 51, 51));
         jPanel37.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel63.setForeground(new java.awt.Color(204, 204, 204));
         jLabel63.setText("Train Id:");
         jPanel37.add(jLabel63, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+
+        createTrainIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createTrainIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel37.add(createTrainIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
 
+        jLabel64.setForeground(new java.awt.Color(204, 204, 204));
         jLabel64.setText("From city:");
         jPanel37.add(jLabel64, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
 
+        jLabel65.setForeground(new java.awt.Color(204, 204, 204));
         jLabel65.setText("To city:");
         jPanel37.add(jLabel65, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
 
+        createTrainFromCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        createTrainFromCityCombo.setForeground(new java.awt.Color(204, 204, 204));
         createTrainFromCityCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 createTrainFromCityComboItemStateChanged(evt);
@@ -1350,24 +1692,44 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel37.add(createTrainFromCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
 
+        createTrainToCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        createTrainToCityCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel37.add(createTrainToCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
 
+        jLabel70.setForeground(new java.awt.Color(204, 204, 204));
         jLabel70.setText("Start At:");
         jPanel37.add(jLabel70, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, -1));
+
+        createTrainStartAtField.setBackground(new java.awt.Color(0, 0, 0));
+        createTrainStartAtField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel37.add(createTrainStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 120, -1));
 
+        jLabel71.setForeground(new java.awt.Color(204, 204, 204));
         jLabel71.setText("Reach At:");
         jPanel37.add(jLabel71, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+
+        createTrainReachAtField.setBackground(new java.awt.Color(0, 0, 0));
+        createTrainReachAtField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel37.add(createTrainReachAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 120, -1));
 
+        jLabel72.setForeground(new java.awt.Color(204, 204, 204));
         jLabel72.setText("Fare:");
         jPanel37.add(jLabel72, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
+
+        createTrainFareField.setBackground(new java.awt.Color(0, 0, 0));
+        createTrainFareField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel37.add(createTrainFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 120, -1));
 
+        jLabel73.setForeground(new java.awt.Color(204, 204, 204));
         jLabel73.setText("Travel date:");
         jPanel37.add(jLabel73, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
+
+        createTrainTravelDateField.setBackground(new java.awt.Color(0, 0, 0));
+        createTrainTravelDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel37.add(createTrainTravelDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 120, -1));
 
+        createTrainButton.setBackground(new java.awt.Color(102, 204, 255));
+        createTrainButton.setForeground(new java.awt.Color(255, 255, 255));
         createTrainButton.setText("Create");
         createTrainButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1386,16 +1748,24 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane7.addTab("Create Trains", jPanel37);
 
+        jPanel38.setBackground(new java.awt.Color(51, 51, 51));
         jPanel38.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel74.setForeground(new java.awt.Color(204, 204, 204));
         jLabel74.setText("Train Id:");
         jPanel38.add(jLabel74, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+
+        updateTrainIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateTrainIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel38.add(updateTrainIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
 
+        updateTrainFromCityLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateTrainFromCityLabel.setText("From city:");
         jPanel38.add(updateTrainFromCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
         updateTrainFromCityLabel.setVisible(false);
 
+        updateTrainFromCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        updateTrainFromCityCombo.setForeground(new java.awt.Color(204, 204, 204));
         updateTrainFromCityCombo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 updateTrainFromCityComboItemStateChanged(evt);
@@ -1404,37 +1774,58 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel38.add(updateTrainFromCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
         updateTrainFromCityCombo.setVisible(false);
 
+        updateTrainToCityLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateTrainToCityLabel.setText("To city:");
         jPanel38.add(updateTrainToCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
         updateTrainToCityLabel.setVisible(false);
 
+        updateTrainToCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        updateTrainToCityCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel38.add(updateTrainToCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
         updateTrainToCityCombo.setVisible(false);
 
+        updateTrainStartAtLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateTrainStartAtLabel.setText("Start At:");
         jPanel38.add(updateTrainStartAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, -1, -1));
         updateTrainStartAtLabel.setVisible(false);
+
+        updateTrainStartAtField.setBackground(new java.awt.Color(0, 0, 0));
+        updateTrainStartAtField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel38.add(updateTrainStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 310, 120, -1));
         updateTrainStartAtField.setVisible(false);
 
+        updateTrainReachAtLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateTrainReachAtLabel.setText("Reach At:");
         jPanel38.add(updateTrainReachAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
         updateTrainReachAtLabel.setVisible(false);
+
+        updateTrainReachAtField.setBackground(new java.awt.Color(0, 0, 0));
+        updateTrainReachAtField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel38.add(updateTrainReachAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 120, -1));
         updateTrainReachAtField.setVisible(false);
 
+        updateTrainFareLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateTrainFareLabel.setText("Fare:");
         jPanel38.add(updateTrainFareLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 410, -1, -1));
         updateTrainFareLabel.setVisible(false);
+
+        updateTrainFareField.setBackground(new java.awt.Color(0, 0, 0));
+        updateTrainFareField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel38.add(updateTrainFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, 120, -1));
         updateTrainFareField.setVisible(false);
 
+        updateTrainTravelDateLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateTrainTravelDateLabel.setText("Travel date:");
         jPanel38.add(updateTrainTravelDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, -1, -1));
         updateTrainTravelDateLabel.setVisible(false);
+
+        updateTrainTravelDateField.setBackground(new java.awt.Color(0, 0, 0));
+        updateTrainTravelDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel38.add(updateTrainTravelDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 120, -1));
         updateTrainTravelDateField.setVisible(false);
 
+        updateTrainButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateTrainButton.setForeground(new java.awt.Color(255, 255, 255));
         updateTrainButton.setText("Update");
         updateTrainButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1444,6 +1835,8 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel38.add(updateTrainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 210, -1));
         updateTrainButton.setVisible(false);
 
+        updateTrainSearchButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateTrainSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         updateTrainSearchButton.setText("Search");
         updateTrainSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1452,20 +1845,32 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel38.add(updateTrainSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, -1, -1));
 
+        jLabel75.setForeground(new java.awt.Color(204, 204, 204));
         jLabel75.setText("Position:");
         jPanel38.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
 
+        trainPositionField.setBackground(new java.awt.Color(0, 0, 0));
+        trainPositionField.setForeground(new java.awt.Color(204, 204, 204));
         trainPositionField.setEnabled(false);
         jPanel38.add(trainPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
 
         jTabbedPane7.addTab("View/Update Trains", jPanel38);
 
+        jPanel39.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel39.setForeground(new java.awt.Color(51, 51, 51));
         jPanel39.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel76.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel76.setForeground(new java.awt.Color(204, 204, 204));
         jLabel76.setText("Train Id:");
         jPanel39.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 137, -1, -1));
+
+        deleteTrainIdField.setBackground(new java.awt.Color(0, 0, 0));
+        deleteTrainIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel39.add(deleteTrainIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 130, -1));
 
+        deleteTrainButton.setBackground(new java.awt.Color(102, 204, 255));
+        deleteTrainButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteTrainButton.setText("Delete");
         deleteTrainButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1491,18 +1896,31 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane4.setBackground(new java.awt.Color(51, 51, 51));
+        jTabbedPane4.setForeground(new java.awt.Color(204, 204, 204));
         jTabbedPane4.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
+        jPanel18.setBackground(new java.awt.Color(51, 51, 51));
         jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel17.setForeground(new java.awt.Color(204, 204, 204));
         jLabel17.setText("MSP Id:");
         jPanel18.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
 
+        jLabel18.setForeground(new java.awt.Color(204, 204, 204));
         jLabel18.setText("MSP Name:");
         jPanel18.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
+
+        createMSPIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createMSPIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel18.add(createMSPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 120, -1));
+
+        createMSPNameField.setBackground(new java.awt.Color(0, 0, 0));
+        createMSPNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel18.add(createMSPNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 120, -1));
 
+        createMSPButton.setBackground(new java.awt.Color(102, 204, 255));
+        createMSPButton.setForeground(new java.awt.Color(255, 255, 255));
         createMSPButton.setText("Create");
         createMSPButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1521,18 +1939,29 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Create MSP", jPanel18);
 
+        jPanel19.setBackground(new java.awt.Color(51, 51, 51));
         jPanel19.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel27.setForeground(new java.awt.Color(204, 204, 204));
         jLabel27.setText("MSP Id:");
         jPanel19.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, -1, -1));
+
+        updateMSPIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateMSPIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel19.add(updateMSPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 120, -1));
 
+        updateMSPNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateMSPNameLabel.setText("MSP Name:");
         jPanel19.add(updateMSPNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, -1, -1));
         updateMSPNameLabel.setVisible(false);
+
+        updateMSPNameField.setBackground(new java.awt.Color(0, 0, 0));
+        updateMSPNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel19.add(updateMSPNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 120, -1));
         updateMSPNameField.setVisible(false);
 
+        updateMSPButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateMSPButton.setForeground(new java.awt.Color(255, 255, 255));
         updateMSPButton.setText("Update");
         updateMSPButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1542,6 +1971,8 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel19.add(updateMSPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 230, -1));
         updateMSPButton.setVisible(false);
 
+        updateMSPIdSearchButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateMSPIdSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         updateMSPIdSearchButton.setText("Search");
         updateMSPIdSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1550,16 +1981,22 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel19.add(updateMSPIdSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, -1, -1));
 
+        jLabel28.setForeground(new java.awt.Color(204, 204, 204));
         jLabel28.setText("Position:");
         jPanel19.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, -1, -1));
 
+        MSPPositionField.setBackground(new java.awt.Color(0, 0, 0));
+        MSPPositionField.setForeground(new java.awt.Color(204, 204, 204));
         MSPPositionField.setEnabled(false);
         jPanel19.add(MSPPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 120, -1));
 
         jTabbedPane4.addTab("View/Update MSP", jPanel19);
 
+        jPanel20.setBackground(new java.awt.Color(51, 51, 51));
         jPanel20.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        deleteMSPButton.setBackground(new java.awt.Color(102, 204, 255));
+        deleteMSPButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteMSPButton.setText("Delete");
         deleteMSPButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1568,43 +2005,77 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel20.add(deleteMSPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 230, -1));
 
+        jLabel30.setForeground(new java.awt.Color(204, 204, 204));
         jLabel30.setText("MSP Id:");
         jPanel20.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+
+        deleteMSPIdField.setBackground(new java.awt.Color(0, 0, 0));
+        deleteMSPIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel20.add(deleteMSPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 200, 120, -1));
 
         jTabbedPane4.addTab("Delete MSP", jPanel20);
 
+        jPanel21.setBackground(new java.awt.Color(51, 51, 51));
         jPanel21.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel19.setForeground(new java.awt.Color(204, 204, 204));
         jLabel19.setText("MP Id:");
         jPanel21.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, -1, -1));
 
+        jLabel20.setForeground(new java.awt.Color(204, 204, 204));
         jLabel20.setText("MSP Name:");
         jPanel21.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
 
+        jLabel21.setForeground(new java.awt.Color(204, 204, 204));
         jLabel21.setText("Plan Name:");
         jPanel21.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
 
+        jLabel22.setForeground(new java.awt.Color(204, 204, 204));
         jLabel22.setText("Data:");
         jPanel21.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, -1, -1));
 
+        jLabel23.setForeground(new java.awt.Color(204, 204, 204));
         jLabel23.setText("Calls");
         jPanel21.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, -1));
 
+        jLabel24.setForeground(new java.awt.Color(204, 204, 204));
         jLabel24.setText("Validity:");
         jPanel21.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, -1));
 
+        jLabel25.setForeground(new java.awt.Color(204, 204, 204));
         jLabel25.setText("Price:");
         jPanel21.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, -1, -1));
+
+        createMPIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createMPIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel21.add(createMPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, 110, -1));
 
+        createMSPNameCombo.setBackground(new java.awt.Color(0, 0, 0));
+        createMSPNameCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel21.add(createMSPNameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 110, -1));
+
+        createPlanNameField.setBackground(new java.awt.Color(0, 0, 0));
+        createPlanNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel21.add(createPlanNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 110, -1));
+
+        createMPDataField.setBackground(new java.awt.Color(0, 0, 0));
+        createMPDataField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel21.add(createMPDataField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 270, 110, -1));
+
+        createMPCallsField.setBackground(new java.awt.Color(0, 0, 0));
+        createMPCallsField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel21.add(createMPCallsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 110, -1));
+
+        createMPValidityField.setBackground(new java.awt.Color(0, 0, 0));
+        createMPValidityField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel21.add(createMPValidityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 110, -1));
+
+        createMPPriceField.setBackground(new java.awt.Color(0, 0, 0));
+        createMPPriceField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel21.add(createMPPriceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 110, -1));
 
+        createMPButton.setBackground(new java.awt.Color(102, 204, 255));
+        createMPButton.setForeground(new java.awt.Color(255, 255, 255));
         createMPButton.setText("Create");
         createMPButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1615,8 +2086,11 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Create Mobile Plan", jPanel21);
 
+        jPanel22.setBackground(new java.awt.Color(51, 51, 51));
         jPanel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        updateMPIdSearchButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateMPIdSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         updateMPIdSearchButton.setText("Search");
         updateMPIdSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1625,47 +2099,76 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel22.add(updateMPIdSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 130, -1, -1));
 
+        jLabel26.setForeground(new java.awt.Color(204, 204, 204));
         jLabel26.setText("MP Id:");
         jPanel22.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
+
+        updateMPIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateMPIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel22.add(updateMPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 110, -1));
 
+        updateMSPNameComboLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateMSPNameComboLabel.setText("MSP Name:");
         jPanel22.add(updateMSPNameComboLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, -1, -1));
         updateMSPNameComboLabel.setVisible(false);
 
+        updateMSPNameCombo.setBackground(new java.awt.Color(0, 0, 0));
+        updateMSPNameCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel22.add(updateMSPNameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 110, -1));
         updateMSPNameCombo.setVisible(false);
 
+        updatePlanNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         updatePlanNameLabel.setText("Plan Name:");
         jPanel22.add(updatePlanNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
         updatePlanNameLabel.setVisible(false);
+
+        updatePlanNameField.setBackground(new java.awt.Color(0, 0, 0));
+        updatePlanNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel22.add(updatePlanNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 110, -1));
         updatePlanNameField.setVisible(false);
 
+        updateMPDataLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateMPDataLabel.setText("Data:");
         jPanel22.add(updateMPDataLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, -1, -1));
         updateMPDataLabel.setVisible(false);
+
+        updateMPDataField.setBackground(new java.awt.Color(0, 0, 0));
+        updateMPDataField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel22.add(updateMPDataField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 110, -1));
         updateMPDataField.setVisible(false);
 
+        updateMPCallsLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateMPCallsLabel.setText("Calls");
         jPanel22.add(updateMPCallsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, -1, -1));
         updateMPCallsLabel.setVisible(false);
+
+        updateMPCallsField.setBackground(new java.awt.Color(0, 0, 0));
+        updateMPCallsField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel22.add(updateMPCallsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, 110, -1));
         updateMPCallsField.setVisible(false);
 
+        updateMPValidityLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateMPValidityLabel.setText("Validity:");
         jPanel22.add(updateMPValidityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, -1, -1));
         updateMPValidityLabel.setVisible(false);
+
+        updateMPValidityField.setBackground(new java.awt.Color(0, 0, 0));
+        updateMPValidityField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel22.add(updateMPValidityField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, 110, -1));
         updateMPValidityField.setVisible(false);
 
+        updateMPPriceLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateMPPriceLabel.setText("Price:");
         jPanel22.add(updateMPPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 430, -1, -1));
         updateMPPriceLabel.setVisible(false);
+
+        updateMPPriceField.setBackground(new java.awt.Color(0, 0, 0));
+        updateMPPriceField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel22.add(updateMPPriceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 110, -1));
         updateMPPriceField.setVisible(false);
 
+        updateMPButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateMPButton.setForeground(new java.awt.Color(255, 255, 255));
         updateMPButton.setText("Update");
         updateMPButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1675,20 +2178,30 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel22.add(updateMPButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 200, -1));
         updateMPButton.setVisible(false);
 
+        jLabel29.setForeground(new java.awt.Color(204, 204, 204));
         jLabel29.setText("Position:");
         jPanel22.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
 
+        MPPositionField.setBackground(new java.awt.Color(0, 0, 0));
+        MPPositionField.setForeground(new java.awt.Color(204, 204, 204));
         MPPositionField.setEnabled(false);
         jPanel22.add(MPPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 110, -1));
 
         jTabbedPane4.addTab("View/Update Mobile Plan", jPanel22);
 
+        jPanel23.setBackground(new java.awt.Color(51, 51, 51));
         jPanel23.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel31.setForeground(new java.awt.Color(204, 204, 204));
         jLabel31.setText("MP Id:");
         jPanel23.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
+
+        deleteMPIdField.setBackground(new java.awt.Color(0, 0, 0));
+        deleteMPIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel23.add(deleteMPIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 220, 110, -1));
 
+        deleteMPButton.setBackground(new java.awt.Color(102, 204, 255));
+        deleteMPButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteMPButton.setText("Delete");
         deleteMPButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1705,14 +2218,21 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTabbedPane6.setBackground(new java.awt.Color(51, 51, 51));
+        jTabbedPane6.setForeground(new java.awt.Color(204, 204, 204));
         jTabbedPane6.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
+        jPanel32.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel32.setForeground(new java.awt.Color(51, 51, 51));
         jPanel32.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel42.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(255, 255, 255));
         jLabel42.setText("Address requests");
         jPanel32.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
 
+        addressRequestsTable.setBackground(new java.awt.Color(0, 0, 0));
+        addressRequestsTable.setForeground(new java.awt.Color(204, 204, 204));
         addressRequestsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1738,6 +2258,8 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jPanel32.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 630, 270));
 
+        addressInProgressButton.setBackground(new java.awt.Color(102, 204, 255));
+        addressInProgressButton.setForeground(new java.awt.Color(255, 255, 255));
         addressInProgressButton.setText("In Progress");
         addressInProgressButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1746,6 +2268,8 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel32.add(addressInProgressButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, -1, -1));
 
+        addressApprovedButton.setBackground(new java.awt.Color(102, 204, 255));
+        addressApprovedButton.setForeground(new java.awt.Color(255, 255, 255));
         addressApprovedButton.setText("Approved");
         addressApprovedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1754,6 +2278,8 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel32.add(addressApprovedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, -1, -1));
 
+        addressDeniedButton.setBackground(new java.awt.Color(102, 204, 255));
+        addressDeniedButton.setForeground(new java.awt.Color(255, 255, 255));
         addressDeniedButton.setText("Denied");
         addressDeniedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1772,8 +2298,11 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane6.addTab("Address Requests", jPanel32);
 
+        jPanel33.setBackground(new java.awt.Color(51, 51, 51));
         jPanel33.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        addressesTable.setBackground(new java.awt.Color(0, 0, 0));
+        addressesTable.setForeground(new java.awt.Color(204, 204, 204));
         addressesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -1800,9 +2329,12 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel33.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 630, 270));
 
         jLabel43.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel43.setForeground(new java.awt.Color(204, 204, 204));
         jLabel43.setText("Addresses");
         jPanel33.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
 
+        addressRefreshButton.setBackground(new java.awt.Color(102, 204, 255));
+        addressRefreshButton.setForeground(new java.awt.Color(255, 255, 255));
         addressRefreshButton.setText("Refresh");
         addressRefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1813,29 +2345,51 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane6.addTab("Addresses", jPanel33);
 
+        jPanel34.setBackground(new java.awt.Color(51, 51, 51));
         jPanel34.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel45.setForeground(new java.awt.Color(204, 204, 204));
         jLabel45.setText("User Id:");
         jPanel34.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
 
+        elecBilluserIdCombo.setBackground(new java.awt.Color(0, 0, 0));
+        elecBilluserIdCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel34.add(elecBilluserIdCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 100, -1));
 
+        jLabel46.setForeground(new java.awt.Color(204, 204, 204));
         jLabel46.setText("Billing date:");
         jPanel34.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+
+        elecBillBillingDateField.setBackground(new java.awt.Color(0, 0, 0));
+        elecBillBillingDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel34.add(elecBillBillingDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 100, -1));
 
+        jLabel47.setForeground(new java.awt.Color(204, 204, 204));
         jLabel47.setText("Total KWatts:");
         jPanel34.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+
+        elecBillTotalKWattsField.setBackground(new java.awt.Color(0, 0, 0));
+        elecBillTotalKWattsField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel34.add(elecBillTotalKWattsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 100, -1));
 
+        jLabel48.setForeground(new java.awt.Color(204, 204, 204));
         jLabel48.setText("Amount:");
         jPanel34.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
+
+        elecBillAmountField.setBackground(new java.awt.Color(0, 0, 0));
+        elecBillAmountField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel34.add(elecBillAmountField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 100, -1));
 
+        jLabel49.setForeground(new java.awt.Color(204, 204, 204));
         jLabel49.setText("Due date:");
         jPanel34.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
+
+        elecBillDueDateField.setBackground(new java.awt.Color(0, 0, 0));
+        elecBillDueDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel34.add(elecBillDueDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 100, -1));
 
+        elecBillSendButton.setBackground(new java.awt.Color(102, 204, 255));
+        elecBillSendButton.setForeground(new java.awt.Color(255, 255, 255));
         elecBillSendButton.setText("Send bill");
         elecBillSendButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1846,29 +2400,51 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane6.addTab("Electricity bill", jPanel34);
 
+        jPanel35.setBackground(new java.awt.Color(51, 51, 51));
         jPanel35.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel50.setForeground(new java.awt.Color(204, 204, 204));
         jLabel50.setText("User Id:");
         jPanel35.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
 
+        waterBilluserIdCombo.setBackground(new java.awt.Color(0, 0, 0));
+        waterBilluserIdCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel35.add(waterBilluserIdCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 100, -1));
 
+        jLabel51.setForeground(new java.awt.Color(204, 204, 204));
         jLabel51.setText("Billing date:");
         jPanel35.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+
+        waterBillBillingDateField.setBackground(new java.awt.Color(0, 0, 0));
+        waterBillBillingDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel35.add(waterBillBillingDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 100, -1));
 
+        jLabel52.setForeground(new java.awt.Color(204, 204, 204));
         jLabel52.setText("Total Gallons:");
         jPanel35.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+
+        waterBillTotalGallonsField.setBackground(new java.awt.Color(0, 0, 0));
+        waterBillTotalGallonsField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel35.add(waterBillTotalGallonsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 100, -1));
 
+        jLabel53.setForeground(new java.awt.Color(204, 204, 204));
         jLabel53.setText("Amount:");
         jPanel35.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
+
+        waterBillAmountField.setBackground(new java.awt.Color(0, 0, 0));
+        waterBillAmountField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel35.add(waterBillAmountField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 100, -1));
 
+        jLabel54.setForeground(new java.awt.Color(204, 204, 204));
         jLabel54.setText("Due date:");
         jPanel35.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
+
+        waterBillDueDateField.setBackground(new java.awt.Color(0, 0, 0));
+        waterBillDueDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel35.add(waterBillDueDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 100, -1));
 
+        waterBillSendButton.setBackground(new java.awt.Color(102, 204, 255));
+        waterBillSendButton.setForeground(new java.awt.Color(255, 255, 255));
         waterBillSendButton.setText("Send bill");
         waterBillSendButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1879,29 +2455,56 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane6.addTab("Water bill", jPanel35);
 
+        jPanel36.setBackground(new java.awt.Color(51, 51, 51));
         jPanel36.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel55.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel55.setForeground(new java.awt.Color(204, 204, 204));
         jLabel55.setText("User Id:");
         jPanel36.add(jLabel55, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
 
+        gasBilluserIdCombo.setBackground(new java.awt.Color(0, 0, 0));
+        gasBilluserIdCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel36.add(gasBilluserIdCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 100, -1));
 
+        jLabel56.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel56.setForeground(new java.awt.Color(204, 204, 204));
         jLabel56.setText("Billing date:");
         jPanel36.add(jLabel56, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
+
+        gasBillBillingDateField.setBackground(new java.awt.Color(0, 0, 0));
+        gasBillBillingDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel36.add(gasBillBillingDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 100, -1));
 
+        jLabel57.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel57.setForeground(new java.awt.Color(204, 204, 204));
         jLabel57.setText("Total Gallons:");
         jPanel36.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+
+        gasBillTotalGallonsField.setBackground(new java.awt.Color(0, 0, 0));
+        gasBillTotalGallonsField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel36.add(gasBillTotalGallonsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 100, -1));
 
+        jLabel58.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel58.setForeground(new java.awt.Color(204, 204, 204));
         jLabel58.setText("Amount:");
         jPanel36.add(jLabel58, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, -1, -1));
+
+        gasBillAmountField.setBackground(new java.awt.Color(0, 0, 0));
+        gasBillAmountField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel36.add(gasBillAmountField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 100, -1));
 
+        jLabel59.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel59.setForeground(new java.awt.Color(204, 204, 204));
         jLabel59.setText("Due date:");
         jPanel36.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, -1));
+
+        gasBillDueDateField.setBackground(new java.awt.Color(0, 0, 0));
+        gasBillDueDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel36.add(gasBillDueDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 100, -1));
 
+        gasBillSendButton.setBackground(new java.awt.Color(102, 204, 255));
+        gasBillSendButton.setForeground(new java.awt.Color(255, 255, 255));
         gasBillSendButton.setText("Send bill");
         gasBillSendButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1916,39 +2519,79 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Utilities Admin", jPanel6);
 
+        jTabbedPane8.setBackground(new java.awt.Color(51, 51, 51));
+        jTabbedPane8.setForeground(new java.awt.Color(204, 204, 204));
         jTabbedPane8.setTabPlacement(javax.swing.JTabbedPane.LEFT);
 
+        jPanel40.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel40.setForeground(new java.awt.Color(204, 204, 204));
         jPanel40.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel77.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel77.setForeground(new java.awt.Color(204, 204, 204));
         jLabel77.setText("Event Id:");
         jPanel40.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+
+        createEventIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createEventIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel40.add(createEventIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
 
+        jLabel78.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel78.setForeground(new java.awt.Color(204, 204, 204));
         jLabel78.setText("Event Name:");
         jPanel40.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+
+        createEventNameField.setBackground(new java.awt.Color(0, 0, 0));
+        createEventNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel40.add(createEventNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
 
+        jLabel79.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel79.setForeground(new java.awt.Color(204, 204, 204));
         jLabel79.setText("Event city:");
         jPanel40.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
 
+        createEventCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        createEventCityCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel40.add(createEventCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
 
+        jLabel80.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel80.setForeground(new java.awt.Color(204, 204, 204));
         jLabel80.setText("Start At:");
         jPanel40.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+
+        createEventStartAtField.setBackground(new java.awt.Color(0, 0, 0));
+        createEventStartAtField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel40.add(createEventStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
 
+        jLabel81.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel81.setForeground(new java.awt.Color(204, 204, 204));
         jLabel81.setText("End At:");
         jPanel40.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, -1, -1));
+
+        createEventEndAtField.setBackground(new java.awt.Color(0, 0, 0));
+        createEventEndAtField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel40.add(createEventEndAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 120, -1));
 
+        jLabel82.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel82.setForeground(new java.awt.Color(204, 204, 204));
         jLabel82.setText("Price:");
         jPanel40.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, -1, -1));
+
+        createEventFareField.setBackground(new java.awt.Color(0, 0, 0));
+        createEventFareField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel40.add(createEventFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 120, -1));
 
+        jLabel83.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel83.setForeground(new java.awt.Color(204, 204, 204));
         jLabel83.setText("Event date:");
         jPanel40.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, -1, -1));
+
+        createEventTravelDateField.setBackground(new java.awt.Color(0, 0, 0));
+        createEventTravelDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel40.add(createEventTravelDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 120, -1));
 
+        createEventButton.setBackground(new java.awt.Color(102, 204, 255));
+        createEventButton.setForeground(new java.awt.Color(255, 255, 255));
         createEventButton.setText("Create");
         createEventButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1967,49 +2610,80 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane8.addTab("Create Events", jPanel40);
 
+        jPanel41.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel41.setForeground(new java.awt.Color(204, 204, 204));
         jPanel41.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel84.setForeground(new java.awt.Color(204, 204, 204));
         jLabel84.setText("Event Id:");
         jPanel41.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+
+        updateEventIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateEventIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel41.add(updateEventIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
 
+        updateEventNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateEventNameLabel.setText("Event Name:");
         jPanel41.add(updateEventNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
         updateEventNameLabel.setVisible(false);
+
+        updateEventNameField.setBackground(new java.awt.Color(0, 0, 0));
+        updateEventNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel41.add(updateEventNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
         updateEventNameField.setVisible(false);
 
+        updateEventCityLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateEventCityLabel.setText("Event city:");
         jPanel41.add(updateEventCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
         updateEventCityLabel.setVisible(false);
 
+        updateEventCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        updateEventCityCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel41.add(updateEventCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
         updateEventCityCombo.setVisible(false);
 
+        updateEventStartAtLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateEventStartAtLabel.setText("Start At:");
         jPanel41.add(updateEventStartAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
         updateEventStartAtLabel.setVisible(false);
+
+        updateEventStartAtField.setBackground(new java.awt.Color(0, 0, 0));
+        updateEventStartAtField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel41.add(updateEventStartAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
         updateEventStartAtField.setVisible(false);
 
+        updateEventEndAtLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateEventEndAtLabel.setText("End At:");
         jPanel41.add(updateEventEndAtLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, 30));
         updateEventEndAtLabel.setVisible(false);
+
+        updateEventEndAtField.setBackground(new java.awt.Color(0, 0, 0));
+        updateEventEndAtField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel41.add(updateEventEndAtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, 120, -1));
         updateEventEndAtField.setVisible(false);
 
+        updateEventFareLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateEventFareLabel.setText("Price:");
         jPanel41.add(updateEventFareLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, -1, -1));
         updateEventFareLabel.setVisible(false);
+
+        updateEventFareField.setBackground(new java.awt.Color(0, 0, 0));
+        updateEventFareField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel41.add(updateEventFareField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 120, -1));
         updateEventFareField.setVisible(false);
 
+        updateEventDateLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateEventDateLabel.setText("Event date:");
         jPanel41.add(updateEventDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, -1, -1));
         updateEventDateLabel.setVisible(false);
+
+        updateEventDateField.setBackground(new java.awt.Color(0, 0, 0));
+        updateEventDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel41.add(updateEventDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, 120, -1));
         updateEventDateField.setVisible(false);
 
+        updateEventButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateEventButton.setForeground(new java.awt.Color(255, 255, 255));
         updateEventButton.setText("Update");
         updateEventButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2019,6 +2693,8 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel41.add(updateEventButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, 210, -1));
         updateEventButton.setVisible(false);
 
+        updateEventSearchButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateEventSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         updateEventSearchButton.setText("Search");
         updateEventSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2027,20 +2703,30 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel41.add(updateEventSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 100, -1, -1));
 
+        jLabel85.setForeground(new java.awt.Color(204, 204, 204));
         jLabel85.setText("Position:");
         jPanel41.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
 
+        eventPositionField.setBackground(new java.awt.Color(0, 0, 0));
+        eventPositionField.setForeground(new java.awt.Color(204, 204, 204));
         eventPositionField.setEnabled(false);
         jPanel41.add(eventPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 120, -1));
 
         jTabbedPane8.addTab("View/Update Events", jPanel41);
 
+        jPanel42.setBackground(new java.awt.Color(51, 51, 51));
         jPanel42.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel86.setForeground(new java.awt.Color(204, 204, 204));
         jLabel86.setText("Event Id:");
         jPanel42.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, -1, -1));
+
+        deleteEventIdField.setBackground(new java.awt.Color(0, 0, 0));
+        deleteEventIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel42.add(deleteEventIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 130, -1));
 
+        deleteEventButton.setBackground(new java.awt.Color(102, 204, 255));
+        deleteEventButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteEventButton.setText("Delete");
         deleteEventButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2064,21 +2750,35 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Events Admin", jPanel7);
 
+        jTabbedPane9.setBackground(new java.awt.Color(51, 51, 51));
+        jTabbedPane9.setForeground(new java.awt.Color(204, 204, 204));
         jTabbedPane9.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane9.setPreferredSize(new java.awt.Dimension(900, 900));
-        jTabbedPane9.setSize(new java.awt.Dimension(1000, 1000));
 
+        jPanel43.setBackground(new java.awt.Color(51, 51, 51));
         jPanel43.setPreferredSize(new java.awt.Dimension(900, 800));
         jPanel43.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel87.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel87.setForeground(new java.awt.Color(204, 204, 204));
         jLabel87.setText("Movie Id:");
         jPanel43.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+
+        createMovieIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createMovieIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel43.add(createMovieIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
 
+        jLabel88.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel88.setForeground(new java.awt.Color(204, 204, 204));
         jLabel88.setText("Movie Name:");
         jPanel43.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+
+        createMovieNameField.setBackground(new java.awt.Color(0, 0, 0));
+        createMovieNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel43.add(createMovieNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
 
+        createMovieButton.setBackground(new java.awt.Color(102, 204, 255));
+        createMovieButton.setForeground(new java.awt.Color(255, 255, 255));
         createMovieButton.setText("Create");
         createMovieButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2097,18 +2797,30 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane9.addTab("Create Movie", jPanel43);
 
+        jPanel44.setBackground(new java.awt.Color(51, 51, 51));
         jPanel44.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel89.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel89.setForeground(new java.awt.Color(204, 204, 204));
         jLabel89.setText("Position:");
         jPanel44.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, -1, -1));
 
+        moviePositionField.setBackground(new java.awt.Color(0, 0, 0));
+        moviePositionField.setForeground(new java.awt.Color(204, 204, 204));
         moviePositionField.setEnabled(false);
         jPanel44.add(moviePositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 120, -1));
 
+        jLabel90.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel90.setForeground(new java.awt.Color(204, 204, 204));
         jLabel90.setText("Movie Id:");
         jPanel44.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, -1, -1));
+
+        updateMovieIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateMovieIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel44.add(updateMovieIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 120, -1));
 
+        updateMovieSearchButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateMovieSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         updateMovieSearchButton.setText("Search");
         updateMovieSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2117,12 +2829,19 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel44.add(updateMovieSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
 
+        updateMovieNameLabel.setBackground(new java.awt.Color(0, 0, 0));
+        updateMovieNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateMovieNameLabel.setText("Movie Name:");
         jPanel44.add(updateMovieNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
         updateMovieNameLabel.setVisible(false);
+
+        updateMovieNameField.setBackground(new java.awt.Color(0, 0, 0));
+        updateMovieNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel44.add(updateMovieNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
         updateMovieNameField.setVisible(false);
 
+        updateMovieButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateMovieButton.setForeground(new java.awt.Color(255, 255, 255));
         updateMovieButton.setText("Update");
         updateMovieButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2134,12 +2853,19 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane9.addTab("View/Update Movie", jPanel44);
 
+        jPanel45.setBackground(new java.awt.Color(51, 51, 51));
         jPanel45.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel91.setForeground(new java.awt.Color(204, 204, 204));
         jLabel91.setText("Movie Id:");
         jPanel45.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 140, -1, -1));
+
+        deleteMovieIdField.setBackground(new java.awt.Color(0, 0, 0));
+        deleteMovieIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel45.add(deleteMovieIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 130, -1));
 
+        deleteMovieButton.setBackground(new java.awt.Color(102, 204, 255));
+        deleteMovieButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteMovieButton.setText("Delete");
         deleteMovieButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2150,21 +2876,38 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane9.addTab("Delete Movie", jPanel45);
 
+        jPanel46.setBackground(new java.awt.Color(51, 51, 51));
         jPanel46.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel92.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel92.setForeground(new java.awt.Color(204, 204, 204));
         jLabel92.setText("Theatre ID");
         jPanel46.add(jLabel92, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
+
+        createTheatreIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createTheatreIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel46.add(createTheatreIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 130, -1));
 
+        jLabel93.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel93.setForeground(new java.awt.Color(204, 204, 204));
         jLabel93.setText("Theatre Name");
         jPanel46.add(jLabel93, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
+
+        createTheatreNameField.setBackground(new java.awt.Color(0, 0, 0));
+        createTheatreNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel46.add(createTheatreNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 130, -1));
 
+        jLabel94.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel94.setForeground(new java.awt.Color(204, 204, 204));
         jLabel94.setText("City Name");
         jPanel46.add(jLabel94, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, -1));
 
+        createTheatreCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        createTheatreCityCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel46.add(createTheatreCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 130, -1));
 
+        createTheatreButton.setBackground(new java.awt.Color(102, 204, 255));
+        createTheatreButton.setForeground(new java.awt.Color(255, 255, 255));
         createTheatreButton.setText("Create");
         createTheatreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2175,31 +2918,53 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane9.addTab("Create Theatre", jPanel46);
 
+        jPanel47.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel47.setForeground(new java.awt.Color(204, 204, 204));
         jPanel47.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel95.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel95.setForeground(new java.awt.Color(204, 204, 204));
         jLabel95.setText("Theatre ID");
         jPanel47.add(jLabel95, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
+
+        updateTheatreIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateTheatreIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel47.add(updateTheatreIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 130, -1));
 
+        updateTheatreNameLabel.setBackground(new java.awt.Color(0, 0, 0));
+        updateTheatreNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateTheatreNameLabel.setText("Theatre Name");
         jPanel47.add(updateTheatreNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, -1, -1));
         updateTheatreNameLabel.setVisible(false);
+
+        updateTheatreNameField.setBackground(new java.awt.Color(0, 0, 0));
+        updateTheatreNameField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel47.add(updateTheatreNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 130, -1));
         updateTheatreNameField.setVisible(false);
 
+        updateTheatreCityLabel.setBackground(new java.awt.Color(0, 0, 0));
+        updateTheatreCityLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateTheatreCityLabel.setText("City Name");
         jPanel47.add(updateTheatreCityLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, -1));
         updateTheatreCityLabel.setVisible(false);
 
+        updateTheatreCityCombo.setBackground(new java.awt.Color(0, 0, 0));
+        updateTheatreCityCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel47.add(updateTheatreCityCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 130, -1));
         updateTheatreCityCombo.setVisible(false);
 
+        jLabel96.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel96.setForeground(new java.awt.Color(204, 204, 204));
         jLabel96.setText("Position:");
         jPanel47.add(jLabel96, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, -1, -1));
 
+        theatrePositionField.setBackground(new java.awt.Color(0, 0, 0));
+        theatrePositionField.setForeground(new java.awt.Color(204, 204, 204));
         theatrePositionField.setEnabled(false);
         jPanel47.add(theatrePositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 130, -1));
 
+        updateTheatreSearchButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateTheatreSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         updateTheatreSearchButton.setText("Search");
         updateTheatreSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2208,6 +2973,8 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel47.add(updateTheatreSearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, -1, -1));
 
+        updateTheatreButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateTheatreButton.setForeground(new java.awt.Color(255, 255, 255));
         updateTheatreButton.setText("Update");
         updateTheatreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2219,12 +2986,20 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane9.addTab("View/Update Theatre", jPanel47);
 
+        jPanel48.setBackground(new java.awt.Color(51, 51, 51));
         jPanel48.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel97.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel97.setForeground(new java.awt.Color(204, 204, 204));
         jLabel97.setText("Theatre Id:");
         jPanel48.add(jLabel97, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, -1));
+
+        deleteTheatreIdField.setBackground(new java.awt.Color(0, 0, 0));
+        deleteTheatreIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel48.add(deleteTheatreIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 130, -1));
 
+        deleteTheatreButton.setBackground(new java.awt.Color(102, 204, 255));
+        deleteTheatreButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteTheatreButton.setText("Delete");
         deleteTheatreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2235,32 +3010,61 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane9.addTab("Delete Theatre", jPanel48);
 
+        jPanel50.setBackground(new java.awt.Color(51, 51, 51));
         jPanel50.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel98.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel98.setForeground(new java.awt.Color(204, 204, 204));
         jLabel98.setText("Screen Id:");
         jPanel50.add(jLabel98, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+
+        createScreenIdField.setBackground(new java.awt.Color(0, 0, 0));
+        createScreenIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel50.add(createScreenIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
 
+        jLabel99.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel99.setForeground(new java.awt.Color(204, 204, 204));
         jLabel99.setText("Theatre Name:");
         jPanel50.add(jLabel99, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
 
+        jLabel100.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel100.setForeground(new java.awt.Color(204, 204, 204));
         jLabel100.setText("Movie Name:");
         jPanel50.add(jLabel100, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
 
+        createScreenTheatreCombo.setBackground(new java.awt.Color(0, 0, 0));
+        createScreenTheatreCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel50.add(createScreenTheatreCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
 
+        jLabel101.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel101.setForeground(new java.awt.Color(204, 204, 204));
         jLabel101.setText("Movie Date");
         jPanel50.add(jLabel101, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+
+        createMovieDateField.setBackground(new java.awt.Color(0, 0, 0));
+        createMovieDateField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel50.add(createMovieDateField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
 
+        jLabel102.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel102.setForeground(new java.awt.Color(204, 204, 204));
         jLabel102.setText("Movie Time");
         jPanel50.add(jLabel102, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, -1, -1));
+
+        createMovieTimeField.setBackground(new java.awt.Color(0, 0, 0));
+        createMovieTimeField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel50.add(createMovieTimeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 120, -1));
 
+        jLabel103.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel103.setForeground(new java.awt.Color(204, 204, 204));
         jLabel103.setText("Price:");
         jPanel50.add(jLabel103, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, -1, -1));
+
+        createScreenPriceField.setBackground(new java.awt.Color(0, 0, 0));
+        createScreenPriceField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel50.add(createScreenPriceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 120, -1));
 
+        createScreenButton.setBackground(new java.awt.Color(102, 204, 255));
+        createScreenButton.setForeground(new java.awt.Color(255, 255, 255));
         createScreenButton.setText("Create");
         createScreenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2269,6 +3073,8 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         jPanel50.add(createScreenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 210, -1));
 
+        createScreenMovieCombo.setBackground(new java.awt.Color(0, 0, 0));
+        createScreenMovieCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel50.add(createScreenMovieCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
 
         javax.swing.GroupLayout jPanel49Layout = new javax.swing.GroupLayout(jPanel49);
@@ -2294,44 +3100,75 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane9.addTab("Create Screen", jPanel49);
 
+        jPanel51.setBackground(new java.awt.Color(51, 51, 51));
         jPanel51.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel104.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel104.setForeground(new java.awt.Color(204, 204, 204));
         jLabel104.setText("Screen Id:");
         jPanel51.add(jLabel104, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
+
+        updateScreenIdField.setBackground(new java.awt.Color(0, 0, 0));
+        updateScreenIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel51.add(updateScreenIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 120, -1));
 
+        updateScreenTheatreNameLabel.setBackground(new java.awt.Color(0, 0, 0));
+        updateScreenTheatreNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateScreenTheatreNameLabel.setText("Theatre Name:");
         jPanel51.add(updateScreenTheatreNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
         updateScreenTheatreNameLabel.setVisible(false);
 
+        updateScreenTheatreCombo.setBackground(new java.awt.Color(0, 0, 0));
+        updateScreenTheatreCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel51.add(updateScreenTheatreCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 120, -1));
         updateScreenTheatreCombo.setVisible(false);
 
+        updateScreenMovieNameLabel.setBackground(new java.awt.Color(0, 0, 0));
+        updateScreenMovieNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateScreenMovieNameLabel.setText("Movie Name:");
         jPanel51.add(updateScreenMovieNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, -1));
         updateScreenMovieNameLabel.setVisible(false);
 
+        updateScreenMovieCombo.setBackground(new java.awt.Color(0, 0, 0));
+        updateScreenMovieCombo.setForeground(new java.awt.Color(204, 204, 204));
         jPanel51.add(updateScreenMovieCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 120, -1));
         updateScreenMovieCombo.setVisible(false);
 
+        updateScreenMovieDateLabel.setBackground(new java.awt.Color(0, 0, 0));
+        updateScreenMovieDateLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateScreenMovieDateLabel.setText("Movie Date");
         jPanel51.add(updateScreenMovieDateLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
         updateScreenMovieDateLabel.setVisible(false);
+
+        updateScreenMovieDate.setBackground(new java.awt.Color(0, 0, 0));
+        updateScreenMovieDate.setForeground(new java.awt.Color(204, 204, 204));
         jPanel51.add(updateScreenMovieDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 250, 120, -1));
         updateScreenMovieDate.setVisible(false);
 
+        updateScreenMovieTimeLabel.setBackground(new java.awt.Color(0, 0, 0));
+        updateScreenMovieTimeLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateScreenMovieTimeLabel.setText("Movie Time");
         jPanel51.add(updateScreenMovieTimeLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, -1, -1));
         updateScreenMovieTimeLabel.setVisible(false);
+
+        updateScreenMovieTime.setBackground(new java.awt.Color(0, 0, 0));
+        updateScreenMovieTime.setForeground(new java.awt.Color(204, 204, 204));
         jPanel51.add(updateScreenMovieTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 120, -1));
         updateScreenMovieTime.setVisible(false);
 
+        updateScreenPriceLabel.setBackground(new java.awt.Color(0, 0, 0));
+        updateScreenPriceLabel.setForeground(new java.awt.Color(204, 204, 204));
         updateScreenPriceLabel.setText("Price:");
         jPanel51.add(updateScreenPriceLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, -1, -1));
         updateScreenPriceLabel.setVisible(false);
+
+        updateScreenPriceField.setBackground(new java.awt.Color(0, 0, 0));
+        updateScreenPriceField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel51.add(updateScreenPriceField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 120, -1));
         updateScreenPriceField.setVisible(false);
 
+        updateScreenButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateScreenButton.setForeground(new java.awt.Color(255, 255, 255));
         updateScreenButton.setText("Update");
         updateScreenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2341,12 +3178,18 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel51.add(updateScreenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 210, -1));
         updateScreenButton.setVisible(false);
 
+        jLabel105.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel105.setForeground(new java.awt.Color(204, 204, 204));
         jLabel105.setText("Position:");
         jPanel51.add(jLabel105, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
 
+        screenPositionField.setBackground(new java.awt.Color(0, 0, 0));
+        screenPositionField.setForeground(new java.awt.Color(204, 204, 204));
         screenPositionField.setEnabled(false);
         jPanel51.add(screenPositionField, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 120, -1));
 
+        updateScreenSearchButton.setBackground(new java.awt.Color(102, 204, 255));
+        updateScreenSearchButton.setForeground(new java.awt.Color(255, 255, 255));
         updateScreenSearchButton.setText("Search");
         updateScreenSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2357,12 +3200,20 @@ public class AdminFrame extends javax.swing.JFrame {
 
         jTabbedPane9.addTab("View/Update Screen", jPanel51);
 
+        jPanel52.setBackground(new java.awt.Color(51, 51, 51));
         jPanel52.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel106.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel106.setForeground(new java.awt.Color(204, 204, 204));
         jLabel106.setText("Screen Id:");
         jPanel52.add(jLabel106, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
+
+        deleteScreenIdField.setBackground(new java.awt.Color(0, 0, 0));
+        deleteScreenIdField.setForeground(new java.awt.Color(204, 204, 204));
         jPanel52.add(deleteScreenIdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 130, -1));
 
+        deleteScreenButton.setBackground(new java.awt.Color(102, 204, 255));
+        deleteScreenButton.setForeground(new java.awt.Color(255, 255, 255));
         deleteScreenButton.setText("Delete");
         deleteScreenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -5585,6 +6436,10 @@ public class AdminFrame extends javax.swing.JFrame {
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_movieAdminLogoutButtonActionPerformed
+
+    private void deleteBusIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBusIdFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteBusIdFieldActionPerformed
 
     /**
      * @param args the command line arguments
