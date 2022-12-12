@@ -24,4 +24,4 @@ The following table shows each role along with its responsibilities:
 ![Project](https://user-images.githubusercontent.com/114452317/206957353-b09b19bc-53fe-4787-8d08-548d686b0510.png)
 
 #Class diagram:
-![ProjectClassDiagram](https://user-images.githubusercontent.com/114452317/206957454-6ecb0f07-64ed-49e2-b417-2d9867f79492.png)
+![ProjectClassDiagram](https://user-images.githubusercontent.com/114452317/206958405-dc926220-c68e-403e-ba5f-8052f6d6801c.png)
