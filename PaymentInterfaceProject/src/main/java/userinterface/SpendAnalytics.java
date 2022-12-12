@@ -40,7 +40,6 @@ public class SpendAnalytics extends javax.swing.JFrame {
           rs.next();
           int userId = rs.getInt(1);
           rs = BusBookingDirectory.getBusBookings(userId);
-          rs.next();
           DefaultTableModel table_model = (DefaultTableModel)spendTable.getModel();
           double sum = 0;
           while(rs.next())
@@ -104,7 +103,6 @@ public class SpendAnalytics extends javax.swing.JFrame {
           }
           pieDataSet.setValue("Movie Booking", sum);
           sum = 0;
-          System.out.println("hello");
           rs = BankAccountDirectory.getMoneyTransfers(userNameLabel.getText());
           while(rs.next())
           {
@@ -115,7 +113,6 @@ public class SpendAnalytics extends javax.swing.JFrame {
           }          
           pieDataSet.setValue("Friends & Family", sum);
           sum = 0;
-          System.out.println("hello");
           rs = UserDirectory.getUtilityTransactions(userNameLabel.getText());
           while(rs.next())
           {
