@@ -285,6 +285,7 @@ public class BookMovieTickets extends javax.swing.JFrame {
         cancelBookingButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jTabbedPane1.setBackground(new java.awt.Color(102, 102, 102));
         jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));

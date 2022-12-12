@@ -145,6 +145,7 @@ public class PayUtilityBill extends javax.swing.JFrame {
         cityField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jTabbedPane1.setBackground(new java.awt.Color(102, 102, 102));
         jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));

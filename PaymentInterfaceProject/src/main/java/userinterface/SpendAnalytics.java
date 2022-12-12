@@ -158,6 +158,7 @@ public class SpendAnalytics extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
         setForeground(new java.awt.Color(204, 204, 204));
+        setResizable(false);
         setSize(new java.awt.Dimension(1000, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
